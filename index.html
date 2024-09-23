@@ -6,11 +6,19 @@
   <title>Swift Peak Hosting Ltd</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.css" rel="stylesheet" />
+  <style>
+    /* Custom styles for a server and gaming feel */
+    .hero-bg {
+      background-image: url('your-background-image.jpg'); /* Replace with your background image */
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen flex flex-col justify-between">
   <!-- Navbar -->
-  <nav class="bg-gray-800 p-4">
-    <div class="container mx-auto flex justify-between">
+  <nav class="bg-gray-800 p-4 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
       <a href="#" class="text-xl font-bold">Swift Peak Hosting Ltd</a>
       <ul class="flex space-x-6">
         <li><a href="#" class="hover:text-gray-400">Home</a></li>
@@ -22,12 +30,12 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="text-center py-24 bg-gray-800 relative overflow-hidden">
-    <div class="absolute inset-0 bg-cover bg-center opacity-50" style="background-image: url('your-background-image.jpg');"></div>
+  <section class="text-center py-24 hero-bg relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-60"></div>
     <div class="relative z-10">
       <h1 class="text-5xl font-extrabold mb-4">Welcome to Swift Peak Hosting Ltd</h1>
-      <p class="text-lg mb-8">Reliable and efficient hosting solutions for your community or business.</p>
-      <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">Get Started</a>
+      <p class="text-lg mb-8">Your reliable partner for high-performance hosting solutions.</p>
+      <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded shadow-lg transition duration-200">Get Started</a>
     </div>
   </section>
 
@@ -38,20 +46,21 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <!-- SnailyCAD Hosting Service -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
           <h3 class="text-xl font-bold mb-4">SnailyCAD Hosting</h3>
           <p>Expert SnailyCAD hosting solutions designed for law enforcement roleplay communities, with 99.9% uptime, optimized performance, and round-the-clock support.</p>
           <a href="https://store.swiftpeakhosting.co.uk/store/view/50" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Go to Checkout</a>
         </div>
         
         <!-- Cloud Solutions Service -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
           <h3 class="text-xl font-bold mb-4">Cloud Solutions</h3>
           <p>Custom cloud solutions tailored to your business needs.</p>
+          <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Learn More</a>
         </div>
         
         <!-- VPS/VDS Service -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
           <h3 class="text-xl font-bold mb-4">VPS/VDS</h3>
           <p>High-performance Virtual Private Servers (VPS) and dedicated servers tailored to meet all your hosting needs.</p>
           <a href="VPS.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Checkout Our Pricing Plans</a>
