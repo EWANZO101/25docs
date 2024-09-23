@@ -35,7 +35,7 @@
         <div class="container mx-auto">
             <h3 class="text-3xl font-bold mb-8 text-center">Send Us a Message</h3>
             <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <form action="contact.php" method="POST"> <!-- Form action points to itself -->
+                <form action="" method="POST"> <!-- Form action points to itself -->
                     <div class="mb-4">
                         <label for="name" class="block text-sm font-bold mb-2">Name:</label>
                         <input type="text" id="name" name="name" required class="border border-gray-700 bg-gray-900 text-white p-2 rounded w-full">
@@ -75,6 +75,7 @@
         $body = "Name: $name\nEmail: $email\nMessage:\n$message";
         $headers = "From: $email";
 
+        // Send the email
         if (mail($to, $subject, $body, $headers)) {
             echo "<script>alert('Message sent successfully!');</script>";
         } else {
