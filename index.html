@@ -6,10 +6,42 @@
   <title>Swift Peak Hosting Ltd</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.css" rel="stylesheet" />
+  <style>
+    /* Custom animations */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-in {
+      animation: slideIn 2.5s ease-in-out forwards;
+    }
+  </style>
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col justify-between">
   <!-- Navbar -->
-  <nav class="bg-blue-800 p-4 shadow-lg"> <!-- Changed to bg-blue-800 for Royal Blue -->
+  <nav class="bg-blue-800 p-4 shadow-lg">
     <div class="container mx-auto flex justify-between items-center">
       <a href="#" class="text-xl font-bold">Swift Peak Hosting Ltd</a>
       <ul class="flex space-x-6">
@@ -23,8 +55,8 @@
 
   <!-- Hero Section -->
   <section class="text-center py-24 bg-black relative overflow-hidden">
-    <h1 class="text-5xl font-extrabold mb-4">Welcome to Swift Peak Hosting LTD</h1>
-    <p class="text-lg mb-8">Your reliable partner for high-performance hosting solutions.</p>
+    <h1 class="text-5xl font-extrabold mb-4 fade-in">Welcome to Swift Peak Hosting Ltd</h1>
+    <p class="text-lg mb-8 slide-in">Your reliable partner for high-performance hosting solutions.</p>
     <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded shadow-lg transition duration-200">Get Started</a>
   </section>
 
