@@ -41,7 +41,7 @@
                 <!-- Custom specifications Dedicated -->
                 <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <h3 class="text-xl font-bold mb-4">Custom specifications Dedicated</h3>
-                    <p class="text-2xl font-bold mb-4">Once off £299.99 then 55.99 pre month</p>
+                    <p class="text-2xl font-bold mb-4">Starting at a one-time payment of £150 - £490, with a £55.99 monthly maintenance fee. We handle the setup, you enjoy the power!</p>
                     <ul class="mb-4 list-disc list-inside">
                         <li>Custom specifications as per requirements</li>
                         <li>Custom specifications as per requirements</li>
@@ -49,8 +49,22 @@
                         <li>Custom specifications as per requirements</li>
                         <li>500 MBPS - 1 GB</li>
                     </ul>
+                    <button id="maintenanceInfo" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">
+                        What does the monthly maintenance fee mean?
+                    </button>
+                    <div id="dropdown" class="hidden mt-2 bg-gray-700 p-4 rounded">
+                        <p>The monthly maintenance fee covers ongoing support, updates, and general server management, plus power and bandwidth, ensuring that your server runs smoothly without requiring additional effort on your part.</p>
+                    </div>
                     <a href="https://store.swiftpeakhosting.co.uk/store/view/49" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Choose Plan</a>
                 </div>
+
+                <script>
+                    // JavaScript to toggle the dropdown
+                    document.getElementById('maintenanceInfo').addEventListener('click', function () {
+                        const dropdown = document.getElementById('dropdown');
+                        dropdown.classList.toggle('hidden');
+                    });
+                </script>
 
             </div>
         </div>
@@ -61,7 +75,7 @@
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold mb-8 text-center">VPS Pricing Plan</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
+
                 <!-- Standard VPS Plan -->
                 <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <h3 class="text-xl font-bold mb-4">Standard VPS</h3>
@@ -88,25 +102,13 @@
 
                 <!-- Physical Server Options -->
                 <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-bold mb-4">Own Your Own Server</h3>
-                    <p class="text-2xl font-bold mb-4">Starting at £150 - £490</p>
-                    <p class="mt-4">With a £47.99 monthly maintenance fee. We handle the setup, you enjoy the power!</p>
+                    <h3 class="text-xl font-bold mb-4"></h3>
+                    <p class="text-2xl font-bold mb-4"></p>
+                    <p class="mt-4"></p>
                     <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Learn More</a>
                 </div>
 
             </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section class="py-12">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold mb-8 text-center"></h2>
-            <ul class="list-disc list-inside mb-4">
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
         </div>
     </section>
 
