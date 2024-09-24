@@ -37,12 +37,6 @@
     .slide-in {
       animation: slideIn 2.5s ease-in-out forwards;
     }
-
-    /* Background image styling */
-    body {
-      background: url('https://cdn.discordapp.com/attachments/1054865340435279932/1259975039630180423/4rBkgcQ.png?ex=66f3cef2&is=66f27d72&hm=1831137fcafc3bc5b4681d545a0fd185af41fa262a42915aec0514fffe2449f6') no-repeat center center fixed;
-      background-size: cover;
-    }
   </style>
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col justify-between">
