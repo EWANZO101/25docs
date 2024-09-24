@@ -18,11 +18,11 @@
         transform: translateY(0);
       }
     }
-
+  
     .fade-in {
       animation: fadeIn 2s ease-in-out forwards;
     }
-
+  
     @keyframes slideIn {
       0% {
         opacity: 0;
@@ -33,15 +33,23 @@
         transform: translateX(0);
       }
     }
-
+  
     .slide-in {
       animation: slideIn 2.5s ease-in-out forwards;
     }
-
+  
     /* Background image styling */
     body {
       background: url('https://cdn.discordapp.com/attachments/1054865340435279932/1259975039630180423/4rBkgcQ.png?ex=66f3cef2&is=66f27d72&hm=1831137fcafc3bc5b4681d545a0fd185af41fa262a42915aec0514fffe2449f6') no-repeat center center fixed;
-      background-size: cover;
+      background-size: 30%; /* Shrinks the image to 30% of its original size */
+      background-position: top center; /* Align the image to the top center */
+      background-attachment: fixed; /* Keep the background fixed during scrolling */
+      background-repeat: no-repeat;
+    }
+  
+    /* Ensure the content area has a slightly dark background for contrast */
+    .content-area {
+      background-color: rgba(0, 0, 0, 0.6); /* Transparent black background for content area */
     }
   </style>
 </head>
