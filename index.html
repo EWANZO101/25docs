@@ -18,11 +18,11 @@
         transform: translateY(0);
       }
     }
-  
+
     .fade-in {
       animation: fadeIn 2s ease-in-out forwards;
     }
-  
+
     @keyframes slideIn {
       0% {
         opacity: 0;
@@ -33,23 +33,43 @@
         transform: translateX(0);
       }
     }
-  
+
     .slide-in {
       animation: slideIn 2.5s ease-in-out forwards;
     }
-  
+
     /* Background image styling */
     body {
       background: url('https://cdn.discordapp.com/attachments/1054865340435279932/1259975039630180423/4rBkgcQ.png?ex=66f3cef2&is=66f27d72&hm=1831137fcafc3bc5b4681d545a0fd185af41fa262a42915aec0514fffe2449f6') no-repeat center center fixed;
-      background-size: 30%; /* Shrinks the image to 30% of its original size */
-      background-position: top center; /* Align the image to the top center */
-      background-attachment: fixed; /* Keep the background fixed during scrolling */
+      background-size: 30%;
+      background-position: top center;
+      background-attachment: fixed;
       background-repeat: no-repeat;
     }
-  
+
     /* Ensure the content area has a slightly dark background for contrast */
     .content-area {
-      background-color: rgba(0, 0, 0, 0.6); /* Transparent black background for content area */
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    /* Custom button styles */
+    .custom-button {
+      background: linear-gradient(90deg, #1d4ed8, #3b82f6);
+      border: none;
+      color: white;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 15px rgba(29, 78, 216, 0.3);
+    }
+
+    .custom-button:hover {
+      background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(29, 78, 216, 0.4);
     }
   </style>
 </head>
@@ -66,8 +86,7 @@
         <li><a href="https://store.swiftpeakhosting.co.uk/auth/register" target="_blank" class="hover:text-gray-400">Sign Up</a></li>
         <li><a href="https://store.swiftpeakhosting.co.uk/auth/login" target="_blank" class="hover:text-gray-400">Log In</a></li>
         <li><a href="https://store.swiftpeakhosting.co.uk/auth/logout" class="hover:text-gray-400">Sign Out</a></li>
-        
-        <li><a href="https://store.swiftpeakhosting.co.uk/admin" class="hover:text-gray-400">admin</a></li>
+        <li><a href="https://store.swiftpeakhosting.co.uk/admin" class="hover:text-gray-400">Admin</a></li>
       </ul>
     </div>
   </nav>
@@ -88,21 +107,21 @@
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
           <h3 class="text-xl font-bold mb-4">SnailyCAD Hosting</h3>
           <p>Expert SnailyCAD hosting solutions designed for law enforcement roleplay communities, with 99.9% uptime, optimized performance, and round-the-clock support.</p>
-          <a href="https://store.swiftpeakhosting.co.uk/store/view/50" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Go to Checkout</a>
+          <a href="https://store.swiftpeakhosting.co.uk/store/view/50" class="custom-button mt-4 inline-block">Go to Checkout</a>
         </div>
         
         <!-- Cloud Solutions Service -->
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
           <h3 class="text-xl font-bold mb-4">Cloud Solutions</h3>
           <p>Custom cloud solutions tailored to your business needs.</p>
-          <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Learn More</a>
+          <a href="#" class="custom-button mt-4 inline-block">Learn More</a>
         </div>
         
         <!-- VPS/VDS Service -->
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
           <h3 class="text-xl font-bold mb-4">VPS/VDS</h3>
           <p>High-performance Virtual Private Servers (VPS) and dedicated servers tailored to meet all your hosting needs.</p>
-          <a href="VPS.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Checkout Our Pricing Plans</a>
+          <a href="VPS.html" class="custom-button mt-4 inline-block">Checkout Our Pricing Plans</a>
         </div>
         
       </div>
