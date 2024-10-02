@@ -76,6 +76,43 @@
     </div>
   </nav>
 
+  <!-- Hero Section -->
+  <section class="text-center py-24 bg-black/50 relative overflow-hidden">
+    <h1 class="text-5xl font-extrabold mb-4 fade-in">Welcome to Swift Peak Hosting Ltd</h1>
+    <p class="text-lg mb-8 slide-in">Your reliable partner for high-performance hosting solutions.</p>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-12">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold mb-8 text-center">Our Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- SnailyCAD Hosting Service -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
+          <h3 class="text-xl font-bold mb-4">SnailyCAD Hosting</h3>
+          <p>Expert SnailyCAD hosting solutions designed for law enforcement roleplay communities, with 99.9% uptime, optimized performance, and round-the-clock support.</p>
+          <a href="https://store.swiftpeakhosting.co.uk/store/view/50" class="custom-button mt-4 inline-block">Go to Checkout</a>
+        </div>
+        
+        <!-- Cloud Solutions Service -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
+          <h3 class="text-xl font-bold mb-4">Cloud Solutions</h3>
+          <p>Custom cloud solutions tailored to your business needs.</p>
+          <a href="#" class="custom-button mt-4 inline-block">Learn More</a>
+        </div>
+        
+        <!-- VPS/VDS Service -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
+          <h3 class="text-xl font-bold mb-4">VPS/VDS</h3>
+          <p>High-performance Virtual Private Servers (VPS) and dedicated servers tailored to meet all your hosting needs.</p>
+          <a href="VPS.html" class="custom-button mt-4 inline-block">Checkout Our Pricing Plans</a>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
   <!-- Terms and Conditions Section -->
   <section class="flex-grow flex items-center justify-center py-12">
     <div class="content-area p-8 rounded-lg shadow-lg max-w-2xl text-center fade-in">
@@ -109,18 +146,16 @@
     window.onload = function() {
       const hasAccepted = localStorage.getItem('acceptedTerms');
       const contentArea = document.querySelector('.content-area');
-      if (!hasAccepted) {
-        contentArea.classList.remove('hidden'); // Show the content area
-      } else {
-        // Optionally change content or hide
-      }
-    };
+      const acceptBtn = document.getElementById('acceptBtn');
 
-    // Accept button logic
-    document.getElementById('acceptBtn').onclick = function() {
-      localStorage.setItem('acceptedTerms', 'true'); // Store acceptance
-      document.querySelector('.content-area').classList.add('hidden'); // Hide the content area
-      // No redirection; user stays on the same page
+      if (hasAccepted) {
+        contentArea.style.display = 'none';
+      } else {
+        acceptBtn.addEventListener('click', function() {
+          localStorage.setItem('acceptedTerms', 'true');
+          contentArea.style.display = 'none';
+        });
+      }
     };
   </script>
 </body>
