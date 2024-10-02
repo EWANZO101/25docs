@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swift Peak Hosting Ltd</title>
+  <title>Terms and Conditions - Swift Peak Hosting Ltd</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.css" rel="stylesheet" />
   <style>
@@ -23,33 +23,18 @@
       animation: fadeIn 2s ease-in-out forwards;
     }
 
-    @keyframes slideIn {
-      0% {
-        opacity: 0;
-        transform: translateX(-100px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .slide-in {
-      animation: slideIn 2.5s ease-in-out forwards;
-    }
-
     /* Background image styling */
     body {
       background: url('https://cdn.discordapp.com/attachments/1054865340435279932/1259975039630180423/4rBkgcQ.png?ex=66f3cef2&is=66f27d72&hm=1831137fcafc3bc5b4681d545a0fd185af41fa262a42915aec0514fffe2449f6') no-repeat center center fixed;
-      background-size: 30%;
-      background-position: top center;
+      background-size: cover;
+      background-position: center;
       background-attachment: fixed;
       background-repeat: no-repeat;
     }
 
     /* Ensure the content area has a slightly dark background for contrast */
     .content-area {
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 0.8);
     }
 
     /* Custom button styles */
@@ -75,60 +60,34 @@
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col justify-between">
   <!-- Navbar -->
- <nav class="bg-blue-800 p-4 shadow-lg">
-  <div class="container mx-auto flex justify-between items-center">
-    <a href="#" class="text-xl font-bold text-white">Swift Peak Hosting LTD</a>
-    <ul class="flex space-x-6">
-      <li><a href="index.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Home</a></li>
-      <li><a href="Services.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Services</a></li>
-      <li><a href="Documentation.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Documentation</a></li>
-      <li><a href="contact.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Contact</a></li>
-      <li><a href="https://store.swiftpeakhosting.co.uk/auth/register" target="_blank" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Sign Up</a></li>
-      <li><a href="https://store.swiftpeakhosting.co.uk/auth/login" target="_blank" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Log In</a></li>
-      <li><a href="https://store.swiftpeakhosting.co.uk/auth/logout" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Sign Out</a></li>
-      <li><a href="https://store.swiftpeakhosting.co.uk/admin" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Admin</a></li>
-    </ul>
-  </div>
-</nav>
+  <nav class="bg-blue-800 p-4 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="text-xl font-bold text-white">Swift Peak Hosting LTD</a>
+      <ul class="flex space-x-6">
+        <li><a href="index.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Home</a></li>
+        <li><a href="Services.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Services</a></li>
+        <li><a href="Documentation.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Documentation</a></li>
+        <li><a href="contact.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Contact</a></li>
+        <li><a href="https://store.swiftpeakhosting.co.uk/auth/register" target="_blank" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Sign Up</a></li>
+        <li><a href="https://store.swiftpeakhosting.co.uk/auth/login" target="_blank" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Log In</a></li>
+        <li><a href="https://store.swiftpeakhosting.co.uk/auth/logout" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Sign Out</a></li>
+        <li><a href="https://store.swiftpeakhosting.co.uk/admin" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Admin</a></li>
+      </ul>
+    </div>
+  </nav>
 
-
-  <!-- Hero Section -->
-  <section class="text-center py-24 bg-black/50 relative overflow-hidden">
-    <h1 class="text-5xl font-extrabold mb-4 fade-in">Welcome to Swift Peak Hosting Ltd</h1>
-    <p class="text-lg mb-8 slide-in">Your reliable partner for high-performance hosting solutions.</p>
-  </section>
-
-  <!-- Services Section -->
-  <section class="py-12">
-    <div class="container mx-auto">
-      <h2 class="text-3xl font-bold mb-8 text-center">Our Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- SnailyCAD Hosting Service -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
-          <h3 class="text-xl font-bold mb-4">SnailyCAD Hosting</h3>
-          <p>Expert SnailyCAD hosting solutions designed for law enforcement roleplay communities, with 99.9% uptime, optimized performance, and round-the-clock support.</p>
-          <a href="https://store.swiftpeakhosting.co.uk/store/view/50" class="custom-button mt-4 inline-block">Go to Checkout</a>
-        </div>
-        
-        <!-- Cloud Solutions Service -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
-          <h3 class="text-xl font-bold mb-4">Cloud Solutions</h3>
-          <p>Custom cloud solutions tailored to your business needs.</p>
-          <a href="#" class="custom-button mt-4 inline-block">Learn More</a>
-        </div>
-        
-        <!-- VPS/VDS Service -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
-          <h3 class="text-xl font-bold mb-4">VPS/VDS</h3>
-          <p>High-performance Virtual Private Servers (VPS) and dedicated servers tailored to meet all your hosting needs.</p>
-          <a href="VPS.html" class="custom-button mt-4 inline-block">Checkout Our Pricing Plans</a>
-        </div>
-        
+  <!-- Terms and Conditions Section -->
+  <section class="flex-grow flex items-center justify-center py-12">
+    <div class="content-area p-8 rounded-lg shadow-lg max-w-2xl text-center fade-in">
+      <h1 class="text-4xl font-bold mb-4">Terms and Conditions</h1>
+      <p class="mb-4">Please read these terms and conditions carefully before using our website. By accessing or using this website, you agree to be bound by these terms.</p>
+      <p class="mb-4">For more details, please refer to our full <a href="https://www.swiftpeakhosting.co.uk/tnc" target="_blank" class="text-blue-400 underline">Terms and Conditions</a>.</p>
+      <div class="mt-6">
+        <a href="index.html" class="custom-button">I Agree</a>
       </div>
     </div>
   </section>
-  
+
   <!-- Footer -->
   <footer class="bg-black p-6">
     <div class="container mx-auto text-center">
