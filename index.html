@@ -112,7 +112,7 @@
       if (!hasAccepted) {
         contentArea.classList.remove('hidden'); // Show the content area
       } else {
-        // Optionally redirect or change content if accepted
+        // Optionally change content or hide
       }
     };
 
@@ -120,7 +120,7 @@
     document.getElementById('acceptBtn').onclick = function() {
       localStorage.setItem('acceptedTerms', 'true'); // Store acceptance
       document.querySelector('.content-area').classList.add('hidden'); // Hide the content area
-      // Optionally redirect to main content or home page
+      // No redirection; user stays on the same page
     };
   </script>
 </body>
