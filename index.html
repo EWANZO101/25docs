@@ -83,21 +83,10 @@
       <p class="mb-4">Please read these terms and conditions carefully before using our website. By accessing or using this website, you agree to be bound by these terms.</p>
       <p class="mb-4">For more details, please refer to our full <a href="https://www.swiftpeakhosting.co.uk/tnc" target="_blank" class="text-blue-400 underline">Terms and Conditions</a>.</p>
       <div class="mt-6">
-        <a href="#" class="custom-button" id="acceptBtn">I Agree</a>
+        <a href="#" class="custom-button" id="acceptBtn">I Accept</a>
       </div>
     </div>
   </section>
-
-  <!-- Terms and Conditions Modal -->
-  <div id="termsModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
-    <div class="bg-white rounded-lg p-6 max-w-lg text-black">
-      <h2 class="text-2xl font-bold mb-4">Terms and Conditions</h2>
-      <p>Please read these terms and conditions carefully...</p> <!-- Add your T&C text here -->
-      <div class="mt-4 flex justify-end">
-        <button class="custom-button" id="modalAcceptBtn">I Accept</button>
-      </div>
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer class="bg-black p-6">
@@ -119,20 +108,19 @@
     // Check if user has accepted T&Cs
     window.onload = function() {
       const hasAccepted = localStorage.getItem('acceptedTerms');
-      const termsModal = document.getElementById('termsModal');
+      const contentArea = document.querySelector('.content-area');
       if (!hasAccepted) {
-        termsModal.classList.remove('hidden'); // Show the modal
+        contentArea.classList.remove('hidden'); // Show the content area
+      } else {
+        // Optionally redirect or change content if accepted
       }
     };
 
     // Accept button logic
     document.getElementById('acceptBtn').onclick = function() {
-      document.getElementById('termsModal').classList.remove('hidden');
-    };
-
-    document.getElementById('modalAcceptBtn').onclick = function() {
       localStorage.setItem('acceptedTerms', 'true'); // Store acceptance
-      document.getElementById('termsModal').classList.add('hidden'); // Hide the modal
+      document.querySelector('.content-area').classList.add('hidden'); // Hide the content area
+      // Optionally redirect to main content or home page
     };
   </script>
 </body>
