@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swift Peak Hosting Ltd - Terms & Conditions</title>
+  <title>Terms and Conditions - Swift Peak Hosting Ltd</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.css" rel="stylesheet" />
   <style>
@@ -27,11 +27,14 @@
     body {
       background: url('https://cdn.discordapp.com/attachments/1054865340435279932/1259975039630180423/4rBkgcQ.png?ex=66f3cef2&is=66f27d72&hm=1831137fcafc3bc5b4681d545a0fd185af41fa262a42915aec0514fffe2449f6') no-repeat center center fixed;
       background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
     }
 
     /* Ensure the content area has a slightly dark background for contrast */
     .content-area {
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 0.8);
     }
 
     /* Custom button styles */
@@ -55,28 +58,66 @@
     }
   </style>
 </head>
-<body class="bg-black text-white min-h-screen flex flex-col justify-center items-center">
-  <div class="content-area p-8 rounded-lg shadow-lg text-center">
-    <h1 class="text-4xl font-bold mb-4 fade-in">Terms and Conditions</h1>
-    <p class="mb-8">Please read and accept our Terms and Conditions before entering the website.</p>
-    <a href="https://www.swiftpeakhosting.co.uk/tnc" target="_blank" class="text-blue-400 underline">View Full T&C</a>
-    <div class="mt-8">
-      <button id="agreeButton" class="custom-button">I Agree</button>
+<body class="bg-black text-white min-h-screen flex flex-col justify-between">
+  <!-- Navbar -->
+  <nav class="bg-blue-800 p-4 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="text-xl font-bold text-white">Swift Peak Hosting LTD</a>
+      <ul class="flex space-x-6">
+        <li><a href="index.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Home</a></li>
+        <li><a href="Services.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Services</a></li>
+        <li><a href="Documentation.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Documentation</a></li>
+        <li><a href="contact.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Contact</a></li>
+        <li><a href="https://store.swiftpeakhosting.co.uk/auth/register" target="_blank" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Sign Up</a></li>
+        <li><a href="https://store.swiftpeakhosting.co.uk/auth/login" target="_blank" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Log In</a></li>
+        <li><a href="https://store.swiftpeakhosting.co.uk/auth/logout" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Sign Out</a></li>
+        <li><a href="https://store.swiftpeakhosting.co.uk/admin" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Admin</a></li>
+      </ul>
     </div>
-  </div>
+  </nav>
 
+  <!-- Terms and Conditions Section -->
+  <section class="flex-grow flex items-center justify-center py-12">
+    <div class="content-area p-8 rounded-lg shadow-lg max-w-2xl text-center fade-in">
+      <h1 class="text-4xl font-bold mb-4">Terms and Conditions</h1>
+      <p class="mb-4">Please read these terms and conditions carefully before using our website. By accessing or using this website, you agree to be bound by these terms.</p>
+      <p class="mb-4">For more details, please refer to our full <a href="https://www.swiftpeakhosting.co.uk/tnc" target="_blank" class="text-blue-400 underline">Terms and Conditions</a>.</p>
+      <div class="mt-6">
+        <button id="agreeButton" class="custom-button">I Agree</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black p-6">
+    <div class="container mx-auto text-center">
+      <div class="flex justify-center items-center space-x-4">
+        <p class="mr-4">© 2024 Swift Peak Hosting Ltd. All rights reserved.</p>
+        <span>|</span>
+        <a href="https://find-and-update.company-information.service.gov.uk/company/15612395" class="hover:text-gray-400">Registration Number: 15612395</a>
+        <span>|</span>
+        <a href="tnc.html" class="hover:text-gray-400">Terms & Conditions</a>
+        <span>|</span>
+        <a href="https://docs.swiftpeakhosting.co.uk/privacy" class="hover:text-gray-400">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.js"></script>
   <script>
-    // Check if user has already agreed to T&C
-    if (localStorage.getItem('agreedToTnC')) {
-      // Redirect to the main website
+    // Function to check agreement status
+    function checkAgreement() {
+      return localStorage.getItem('agreedToTnC') === 'true';
+    }
+
+    // Redirect if already agreed
+    if (checkAgreement()) {
       window.location.href = 'index.html'; // Change to your main page URL
     }
 
-    // Add event listener to the agree button
+    // Add event listener for the agree button
     document.getElementById('agreeButton').addEventListener('click', function() {
-      // Set a flag in local storage
       localStorage.setItem('agreedToTnC', 'true');
-      // Redirect to the main website
       window.location.href = 'index.html'; // Change to your main page URL
     });
   </script>
