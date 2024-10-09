@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="15;url=https://mellowservices.com">
+    <title>Service Down</title>
+    <!-- Tailwind and Flowbite CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.4.7/dist/flowbite.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+    <div class="max-w-md p-6 bg-gray-800 rounded-lg shadow-lg text-center">
+        <h1 class="text-3xl font-bold mb-4">We Are Experiencing Issues</h1>
+        <p class="mb-4 text-lg">Our services are currently unavailable, and we do not have a specific date for restoration.</p>
+        <p class="mb-6 text-lg">If you wish to get a CAD/MDT service, you will be redirected to Mellow Services in 15 seconds.</p>
+
+        <!-- Flowbite Spinner Component -->
+        <div class="flex justify-center mb-4">
+            <div role="status">
+                <svg class="inline w-8 h-8 mr-2 text-gray-400 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9765 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9765 100 50.5908ZM9.08115 50.5908C9.08115 74.0805 26.5103 91.5096 50 91.5096C73.4897 91.5096 90.9188 74.0805 90.9188 50.5908C90.9188 27.1011 73.4897 9.67202 50 9.67202C26.5103 9.67202 9.08115 27.1011 9.08115 50.5908Z" fill="currentColor"/>
+                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5532C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7234 75.2124 7.41289C69.5422 4.1024 63.2754 1.94025 56.7222 1.05132C51.7662 0.367469 46.7345 0.446245 41.8234 1.27873C39.325 1.69645 37.8456 4.19778 38.4828 6.62326C39.1199 9.04874 41.6021 10.5181 43.9938 10.1014C47.9286 9.40356 51.9636 9.3472 55.8408 9.94418C60.8788 10.7191 65.6847 12.6353 70.0281 15.6237C74.3716 18.6122 78.1434 22.6065 81.1111 27.3365C83.5328 31.0044 85.2883 35.0136 86.2939 39.2289C86.8769 41.6008 89.5423 42.9409 91.9676 39.0409Z" fill="currentFill"/>
+                </svg>
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <button class="btn btn-primary w-full" disabled>Redirecting...</button>
+    </div>
+
+    <!-- Flowbite JS (Optional if using any JS components) -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.4.7/dist/flowbite.bundle.min.js"></script>
+</body>
+</html>
