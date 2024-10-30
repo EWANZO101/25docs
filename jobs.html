@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Job Application Form</title>
+  <title>Welcome to Swift Peak Hosting Jobs</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet">
   <style>
     /* Custom Dark Blue Theme */
@@ -14,34 +14,38 @@
     .border-light { border-color: #4B5563; } /* Light border color */
     .button-blue { background-color: #3B82F6; } /* Button blue color */
     .button-blue:hover { background-color: #2563EB; } /* Darker on hover */
+    .hidden { display: none; } /* Class to hide elements */
   </style>
 </head>
 <body class="dark-bg text-light font-sans">
   <div class="max-w-2xl mx-auto mt-10 p-6 rounded shadow-lg dark-form-bg">
-    <h1 class="text-3xl font-semibold text-center mb-6">Job Application</h1>
-
-    <!-- Job Role Selection -->
-    <label for="jobRole" class="block text-sm font-medium text-muted mb-2">Select Job Role</label>
-    <select id="jobRole" class="w-full p-3 mb-6 bg-gray-700 border border-light rounded-md focus:outline-none text-light" onchange="showQuestions()">
-      <option value="" selected disabled>Select a role</option>
-      <option value="Customer Support Specialist">Customer Support Specialist</option>
-      <option value="Technical Support Engineer">Technical Support Engineer</option>
-      <option value="System Administrator">System Administrator</option>
-      <option value="Network Engineer">Network Engineer</option>
-      <option value="Account Manager">Account Manager</option>
-      <option value="Sales Representative">Sales Representative</option>
-      <option value="Marketing Specialist">Marketing Specialist</option>
-      <option value="Product Manager">Product Manager</option>
-      <option value="DevOps Engineer">DevOps Engineer</option>
-      <option value="Security Analyst">Security Analyst</option>
-      <option value="Web Developer">Web Developer</option>
-      <option value="Billing Specialist">Billing Specialist</option>
-    </select>
+    <div id="welcomeMessage">
+      <h1 class="text-3xl font-semibold text-center mb-6">Welcome to Swift Peak Hosting Jobs</h1>
+      <p class="text-center mb-4">Please select from one of the jobs below on what job you think would suit you. Please note that not all jobs are voluntary at this time.</p>
+      <label for="jobRole" class="block text-sm font-medium text-muted mb-2">Select Job Role</label>
+      <select id="jobRole" class="w-full p-3 mb-6 bg-gray-700 border border-light rounded-md focus:outline-none text-light" onchange="showApplicationForm()">
+        <option value="" selected disabled>Select a role</option>
+        <option value="Customer Support Specialist">Customer Support Specialist</option>
+        <option value="Technical Support Engineer">Technical Support Engineer</option>
+        <option value="System Administrator">System Administrator</option>
+        <option value="Network Engineer">Network Engineer</option>
+        <option value="Account Manager">Account Manager</option>
+        <option value="Sales Representative">Sales Representative</option>
+        <option value="Marketing Specialist">Marketing Specialist</option>
+        <option value="Product Manager">Product Manager</option>
+        <option value="DevOps Engineer">DevOps Engineer</option>
+        <option value="Security Analyst">Security Analyst</option>
+        <option value="Web Developer">Web Developer</option>
+        <option value="Billing Specialist">Billing Specialist</option>
+      </select>
+    </div>
 
     <!-- Application Form -->
-    <form id="applicationForm" onsubmit="submitApplication(event)">
+    <form id="applicationForm" class="hidden" onsubmit="submitApplication(event)">
+      <h1 class="text-3xl font-semibold text-center mb-6">Job Application</h1>
+      
       <!-- Customer Support Specialist Questions -->
-      <div id="Customer Support Specialist" class="question-group">
+      <div id="Customer Support Specialist" class="question-group hidden">
         <label class="block mb-2">How do you handle a difficult or upset customer?</label>
         <textarea name="css_q1" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
 
@@ -59,13 +63,10 @@
 
         <label class="block mb-2">Date of Birth</label>
         <input type="date" name="css_dob" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light" required>
-
-
-        <!-- #text Add more questions here for Customer Support Specialist -->
       </div>
 
       <!-- Technical Support Engineer Questions -->
-      <div id="Technical Support Engineer" class="question-group">
+      <div id="Technical Support Engineer" class="question-group hidden">
         <label class="block mb-2">What’s your experience with diagnosing server-related issues?</label>
         <textarea name="tse_q1" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
 
@@ -74,11 +75,7 @@
 
         <label class="block mb-2">How familiar are you with scripting languages like Python or Bash for automating support tasks?</label>
         <textarea name="tse_q3" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
-
-        <!-- #text Add more questions here for Technical Support Engineer -->
       </div>
-
-      <!-- Add additional role-specific question groups here in the same format -->
 
       <!-- Submit Button -->
       <button type="submit" class="w-full mt-6 p-2 button-blue text-white rounded-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300">Submit Application</button>
@@ -88,14 +85,20 @@
   <!-- Flowbite and JavaScript for showing questions and submitting the form -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
   <script>
-    function showQuestions() {
+    function showApplicationForm() {
+      // Hide welcome message
+      document.getElementById('welcomeMessage').classList.add('hidden');
+
+      // Show application form
+      document.getElementById('applicationForm').classList.remove('hidden');
+
       // Hide all question groups
-      document.querySelectorAll('.question-group').forEach(group => group.style.display = 'none');
+      document.querySelectorAll('.question-group').forEach(group => group.classList.add('hidden'));
 
       // Show selected job role questions
       const selectedRole = document.getElementById('jobRole').value;
       if (selectedRole) {
-        document.getElementById(selectedRole).style.display = 'block';
+        document.getElementById(selectedRole).classList.remove('hidden');
       }
     }
 
@@ -113,7 +116,9 @@
         .map(textarea => textarea.value)
         .join('\n\n');
 
-      const mailtoLink = `mailto:swiftpeakhosting@outlook.com?subject=Job Application - ${jobRole}&body=${encodeURIComponent(answers)}`;
+      const email = document.querySelector(`[name='${jobRole.toLowerCase().replace(/ /g, "_")}_email']`).value; // Adjusting email field retrieval
+
+      const mailtoLink = `mailto:swiftpeakhosting@outlook.com?subject=Job Application - ${jobRole}&body=${encodeURIComponent(answers + '\n\nEmail: ' + email)}`;
       window.location.href = mailtoLink;
     }
   </script>
