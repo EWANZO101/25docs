@@ -42,7 +42,7 @@
 
     <!-- Application Form -->
     <form id="applicationForm" class="hidden" onsubmit="submitApplication(event)">
-      <h1 class="text-3xl font-semibold text-center mb-6">Job Application</h1>
+      <h1 id="jobTitle" class="text-3xl font-semibold text-center mb-6">Job Application</h1>
       
       <!-- Customer Support Specialist Questions -->
       <div id="Customer Support Specialist" class="question-group hidden">
@@ -77,6 +77,9 @@
         <textarea name="tse_q3" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
       </div>
 
+      <!-- Return to Job Selection Button -->
+      <button type="button" onclick="resetForm()" class="mt-4 w-full p-2 button-blue text-white rounded-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300">Change Job Role</button>
+
       <!-- Submit Button -->
       <button type="submit" class="w-full mt-6 p-2 button-blue text-white rounded-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300">Submit Application</button>
     </form>
@@ -86,20 +89,41 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
   <script>
     function showApplicationForm() {
+      const selectedRole = document.getElementById('jobRole').value;
+
       // Hide welcome message
       document.getElementById('welcomeMessage').classList.add('hidden');
 
       // Show application form
       document.getElementById('applicationForm').classList.remove('hidden');
 
+      // Update the job title based on selection
+      document.getElementById('jobTitle').textContent = `Job Application for ${selectedRole}`;
+
       // Hide all question groups
       document.querySelectorAll('.question-group').forEach(group => group.classList.add('hidden'));
 
       // Show selected job role questions
-      const selectedRole = document.getElementById('jobRole').value;
       if (selectedRole) {
         document.getElementById(selectedRole).classList.remove('hidden');
       }
+    }
+
+    function resetForm() {
+      // Hide application form
+      document.getElementById('applicationForm').classList.add('hidden');
+
+      // Show welcome message
+      document.getElementById('welcomeMessage').classList.remove('hidden');
+
+      // Reset job role selection
+      document.getElementById('jobRole').value = '';
+      
+      // Reset job title
+      document.getElementById('jobTitle').textContent = 'Job Application';
+      
+      // Hide all question groups
+      document.querySelectorAll('.question-group').forEach(group => group.classList.add('hidden'));
     }
 
     function submitApplication(event) {
