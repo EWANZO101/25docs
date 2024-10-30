@@ -6,16 +6,23 @@
   <title>Job Application Form</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet">
   <style>
-    .question-group { display: none; }
+    /* Custom Dark Blue Theme */
+    .dark-bg { background-color: #1E3A8A; } /* Dark blue background */
+    .dark-form-bg { background-color: #374151; } /* Darker form background */
+    .text-light { color: #F3F4F6; } /* Light text */
+    .text-muted { color: #9CA3AF; } /* Muted text for placeholder */
+    .border-light { border-color: #4B5563; } /* Light border color */
+    .button-blue { background-color: #3B82F6; } /* Button blue color */
+    .button-blue:hover { background-color: #2563EB; } /* Darker on hover */
   </style>
 </head>
-<body class="bg-gray-100">
-  <div class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded shadow-lg">
-    <h1 class="text-2xl font-semibold text-center mb-6">Job Application</h1>
+<body class="dark-bg text-light font-sans">
+  <div class="max-w-2xl mx-auto mt-10 p-6 rounded shadow-lg dark-form-bg">
+    <h1 class="text-3xl font-semibold text-center mb-6">Job Application</h1>
 
     <!-- Job Role Selection -->
-    <label for="jobRole" class="block text-sm font-medium text-gray-700">Select Job Role</label>
-    <select id="jobRole" class="w-full p-2 mb-6 bg-gray-50 border border-gray-300 rounded-md focus:outline-none" onchange="showQuestions()">
+    <label for="jobRole" class="block text-sm font-medium text-muted mb-2">Select Job Role</label>
+    <select id="jobRole" class="w-full p-3 mb-6 bg-gray-700 border border-light rounded-md focus:outline-none text-light" onchange="showQuestions()">
       <option value="" selected disabled>Select a role</option>
       <option value="Customer Support Specialist">Customer Support Specialist</option>
       <option value="Technical Support Engineer">Technical Support Engineer</option>
@@ -36,32 +43,45 @@
       <!-- Customer Support Specialist Questions -->
       <div id="Customer Support Specialist" class="question-group">
         <label class="block mb-2">How do you handle a difficult or upset customer?</label>
-        <textarea name="css_q1" class="w-full p-2 mb-4 bg-gray-50 border border-gray-300 rounded-md"></textarea>
+        <textarea name="css_q1" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
 
         <label class="block mb-2">Can you describe a time when you solved a complex customer issue quickly?</label>
-        <textarea name="css_q2" class="w-full p-2 mb-4 bg-gray-50 border border-gray-300 rounded-md"></textarea>
+        <textarea name="css_q2" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
 
         <label class="block mb-2">How would you explain technical information to someone without a technical background?</label>
-        <textarea name="css_q3" class="w-full p-2 mb-4 bg-gray-50 border border-gray-300 rounded-md"></textarea>
+        <textarea name="css_q3" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
+
+         <label class="block mb-2">email</label>
+        <textarea name="css_q3" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
+
+
+         <label class="block mb-2">email</label>
+        <textarea name="css_q3" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
+
+
+         <label class="block mb-2">Discord</label>
+        <textarea name="css_q3" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
+
+             <label class="block mb-2">DOB/label>
+        <textarea name="css_q3" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
       </div>
 
       <!-- Technical Support Engineer Questions -->
       <div id="Technical Support Engineer" class="question-group">
         <label class="block mb-2">What’s your experience with diagnosing server-related issues?</label>
-        <textarea name="tse_q1" class="w-full p-2 mb-4 bg-gray-50 border border-gray-300 rounded-md"></textarea>
+        <textarea name="tse_q1" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
 
         <label class="block mb-2">Can you give an example of a challenging troubleshooting case you resolved?</label>
-        <textarea name="tse_q2" class="w-full p-2 mb-4 bg-gray-50 border border-gray-300 rounded-md"></textarea>
+        <textarea name="tse_q2" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
 
         <label class="block mb-2">How familiar are you with scripting languages like Python or Bash for automating support tasks?</label>
-        <textarea name="tse_q3" class="w-full p-2 mb-4 bg-gray-50 border border-gray-300 rounded-md"></textarea>
+        <textarea name="tse_q3" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
       </div>
 
-      <!-- Additional roles with corresponding questions -->
-      <!-- Add similar divs for each job role like this example -->
+      <!-- Add additional role-specific question groups here in the same format -->
 
       <!-- Submit Button -->
-      <button type="submit" class="w-full mt-6 p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300">Submit Application</button>
+      <button type="submit" class="w-full mt-6 p-2 button-blue text-white rounded-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300">Submit Application</button>
     </form>
   </div>
 
