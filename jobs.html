@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Application Form</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet">
+  <style>
+    .question-group { display: none; }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded shadow-lg">
+    <h1 class="text-2xl font-semibold text-center mb-6">Job Application</h1>
+
+    <!-- Job Role Selection -->
+    <label for="jobRole" class="block text-sm font-medium text-gray-700">Select Job Role</label>
+    <select id="jobRole" class="w-full p-2 mb-6 bg-gray-50 border border-gray-300 rounded-md focus:outline-none" onchange="showQuestions()">
+      <option value="" selected disabled>Select a role</option>
+      <option value="Customer Support Specialist">Customer Support Specialist</option>
+      <option value="Technical Support Engineer">Technical Support Engineer</option>
+      <option value="System Administrator">System Administrator</option>
+      <option value="Network Engineer">Network Engineer</option>
+      <option value="Account Manager">Account Manager</option>
+      <option value="Sales Representative">Sales Representative</option>
+      <option value="Marketing Specialist">Marketing Specialist</option>
+      <option value="Product Manager">Product Manager</option>
+      <option value="DevOps Engineer">DevOps Engineer</option>
+      <option value="Security Analyst">Security Analyst</option>
+      <option value="Web Developer">Web Developer</option>
+      <option value="Billing Specialist">Billing Specialist</option>
+    </select>
+
+    <!-- Application Form -->
+    <form id="applicationForm" onsubmit="submitApplication(event)">
+      <!-- Customer Support Specialist Questions -->
+      <div id="Customer Support Specialist" class="question-group">
+        <label class="block mb-2">How do you handle a difficult or upset customer?</label>
+        <textarea name="css_q1" class="w-full p-2 mb-4 bg-gray-50 border border-gray-300 rounded-md"></textarea>
+
+        <label class="block mb-2">Can you describe a time when you solved a complex customer issue quickly?</label>
+        <textarea name="css_q2" class="w-full p-2 mb-4 bg-gray-50 border border-gray-300 rounded-md"></textarea>
+
+        <label class="block mb-2">How would you explain technical information to someone without a technical background?</label>
+        <textarea name="css_q3" class="w-full p-2 mb-4 bg-gray-50 border border-gray-300 rounded-md"></textarea>
+      </div>
+
+      <!-- Technical Support Engineer Questions -->
+      <div id="Technical Support Engineer" class="question-group">
+        <label class="block mb-2">What’s your experience with diagnosing server-related issues?</label>
+        <textarea name="tse_q1" class="w-full p-2 mb-4 bg-gray-50 border border-gray-300 rounded-md"></textarea>
+
+        <label class="block mb-2">Can you give an example of a challenging troubleshooting case you resolved?</label>
+        <textarea name="tse_q2" class="w-full p-2 mb-4 bg-gray-50 border border-gray-300 rounded-md"></textarea>
+
+        <label class="block mb-2">How familiar are you with scripting languages like Python or Bash for automating support tasks?</label>
+        <textarea name="tse_q3" class="w-full p-2 mb-4 bg-gray-50 border border-gray-300 rounded-md"></textarea>
+      </div>
+
+      <!-- Additional roles with corresponding questions -->
+      <!-- Add similar divs for each job role like this example -->
+
+      <!-- Submit Button -->
+      <button type="submit" class="w-full mt-6 p-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300">Submit Application</button>
+    </form>
+  </div>
+
+  <!-- Flowbite and JavaScript for showing questions and submitting the form -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+  <script>
+    function showQuestions() {
+      // Hide all question groups
+      document.querySelectorAll('.question-group').forEach(group => group.style.display = 'none');
+
+      // Show selected job role questions
+      const selectedRole = document.getElementById('jobRole').value;
+      if (selectedRole) {
+        document.getElementById(selectedRole).style.display = 'block';
+      }
+    }
+
+    function submitApplication(event) {
+      event.preventDefault();
+
+      const jobRole = document.getElementById('jobRole').value;
+      if (!jobRole) {
+        alert('Please select a job role.');
+        return;
+      }
+
+      // Collect answers from visible questions
+      const answers = Array.from(document.querySelectorAll(`#${jobRole} textarea`))
+        .map(textarea => textarea.value)
+        .join('\n\n');
+
+      const mailtoLink = `mailto:swiftpeakhosting@outlook.com?subject=Job Application - ${jobRole}&body=${encodeURIComponent(answers)}`;
+      window.location.href = mailtoLink;
+    }
+  </script>
+</body>
+</html>
