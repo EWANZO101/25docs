@@ -47,13 +47,13 @@
       <!-- Customer Support Specialist Questions -->
       <div id="Customer Support Specialist" class="question-group hidden">
         <label class="block mb-2">How do you handle a difficult or upset customer?</label>
-        <textarea name="css_q1" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
+        <textarea name="css_q1" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light" required></textarea>
 
         <label class="block mb-2">Can you describe a time when you solved a complex customer issue quickly?</label>
-        <textarea name="css_q2" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
+        <textarea name="css_q2" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light" required></textarea>
 
         <label class="block mb-2">How would you explain technical information to someone without a technical background?</label>
-        <textarea name="css_q3" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
+        <textarea name="css_q3" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light" required></textarea>
 
         <label class="block mb-2">Email</label>
         <input type="email" name="css_email" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light" required />
@@ -68,13 +68,13 @@
       <!-- Technical Support Engineer Questions -->
       <div id="Technical Support Engineer" class="question-group hidden">
         <label class="block mb-2">What’s your experience with diagnosing server-related issues?</label>
-        <textarea name="tse_q1" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
+        <textarea name="tse_q1" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light" required></textarea>
 
         <label class="block mb-2">Can you give an example of a challenging troubleshooting case you resolved?</label>
-        <textarea name="tse_q2" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
+        <textarea name="tse_q2" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light" required></textarea>
 
         <label class="block mb-2">How familiar are you with scripting languages like Python or Bash for automating support tasks?</label>
-        <textarea name="tse_q3" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light"></textarea>
+        <textarea name="tse_q3" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light" required></textarea>
 
         <label class="block mb-2">Email</label>
         <input type="email" name="tse_email" class="w-full p-3 mb-4 bg-gray-800 border border-light rounded-md text-light" required />
@@ -110,29 +110,39 @@
       document.getElementById('jobTitle').textContent = `Job Application for ${selectedRole}`;
 
       // Hide all question groups
-      document.querySelectorAll('.question-group').forEach(group => group.classList.add('hidden'));
+      document.querySelectorAll('.question-group').forEach(group => {
+        group.classList.add('hidden');
+        
+        // Remove the required attribute to avoid focus issues when hidden
+        Array.from(group.querySelectorAll('input, textarea')).forEach(input => {
+          input.removeAttribute('required');
+        });
+      });
 
-      // Show selected job role questions
+      // Show selected job role questions and add required attributes
       if (selectedRole) {
-        document.getElementById(selectedRole).classList.remove('hidden');
+        const selectedGroup = document.getElementById(selectedRole);
+        selectedGroup.classList.remove('hidden');
+        Array.from(selectedGroup.querySelectorAll('input, textarea')).forEach(input => {
+          input.setAttribute('required', 'required');
+        });
       }
     }
 
     function resetForm() {
       // Hide application form
       document.getElementById('applicationForm').classList.add('hidden');
-
+      
       // Show welcome message
       document.getElementById('welcomeMessage').classList.remove('hidden');
 
-      // Reset job role selection
+      // Reset selected job role
       document.getElementById('jobRole').value = '';
       
-      // Reset job title
-      document.getElementById('jobTitle').textContent = 'Job Application';
-      
-      // Hide all question groups
-      document.querySelectorAll('.question-group').forEach(group => group.classList.add('hidden'));
+      // Clear all inputs
+      Array.from(document.querySelectorAll('input, textarea')).forEach(input => {
+        input.value = '';
+      });
     }
 
     function submitApplication(event) {
@@ -149,7 +159,6 @@
         .map(textarea => textarea.value)
         .join('\n\n');
 
-      // Retrieve the email field value dynamically based on selected job
       const email = document.querySelector(`[name='${jobRole.toLowerCase().replace(/ /g, "_")}_email']`).value;
       const discord = document.querySelector(`[name='${jobRole.toLowerCase().replace(/ /g, "_")}_discord']`).value;
 
