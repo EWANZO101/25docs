@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swift Peak Hosting Notice</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.6/flowbite.min.css" rel="stylesheet" />
+    <style>
+        .flashing {
+            animation: flash 1s infinite;
+        }
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-auto">
+        <h2 class="text-2xl font-bold text-red-600 text-center flashing mb-4">
+            Please Note
+        </h2>
+        <p class="text-gray-800 mb-4">
+            You are being redirected to the Swift Peak Hosting Ltd website for SnailyCAD services. Please note:
+        </p>
+        <ul class="list-disc list-inside mb-4 text-gray-700">
+            <li>All SnailyCAD orders are not immediately active. An error may display initially—this is normal.</li>
+            <li>Your order will be ready within 12 to 24 hours.</li>
+            <li>Orders using a <strong>swift peak hosting subdomain</strong> (e.g., <strong>LARP.snailycad.co.uk</strong>) will be processed faster.</li>
+        </ul>
+        <p class="text-gray-800 mb-4">
+            If you'd like to use your own domain, please open a ticket on our Discord. You can find the link on our 
+            <a href="#" class="text-blue-500 underline">Contact Us</a> page.
+        </p>
+        <p class="text-gray-800 mb-4">
+            To purchase a new domain, visit 
+            <a href="https://www.swiftpeakhosting.co.uk" target="_blank" class="text-blue-500 underline">swiftpeakhosting.co.uk</a>, click "Domain" and add the desired domain. Ensure you use the same email as on the store.
+        </p>
+        <p class="text-gray-800 mb-4">
+            For those without a domain, enter your server name (e.g., "LARP" or "myserver") at checkout and check back in 12 hours to access 
+            <strong>yourserver.snailycad.co.uk</strong>.
+        </p>
+
+        <!-- Confirm button -->
+        <button id="confirmButton" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 hover:bg-blue-700 transition">
+            <span id="buttonText">✔ I have read and accept the above information</span>
+        </button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.6/flowbite.bundle.min.js"></script>
+    <script>
+        // Button click event to confirm acceptance and redirect
+        document.getElementById("confirmButton").addEventListener("click", function() {
+            document.getElementById("buttonText").textContent = "Redirecting...";
+            setTimeout(() => {
+                window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/50";
+            }, 1000); // Redirect after 1 second
+        });
+    </script>
+</body>
+</html>
