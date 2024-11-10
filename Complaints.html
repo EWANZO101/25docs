@@ -48,10 +48,29 @@
             <div class="mt-8">
                 <h2 class="text-2xl font-semibold mb-4">Submit a Complaint</h2>
                 <form action="https://docs.google.com/forms/d/e/your-google-form-id/formResponse" method="POST" target="_self">
+                    
+                    <!-- Staff Member's Name -->
+                    <div class="mb-4">
+                        <label for="staff_name" class="block text-gray-700 font-medium mb-2">Staff Member's Name</label>
+                        <input type="text" id="staff_name" name="entry.123456789" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Enter the staff member's name" required>
+                    </div>
+
+                    <!-- Staff Member's Role -->
+                    <div class="mb-4">
+                        <label for="staff_role" class="block text-gray-700 font-medium mb-2">Staff Member's Role</label>
+                        <select id="staff_role" name="entry.987654321" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                            <option value="Director">Director</option>
+                            <option value="Assistant Director">Assistant Director</option>
+                            <option value="Management Team">Management Team</option>
+                            <option value="Customer Support">Customer Support</option>
+                            <option value="Staff in Training">Staff in Training</option>
+                        </select>
+                    </div>
+
                     <!-- Staff Role Selector -->
                     <div class="mb-4">
-                        <label for="role" class="block text-gray-700 font-medium mb-2">Select Staff Role</label>
-                        <select id="role" name="entry.123456789" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <label for="role" class="block text-gray-700 font-medium mb-2">Your Role</label>
+                        <select id="role" name="entry.112233445" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             <option value="Director">Director</option>
                             <option value="Assistant Director">Assistant Director</option>
                             <option value="Management Team">Management Team</option>
@@ -63,7 +82,25 @@
                     <!-- Complaint Description -->
                     <div class="mb-4">
                         <label for="complaint" class="block text-gray-700 font-medium mb-2">Complaint Details</label>
-                        <textarea id="complaint" name="entry.987654321" rows="4" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Provide a detailed description of your complaint."></textarea>
+                        <textarea id="complaint" name="entry.234567890" rows="4" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Provide a detailed description of your complaint."></textarea>
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Your Email</label>
+                        <input type="email" id="email" name="entry.345678901" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Your email address" required>
+                    </div>
+
+                    <!-- Name -->
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                        <input type="text" id="name" name="entry.456789012" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Your full name" required>
+                    </div>
+
+                    <!-- Discord ID -->
+                    <div class="mb-4">
+                        <label for="discord" class="block text-gray-700 font-medium mb-2">Your Discord ID</label>
+                        <input type="text" id="discord" name="entry.567890123" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Your Discord ID (e.g., username#1234)" required>
                     </div>
 
                     <!-- Submit Button -->
