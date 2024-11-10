@@ -24,23 +24,18 @@
             <div class="space-y-4">
                 <div class="bg-blue-50 p-4 rounded-lg shadow">
                     <p class="text-xl font-bold text-blue-700">Director</p>
-                    <p class="text-gray-600 italic">Responsible for overseeing the company, making key decisions, and managing overall operations.</p>
                 </div>
                 <div class="bg-blue-50 p-4 rounded-lg shadow">
                     <p class="text-xl font-bold text-blue-700">Assistant Director</p>
-                    <p class="text-gray-600 italic">Assists the Director in managing daily operations and supporting staff needs.</p>
                 </div>
                 <div class="bg-blue-50 p-4 rounded-lg shadow">
                     <p class="text-xl font-bold text-blue-700">Management Team</p>
-                    <p class="text-gray-600 italic">Manages different departments, ensuring smooth operations across all teams.</p>
                 </div>
                 <div class="bg-blue-50 p-4 rounded-lg shadow">
                     <p class="text-xl font-bold text-blue-700">Customer Support</p>
-                    <p class="text-gray-600 italic">Provides support to customers, addressing their inquiries and resolving issues.</p>
                 </div>
                 <div class="bg-blue-50 p-4 rounded-lg shadow">
                     <p class="text-xl font-bold text-blue-700">Staff in Training</p>
-                    <p class="text-gray-600 italic">New staff members in training, learning the ins and outs of their roles at Swift Peak Hosting.</p>
                 </div>
             </div>
 
@@ -49,58 +44,34 @@
                 <h2 class="text-2xl font-semibold mb-4">Submit a Complaint</h2>
                 <form action="https://docs.google.com/forms/d/e/your-google-form-id/formResponse" method="POST" target="_self">
                     
-                    <!-- Staff Member's Name -->
+                    <!-- Staff Member and Role -->
                     <div class="mb-4">
-                        <label for="staff_name" class="block text-gray-700 font-medium mb-2">Staff Member's Name</label>
-                        <input type="text" id="staff_name" name="entry.123456789" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Enter the staff member's name" required>
-                    </div>
-
-                    <!-- Staff Member's Role -->
-                    <div class="mb-4">
-                        <label for="staff_role" class="block text-gray-700 font-medium mb-2">Staff Member's Role</label>
-                        <select id="staff_role" name="entry.987654321" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                            <option value="Director">Director</option>
-                            <option value="Assistant Director">Assistant Director</option>
-                            <option value="Management Team">Management Team</option>
-                            <option value="Customer Support">Customer Support</option>
-                            <option value="Staff in Training">Staff in Training</option>
-                        </select>
-                    </div>
-
-                    <!-- Staff Role Selector -->
-                    <div class="mb-4">
-                        <label for="role" class="block text-gray-700 font-medium mb-2">Your Role</label>
-                        <select id="role" name="entry.112233445" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                            <option value="Director">Director</option>
-                            <option value="Assistant Director">Assistant Director</option>
-                            <option value="Management Team">Management Team</option>
-                            <option value="Customer Support">Customer Support</option>
-                            <option value="Staff in Training">Staff in Training</option>
-                        </select>
+                        <label for="staff_member" class="block text-gray-700 font-medium mb-2">What staff member are you complaining about and what role are they (if you know)?</label>
+                        <input type="text" id="staff_member" name="entry.123456789" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Enter staff member's name and role" required>
                     </div>
 
                     <!-- Complaint Description -->
                     <div class="mb-4">
-                        <label for="complaint" class="block text-gray-700 font-medium mb-2">Complaint Details</label>
-                        <textarea id="complaint" name="entry.234567890" rows="4" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Provide a detailed description of your complaint."></textarea>
-                    </div>
-
-                    <!-- Email Address -->
-                    <div class="mb-4">
-                        <label for="email" class="block text-gray-700 font-medium mb-2">Your Email</label>
-                        <input type="email" id="email" name="entry.345678901" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Your email address" required>
+                        <label for="complaint" class="block text-gray-700 font-medium mb-2">What's your complaint?</label>
+                        <textarea id="complaint" name="entry.987654321" rows="4" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Describe your complaint" required></textarea>
                     </div>
 
                     <!-- Name -->
                     <div class="mb-4">
-                        <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
-                        <input type="text" id="name" name="entry.456789012" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Your full name" required>
+                        <label for="name" class="block text-gray-700 font-medium mb-2">What's your name?</label>
+                        <input type="text" id="name" name="entry.234567890" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Your full name" required>
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 font-medium mb-2">What's your email?</label>
+                        <input type="email" id="email" name="entry.345678901" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Your email address" required>
                     </div>
 
                     <!-- Discord ID -->
                     <div class="mb-4">
-                        <label for="discord" class="block text-gray-700 font-medium mb-2">Your Discord ID</label>
-                        <input type="text" id="discord" name="entry.567890123" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Your Discord ID (e.g., username#1234)" required>
+                        <label for="discord" class="block text-gray-700 font-medium mb-2">Please make sure to include your Discord name if you have Discord:</label>
+                        <input type="text" id="discord" name="entry.456789012" class="block w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Your Discord ID (e.g., username#1234)">
                     </div>
 
                     <!-- Submit Button -->
