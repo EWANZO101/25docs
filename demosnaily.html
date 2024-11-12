@@ -84,7 +84,7 @@
         }
 
         footer {
-            background-color: #111;
+            background-color: #003366; /* Dark blue */
             padding: 20px 0;
             text-align: center;
             color: #bbb;
@@ -117,7 +117,13 @@
                 <p><strong>Username:</strong> snaily</p>
                 <p><strong>Password:</strong> admin111</p>
             </div>
-            <a href="https://demo.snailycad.co.uk/auth/login" class="btn demo-btn" target="_blank">Go to Demo</a>
+            <a href="#" class="btn demo-btn" id="demo-btn">Go to Demo</a>
+
+            <!-- Hidden Form for Auto Login -->
+            <form id="login-form" action="https://demo.snailycad.co.uk/auth/login" method="POST" style="display:none;">
+                <input type="text" name="username" value="snaily">
+                <input type="password" name="password" value="admin111">
+            </form>
         </div>
     </section>
 
@@ -126,5 +132,12 @@
             <p>&copy; 2024 Swift Peak Hosting | <a href="https://swiftpeakhosting.co.uk" target="_blank">Visit our website</a></p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('demo-btn').addEventListener('click', function(event) {
+            event.preventDefault();  // Prevent default anchor action
+            document.getElementById('login-form').submit();  // Submit the form automatically
+        });
+    </script>
 </body>
 </html>
