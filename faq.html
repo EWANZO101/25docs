@@ -18,22 +18,22 @@
     <div class="container mx-auto p-8">
         <h1 class="text-4xl font-bold text-center mb-6">Frequently Asked Questions</h1>
 
-        <div id="accordion" class="space-y-4">
+        <div id="accordion" data-accordion="collapse" class="space-y-4">
             <!-- General Questions -->
             <div class="rounded-lg border border-gray-700 bg-gray-800">
-                <h2>
+                <h2 id="general-questions">
                     <button type="button"
                         class="flex items-center justify-between w-full p-4 text-left text-gray-200 hover:text-white focus:outline-none"
                         data-accordion-target="#faq-general-content" aria-expanded="false" aria-controls="faq-general-content">
                         <span>General Questions</span>
-                        <svg data-accordion-icon class="w-6 h-6 transform transition-transform"
+                        <svg data-accordion-icon class="w-6 h-6 transition-transform"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                 </h2>
-                <div id="faq-general-content" class="hidden" aria-labelledby="faq-general">
+                <div id="faq-general-content" class="hidden" aria-labelledby="general-questions">
                     <div class="p-4 border-t border-gray-700 space-y-2">
                         <p><strong>What is Swift Peak Hosting?</strong></p>
                         <p>Swift Peak Hosting provides hosting services and integrations for SnailyCAD to FiveM frameworks like QBCore and ESX, along with other related services.</p>
@@ -45,19 +45,19 @@
 
             <!-- Billing and Payments -->
             <div class="rounded-lg border border-gray-700 bg-gray-800">
-                <h2>
+                <h2 id="billing-payments">
                     <button type="button"
                         class="flex items-center justify-between w-full p-4 text-left text-gray-200 hover:text-white focus:outline-none"
                         data-accordion-target="#faq-billing-content" aria-expanded="false" aria-controls="faq-billing-content">
                         <span>Billing and Payments</span>
-                        <svg data-accordion-icon class="w-6 h-6 transform transition-transform"
+                        <svg data-accordion-icon class="w-6 h-6 transition-transform"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                 </h2>
-                <div id="faq-billing-content" class="hidden" aria-labelledby="faq-billing">
+                <div id="faq-billing-content" class="hidden" aria-labelledby="billing-payments">
                     <div class="p-4 border-t border-gray-700 space-y-2">
                         <p><strong>What payment methods do you accept?</strong></p>
                         <p>We accept major credit/debit cards, PayPal, and other supported payment gateways. You can view the payment options at checkout.</p>
@@ -71,19 +71,19 @@
 
             <!-- Services and Features -->
             <div class="rounded-lg border border-gray-700 bg-gray-800">
-                <h2>
+                <h2 id="services-features">
                     <button type="button"
                         class="flex items-center justify-between w-full p-4 text-left text-gray-200 hover:text-white focus:outline-none"
                         data-accordion-target="#faq-services-content" aria-expanded="false" aria-controls="faq-services-content">
                         <span>Services and Features</span>
-                        <svg data-accordion-icon class="w-6 h-6 transform transition-transform"
+                        <svg data-accordion-icon class="w-6 h-6 transition-transform"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                 </h2>
-                <div id="faq-services-content" class="hidden" aria-labelledby="faq-services">
+                <div id="faq-services-content" class="hidden" aria-labelledby="services-features">
                     <div class="p-4 border-t border-gray-700 space-y-2">
                         <p><strong>What services do you offer?</strong></p>
                         <p>We offer hosting for FiveM servers, integrations for SnailyCAD, and additional tools for QBCore and ESX frameworks.</p>
@@ -94,10 +94,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Additional FAQ Sections -->
-
-            <!-- Add other FAQ categories (Technical Support, SnailyCAD Integration, etc.) here as above -->
         </div>
     </div>
 
