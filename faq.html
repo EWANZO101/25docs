@@ -21,12 +21,12 @@
         <div id="accordion" class="space-y-4">
             <!-- General Questions -->
             <div class="rounded-lg border border-gray-700 bg-gray-800">
-                <h2 id="faq-general">
+                <h2>
                     <button type="button"
                         class="flex items-center justify-between w-full p-4 text-left text-gray-200 hover:text-white focus:outline-none"
                         data-accordion-target="#faq-general-content" aria-expanded="false" aria-controls="faq-general-content">
                         <span>General Questions</span>
-                        <svg data-accordion-icon class="w-6 h-6 text-gray-200 rotate-0 transform group-hover:rotate-180"
+                        <svg data-accordion-icon class="w-6 h-6 transform transition-transform"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M19 9l-7 7-7-7"></path>
@@ -34,20 +34,23 @@
                     </button>
                 </h2>
                 <div id="faq-general-content" class="hidden" aria-labelledby="faq-general">
-                    <div class="p-4 border-t border-gray-700">
-                        <p>Swift Peak Hosting provides hosting services and integrations for SnailyCAD to FiveM frameworks like QBCore and ESX.</p>
+                    <div class="p-4 border-t border-gray-700 space-y-2">
+                        <p><strong>What is Swift Peak Hosting?</strong></p>
+                        <p>Swift Peak Hosting provides hosting services and integrations for SnailyCAD to FiveM frameworks like QBCore and ESX, along with other related services.</p>
+                        <p><strong>How can I contact support?</strong></p>
+                        <p>You can reach out to our support team by logging into your account and submitting a ticket via the client area. Alternatively, you can email us or use live chat (if available).</p>
                     </div>
                 </div>
             </div>
 
             <!-- Billing and Payments -->
             <div class="rounded-lg border border-gray-700 bg-gray-800">
-                <h2 id="faq-billing">
+                <h2>
                     <button type="button"
                         class="flex items-center justify-between w-full p-4 text-left text-gray-200 hover:text-white focus:outline-none"
                         data-accordion-target="#faq-billing-content" aria-expanded="false" aria-controls="faq-billing-content">
                         <span>Billing and Payments</span>
-                        <svg data-accordion-icon class="w-6 h-6 text-gray-200 rotate-0 transform group-hover:rotate-180"
+                        <svg data-accordion-icon class="w-6 h-6 transform transition-transform"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M19 9l-7 7-7-7"></path>
@@ -55,20 +58,25 @@
                     </button>
                 </h2>
                 <div id="faq-billing-content" class="hidden" aria-labelledby="faq-billing">
-                    <div class="p-4 border-t border-gray-700">
-                        <p>We accept major credit cards, PayPal, and other supported payment gateways. Refunds are subject to our terms of service.</p>
+                    <div class="p-4 border-t border-gray-700 space-y-2">
+                        <p><strong>What payment methods do you accept?</strong></p>
+                        <p>We accept major credit/debit cards, PayPal, and other supported payment gateways. You can view the payment options at checkout.</p>
+                        <p><strong>How do I pay my invoice?</strong></p>
+                        <p>Log in to your account, navigate to the Billing section, and click on the unpaid invoice to complete the payment.</p>
+                        <p><strong>Can I get a refund?</strong></p>
+                        <p>Refunds are subject to our refund policy. Please review our Terms of Service for details on eligibility.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Services and Features -->
             <div class="rounded-lg border border-gray-700 bg-gray-800">
-                <h2 id="faq-services">
+                <h2>
                     <button type="button"
                         class="flex items-center justify-between w-full p-4 text-left text-gray-200 hover:text-white focus:outline-none"
                         data-accordion-target="#faq-services-content" aria-expanded="false" aria-controls="faq-services-content">
                         <span>Services and Features</span>
-                        <svg data-accordion-icon class="w-6 h-6 text-gray-200 rotate-0 transform group-hover:rotate-180"
+                        <svg data-accordion-icon class="w-6 h-6 transform transition-transform"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M19 9l-7 7-7-7"></path>
@@ -76,36 +84,23 @@
                     </button>
                 </h2>
                 <div id="faq-services-content" class="hidden" aria-labelledby="faq-services">
-                    <div class="p-4 border-t border-gray-700">
-                        <p>We offer hosting for FiveM servers, SnailyCAD integrations, and tools for QBCore and ESX frameworks.</p>
+                    <div class="p-4 border-t border-gray-700 space-y-2">
+                        <p><strong>What services do you offer?</strong></p>
+                        <p>We offer hosting for FiveM servers, integrations for SnailyCAD, and additional tools for QBCore and ESX frameworks.</p>
+                        <p><strong>How do I upgrade or downgrade my service?</strong></p>
+                        <p>Log in to your client area, navigate to your active service, and select the Upgrade/Downgrade option. Any pricing adjustments will be reflected in your invoice.</p>
+                        <p><strong>How do I cancel my service?</strong></p>
+                        <p>To cancel a service, log in to your account, go to My Services, select the service you want to cancel, and click on Request Cancellation.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Technical Support -->
-            <div class="rounded-lg border border-gray-700 bg-gray-800">
-                <h2 id="faq-support">
-                    <button type="button"
-                        class="flex items-center justify-between w-full p-4 text-left text-gray-200 hover:text-white focus:outline-none"
-                        data-accordion-target="#faq-support-content" aria-expanded="false" aria-controls="faq-support-content">
-                        <span>Technical Support</span>
-                        <svg data-accordion-icon class="w-6 h-6 text-gray-200 rotate-0 transform group-hover:rotate-180"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                </h2>
-                <div id="faq-support-content" class="hidden" aria-labelledby="faq-support">
-                    <div class="p-4 border-t border-gray-700">
-                        <p>We provide basic setup and configuration support. Advanced customization may incur additional fees.</p>
-                    </div>
-                </div>
-            </div>
+            <!-- Additional FAQ Sections -->
+
+            <!-- Add other FAQ categories (Technical Support, SnailyCAD Integration, etc.) here as above -->
         </div>
     </div>
 
-    <!-- Flowbite Script -->
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.js"></script>
 </body>
 
