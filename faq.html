@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Swift Peak Hosting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+    <style>
+        body {
+            background-color: #0a192f; /* Dark blue background */
+        }
+    </style>
+</head>
+
+<body class="text-white">
+    <div class="container mx-auto p-8">
+        <h1 class="text-4xl font-bold text-center mb-6">Frequently Asked Questions</h1>
+
+        <div id="accordion" class="space-y-4">
+            <!-- General Questions -->
+            <div class="rounded-lg border border-gray-700 bg-gray-800">
+                <h2 id="faq-general">
+                    <button type="button"
+                        class="flex items-center justify-between w-full p-4 text-left text-gray-200 hover:text-white focus:outline-none"
+                        data-accordion-target="#faq-general-content" aria-expanded="false" aria-controls="faq-general-content">
+                        <span>General Questions</span>
+                        <svg data-accordion-icon class="w-6 h-6 text-gray-200 rotate-0 transform group-hover:rotate-180"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="faq-general-content" class="hidden" aria-labelledby="faq-general">
+                    <div class="p-4 border-t border-gray-700">
+                        <p>Swift Peak Hosting provides hosting services and integrations for SnailyCAD to FiveM frameworks like QBCore and ESX.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Billing and Payments -->
+            <div class="rounded-lg border border-gray-700 bg-gray-800">
+                <h2 id="faq-billing">
+                    <button type="button"
+                        class="flex items-center justify-between w-full p-4 text-left text-gray-200 hover:text-white focus:outline-none"
+                        data-accordion-target="#faq-billing-content" aria-expanded="false" aria-controls="faq-billing-content">
+                        <span>Billing and Payments</span>
+                        <svg data-accordion-icon class="w-6 h-6 text-gray-200 rotate-0 transform group-hover:rotate-180"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="faq-billing-content" class="hidden" aria-labelledby="faq-billing">
+                    <div class="p-4 border-t border-gray-700">
+                        <p>We accept major credit cards, PayPal, and other supported payment gateways. Refunds are subject to our terms of service.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services and Features -->
+            <div class="rounded-lg border border-gray-700 bg-gray-800">
+                <h2 id="faq-services">
+                    <button type="button"
+                        class="flex items-center justify-between w-full p-4 text-left text-gray-200 hover:text-white focus:outline-none"
+                        data-accordion-target="#faq-services-content" aria-expanded="false" aria-controls="faq-services-content">
+                        <span>Services and Features</span>
+                        <svg data-accordion-icon class="w-6 h-6 text-gray-200 rotate-0 transform group-hover:rotate-180"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="faq-services-content" class="hidden" aria-labelledby="faq-services">
+                    <div class="p-4 border-t border-gray-700">
+                        <p>We offer hosting for FiveM servers, SnailyCAD integrations, and tools for QBCore and ESX frameworks.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Support -->
+            <div class="rounded-lg border border-gray-700 bg-gray-800">
+                <h2 id="faq-support">
+                    <button type="button"
+                        class="flex items-center justify-between w-full p-4 text-left text-gray-200 hover:text-white focus:outline-none"
+                        data-accordion-target="#faq-support-content" aria-expanded="false" aria-controls="faq-support-content">
+                        <span>Technical Support</span>
+                        <svg data-accordion-icon class="w-6 h-6 text-gray-200 rotate-0 transform group-hover:rotate-180"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="faq-support-content" class="hidden" aria-labelledby="faq-support">
+                    <div class="p-4 border-t border-gray-700">
+                        <p>We provide basic setup and configuration support. Advanced customization may incur additional fees.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flowbite Script -->
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.js"></script>
+</body>
+
+</html>
