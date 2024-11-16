@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Friday Deal - VPS + Free SnailyCAD</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/flowbite"></script>
+    <script>
+        // Activate button on November 22, 2024
+        const activationDate = new Date("2024-11-22T19:00:00Z").getTime();
+        window.addEventListener("load", () => {
+            const button = document.getElementById("cta-button");
+            const interval = setInterval(() => {
+                const now = new Date().getTime();
+                if (now >= activationDate) {
+                    button.classList.remove("cursor-not-allowed", "opacity-50");
+                    button.disabled = false;
+                    clearInterval(interval);
+                }
+            }, 1000);
+        });
+    </script>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="max-w-4xl bg-gray-800 rounded-lg shadow-lg p-6">
+            <h1 class="text-3xl font-bold text-center mb-4">🎉 Black Friday Exclusive 🎉</h1>
+            <p class="text-lg text-center mb-6">
+                Get a powerful VPS + Free SnailyCAD Installation for just 
+                <span class="font-bold text-yellow-500">$17.99</span> for the first two months!
+            </p>
+            <div class="flex justify-center mb-6">
+                <ul class="text-sm">
+                    <li>⚡ <b>17GB RAM</b></li>
+                    <li>⚡ <b>100GB SSD</b> + <b>350GB HDD</b></li>
+                    <li>⚡ <b>7 Cores</b></li>
+                    <li>⚡ Free <b>SnailyCAD Installation</b></li>
+                </ul>
+            </div>
+            <div class="text-center mb-4">
+                <iframe 
+                    src="https://www.timeanddate.com/countdown/generic?month=11&day=22&hour=19&p0=2477&csz=1" 
+                    width="100%" height="100" frameborder="0" class="rounded-lg">
+                </iframe>
+            </div>
+            <div class="text-center">
+                <button 
+                    id="cta-button" 
+                    class="bg-yellow-500 text-black font-bold py-2 px-6 rounded-lg cursor-not-allowed opacity-50 transition-all duration-300"
+                    disabled
+                >
+                    Claim Your Deal!
+                </button>
+            </div>
+            <p class="text-center text-sm mt-6">
+                Offer valid from <b>November 22, 2024</b> to <b>December 6, 2024</b>. 
+                Afterward, pricing will be <span class="font-bold text-yellow-500">$19.99/month</span>.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
