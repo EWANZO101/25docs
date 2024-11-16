@@ -3,21 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Friday Deal - VPS + Free SnailyCAD</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Black Friday Deal - Countdown</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Activate button on November 22, 2024
-        const activationDate = new Date("2024-11-22T19:00:00Z").getTime();
-        window.addEventListener("load", () => {
+        document.addEventListener("DOMContentLoaded", () => {
+            const countdownDate = new Date("2024-11-22T19:00:00Z").getTime();
+            const countdownElement = document.getElementById("countdown");
             const button = document.getElementById("cta-button");
-            const interval = setInterval(() => {
+
+            const updateCountdown = () => {
                 const now = new Date().getTime();
-                if (now >= activationDate) {
+                const distance = countdownDate - now;
+
+                if (distance <= 0) {
+                    countdownElement.innerHTML = "<span class='text-green-500'>The deal is live!</span>";
                     button.classList.remove("cursor-not-allowed", "opacity-50");
                     button.disabled = false;
-                    clearInterval(interval);
+                    clearInterval(timerInterval);
+                    return;
                 }
-            }, 1000);
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `
+                    <span class="text-yellow-400 font-bold text-xl">${days}</span> days 
+                    <span class="text-yellow-400 font-bold text-xl">${hours}</span> hours 
+                    <span class="text-yellow-400 font-bold text-xl">${minutes}</span> minutes 
+                    <span class="text-yellow-400 font-bold text-xl">${seconds}</span> seconds
+                `;
+            };
+
+            const timerInterval = setInterval(updateCountdown, 1000);
+            updateCountdown();
         });
     </script>
 </head>
@@ -38,14 +58,7 @@
                 </ul>
             </div>
             <div class="text-center mb-4">
-                <!-- LogWork Countdown Timer Embed -->
-                <iframe 
-                    src="https://logwork.com/countdown-iframe/your-custom-id" 
-                    width="100%" 
-                    height="150" 
-                    frameborder="0" 
-                    class="rounded-lg"
-                ></iframe>
+                <p id="countdown" class="text-2xl font-bold"></p>
             </div>
             <div class="text-center">
                 <button 
