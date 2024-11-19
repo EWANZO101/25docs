@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAD Integration Guide</title>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="container mx-auto p-6">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h1 class="text-2xl font-bold mb-4">Hello, name!</h1>
+            <p class="mb-6">
+                Here are your CAD domains:
+            </p>
+            <ul class="list-disc ml-6 mb-4">
+                <li>
+                    <a href="https://example.snailycad.co.uk/" target="_blank" class="text-blue-600 hover:underline">
+                        https://example.snailycad.co.uk/
+                    </a>
+                </li>
+                <li>
+                    <a href="https://api-example.snailycad.co.uk/" target="_blank" class="text-blue-600 hover:underline">
+                        https://api-example.snailycad.co.uk/
+                    </a>
+                </li>
+            </ul>
+            <p class="mb-6">
+                You can also access your CAD via SSH:
+                <a href="https://ssh-example.snailycad.co.uk/" target="_blank" class="text-blue-600 hover:underline">
+                    https://ssh-example.snailycad.co.uk/
+                </a>
+            </p>
+            <div class="bg-gray-100 p-4 rounded-md mb-6">
+                <h2 class="font-semibold">SSH Login Details:</h2>
+                <p><strong>Username:</strong> snaily-cad-vm</p>
+                <p><strong>Password:</strong> pass</p>
+                <p class="mt-2 text-sm text-gray-600">
+                    Feel free to change these credentials as needed for added security.
+                </p>
+            </div>
+            <h2 class="text-xl font-semibold mb-4">Adding Discord Integration</h2>
+            <ol class="list-decimal ml-6 mb-4">
+                <li>SSH into your server.</li>
+                <li>Run the following commands:
+                    <pre class="bg-gray-100 p-4 rounded-md mt-2 overflow-auto">
+sudo -s
+# Enter your password
+cd /home/
+cd snaily-cadv4
+nano .env
+                    </pre>
+                </li>
+            </ol>
+            <p class="mb-4">At the bottom of the <code>.env</code> file, add the Discord integration template:</p>
+            <pre class="bg-gray-100 p-4 rounded-md overflow-auto">
+DISCORD_BOT_TOKEN=""
+DISCORD_SERVER_ID=""
+DISCORD_CLIENT_ID=""
+DISCORD_CLIENT_SECRET=""
+            </pre>
+            <p class="mt-4">
+                Fill in the required details, save by pressing <strong>Ctrl + S</strong>, and exit with <strong>Ctrl + X</strong>.
+            </p>
+            <p class="mt-4">
+                Finally, restart your CAD via our dashboard, and the Discord integration will be active!
+            </p>
+        </div>
+    </div>
+</body>
+</html>
