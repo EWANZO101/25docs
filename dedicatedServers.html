@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dedicated Server Plans</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.6.1/dist/flowbite.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-900 text-white">
+
     <!-- Dedicated Server Section -->
     <section class="py-16">
         <div class="container mx-auto">
@@ -14,7 +27,8 @@
                         <li>Extra 1 TB of HDD or SSD Storage</li>
                         <li>500 MBPS - 1 GB</li>
                     </ul>
-                    <a href="https://store.swiftpeakhosting.co.uk/store/view/54" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <a href="https://store.swiftpeakhosting.co.uk/store/view/54"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Choose Plan
                     </a>
                 </div>
@@ -29,7 +43,9 @@
                         <li>Custom specifications tailored to your needs</li>
                         <li>500 MBPS - 1 GB</li>
                     </ul>
-                    <button id="maintenanceInfo" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <!-- Maintenance Info Button -->
+                    <button id="maintenanceInfo"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         What does the monthly maintenance fee mean?
                     </button>
                     <div id="dropdown" class="hidden mt-4 bg-gray-800 p-4 rounded" aria-hidden="true">
@@ -37,16 +53,39 @@
                             The fee covers ongoing support, updates, general server management, power, and bandwidth.
                         </p>
                     </div>
-                    <button id="showMore" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+                    <!-- Show More Details Button -->
+                    <button id="showMore"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
                         Show More Details
                     </button>
                     <div id="extraDetails" class="hidden mt-4 bg-gray-800 p-4 rounded text-gray-400">
-                        <p>We can customize the server according to your specifications, including but not limited to additional storage, RAM, bandwidth, and more.</p>
+                        <p>We can customize the server according to your specifications, including but not limited to
+                            additional storage, RAM, bandwidth, and more.</p>
                     </div>
-                    <a href="https://store.swiftpeakhosting.co.uk/store/view/49" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+                    <a href="https://store.swiftpeakhosting.co.uk/store/view/49"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
                         Choose Plan
                     </a>
                 </div>
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.1/dist/flowbite.min.js"></script>
+    <script>
+        // Toggle maintenance fee explanation
+        document.getElementById('maintenanceInfo').addEventListener('click', function () {
+            const dropdown = document.getElementById('dropdown');
+            dropdown.classList.toggle('hidden');
+        });
+
+        // Toggle additional details
+        document.getElementById('showMore').addEventListener('click', function () {
+            const extraDetails = document.getElementById('extraDetails');
+            extraDetails.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+
+</html>
