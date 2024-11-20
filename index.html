@@ -39,13 +39,6 @@
       margin-top: 2rem;
       position: relative;
     }
-    #serviceAnnouncement .relative {
-      padding: 2rem;
-    }
-    #closeAnnouncement {
-      top: 1rem;
-      right: 1rem;
-    }
   </style>
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col">
@@ -89,21 +82,27 @@
   <section id="services" class="py-16 bg-gray-900">
     <div class="container mx-auto text-center">
       <h2 class="text-3xl font-bold text-white mb-8">Our Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
-          <h3 class="text-xl font-bold text-white mb-4">SnailyCAD Hosting</h3>
-          <p class="text-gray-300">Expert hosting solutions for roleplay communities, with 99.9% uptime and 24/7 support.</p>
-          <a href="https://www.swiftpeakhosting.co.uk/snailyinfo" class="custom-button mt-4">Go to Checkout</a>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col justify-between h-full transform hover:scale-105 transition">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-4">SnailyCAD Hosting</h3>
+            <p class="text-gray-300">Expert hosting solutions for roleplay communities, with 99.9% uptime and 24/7 support.</p>
+          </div>
+          <a href="https://www.swiftpeakhosting.co.uk/snailyinfo" class="custom-button mt-6 self-start">Go to Checkout</a>
         </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
-          <h3 class="text-xl font-bold text-white mb-4">Domain Purchase</h3>
-          <p class="text-gray-300">Secure your domain for your hosting needs.</p>
-          <a href="https://buy.stripe.com/8wM00TaCjenleB26ou" class="custom-button mt-4">Learn More</a>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col justify-between h-full transform hover:scale-105 transition">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-4">Domain Purchase</h3>
+            <p class="text-gray-300">Secure your domain for your hosting needs.</p>
+          </div>
+          <a href="https://buy.stripe.com/8wM00TaCjenleB26ou" class="custom-button mt-6 self-start">Learn More</a>
         </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
-          <h3 class="text-xl font-bold text-white mb-4">VPS/VDS Hosting</h3>
-          <p class="text-gray-300">High-performance servers tailored for your business.</p>
-          <a href="VPS.html" class="custom-button mt-4">Explore Plans</a>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col justify-between h-full transform hover:scale-105 transition">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-4">VPS/VDS Hosting</h3>
+            <p class="text-gray-300">High-performance servers tailored for your business.</p>
+          </div>
+          <a href="VPS.html" class="custom-button mt-6 self-start">Explore Plans</a>
         </div>
       </div>
     </div>
