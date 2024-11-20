@@ -15,7 +15,6 @@
     body {
       background: url('https://i.ibb.co/PxmJgTv/4rBkgcQ.png') no-repeat center center fixed;
       background-size: cover;
-      background-attachment: fixed;
     }
     .content-area { background-color: rgba(0, 0, 0, 0.8); }
     .custom-button {
@@ -32,11 +31,26 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
     }
+    nav {
+      position: relative;
+      z-index: 10;
+    }
+    section {
+      margin-top: 2rem;
+      position: relative;
+    }
+    #serviceAnnouncement .relative {
+      padding: 2rem;
+    }
+    #closeAnnouncement {
+      top: 1rem;
+      right: 1rem;
+    }
   </style>
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col">
   <!-- Navbar -->
-  <nav class="bg-blue-800 py-4 shadow-lg">
+  <nav class="bg-blue-800 py-4 shadow-lg sticky top-0 z-10">
     <div class="container mx-auto flex justify-between items-center">
       <a href="#" class="text-2xl font-extrabold text-white">Swift Peak Hosting Ltd</a>
       <ul class="flex space-x-6 text-sm font-medium">
@@ -52,7 +66,7 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="py-24 text-center bg-black/70 text-white fade-in">
+  <section class="py-24 text-center bg-black/70 text-white fade-in mt-16">
     <h1 class="text-5xl font-bold">Welcome to Swift Peak Hosting Ltd</h1>
     <p class="text-lg mt-4">Your reliable partner for high-performance hosting solutions.</p>
     <a href="#services" class="custom-button mt-6 inline-block">Explore Services</a>
@@ -62,7 +76,7 @@
   <section id="serviceAnnouncement" class="py-6">
     <div class="container mx-auto">
       <div class="bg-green-600 text-white p-4 rounded-md shadow-md relative">
-        <button id="closeAnnouncement" class="absolute top-2 right-2 bg-green-700 hover:bg-green-800 text-white rounded-full w-8 h-8">&times;</button>
+        <button id="closeAnnouncement" class="absolute top-4 right-4 bg-green-700 hover:bg-green-800 text-white rounded-full w-8 h-8">&times;</button>
         <h2 class="text-lg font-bold">Service Update</h2>
         <p>All services operational at this time.</p>
         <p class="text-sm">Last updated: 16:55, 17/10/2024</p>
