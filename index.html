@@ -7,176 +7,111 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.css" rel="stylesheet" />
   <style>
-    /* Custom animations */
     @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
-
-    .fade-in {
-      animation: fadeIn 2s ease-in-out forwards;
+    .fade-in { animation: fadeIn 2s ease-in-out forwards; }
+    body {
+      background: url('https://i.ibb.co/PxmJgTv/4rBkgcQ.png') no-repeat center center fixed;
+      background-size: cover;
+      background-attachment: fixed;
     }
-
-   /* Background image styling */
-body {
-  background: url('https://i.ibb.co/PxmJgTv/4rBkgcQ.png') no-repeat center center fixed;
-  background-size: 50%; /* Adjust the size to make the image smaller (50% of the container) */
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}
-
-
-    /* Ensure the content area has a slightly dark background for contrast */
-    .content-area {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    /* Custom button styles */
+    .content-area { background-color: rgba(0, 0, 0, 0.8); }
     .custom-button {
       background: linear-gradient(90deg, #1d4ed8, #3b82f6);
-      border: none;
       color: white;
       font-weight: bold;
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
       text-transform: uppercase;
       letter-spacing: 1px;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 15px rgba(29, 78, 216, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
-
     .custom-button:hover {
-      background: linear-gradient(90deg, #3b82f6, #1d4ed8);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(29, 78, 216, 0.4);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
     }
   </style>
 </head>
-<body class="bg-black text-white min-h-screen flex flex-col justify-between">
+<body class="bg-black text-white min-h-screen flex flex-col">
   <!-- Navbar -->
-  <nav class="bg-blue-800 p-4 shadow-lg">
+  <nav class="bg-blue-800 py-4 shadow-lg">
     <div class="container mx-auto flex justify-between items-center">
-      <a href="#" class="text-xl font-bold text-white">Swift Peak Hosting LTD</a>
-      <ul class="flex space-x-6">
-        <li><a href="index.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Home</a></li>
-        <li><a href="Services.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Services</a></li>
-        <li><a href="Documentation.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Documentation</a></li>
-        <li><a href="contact.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Contact</a></li>
-        <li><a href="https://store.swiftpeakhosting.co.uk/auth/register" target="_blank" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Sign Up</a></li>
-        <li><a href="https://store.swiftpeakhosting.co.uk/auth/login" target="_blank" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Log In</a></li>
-        <li><a href="https://store.swiftpeakhosting.co.uk/auth/logout" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Sign Out</a></li>
-        <li><a href="https://store.swiftpeakhosting.co.uk/admin" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Admin</a></li>
-        <li><a href="StaffTeam.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Meet The team</a></li>
-        <li><a href="support.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">support</a></li>
-        <li><a href="jobs.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">jobs</a></li>
-        <li><a href="Complaints.html" class="text-white hover:bg-blue-700 hover:text-gray-200 rounded-md px-3 py-2 transition-all duration-300">Complaints</a></li>
-     </ul>
+      <a href="#" class="text-2xl font-extrabold text-white">Swift Peak Hosting Ltd</a>
+      <ul class="flex space-x-6 text-sm font-medium">
+        <li><a href="index.html" class="text-white hover:text-gray-200">Home</a></li>
+        <li><a href="Services.html" class="text-white hover:text-gray-200">Services</a></li>
+        <li><a href="Documentation.html" class="text-white hover:text-gray-200">Documentation</a></li>
+        <li><a href="contact.html" class="text-white hover:text-gray-200">Contact</a></li>
+        <li><a href="StaffTeam.html" class="text-white hover:text-gray-200">Meet the Team</a></li>
+        <li><a href="jobs.html" class="text-white hover:text-gray-200">Jobs</a></li>
+        <li><a href="Complaints.html" class="text-white hover:text-gray-200">Complaints</a></li>
+      </ul>
     </div>
   </nav>
 
-  <!-- Service Announcement Section -->
-<section class="py-6">
-  <div class="container mx-auto">
-    <div id="serviceAnnouncement" class="bg-green-500 p-4 rounded-lg shadow-lg text-center relative">
-      <button id="closeAnnouncement" class="absolute top-1 right-1 bg-green-700 text-white text-lg font-bold rounded-full w-8 h-8 flex items-center justify-center transition duration-300 hover:bg-green-800">
-        &times;
-      </button>
-      <h2 class="text-xl font-bold mb-2">Service Update</h2>
-      <p class="mb-2">All services operational at this time.</p>
-      <p class="text-sm mb-2">Last updated: 16:55, 17/10/2024</p>
-      <a href="https://status.swiftpeakhosting.co.uk/status/main" target="_blank" class="custom-button mt-2 inline-block">Learn More</a>
-    </div>
-  </div>
-</section>
-
-
-  <script>
-    // Close the service announcement when the close button is clicked
-    document.getElementById('closeAnnouncement').addEventListener('click', function() {
-      document.getElementById('serviceAnnouncement').style.display = 'none';
-    });
-
-    // Automatically close the service announcement after 30 seconds
-    setTimeout(function() {
-      document.getElementById('serviceAnnouncement').style.display = 'none';
-    }, 30000); // 30000 milliseconds = 30 seconds
-  </script>
-
   <!-- Hero Section -->
-  <section class="text-center py-24 bg-black/50 relative overflow-hidden">
-    <h1 class="text-5xl font-extrabold mb-4 fade-in">Welcome to Swift Peak Hosting Ltd</h1>
-    <p class="text-lg mb-8 slide-in">Your reliable partner for high-performance hosting solutions.</p>
+  <section class="py-24 text-center bg-black/70 text-white fade-in">
+    <h1 class="text-5xl font-bold">Welcome to Swift Peak Hosting Ltd</h1>
+    <p class="text-lg mt-4">Your reliable partner for high-performance hosting solutions.</p>
+    <a href="#services" class="custom-button mt-6 inline-block">Explore Services</a>
   </section>
 
-  <!-- Services Section -->
-  <section class="py-12">
+  <!-- Service Announcement -->
+  <section id="serviceAnnouncement" class="py-6">
     <div class="container mx-auto">
-      <h2 class="text-3xl font-bold mb-8 text-center">Our Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- SnailyCAD Hosting Service -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
-          <h3 class="text-xl font-bold mb-4">SnailyCAD Hosting</h3>
-          <p>Expert SnailyCAD hosting solutions designed for law enforcement roleplay communities, with 99.9% uptime, optimized performance, and round-the-clock support.</p>
-          <a href="https://www.swiftpeakhosting.co.uk/snailyinfo" class="custom-button mt-4 inline-block">Go to Checkout</a>
-           <a href="demosnaily.html" class="custom-button mt-4 inline-block">Want to check out our demo first before you buy?</a>
-        </div>
-        
-        <!-- Cloud Solutions Service -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
-          <h3 class="text-xl font-bold mb-4">domain</h3>
-          <p>domain buy</p>
-          <a href="https://buy.stripe.com/8wM00TaCjenleB26ou" class="custom-button mt-4 inline-block">Learn More</a>
-        </div>
-        
-        <!-- VPS/VDS Service -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
-          <h3 class="text-xl font-bold mb-4">VPS/VDS</h3>
-          <p>High-performance Virtual Private Servers (VPS) and dedicated servers tailored to meet all your hosting needs.</p>
-          <a href="VPS.html" class="custom-button mt-4 inline-block">Checkout Our Pricing Plans</a>
-        </div>
-        
+      <div class="bg-green-600 text-white p-4 rounded-md shadow-md relative">
+        <button id="closeAnnouncement" class="absolute top-2 right-2 bg-green-700 hover:bg-green-800 text-white rounded-full w-8 h-8">&times;</button>
+        <h2 class="text-lg font-bold">Service Update</h2>
+        <p>All services operational at this time.</p>
+        <p class="text-sm">Last updated: 16:55, 17/10/2024</p>
+        <a href="https://status.swiftpeakhosting.co.uk/status/main" target="_blank" class="custom-button mt-4 inline-block">Learn More</a>
       </div>
     </div>
   </section>
 
-  <!-- Terms and Conditions Section -->
-  <section class="flex-grow flex items-center justify-center py-12">
-    <div class="content-area p-8 rounded-lg shadow-lg max-w-2xl text-center fade-in">
-      <h1 class="text-4xl font-bold mb-4">Terms and Conditions</h1>
-      <p class="mb-4">Please read these terms and conditions carefully before using our website. By accessing or using this website, you agree to be bound by these terms.</p>
-      <p class="mb-4">For more details, please refer to our full <a href="https://www.swiftpeakhosting.co.uk/tnc" target="_blank" class="text-blue-400 underline">Terms and Conditions</a>.</p>
+  <!-- Services Section -->
+  <section id="services" class="py-16 bg-gray-900">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold text-white mb-8">Our Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
+          <h3 class="text-xl font-bold text-white mb-4">SnailyCAD Hosting</h3>
+          <p class="text-gray-300">Expert hosting solutions for roleplay communities, with 99.9% uptime and 24/7 support.</p>
+          <a href="https://www.swiftpeakhosting.co.uk/snailyinfo" class="custom-button mt-4">Go to Checkout</a>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
+          <h3 class="text-xl font-bold text-white mb-4">Domain Purchase</h3>
+          <p class="text-gray-300">Secure your domain for your hosting needs.</p>
+          <a href="https://buy.stripe.com/8wM00TaCjenleB26ou" class="custom-button mt-4">Learn More</a>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
+          <h3 class="text-xl font-bold text-white mb-4">VPS/VDS Hosting</h3>
+          <p class="text-gray-300">High-performance servers tailored for your business.</p>
+          <a href="VPS.html" class="custom-button mt-4">Explore Plans</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
-<form id="myForm" action="/your-form-handler" method="POST">
-    <div class="cf-turnstile" data-sitekey="0x4AAAAAAAywgwQmECqfR4t4"></div>
-    <button type="submit">Submit</button>
-</form>
-
-
   <!-- Footer -->
-    <footer class="bg-gray-800 p-6">
-        <div class="container mx-auto text-center">
-            <div class="flex justify-center items-center space-x-4">
-                <p class="mr-4">© 2024 Swift Peak Hosting Ltd. All rights reserved.</p>
-                <span>|</span>
-                <a href="https://find-and-update.company-information.service.gov.uk/company/15612395" class="hover:text-gray-400">Registration Number: 15612395</a>
-                <span>|</span>
-                <a href="tnc.html" class="hover:text-gray-400">Terms & Conditions</a>
-                <span>|</span>
-                <a href="https://docs.swiftpeakhosting.co.uk/privacy" class="hover:text-gray-400">Privacy Policy</a>
-            </div>
-        </div>
-    </footer>
+  <footer class="bg-gray-800 py-6">
+    <div class="container mx-auto text-center">
+      <p class="text-gray-400">© 2024 Swift Peak Hosting Ltd. All rights reserved.</p>
+      <div class="flex justify-center space-x-4 mt-4">
+        <a href="tnc.html" class="text-sm hover:text-gray-300">Terms & Conditions</a>
+        <a href="https://docs.swiftpeakhosting.co.uk/privacy" class="text-sm hover:text-gray-300">Privacy Policy</a>
+        <a href="https://find-and-update.company-information.service.gov.uk/company/15612395" class="text-sm hover:text-gray-300">Company Info</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('closeAnnouncement').addEventListener('click', function() {
+      document.getElementById('serviceAnnouncement').style.display = 'none';
+    });
+    setTimeout(() => document.getElementById('serviceAnnouncement').style.display = 'none', 30000);
+  </script>
 </body>
 </html>
