@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hosting Configurator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .configurator {
+      background: #fff;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #555;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .total {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #total-price {
+      color: #007bff;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="configurator">
+    <h1>Server Configurator</h1>
+
+    <label for="ram">Select RAM:</label>
+    <select id="ram">
+      <option value="4" data-price="10">4 GB - £10</option>
+      <option value="8" data-price="20">8 GB - £20</option>
+      <option value="16" data-price="40">16 GB - £40</option>
+    </select>
+
+    <label for="storage">Select Storage:</label>
+    <select id="storage">
+      <option value="100" data-price="5">100 GB - £5</option>
+      <option value="200" data-price="10">200 GB - £10</option>
+      <option value="500" data-price="20">500 GB - £20</option>
+    </select>
+
+    <label for="cpu">Select CPU:</label>
+    <select id="cpu">
+      <option value="2" data-price="15">2 Cores - £15</option>
+      <option value="4" data-price="30">4 Cores - £30</option>
+      <option value="8" data-price="50">8 Cores - £50</option>
+    </select>
+
+    <label for="location">Select Location:</label>
+    <select id="location">
+      <option value="us">USA</option>
+      <option value="eu">Europe</option>
+      <option value="asia">Asia</option>
+    </select>
+
+    <div class="total">
+      <h2>Total Price: £<span id="total-price">0</span></h2>
+    </div>
+  </div>
+
+  <script>
+    const ramSelect = document.getElementById("ram");
+    const storageSelect = document.getElementById("storage");
+    const cpuSelect = document.getElementById("cpu");
+    const totalPriceEl = document.getElementById("total-price");
+
+    function calculateTotal() {
+      const ramPrice = parseInt(ramSelect.options[ramSelect.selectedIndex].dataset.price);
+      const storagePrice = parseInt(storageSelect.options[storageSelect.selectedIndex].dataset.price);
+      const cpuPrice = parseInt(cpuSelect.options[cpuSelect.selectedIndex].dataset.price);
+
+      const totalPrice = ramPrice + storagePrice + cpuPrice;
+      totalPriceEl.textContent = totalPrice;
+    }
+
+    ramSelect.addEventListener("change", calculateTotal);
+    storageSelect.addEventListener("change", calculateTotal);
+    cpuSelect.addEventListener("change", calculateTotal);
+
+    // Initial calculation
+    calculateTotal();
+  </script>
+</body>
+</html>
