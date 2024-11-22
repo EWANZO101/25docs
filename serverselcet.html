@@ -4,112 +4,129 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hosting Configurator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
+      background-color: #0f172a; /* Dark blue */
+      color: #ffffff;
     }
 
     .configurator {
-      background: #fff;
-      max-width: 400px;
-      margin: 50px auto;
+      background: #1e293b;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-
-    label {
-      display: block;
-      margin: 10px 0 5px;
-      color: #555;
-    }
-
-    select {
+    .slider {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
+      appearance: none;
+      background: #374151;
+      height: 8px;
       border-radius: 5px;
     }
 
-    .total {
-      text-align: center;
-      margin-top: 20px;
+    .slider::-webkit-slider-thumb {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #60a5fa;
+      cursor: pointer;
     }
 
-    #total-price {
-      color: #007bff;
+    .slider::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #60a5fa;
+      cursor: pointer;
+    }
+
+    .total {
       font-size: 24px;
       font-weight: bold;
+      color: #60a5fa;
     }
   </style>
 </head>
-<body>
-  <div class="configurator">
-    <h1>Server Configurator</h1>
+<body class="flex items-center justify-center min-h-screen">
+  <div class="configurator w-96">
+    <h1 class="text-2xl font-bold text-center mb-6">Server Configurator</h1>
 
-    <label for="ram">Select RAM:</label>
-    <select id="ram">
-      <option value="4" data-price="10">4 GB - £10</option>
-      <option value="8" data-price="20">8 GB - £20</option>
-      <option value="16" data-price="40">16 GB - £40</option>
-    </select>
+    <div class="mb-4">
+      <label for="ram" class="block mb-2">RAM (in GB): <span id="ram-value">8</span> GB</label>
+      <input type="range" id="ram" class="slider" min="4" max="32" step="4" value="8" data-price="5">
+    </div>
 
-    <label for="storage">Select Storage:</label>
-    <select id="storage">
-      <option value="100" data-price="5">100 GB - £5</option>
-      <option value="200" data-price="10">200 GB - £10</option>
-      <option value="500" data-price="20">500 GB - £20</option>
-    </select>
+    <div class="mb-4">
+      <label for="storage" class="block mb-2">Storage (in GB): <span id="storage-value">100</span> GB</label>
+      <input type="range" id="storage" class="slider" min="100" max="1000" step="100" value="100" data-price="0.1">
+    </div>
 
-    <label for="cpu">Select CPU:</label>
-    <select id="cpu">
-      <option value="2" data-price="15">2 Cores - £15</option>
-      <option value="4" data-price="30">4 Cores - £30</option>
-      <option value="8" data-price="50">8 Cores - £50</option>
-    </select>
+    <div class="mb-4">
+      <label for="cpu" class="block mb-2">CPU Cores: <span id="cpu-value">2</span></label>
+      <input type="range" id="cpu" class="slider" min="2" max="8" step="2" value="2" data-price="10">
+    </div>
 
-    <label for="location">Select Location:</label>
-    <select id="location">
-      <option value="us">USA</option>
-      <option value="eu">Europe</option>
-      <option value="asia">Asia</option>
-    </select>
+    <div class="mb-4">
+      <label for="location" class="block mb-2">Location:</label>
+      <select id="location" class="w-full p-2 bg-gray-700 border border-gray-600 rounded">
+        <option value="us">USA</option>
+        <option value="eu">Europe</option>
+        <option value="asia">Asia</option>
+      </select>
+    </div>
 
-    <div class="total">
-      <h2>Total Price: £<span id="total-price">0</span></h2>
+    <div class="text-center">
+      <h2 class="total">Total Price: £<span id="total-price">0</span></h2>
     </div>
   </div>
 
   <script>
-    const ramSelect = document.getElementById("ram");
-    const storageSelect = document.getElementById("storage");
-    const cpuSelect = document.getElementById("cpu");
+    const ramSlider = document.getElementById("ram");
+    const storageSlider = document.getElementById("storage");
+    const cpuSlider = document.getElementById("cpu");
     const totalPriceEl = document.getElementById("total-price");
 
+    const ramValueEl = document.getElementById("ram-value");
+    const storageValueEl = document.getElementById("storage-value");
+    const cpuValueEl = document.getElementById("cpu-value");
+
     function calculateTotal() {
-      const ramPrice = parseInt(ramSelect.options[ramSelect.selectedIndex].dataset.price);
-      const storagePrice = parseInt(storageSelect.options[storageSelect.selectedIndex].dataset.price);
-      const cpuPrice = parseInt(cpuSelect.options[cpuSelect.selectedIndex].dataset.price);
+      const ramPrice = parseInt(ramSlider.value) * parseFloat(ramSlider.dataset.price);
+      const storagePrice = parseInt(storageSlider.value) * parseFloat(storageSlider.dataset.price);
+      const cpuPrice = parseInt(cpuSlider.value) * parseFloat(cpuSlider.dataset.price);
 
       const totalPrice = ramPrice + storagePrice + cpuPrice;
-      totalPriceEl.textContent = totalPrice;
+      totalPriceEl.textContent = totalPrice.toFixed(2);
     }
 
-    ramSelect.addEventListener("change", calculateTotal);
-    storageSelect.addEventListener("change", calculateTotal);
-    cpuSelect.addEventListener("change", calculateTotal);
+    function updateValues() {
+      ramValueEl.textContent = ramSlider.value;
+      storageValueEl.textContent = storageSlider.value;
+      cpuValueEl.textContent = cpuSlider.value;
+    }
+
+    ramSlider.addEventListener("input", () => {
+      updateValues();
+      calculateTotal();
+    });
+
+    storageSlider.addEventListener("input", () => {
+      updateValues();
+      calculateTotal();
+    });
+
+    cpuSlider.addEventListener("input", () => {
+      updateValues();
+      calculateTotal();
+    });
 
     // Initial calculation
     calculateTotal();
+    updateValues();
   </script>
 </body>
 </html>
