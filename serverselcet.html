@@ -56,50 +56,10 @@
       <input type="range" id="ram" class="slider-track slider-thumb" min="4" max="20" step="2" value="4">
     </div>
 
-    <!-- Storage Slider -->
-    <div class="mb-6">
-      <label for="storage" class="block mb-2 font-medium">Storage (GB): <span id="storage-value">50</span> GB</label>
-      <input type="range" id="storage" class="slider-track slider-thumb" min="50" max="2000" step="50" value="50">
-    </div>
-
     <!-- CPU Cores Slider -->
     <div class="mb-6">
       <label for="cpu" class="block mb-2 font-medium">CPU Cores: <span id="cpu-value">2</span> Cores</label>
       <input type="range" id="cpu" class="slider-track slider-thumb" min="2" max="8" step="1" value="2">
-    </div>
-
-    <!-- Operating System -->
-    <div class="mb-6">
-      <label for="os" class="block mb-2 font-medium">Select Operating System:</label>
-      <select id="os" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-        <option value="linux">Linux (Default)</option>
-        <option value="ubuntu">Ubuntu</option>
-        <option value="windows">Windows Server</option>
-      </select>
-    </div>
-
-    <!-- Server Location -->
-    <div class="mb-6">
-      <label for="location" class="block mb-2 font-medium">Server Location:</label>
-      <select id="location" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-        <option value="us">USA</option>
-        <option value="eu">Europe</option>
-        <option value="asia">Asia</option>
-        <option value="uk">United Kingdom</option>
-      </select>
-    </div>
-
-    <!-- Add-ons -->
-    <div class="mb-6">
-      <label class="block mb-2 font-medium">Additional Options:</label>
-      <div class="flex items-center mb-2">
-        <input type="checkbox" id="backup" class="mr-2">
-        <label for="backup">Daily Backups (Free)</label>
-      </div>
-      <div class="flex items-center">
-        <input type="checkbox" id="support" class="mr-2">
-        <label for="support">24/7 Support (Free)</label>
-      </div>
     </div>
 
     <!-- Total Price -->
@@ -110,27 +70,43 @@
 
   <script>
     const basePrice = 5.99; // Fixed base price
+    const ramPricePerGB = 2.99; // Price per GB of RAM
+    const corePricePerCore = 4.99; // Price per CPU core
 
     // Inputs
     const ramSlider = document.getElementById("ram");
-    const storageSlider = document.getElementById("storage");
     const cpuSlider = document.getElementById("cpu");
 
     // Display Elements
     const ramValueEl = document.getElementById("ram-value");
-    const storageValueEl = document.getElementById("storage-value");
     const cpuValueEl = document.getElementById("cpu-value");
+    const totalPriceEl = document.getElementById("total-price");
 
-    // Update displayed slider values
+    // Update sliders and total price
+    function calculateTotal() {
+      const ramValue = parseInt(ramSlider.value, 10);
+      const cpuValue = parseInt(cpuSlider.value, 10);
+
+      // Calculate price
+      const ramPrice = ramValue * ramPricePerGB;
+      const cpuPrice = cpuValue * corePricePerCore;
+      const totalPrice = basePrice + ramPrice + cpuPrice;
+
+      // Update total price element
+      totalPriceEl.textContent = totalPrice.toFixed(2);
+    }
+
     function updateValues() {
+      // Update displayed slider values
       ramValueEl.textContent = ramSlider.value;
-      storageValueEl.textContent = storageSlider.value;
       cpuValueEl.textContent = cpuSlider.value;
+
+      // Recalculate total price
+      calculateTotal();
     }
 
     // Event Listeners
     ramSlider.addEventListener("input", updateValues);
-    storageSlider.addEventListener("input", updateValues);
     cpuSlider.addEventListener("input", updateValues);
 
     // Initialize
