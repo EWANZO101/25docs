@@ -22,38 +22,38 @@
 <body class="flex flex-col items-center justify-center min-h-screen p-4">
   <header class="text-center mb-6">
     <h1 class="text-3xl font-bold">Hosting Configurator</h1>
-    <p class="text-gray-400">Customize your server to suit your needs</p>
+    <p class="text-gray-400">Customize your server starting at £5.99</p>
   </header>
 
   <div class="configurator w-full max-w-4xl p-6">
     <h2 class="text-xl font-semibold mb-4">Server Configuration</h2>
 
-    <!-- OS Selection -->
-    <div class="mb-6">
-      <label for="os" class="block mb-2 font-medium">Select Operating System:</label>
-      <select id="os" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-        <option value="windows" data-price="5">Windows Server - £5</option>
-        <option value="linux" data-price="0">Linux (Free)</option>
-        <option value="ubuntu" data-price="3">Ubuntu - £3</option>
-      </select>
-    </div>
-
     <!-- RAM Slider -->
     <div class="mb-6">
-      <label for="ram" class="block mb-2 font-medium">RAM (GB): <span id="ram-value">8</span> GB</label>
-      <input type="range" id="ram" class="w-full" min="4" max="64" step="4" value="8" data-price="2">
+      <label for="ram" class="block mb-2 font-medium">RAM (GB): <span id="ram-value">4</span> GB</label>
+      <input type="range" id="ram" class="w-full" min="4" max="64" step="4" value="4">
     </div>
 
     <!-- Storage Slider -->
     <div class="mb-6">
-      <label for="storage" class="block mb-2 font-medium">Storage (GB): <span id="storage-value">100</span> GB</label>
-      <input type="range" id="storage" class="w-full" min="50" max="2000" step="50" value="100" data-price="0.05">
+      <label for="storage" class="block mb-2 font-medium">Storage (GB): <span id="storage-value">50</span> GB</label>
+      <input type="range" id="storage" class="w-full" min="50" max="2000" step="50" value="50">
     </div>
 
     <!-- CPU Cores Slider -->
     <div class="mb-6">
       <label for="cpu" class="block mb-2 font-medium">CPU Cores: <span id="cpu-value">2</span> Cores</label>
-      <input type="range" id="cpu" class="w-full" min="2" max="16" step="2" value="2" data-price="8">
+      <input type="range" id="cpu" class="w-full" min="2" max="16" step="2" value="2">
+    </div>
+
+    <!-- Operating System -->
+    <div class="mb-6">
+      <label for="os" class="block mb-2 font-medium">Select Operating System:</label>
+      <select id="os" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
+        <option value="linux">Linux (Default)</option>
+        <option value="ubuntu">Ubuntu</option>
+        <option value="windows">Windows Server</option>
+      </select>
     </div>
 
     <!-- Server Location -->
@@ -71,12 +71,12 @@
     <div class="mb-6">
       <label class="block mb-2 font-medium">Additional Options:</label>
       <div class="flex items-center mb-2">
-        <input type="checkbox" id="backup" data-price="3" class="mr-2">
-        <label for="backup">Daily Backups (£3)</label>
+        <input type="checkbox" id="backup" class="mr-2">
+        <label for="backup">Daily Backups (Free)</label>
       </div>
       <div class="flex items-center">
-        <input type="checkbox" id="support" data-price="5" class="mr-2">
-        <label for="support">24/7 Support (£5)</label>
+        <input type="checkbox" id="support" class="mr-2">
+        <label for="support">24/7 Support (Free)</label>
       </div>
     </div>
 
@@ -87,55 +87,43 @@
   </div>
 
   <script>
-    const basePrice = 5.99;
+    const basePrice = 5.99; // Fixed base price
 
     // Inputs
-    const osSelect = document.getElementById("os");
     const ramSlider = document.getElementById("ram");
     const storageSlider = document.getElementById("storage");
     const cpuSlider = document.getElementById("cpu");
+    const osSelect = document.getElementById("os");
     const backupCheckbox = document.getElementById("backup");
     const supportCheckbox = document.getElementById("support");
-    const totalPriceEl = document.getElementById("total-price");
 
     // Display Elements
     const ramValueEl = document.getElementById("ram-value");
     const storageValueEl = document.getElementById("storage-value");
     const cpuValueEl = document.getElementById("cpu-value");
+    const totalPriceEl = document.getElementById("total-price");
 
     // Update sliders and total price
     function calculateTotal() {
-      const osPrice = parseFloat(osSelect.options[osSelect.selectedIndex].dataset.price);
-      const ramPrice = parseInt(ramSlider.value) * parseFloat(ramSlider.dataset.price);
-      const storagePrice = parseInt(storageSlider.value) * parseFloat(storageSlider.dataset.price);
-      const cpuPrice = parseInt(cpuSlider.value) * parseFloat(cpuSlider.dataset.price);
-      const backupPrice = backupCheckbox.checked ? parseFloat(backupCheckbox.dataset.price) : 0;
-      const supportPrice = supportCheckbox.checked ? parseFloat(supportCheckbox.dataset.price) : 0;
+      // Base price is always £5.99
+      const totalPrice = basePrice;
 
-      const totalPrice = basePrice + osPrice + ramPrice + storagePrice + cpuPrice + backupPrice + supportPrice;
+      // Update total price element
       totalPriceEl.textContent = totalPrice.toFixed(2);
     }
 
     function updateValues() {
+      // Update displayed slider values
       ramValueEl.textContent = ramSlider.value;
       storageValueEl.textContent = storageSlider.value;
       cpuValueEl.textContent = cpuSlider.value;
     }
 
     // Event Listeners
+    ramSlider.addEventListener("input", updateValues);
+    storageSlider.addEventListener("input", updateValues);
+    cpuSlider.addEventListener("input", updateValues);
     osSelect.addEventListener("change", calculateTotal);
-    ramSlider.addEventListener("input", () => {
-      updateValues();
-      calculateTotal();
-    });
-    storageSlider.addEventListener("input", () => {
-      updateValues();
-      calculateTotal();
-    });
-    cpuSlider.addEventListener("input", () => {
-      updateValues();
-      calculateTotal();
-    });
     backupCheckbox.addEventListener("change", calculateTotal);
     supportCheckbox.addEventListener("change", calculateTotal);
 
