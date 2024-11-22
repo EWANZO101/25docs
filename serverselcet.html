@@ -17,6 +17,28 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
+    .slider-thumb {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      background: #1d4ed8;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid #93c5fd;
+    }
+    .slider-thumb:hover {
+      background: #2563eb;
+    }
+    .slider-track {
+      appearance: none;
+      height: 6px;
+      background: #334155;
+      border-radius: 3px;
+    }
+    input[type="range"] {
+      width: 100%;
+      background: transparent;
+    }
   </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-4">
@@ -31,19 +53,19 @@
     <!-- RAM Slider -->
     <div class="mb-6">
       <label for="ram" class="block mb-2 font-medium">RAM (GB): <span id="ram-value">4</span> GB</label>
-      <input type="range" id="ram" class="w-full" min="4" max="64" step="4" value="4">
+      <input type="range" id="ram" class="slider-track slider-thumb" min="4" max="20" step="2" value="4">
     </div>
 
     <!-- Storage Slider -->
     <div class="mb-6">
       <label for="storage" class="block mb-2 font-medium">Storage (GB): <span id="storage-value">50</span> GB</label>
-      <input type="range" id="storage" class="w-full" min="50" max="2000" step="50" value="50">
+      <input type="range" id="storage" class="slider-track slider-thumb" min="50" max="2000" step="50" value="50">
     </div>
 
     <!-- CPU Cores Slider -->
     <div class="mb-6">
       <label for="cpu" class="block mb-2 font-medium">CPU Cores: <span id="cpu-value">2</span> Cores</label>
-      <input type="range" id="cpu" class="w-full" min="2" max="16" step="2" value="2">
+      <input type="range" id="cpu" class="slider-track slider-thumb" min="2" max="8" step="1" value="2">
     </div>
 
     <!-- Operating System -->
@@ -93,27 +115,14 @@
     const ramSlider = document.getElementById("ram");
     const storageSlider = document.getElementById("storage");
     const cpuSlider = document.getElementById("cpu");
-    const osSelect = document.getElementById("os");
-    const backupCheckbox = document.getElementById("backup");
-    const supportCheckbox = document.getElementById("support");
 
     // Display Elements
     const ramValueEl = document.getElementById("ram-value");
     const storageValueEl = document.getElementById("storage-value");
     const cpuValueEl = document.getElementById("cpu-value");
-    const totalPriceEl = document.getElementById("total-price");
 
-    // Update sliders and total price
-    function calculateTotal() {
-      // Base price is always £5.99
-      const totalPrice = basePrice;
-
-      // Update total price element
-      totalPriceEl.textContent = totalPrice.toFixed(2);
-    }
-
+    // Update displayed slider values
     function updateValues() {
-      // Update displayed slider values
       ramValueEl.textContent = ramSlider.value;
       storageValueEl.textContent = storageSlider.value;
       cpuValueEl.textContent = cpuSlider.value;
@@ -123,12 +132,8 @@
     ramSlider.addEventListener("input", updateValues);
     storageSlider.addEventListener("input", updateValues);
     cpuSlider.addEventListener("input", updateValues);
-    osSelect.addEventListener("change", calculateTotal);
-    backupCheckbox.addEventListener("change", calculateTotal);
-    supportCheckbox.addEventListener("change", calculateTotal);
 
     // Initialize
-    calculateTotal();
     updateValues();
   </script>
 </body>
