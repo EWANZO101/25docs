@@ -46,7 +46,7 @@
   <nav class="bg-blue-800 py-4 shadow-lg sticky top-0 z-10">
     <div class="container mx-auto flex justify-between items-center">
       <a href="#" class="text-2xl font-extrabold text-white">Swift Peak Hosting Ltd</a>
-      <ul class="flex space-x-6 text-sm font-medium">
+      <ul class="flex space-x-6 text-sm font-medium items-center">
         <li><a href="index.html" class="text-white hover:text-gray-200">Home</a></li>
         <li><a href="Services.html" class="text-white hover:text-gray-200">Services</a></li>
         <li><a href="Documentation.html" class="text-white hover:text-gray-200">Documentation</a></li>
@@ -54,7 +54,24 @@
         <li><a href="StaffTeam.html" class="text-white hover:text-gray-200">Meet the Team</a></li>
         <li><a href="jobs.html" class="text-white hover:text-gray-200">Jobs</a></li>
         <li><a href="Complaints.html" class="text-white hover:text-gray-200">Complaints</a></li>
-         <li><a href="tickets.html" class="text-white hover:text-gray-200">tickets-support</a></li>
+        <li><a href="tickets.html" class="text-white hover:text-gray-200">Tickets-Support</a></li>
+
+        <!-- Dropdown Menu -->
+        <li class="relative">
+          <button id="userMenuButton" class="text-white hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center">
+            Account
+            <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <!-- Dropdown Items -->
+          <div id="userMenu" class="hidden absolute right-0 mt-2 bg-white text-black rounded-md shadow-lg w-48">
+            <a href="https://store.swiftpeakhosting.co.uk/auth/login" class="block px-4 py-2 text-sm hover:bg-gray-200">Login</a>
+            <a href="https://store.swiftpeakhosting.co.uk/auth/logout" class="block px-4 py-2 text-sm hover:bg-gray-200">Sign Out</a>
+            <a href="https://store.swiftpeakhosting.co.uk/dashboard" class="block px-4 py-2 text-sm hover:bg-gray-200">Dashboard</a>
+            <a href="https://store.swiftpeakhosting.co.uk/admin" class="block px-4 py-2 text-sm hover:bg-gray-200">Admin</a>
+          </div>
+        </li>
       </ul>
     </div>
   </nav>
@@ -79,36 +96,6 @@
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section id="services" class="py-16 bg-gray-900">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-white mb-8">Our Services</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col justify-between h-full transform hover:scale-105 transition">
-          <div>
-            <h3 class="text-xl font-bold text-white mb-4">SnailyCAD Hosting</h3>
-            <p class="text-gray-300">Expert hosting solutions for roleplay communities, with 99.9% uptime and 24/7 support.</p>
-          </div>
-          <a href="https://www.swiftpeakhosting.co.uk/snailyinfo" class="custom-button mt-6 self-start">Go to Checkout</a>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col justify-between h-full transform hover:scale-105 transition">
-          <div>
-            <h3 class="text-xl font-bold text-white mb-4">Domain Purchase</h3>
-            <p class="text-gray-300">Secure your domain for your hosting needs.</p>
-          </div>
-          <a href="https://buy.stripe.com/8wM00TaCjenleB26ou" class="custom-button mt-6 self-start">Learn More</a>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col justify-between h-full transform hover:scale-105 transition">
-          <div>
-            <h3 class="text-xl font-bold text-white mb-4">VPS/VDS Hosting</h3>
-            <p class="text-gray-300">High-performance servers tailored for your business.</p>
-          </div>
-          <a href="VPS.html" class="custom-button mt-6 self-start">Explore Plans</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Footer -->
   <footer class="bg-gray-800 py-6">
     <div class="container mx-auto text-center">
@@ -122,10 +109,30 @@
   </footer>
 
   <script>
-    document.getElementById('closeAnnouncement').addEventListener('click', function() {
+    // Toggle dropdown menu visibility
+    document.getElementById('userMenuButton').addEventListener('click', () => {
+      const menu = document.getElementById('userMenu');
+      menu.classList.toggle('hidden');
+    });
+
+    // Close the dropdown menu when clicking outside
+    document.addEventListener('click', (event) => {
+      const menu = document.getElementById('userMenu');
+      const button = document.getElementById('userMenuButton');
+      if (!menu.contains(event.target) && !button.contains(event.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+
+    // Close announcement
+    document.getElementById('closeAnnouncement').addEventListener('click', function () {
       document.getElementById('serviceAnnouncement').style.display = 'none';
     });
-    setTimeout(() => document.getElementById('serviceAnnouncement').style.display = 'none', 30000);
+
+    // Auto-hide announcement after 30 seconds
+    setTimeout(() => {
+      document.getElementById('serviceAnnouncement').style.display = 'none';
+    }, 30000);
   </script>
 </body>
 </html>
