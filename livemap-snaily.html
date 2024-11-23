@@ -9,12 +9,12 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f9;
-      color: #333;
+      background-color: #121212; /* Dark background */
+      color: #e0e0e0; /* Light text for dark theme */
     }
     header {
-      background-color: #4CAF50;
-      color: white;
+      background-color: #1f1f1f;
+      color: #4CAF50; /* Green accent */
       padding: 20px;
       text-align: center;
     }
@@ -22,13 +22,23 @@
       padding: 20px;
     }
     h1, h2, h3 {
+      color: #4CAF50; /* Green accent */
+    }
+    a {
       color: #4CAF50;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
     .steps {
       margin: 20px 0;
     }
     .steps ol {
       padding-left: 20px;
+    }
+    .steps li {
+      margin: 10px 0;
     }
     .images {
       display: flex;
@@ -39,14 +49,14 @@
     .images img {
       max-width: 100%;
       height: auto;
-      border: 1px solid #ccc;
+      border: 1px solid #333;
       border-radius: 5px;
     }
     footer {
       text-align: center;
       padding: 20px;
-      background-color: #333;
-      color: white;
+      background-color: #1f1f1f;
+      color: #e0e0e0;
       margin-top: 20px;
     }
   </style>
@@ -61,7 +71,7 @@
     <div class="steps">
       <h3>Step 1: Configure a Public Hostname</h3>
       <ol>
-        <li>Navigate to the "Tunnels" section in your control panel.</li>
+        <li>Navigate to the <strong>"Tunnels"</strong> section in your control panel.</li>
         <li>Set up a public hostname. Use the subdomain <strong>livemap</strong> and your domain (e.g., <code>snailycad.co.uk</code>).</li>
         <li>Set the service type to <strong>HTTP</strong>.</li>
         <li>Enter the URL pointing to your server’s IP and port (e.g., <code>yourserverip:30121</code>).</li>
@@ -72,14 +82,14 @@
       <h3>Step 2: Configure Live Map in SnailyCAD</h3>
       <ol>
         <li>Log in to your SnailyCAD admin panel.</li>
-        <li>Go to the "Integrations" section and click on "Live Map".</li>
-        <li>Click "Add URL" and provide the following:
+        <li>Go to the <strong>"Integrations"</strong> section and click on <strong>"Live Map"</strong>.</li>
+        <li>Click <strong>"Add URL"</strong> and provide the following:
           <ul>
             <li><strong>Name:</strong> livemap</li>
             <li><strong>URL:</strong> <code>https://livemap.snailycad.co.uk</code></li>
           </ul>
         </li>
-        <li>Click "Add URL" and save your changes.</li>
+        <li>Click <strong>"Add URL"</strong> and save your changes.</li>
       </ol>
     </div>
     <div class="steps">
@@ -87,13 +97,13 @@
       <ol>
         <li>Prepare your map tiles in the required format: <code>minimap_sea_0_0.png</code>, <code>minimap_sea_0_1.png</code>, etc.</li>
         <li>Ensure the files are in <code>.png</code> or <code>.jpg</code> format.</li>
-        <li>Upload the tiles to SnailyCAD in the "Map Tiles" section under "Live Map Settings".</li>
+        <li>Upload the tiles to SnailyCAD in the <strong>"Map Tiles"</strong> section under <strong>"Live Map Settings"</strong>.</li>
       </ol>
     </div>
     <h2>Screenshots</h2>
     <div class="images">
-      <img src="screenshot1.png" alt="Public Hostname Configuration">
-      <img src="screenshot2.png" alt="SnailyCAD Live Map Configuration">
+      <img src="https://ibb.co/8m5Jqc8" alt="Public Hostname Configuration">
+      <img src="https://ibb.co/Wk9rfqM" alt="SnailyCAD Live Map Configuration">
     </div>
   </div>
   <footer>
