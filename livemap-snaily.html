@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swift Peak Hosting - SnailyCAD Live Map</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #4CAF50;
+    }
+    .steps {
+      margin: 20px 0;
+    }
+    .steps ol {
+      padding-left: 20px;
+    }
+    .images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .images img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Swift Peak Hosting - SnailyCAD Live Map Guide</h1>
+  </header>
+  <div class="container">
+    <h2>Setup Instructions</h2>
+    <p>Follow this guide to set up a live map for your FiveM server with SnailyCAD on Swift Peak Hosting.</p>
+    <div class="steps">
+      <h3>Step 1: Configure a Public Hostname</h3>
+      <ol>
+        <li>Navigate to the "Tunnels" section in your control panel.</li>
+        <li>Set up a public hostname. Use the subdomain <strong>livemap</strong> and your domain (e.g., <code>snailycad.co.uk</code>).</li>
+        <li>Set the service type to <strong>HTTP</strong>.</li>
+        <li>Enter the URL pointing to your server’s IP and port (e.g., <code>yourserverip:30121</code>).</li>
+        <li>Save the hostname configuration.</li>
+      </ol>
+    </div>
+    <div class="steps">
+      <h3>Step 2: Configure Live Map in SnailyCAD</h3>
+      <ol>
+        <li>Log in to your SnailyCAD admin panel.</li>
+        <li>Go to the "Integrations" section and click on "Live Map".</li>
+        <li>Click "Add URL" and provide the following:
+          <ul>
+            <li><strong>Name:</strong> livemap</li>
+            <li><strong>URL:</strong> <code>https://livemap.snailycad.co.uk</code></li>
+          </ul>
+        </li>
+        <li>Click "Add URL" and save your changes.</li>
+      </ol>
+    </div>
+    <div class="steps">
+      <h3>Step 3: Map Tiles Configuration</h3>
+      <ol>
+        <li>Prepare your map tiles in the required format: <code>minimap_sea_0_0.png</code>, <code>minimap_sea_0_1.png</code>, etc.</li>
+        <li>Ensure the files are in <code>.png</code> or <code>.jpg</code> format.</li>
+        <li>Upload the tiles to SnailyCAD in the "Map Tiles" section under "Live Map Settings".</li>
+      </ol>
+    </div>
+    <h2>Screenshots</h2>
+    <div class="images">
+      <img src="screenshot1.png" alt="Public Hostname Configuration">
+      <img src="screenshot2.png" alt="SnailyCAD Live Map Configuration">
+    </div>
+  </div>
+  <footer>
+    <p>Swift Peak Hosting - Enhancing your FiveM experience</p>
+  </footer>
+</body>
+</html>
