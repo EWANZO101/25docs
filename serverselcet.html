@@ -70,6 +70,29 @@
         <input type="range" id="cpu" class="slider-track slider-thumb" min="2" max="8" step="1" value="2">
       </div>
 
+      <!-- Operating System -->
+      <div class="mb-6">
+        <label for="os" class="block mb-2 font-medium">Select Operating System:</label>
+        <select id="os" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
+          <option value="linux">Linux</option>
+          <option value="ubuntu">Ubuntu</option>
+          <option value="windows">Windows Server</option>
+        </select>
+      </div>
+
+      <!-- Server Location -->
+      <div class="mb-6">
+        <label for="location" class="block mb-2 font-medium">Server Location:</label>
+        <select id="location" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
+          <option value="us">USA</option>
+          <option value="eu">Europe</option>
+          <option value="asia">Asia</option>
+          <option value="uk">United Kingdom</option>
+          <option value="sa">South Africa</option>
+          <option value="au">Australia</option>
+        </select>
+      </div>
+
       <!-- Billing Interval -->
       <div class="mb-6">
         <label for="billing-interval" class="block mb-2 font-medium">Billing Interval:</label>
@@ -118,6 +141,14 @@
           <span>Settlement Type:</span>
           <span id="settlement-type-display">Contract</span>
         </li>
+        <li class="mb-4 flex justify-between">
+          <span>Operating System:</span>
+          <span id="os-display">Linux</span>
+        </li>
+        <li class="mb-4 flex justify-between">
+          <span>Server Location:</span>
+          <span id="location-display">United Kingdom</span>
+        </li>
       </ul>
       <hr class="my-4 border-gray-600">
       <h3 class="text-2xl font-semibold text-blue-400 flex justify-between">
@@ -137,8 +168,11 @@
     const ramSlider = document.getElementById("ram");
     const storageSlider = document.getElementById("storage");
     const cpuSlider = document.getElementById("cpu");
+    const osDropdown = document.getElementById("os");
+    const locationDropdown = document.getElementById("location");
     const billingIntervalDropdown = document.getElementById("billing-interval");
     const settlementTypeDropdown = document.getElementById("settlement-type");
+
     const ramValueEl = document.getElementById("ram-value");
     const storageValueEl = document.getElementById("storage-value");
     const cpuValueEl = document.getElementById("cpu-value");
@@ -148,51 +182,64 @@
     const cpuCostEl = document.getElementById("price-cpu");
     const billingIntervalDisplay = document.getElementById("billing-interval-display");
     const settlementTypeDisplay = document.getElementById("settlement-type-display");
+    const osDisplay = document.getElementById("os-display");
+    const locationDisplay = document.getElementById("location-display");
 
     function calculateTotal() {
-      const ram = parseInt(ramSlider.value);
-      const storage = parseInt(storageSlider.value);
-      const cpu = parseInt(cpuSlider.value);
+      const ramAmount = parseInt(ramSlider.value);
+      const storageAmount = parseInt(storageSlider.value);
+      const cpuAmount = parseInt(cpuSlider.value);
       const billingInterval = parseInt(billingIntervalDropdown.value);
       const settlementType = settlementTypeDropdown.value;
 
-      // Calculate individual costs
-      const ramCost = ram * ramPricePerGB;
-      const storageCost = storage * storagePricePerGB;
-      const cpuCost = cpu * corePricePerCore;
+      // Calculate costs
+      const ramCost = ramAmount * ramPricePerGB;
+      const storageCost = storageAmount * storagePricePerGB;
+      const cpuCost = cpuAmount * corePricePerCore;
+      let totalPrice = basePrice + ramCost + storageCost + cpuCost;
+      let discountFee = "£0.00";
 
-      // Calculate total
-      let total = basePrice + ramCost + storageCost + cpuCost;
-      if (billingInterval === 6) total *= 0.95; // 5% discount
-      if (billingInterval === 12) total *= 0.90; // 10% discount
-      if (settlementType === "prepaid") total *= 1.08; // 8% surcharge
+      // Apply discount or fee based on billing interval
+      if (billingInterval === 6) {
+        totalPrice *= 0.95;
+        discountFee = '£-5.00';
+      } else if (billingInterval === 12) {
+        totalPrice *= 0.90;
+        discountFee = '£-10.00';
+      }
 
-      // Update UI
+      // Apply settlement fee
+      if (settlementType === "prepaid") {
+        totalPrice *= 1.08;
+        discountFee = '£+8% Fee';
+      }
+
+      // Update display
+      totalPriceEl.textContent = totalPrice.toFixed(2);
       ramCostEl.textContent = ramCost.toFixed(2);
       storageCostEl.textContent = storageCost.toFixed(2);
       cpuCostEl.textContent = cpuCost.toFixed(2);
       billingIntervalDisplay.textContent = billingInterval === 6 ? "6 Months / 180 Days" : billingInterval === 12 ? "1 Year / 365 Days" : "1 Month / 30 Days";
       settlementTypeDisplay.textContent = settlementType === "prepaid" ? "Prepaid" : "Contract";
-      totalPriceEl.textContent = total.toFixed(2);
+      osDisplay.textContent = osDropdown.value.charAt(0).toUpperCase() + osDropdown.value.slice(1);
+      locationDisplay.textContent = locationDropdown.value.toUpperCase();
     }
 
-    ramSlider.addEventListener("input", () => {
+    function updateValues() {
       ramValueEl.textContent = ramSlider.value;
-      calculateTotal();
-    });
-
-    storageSlider.addEventListener("input", () => {
       storageValueEl.textContent = storageSlider.value;
-      calculateTotal();
-    });
-
-    cpuSlider.addEventListener("input", () => {
       cpuValueEl.textContent = cpuSlider.value;
       calculateTotal();
-    });
+    }
 
+    // Event Listeners
+    ramSlider.addEventListener("input", updateValues);
+    storageSlider.addEventListener("input", updateValues);
+    cpuSlider.addEventListener("input", updateValues);
     billingIntervalDropdown.addEventListener("change", calculateTotal);
     settlementTypeDropdown.addEventListener("change", calculateTotal);
+    osDropdown.addEventListener("change", calculateTotal);
+    locationDropdown.addEventListener("change", calculateTotal);
 
     calculateTotal(); // Initial calculation
   </script>
