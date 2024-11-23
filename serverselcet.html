@@ -39,6 +39,11 @@
       width: 100%;
       background: transparent;
     }
+    .divider {
+      border-left: 2px solid #334155;
+      height: 100%;
+      margin: 0 20px;
+    }
   </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-4">
@@ -69,6 +74,9 @@
         <label for="cpu" class="block mb-2 font-medium">CPU Cores: <span id="cpu-value">2</span> Cores</label>
         <input type="range" id="cpu" class="slider-track slider-thumb" min="2" max="8" step="1" value="2">
       </div>
+      
+      <!-- Divider -->
+      <div class="divider"></div>
 
       <!-- Operating System -->
       <div class="mb-6">
