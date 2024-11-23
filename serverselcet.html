@@ -17,27 +17,26 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
-    .slider-thumb {
-      appearance: none;
-      width: 16px;
-      height: 16px;
-      background: #1d4ed8;
-      border-radius: 50%;
-      cursor: pointer;
-      border: 2px solid #93c5fd;
+    .price-breakdown {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
-    .slider-thumb:hover {
-      background: #2563eb;
+    .price-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #334155;
     }
-    .slider-track {
-      appearance: none;
-      height: 6px;
-      background: #334155;
-      border-radius: 3px;
+    .price-item:last-child {
+      border-bottom: none;
     }
-    input[type="range"] {
-      width: 100%;
-      background: transparent;
+    .price-total {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #38bdf8; /* Highlighted total price */
     }
   </style>
 </head>
@@ -53,73 +52,67 @@
       <h2 class="text-xl font-semibold mb-4">Server Configuration</h2>
 
       <!-- RAM Slider -->
-      <div class="mb-6" id="ram-config">
+      <div class="mb-6">
         <label for="ram" class="block mb-2 font-medium">RAM (GB): <span id="ram-value">4</span> GB</label>
         <input type="range" id="ram" class="slider-track slider-thumb" min="4" max="20" step="2" value="4">
       </div>
 
       <!-- Storage Slider -->
-      <div class="mb-6" id="storage-config">
+      <div class="mb-6">
         <label for="storage" class="block mb-2 font-medium">Storage (GB): <span id="storage-value">50</span> GB</label>
         <input type="range" id="storage" class="slider-track slider-thumb" min="50" max="2000" step="50" value="50">
       </div>
 
       <!-- CPU Cores Slider -->
-      <div class="mb-6" id="cpu-config">
+      <div class="mb-6">
         <label for="cpu" class="block mb-2 font-medium">CPU Cores: <span id="cpu-value">2</span> Cores</label>
         <input type="range" id="cpu" class="slider-track slider-thumb" min="2" max="8" step="1" value="2">
-      </div>
-
-      <!-- Operating System -->
-      <div class="mb-6" id="os-config">
-        <label for="os" class="block mb-2 font-medium">Select Operating System:</label>
-        <select id="os" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-          <option value="linux">Linux (Default)</option>
-          <option value="ubuntu">Ubuntu</option>
-          <option value="windows">Windows Server</option>
-        </select>
-      </div>
-
-      <!-- Server Location -->
-      <div class="mb-6" id="location-config">
-        <label for="location" class="block mb-2 font-medium">Server Location:</label>
-        <select id="location" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-          <option value="us">USA (Coming Soon)</option>
-          <option value="eu">Europe (Coming Soon)</option>
-          <option value="asia">Asia (Coming Soon)</option>
-          <option value="uk">United Kingdom</option>
-          <option value="sa">South Africa (Coming Soon)</option>
-          <option value="au">Australia (Coming Soon)</option>
-        </select>
       </div>
     </div>
 
     <!-- Right Side: Price Breakdown -->
-    <div class="configurator p-6">
+    <div class="price-breakdown p-6">
       <h3 class="text-xl font-semibold mb-4 text-blue-400">Price Breakdown</h3>
-      <ul>
-        <li class="mb-4 flex justify-between">
-          <span>Base Price:</span>
-          <span>£5.99</span>
-        </li>
-        <li class="mb-4 flex justify-between">
-          <span>RAM Cost:</span>
-          <span>£<span id="price-ram">6.00</span></span>
-        </li>
-        <li class="mb-4 flex justify-between">
-          <span>Storage Cost:</span>
-          <span>£<span id="price-storage">0.25</span></span>
-        </li>
-        <li class="mb-4 flex justify-between">
-          <span>CPU Cost:</span>
-          <span>£<span id="price-cpu">5.00</span></span>
-        </li>
-      </ul>
+      <div class="price-item">
+        <span>IP Address</span>
+        <span>£0.00</span>
+      </div>
+      <div class="price-item">
+        <span>Bandwidth</span>
+        <span>£0.00</span>
+      </div>
+      <div class="price-item">
+        <span>Settlement Type</span>
+        <span>+£0.82</span>
+      </div>
+      <div class="price-item">
+        <span>Memory</span>
+        <span id="price-ram">+£6.00</span>
+      </div>
+      <div class="price-item">
+        <span>Disk Space</span>
+        <span id="price-storage">+£0.25</span>
+      </div>
+      <div class="price-item">
+        <span>CPU Cores</span>
+        <span id="price-cpu">+£5.00</span>
+      </div>
+      <div class="price-item">
+        <span>Location</span>
+        <span>£0.00</span>
+      </div>
+      <div class="price-item">
+        <span>Billing Interval</span>
+        <span>£0.00</span>
+      </div>
       <hr class="my-4 border-gray-600">
-      <h3 class="text-2xl font-semibold text-blue-400 flex justify-between">
-        <span>Total Price:</span>
-        <span>£<span id="total-price">17.24</span></span>
-      </h3>
+      <div class="price-item">
+        <span class="price-total">Total:</span>
+        <span id="total-price" class="price-total">£17.24</span>
+      </div>
+      <div class="text-center text-sm text-gray-400 mt-4">
+        OR £<span id="lifetime-price">111.05</span> LIFETIME (one-time)
+      </div>
     </div>
   </div>
 
@@ -138,10 +131,11 @@
     const ramValueEl = document.getElementById("ram-value");
     const storageValueEl = document.getElementById("storage-value");
     const cpuValueEl = document.getElementById("cpu-value");
-    const totalPriceEl = document.getElementById("total-price");
     const ramCostEl = document.getElementById("price-ram");
     const storageCostEl = document.getElementById("price-storage");
     const cpuCostEl = document.getElementById("price-cpu");
+    const totalPriceEl = document.getElementById("total-price");
+    const lifetimePriceEl = document.getElementById("lifetime-price");
 
     // Update sliders and price breakdown
     function calculateTotal() {
@@ -156,10 +150,11 @@
       const totalPrice = basePrice + ramCost + storageCost + cpuCost;
 
       // Update UI
-      totalPriceEl.textContent = totalPrice.toFixed(2);
-      ramCostEl.textContent = ramCost.toFixed(2);
-      storageCostEl.textContent = storageCost.toFixed(2);
-      cpuCostEl.textContent = cpuCost.toFixed(2);
+      ramCostEl.textContent = `+£${ramCost.toFixed(2)}`;
+      storageCostEl.textContent = `+£${storageCost.toFixed(2)}`;
+      cpuCostEl.textContent = `+£${cpuCost.toFixed(2)}`;
+      totalPriceEl.textContent = `£${totalPrice.toFixed(2)}`;
+      lifetimePriceEl.textContent = `${(totalPrice * 20).toFixed(2)}`; // Lifetime price is 20x monthly price
     }
 
     function updateValues() {
