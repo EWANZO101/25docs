@@ -11,32 +11,6 @@
       background-color: #0f172a; /* Dark blue theme */
       color: #ffffff;
     }
-    .sidebar {
-      background-color: #1e293b;
-      padding: 20px;
-      height: 100vh;
-      width: 250px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      overflow-y: auto;
-    }
-    .sidebar a {
-      display: block;
-      color: #94a3b8;
-      text-decoration: none;
-      padding: 10px;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-    .sidebar a:hover {
-      background-color: #334155;
-      color: #ffffff;
-    }
-    .content {
-      margin-left: 270px; /* Offset to make space for the sidebar */
-      padding: 20px;
-    }
     .configurator {
       background: #1e293b;
       padding: 20px;
@@ -67,81 +41,78 @@
     }
   </style>
 </head>
-<body>
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <h2 class="text-2xl font-bold text-center text-blue-400 mb-6">Configurator Menu</h2>
-    <a href="#ram-config">RAM Configuration</a>
-    <a href="#storage-config">Storage Configuration</a>
-    <a href="#cpu-config">CPU Configuration</a>
-    <a href="#os-config">Operating System</a>
-    <a href="#location-config">Server Location</a>
-    <a href="#pricing">Pricing</a>
-  </div>
+<body class="flex flex-col items-center justify-center min-h-screen p-4">
+  <header class="text-center mb-6">
+    <h1 class="text-3xl font-bold">Hosting Configurator</h1>
+    <p class="text-gray-400">Customize your server starting at £5.99</p>
+  </header>
 
-  <!-- Main Content -->
-  <div class="content">
-    <header class="text-center mb-6">
-      <h1 class="text-3xl font-bold">Hosting Configurator</h1>
-      <p class="text-gray-400">Customize your server starting at £5.99</p>
-    </header>
+  <div class="configurator w-full max-w-4xl p-6">
+    <h2 class="text-xl font-semibold mb-4">Server Configuration</h2>
 
-    <div class="configurator w-full max-w-4xl p-6">
-      <h2 class="text-xl font-semibold mb-4">Server Configuration</h2>
+    <!-- RAM Slider -->
+    <div class="mb-6" id="ram-config">
+      <label for="ram" class="block mb-2 font-medium">RAM (GB): <span id="ram-value">4</span> GB</label>
+      <input type="range" id="ram" class="slider-track slider-thumb" min="4" max="20" step="2" value="4">
+      <p class="text-sm text-gray-400 mt-1">Cost: £<span id="ram-cost">6.00</span></p>
+    </div>
 
-      <!-- RAM Slider -->
-      <div class="mb-6" id="ram-config">
-        <label for="ram" class="block mb-2 font-medium">RAM (GB): <span id="ram-value">4</span> GB</label>
-        <input type="range" id="ram" class="slider-track slider-thumb" min="4" max="20" step="2" value="4">
-      </div>
+    <!-- Storage Slider -->
+    <div class="mb-6" id="storage-config">
+      <label for="storage" class="block mb-2 font-medium">Storage (GB): <span id="storage-value">50</span> GB</label>
+      <input type="range" id="storage" class="slider-track slider-thumb" min="50" max="2000" step="50" value="50">
+      <p class="text-sm text-gray-400 mt-1">Cost: £<span id="storage-cost">0.25</span></p>
+    </div>
 
-      <!-- Storage Slider -->
-      <div class="mb-6" id="storage-config">
-        <label for="storage" class="block mb-2 font-medium">Storage (GB): <span id="storage-value">50</span> GB</label>
-        <input type="range" id="storage" class="slider-track slider-thumb" min="50" max="2000" step="50" value="50">
-      </div>
+    <!-- CPU Cores Slider -->
+    <div class="mb-6" id="cpu-config">
+      <label for="cpu" class="block mb-2 font-medium">CPU Cores: <span id="cpu-value">2</span> Cores</label>
+      <input type="range" id="cpu" class="slider-track slider-thumb" min="2" max="8" step="1" value="2">
+      <p class="text-sm text-gray-400 mt-1">Cost: £<span id="cpu-cost">5.00</span></p>
+    </div>
 
-      <!-- CPU Cores Slider -->
-      <div class="mb-6" id="cpu-config">
-        <label for="cpu" class="block mb-2 font-medium">CPU Cores: <span id="cpu-value">2</span> Cores</label>
-        <input type="range" id="cpu" class="slider-track slider-thumb" min="2" max="8" step="1" value="2">
-      </div>
+    <!-- Operating System -->
+    <div class="mb-6" id="os-config">
+      <label for="os" class="block mb-2 font-medium">Select Operating System:</label>
+      <select id="os" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
+        <option value="linux">Linux (Default)</option>
+        <option value="ubuntu">Ubuntu</option>
+        <option value="windows">Windows Server</option>
+      </select>
+    </div>
 
-      <!-- Operating System -->
-      <div class="mb-6" id="os-config">
-        <label for="os" class="block mb-2 font-medium">Select Operating System:</label>
-        <select id="os" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-          <option value="linux">Linux (Default)</option>
-          <option value="ubuntu">Ubuntu</option>
-          <option value="windows">Windows Server</option>
-        </select>
-      </div>
+    <!-- Server Location -->
+    <div class="mb-6" id="location-config">
+      <label for="location" class="block mb-2 font-medium">Server Location:</label>
+      <select id="location" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
+        <option value="us">USA (Coming Soon)</option>
+        <option value="eu">Europe (Coming Soon)</option>
+        <option value="asia">Asia (Coming Soon)</option>
+        <option value="uk">United Kingdom</option>
+        <option value="sa">South Africa (Coming Soon)</option>
+        <option value="au">Australia (Coming Soon)</option>
+      </select>
+    </div>
 
-      <!-- Server Location -->
-      <div class="mb-6" id="location-config">
-        <label for="location" class="block mb-2 font-medium">Server Location:</label>
-        <select id="location" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-          <option value="us">USA (Coming Soon)</option>
-          <option value="eu">Europe (Coming Soon)</option>
-          <option value="asia">Asia (Coming Soon)</option>
-          <option value="uk">United Kingdom</option>
-          <option value="sa">South Africa (Coming Soon)</option>
-          <option value="au">Australia (Coming Soon)</option>
-        </select>
-      </div>
-
-      <!-- Total Price -->
-      <div class="text-center" id="pricing">
-        <h2 class="text-2xl font-semibold text-blue-400">Total Price: £<span id="total-price">5.99</span></h2>
-      </div>
+    <!-- Price Breakdown -->
+    <div class="mt-8 p-4 bg-gray-800 rounded-lg">
+      <h3 class="text-lg font-semibold text-blue-400 mb-4">Price Breakdown</h3>
+      <ul>
+        <li class="mb-2">Base Price: £5.99</li>
+        <li class="mb-2">RAM Cost: £<span id="price-ram">6.00</span></li>
+        <li class="mb-2">Storage Cost: £<span id="price-storage">0.25</span></li>
+        <li class="mb-2">CPU Cost: £<span id="price-cpu">5.00</span></li>
+      </ul>
+      <hr class="my-4 border-gray-600">
+      <h3 class="text-2xl font-semibold text-blue-400">Total Price: £<span id="total-price">17.24</span></h3>
     </div>
   </div>
 
   <script>
     const basePrice = 5.99; // Fixed base price
-    const ramPricePerGB = 1.50; // Updated price per GB of RAM
-    const corePricePerCore = 2.50; // Updated price per CPU core
-    const storagePricePerGB = 0.005; // Updated price per GB of storage
+    const ramPricePerGB = 1.50; // Price per GB of RAM
+    const corePricePerCore = 2.50; // Price per CPU core
+    const storagePricePerGB = 0.005; // Price per GB of storage
 
     // Inputs
     const ramSlider = document.getElementById("ram");
@@ -153,21 +124,27 @@
     const storageValueEl = document.getElementById("storage-value");
     const cpuValueEl = document.getElementById("cpu-value");
     const totalPriceEl = document.getElementById("total-price");
+    const ramCostEl = document.getElementById("price-ram");
+    const storageCostEl = document.getElementById("price-storage");
+    const cpuCostEl = document.getElementById("price-cpu");
 
-    // Update sliders and total price
+    // Update sliders and price breakdown
     function calculateTotal() {
       const ramValue = parseInt(ramSlider.value, 10);
       const storageValue = parseInt(storageSlider.value, 10);
       const cpuValue = parseInt(cpuSlider.value, 10);
 
       // Calculate prices
-      const ramPrice = ramValue * ramPricePerGB;
-      const storagePrice = storageValue * storagePricePerGB;
-      const cpuPrice = cpuValue * corePricePerCore;
-      const totalPrice = basePrice + ramPrice + storagePrice + cpuPrice;
+      const ramCost = ramValue * ramPricePerGB;
+      const storageCost = storageValue * storagePricePerGB;
+      const cpuCost = cpuValue * corePricePerCore;
+      const totalPrice = basePrice + ramCost + storageCost + cpuCost;
 
-      // Update total price element
+      // Update UI
       totalPriceEl.textContent = totalPrice.toFixed(2);
+      ramCostEl.textContent = ramCost.toFixed(2);
+      storageCostEl.textContent = storageCost.toFixed(2);
+      cpuCostEl.textContent = cpuCost.toFixed(2);
     }
 
     function updateValues() {
@@ -176,7 +153,7 @@
       storageValueEl.textContent = storageSlider.value;
       cpuValueEl.textContent = cpuSlider.value;
 
-      // Recalculate total price
+      // Recalculate and update prices
       calculateTotal();
     }
 
