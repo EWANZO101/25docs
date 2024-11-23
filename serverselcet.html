@@ -133,6 +133,10 @@
           <span>CPU Cost:</span>
           <span>£<span id="price-cpu">5.00</span></span>
         </li>
+        <li class="mb-4 flex justify-between">
+          <span>Discount/Fee:</span>
+          <span id="discount-fee">£0.00</span>
+        </li>
       </ul>
       <hr class="my-4 border-gray-600">
       <h3 class="text-2xl font-semibold text-blue-400 flex justify-between">
@@ -163,6 +167,7 @@
     const ramCostEl = document.getElementById("price-ram");
     const storageCostEl = document.getElementById("price-storage");
     const cpuCostEl = document.getElementById("price-cpu");
+    const discountFeeEl = document.getElementById("discount-fee");
 
     // Update sliders and price breakdown
     function calculateTotal() {
@@ -177,17 +182,21 @@
       const storageCost = storageValue * storagePricePerGB;
       const cpuCost = cpuValue * corePricePerCore;
       let totalPrice = basePrice + ramCost + storageCost + cpuCost;
+      let discountFee = 0;
 
       // Apply billing interval discount
       if (billingInterval === 6) {
         totalPrice *= 0.95; // 5% discount for 6 months
+        discountFee = '£-5.00'; // Example of a discount
       } else if (billingInterval === 12) {
         totalPrice *= 0.90; // 10% discount for 1 year
+        discountFee = '£-10.00'; // Example of a discount
       }
 
       // Apply settlement type fee
       if (settlementType === "prepaid") {
         totalPrice *= 1.08; // 8% increase for prepaid
+        discountFee = '£+8% Fee';
       }
 
       // Update UI
@@ -195,6 +204,7 @@
       ramCostEl.textContent = ramCost.toFixed(2);
       storageCostEl.textContent = storageCost.toFixed(2);
       cpuCostEl.textContent = cpuCost.toFixed(2);
+      discountFeeEl.textContent = discountFee;
     }
 
     function updateValues() {
