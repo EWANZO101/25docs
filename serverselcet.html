@@ -47,64 +47,79 @@
     <p class="text-gray-400">Customize your server starting at £5.99</p>
   </header>
 
-  <div class="configurator w-full max-w-4xl p-6">
-    <h2 class="text-xl font-semibold mb-4">Server Configuration</h2>
+  <div class="w-full max-w-6xl grid grid-cols-3 gap-6">
+    <!-- Left Side: Configurator -->
+    <div class="configurator col-span-2 p-6">
+      <h2 class="text-xl font-semibold mb-4">Server Configuration</h2>
 
-    <!-- RAM Slider -->
-    <div class="mb-6" id="ram-config">
-      <label for="ram" class="block mb-2 font-medium">RAM (GB): <span id="ram-value">4</span> GB</label>
-      <input type="range" id="ram" class="slider-track slider-thumb" min="4" max="20" step="2" value="4">
-      <p class="text-sm text-gray-400 mt-1">Cost: £<span id="ram-cost">6.00</span></p>
+      <!-- RAM Slider -->
+      <div class="mb-6" id="ram-config">
+        <label for="ram" class="block mb-2 font-medium">RAM (GB): <span id="ram-value">4</span> GB</label>
+        <input type="range" id="ram" class="slider-track slider-thumb" min="4" max="20" step="2" value="4">
+      </div>
+
+      <!-- Storage Slider -->
+      <div class="mb-6" id="storage-config">
+        <label for="storage" class="block mb-2 font-medium">Storage (GB): <span id="storage-value">50</span> GB</label>
+        <input type="range" id="storage" class="slider-track slider-thumb" min="50" max="2000" step="50" value="50">
+      </div>
+
+      <!-- CPU Cores Slider -->
+      <div class="mb-6" id="cpu-config">
+        <label for="cpu" class="block mb-2 font-medium">CPU Cores: <span id="cpu-value">2</span> Cores</label>
+        <input type="range" id="cpu" class="slider-track slider-thumb" min="2" max="8" step="1" value="2">
+      </div>
+
+      <!-- Operating System -->
+      <div class="mb-6" id="os-config">
+        <label for="os" class="block mb-2 font-medium">Select Operating System:</label>
+        <select id="os" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
+          <option value="linux">Linux (Default)</option>
+          <option value="ubuntu">Ubuntu</option>
+          <option value="windows">Windows Server</option>
+        </select>
+      </div>
+
+      <!-- Server Location -->
+      <div class="mb-6" id="location-config">
+        <label for="location" class="block mb-2 font-medium">Server Location:</label>
+        <select id="location" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
+          <option value="us">USA (Coming Soon)</option>
+          <option value="eu">Europe (Coming Soon)</option>
+          <option value="asia">Asia (Coming Soon)</option>
+          <option value="uk">United Kingdom</option>
+          <option value="sa">South Africa (Coming Soon)</option>
+          <option value="au">Australia (Coming Soon)</option>
+        </select>
+      </div>
     </div>
 
-    <!-- Storage Slider -->
-    <div class="mb-6" id="storage-config">
-      <label for="storage" class="block mb-2 font-medium">Storage (GB): <span id="storage-value">50</span> GB</label>
-      <input type="range" id="storage" class="slider-track slider-thumb" min="50" max="2000" step="50" value="50">
-      <p class="text-sm text-gray-400 mt-1">Cost: £<span id="storage-cost">0.25</span></p>
-    </div>
-
-    <!-- CPU Cores Slider -->
-    <div class="mb-6" id="cpu-config">
-      <label for="cpu" class="block mb-2 font-medium">CPU Cores: <span id="cpu-value">2</span> Cores</label>
-      <input type="range" id="cpu" class="slider-track slider-thumb" min="2" max="8" step="1" value="2">
-      <p class="text-sm text-gray-400 mt-1">Cost: £<span id="cpu-cost">5.00</span></p>
-    </div>
-
-    <!-- Operating System -->
-    <div class="mb-6" id="os-config">
-      <label for="os" class="block mb-2 font-medium">Select Operating System:</label>
-      <select id="os" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-        <option value="linux">Linux (Default)</option>
-        <option value="ubuntu">Ubuntu</option>
-        <option value="windows">Windows Server</option>
-      </select>
-    </div>
-
-    <!-- Server Location -->
-    <div class="mb-6" id="location-config">
-      <label for="location" class="block mb-2 font-medium">Server Location:</label>
-      <select id="location" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-        <option value="us">USA (Coming Soon)</option>
-        <option value="eu">Europe (Coming Soon)</option>
-        <option value="asia">Asia (Coming Soon)</option>
-        <option value="uk">United Kingdom</option>
-        <option value="sa">South Africa (Coming Soon)</option>
-        <option value="au">Australia (Coming Soon)</option>
-      </select>
-    </div>
-
-    <!-- Price Breakdown -->
-    <div class="mt-8 p-4 bg-gray-800 rounded-lg">
-      <h3 class="text-lg font-semibold text-blue-400 mb-4">Price Breakdown</h3>
+    <!-- Right Side: Price Breakdown -->
+    <div class="configurator p-6">
+      <h3 class="text-xl font-semibold mb-4 text-blue-400">Price Breakdown</h3>
       <ul>
-        <li class="mb-2">Base Price: £5.99</li>
-        <li class="mb-2">RAM Cost: £<span id="price-ram">6.00</span></li>
-        <li class="mb-2">Storage Cost: £<span id="price-storage">0.25</span></li>
-        <li class="mb-2">CPU Cost: £<span id="price-cpu">5.00</span></li>
+        <li class="mb-4 flex justify-between">
+          <span>Base Price:</span>
+          <span>£5.99</span>
+        </li>
+        <li class="mb-4 flex justify-between">
+          <span>RAM Cost:</span>
+          <span>£<span id="price-ram">6.00</span></span>
+        </li>
+        <li class="mb-4 flex justify-between">
+          <span>Storage Cost:</span>
+          <span>£<span id="price-storage">0.25</span></span>
+        </li>
+        <li class="mb-4 flex justify-between">
+          <span>CPU Cost:</span>
+          <span>£<span id="price-cpu">5.00</span></span>
+        </li>
       </ul>
       <hr class="my-4 border-gray-600">
-      <h3 class="text-2xl font-semibold text-blue-400">Total Price: £<span id="total-price">17.24</span></h3>
+      <h3 class="text-2xl font-semibold text-blue-400 flex justify-between">
+        <span>Total Price:</span>
+        <span>£<span id="total-price">17.24</span></span>
+      </h3>
     </div>
   </div>
 
