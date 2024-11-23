@@ -48,9 +48,9 @@
     <p class="text-gray-400">Customize your server starting at £5.99</p>
   </header>
 
-  <div class="w-full max-w-6xl grid grid-cols-2 gap-6">
+  <div class="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 gap-6">
     <!-- Left Side: Configurator Section -->
-    <div class="col-span-1">
+    <div class="col-span-1 sm:col-span-1">
       <!-- Sliders Box -->
       <div class="box">
         <h2 class="text-xl font-semibold mb-4">Server Configuration</h2>
@@ -71,6 +71,50 @@
         <div class="mb-6">
           <label for="cpu" class="block mb-2 font-medium">CPU Cores: <span id="cpu-value">2</span> Cores</label>
           <input type="range" id="cpu" class="slider-track slider-thumb" min="2" max="8" step="1" value="2">
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side: Dropdowns and Price Breakdown Section -->
+    <div class="col-span-1 sm:col-span-1">
+      <div class="box">
+        <h3 class="text-xl font-semibold mb-4 text-blue-400">Server Options</h3>
+
+        <!-- Dropdowns Box -->
+        <div class="mb-6">
+          <!-- Operating System -->
+          <label for="os" class="block mb-2 font-medium">Select Operating System:</label>
+          <select id="os" class="w-full p-3 bg-gray-700 border border-gray-600 rounded mb-4">
+            <option value="linux">Linux</option>
+            <option value="ubuntu">Ubuntu</option>
+            <option value="windows">Windows Server</option>
+          </select>
+
+          <!-- Server Location -->
+          <label for="location" class="block mb-2 font-medium">Server Location:</label>
+          <select id="location" class="w-full p-3 bg-gray-700 border border-gray-600 rounded mb-4">
+            <option value="us">USA</option>
+            <option value="eu">Europe</option>
+            <option value="asia">Asia</option>
+            <option value="uk">United Kingdom</option>
+            <option value="sa">South Africa</option>
+            <option value="au">Australia</option>
+          </select>
+
+          <!-- Billing Interval -->
+          <label for="billing-interval" class="block mb-2 font-medium">Billing Interval:</label>
+          <select id="billing-interval" class="w-full p-3 bg-gray-700 border border-gray-600 rounded mb-4">
+            <option value="1">1 Month / 30 Days</option>
+            <option value="6">6 Months / 180 Days (5% Discount)</option>
+            <option value="12">1 Year / 365 Days (10% Discount)</option>
+          </select>
+
+          <!-- Settlement Type -->
+          <label for="settlement-type" class="block mb-2 font-medium">Settlement Type:</label>
+          <select id="settlement-type" class="w-full p-3 bg-gray-700 border border-gray-600 rounded mb-4">
+            <option value="contract">Contract</option>
+            <option value="prepaid">Prepaid (+8% Fee)</option>
+          </select>
         </div>
       </div>
 
@@ -116,56 +160,6 @@
           <span>Total Price:</span>
           <span>£<span id="total-price">17.24</span></span>
         </h3>
-      </div>
-    </div>
-
-    <!-- Right Side: Dropdowns Section -->
-    <div class="col-span-1">
-      <!-- Dropdowns Box -->
-      <div class="box">
-        <h3 class="text-xl font-semibold mb-4 text-blue-400">Server Options</h3>
-
-        <!-- Operating System -->
-        <div class="mb-6">
-          <label for="os" class="block mb-2 font-medium">Select Operating System:</label>
-          <select id="os" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-            <option value="linux">Linux</option>
-            <option value="ubuntu">Ubuntu</option>
-            <option value="windows">Windows Server</option>
-          </select>
-        </div>
-
-        <!-- Server Location -->
-        <div class="mb-6">
-          <label for="location" class="block mb-2 font-medium">Server Location:</label>
-          <select id="location" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-            <option value="us">USA</option>
-            <option value="eu">Europe</option>
-            <option value="asia">Asia</option>
-            <option value="uk">United Kingdom</option>
-            <option value="sa">South Africa</option>
-            <option value="au">Australia</option>
-          </select>
-        </div>
-
-        <!-- Billing Interval -->
-        <div class="mb-6">
-          <label for="billing-interval" class="block mb-2 font-medium">Billing Interval:</label>
-          <select id="billing-interval" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-            <option value="1">1 Month / 30 Days</option>
-            <option value="6">6 Months / 180 Days (5% Discount)</option>
-            <option value="12">1 Year / 365 Days (10% Discount)</option>
-          </select>
-        </div>
-
-        <!-- Settlement Type -->
-        <div class="mb-6">
-          <label for="settlement-type" class="block mb-2 font-medium">Settlement Type:</label>
-          <select id="settlement-type" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-            <option value="contract">Contract</option>
-            <option value="prepaid">Prepaid (+8% Fee)</option>
-          </select>
-        </div>
       </div>
     </div>
   </div>
