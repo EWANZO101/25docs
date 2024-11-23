@@ -223,7 +223,7 @@
       cpuCostEl.textContent = cpuCost.toFixed(2);
       billingIntervalDisplay.textContent = billingInterval === 6 ? "6 Months / 180 Days" : billingInterval === 12 ? "1 Year / 365 Days" : "1 Month / 30 Days";
       settlementTypeDisplay.textContent = settlementType === "prepaid" ? "Prepaid" : "Contract";
-      osDisplay.textContent = osDropdown.value.charAt(0).toUpperCase() + osDropdown.value.slice(1);
+      osDisplay.textContent = osDropdown.value.charAt(0).toUpperCase() + osDropdown.value.slice(1)
       locationDisplay.textContent = locationDropdown.value.toUpperCase();
     }
 
