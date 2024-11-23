@@ -41,8 +41,8 @@
       margin: 10px 0;
     }
     .images {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
       margin-top: 20px;
     }
@@ -51,6 +51,7 @@
       height: auto;
       border: 1px solid #333;
       border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     footer {
       text-align: center;
@@ -103,8 +104,8 @@
     <h2>Screenshots</h2>
     <div class="images">
       <!-- Integrated image links -->
-      <img src="pics/Screenshot-2024-11-23-000554.png" alt="Public Hostname Configuration">
-      <img src="pics/Screenshot-2024-11-23-001030.png" alt="SnailyCAD Live Map Configuration">
+      <img src="pics/Screenshot-2024-11-23-000554.png" alt="Public Hostname Configuration" title="Public Hostname Configuration">
+      <img src="pics/Screenshot-2024-11-23-001030.png" alt="SnailyCAD Live Map Configuration" title="SnailyCAD Live Map Configuration">
     </div>
   </div>
   <footer>
