@@ -89,6 +89,11 @@
       gap: 20px;
       align-items: flex-start;
     }
+    .full-height {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
     @media (max-width: 768px) {
       .grid-layout {
         grid-template-columns: 1fr;
@@ -107,7 +112,7 @@
     <!-- Main Content Section -->
     <div class="grid-layout">
       <!-- Left Section: Server Configuration -->
-      <div class="box">
+      <div class="box full-height">
         <h2 class="section-header">Server Configuration</h2>
 
         <!-- RAM Slider -->
@@ -130,7 +135,7 @@
       </div>
 
       <!-- Right Section: Price Breakdown -->
-      <div class="box">
+      <div class="box full-height">
         <h3 class="section-header text-xl">Price Breakdown</h3>
         <div class="section-content">
           <div class="flex justify-between mb-4">
