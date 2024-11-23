@@ -134,6 +134,14 @@
           <span>£<span id="price-cpu">5.00</span></span>
         </li>
         <li class="mb-4 flex justify-between">
+          <span>Billing Interval:</span>
+          <span id="billing-interval-display">1 Month / 30 Days</span>
+        </li>
+        <li class="mb-4 flex justify-between">
+          <span>Settlement Type:</span>
+          <span id="settlement-type-display">Contract</span>
+        </li>
+        <li class="mb-4 flex justify-between">
           <span>Discount/Fee:</span>
           <span id="discount-fee">£0.00</span>
         </li>
@@ -168,29 +176,31 @@
     const storageCostEl = document.getElementById("price-storage");
     const cpuCostEl = document.getElementById("price-cpu");
     const discountFeeEl = document.getElementById("discount-fee");
+    const billingIntervalDisplay = document.getElementById("billing-interval-display");
+    const settlementTypeDisplay = document.getElementById("settlement-type-display");
 
     // Update sliders and price breakdown
     function calculateTotal() {
-      const ramValue = parseInt(ramSlider.value, 10);
-      const storageValue = parseInt(storageSlider.value, 10);
-      const cpuValue = parseInt(cpuSlider.value, 10);
-      const billingInterval = parseInt(billingIntervalDropdown.value, 10);
+      const ramAmount = parseInt(ramSlider.value);
+      const storageAmount = parseInt(storageSlider.value);
+      const cpuAmount = parseInt(cpuSlider.value);
+      const billingInterval = parseInt(billingIntervalDropdown.value);
       const settlementType = settlementTypeDropdown.value;
 
-      // Calculate initial prices
-      const ramCost = ramValue * ramPricePerGB;
-      const storageCost = storageValue * storagePricePerGB;
-      const cpuCost = cpuValue * corePricePerCore;
+      // Calculate costs
+      const ramCost = ramAmount * ramPricePerGB;
+      const storageCost = storageAmount * storagePricePerGB;
+      const cpuCost = cpuAmount * corePricePerCore;
       let totalPrice = basePrice + ramCost + storageCost + cpuCost;
-      let discountFee = 0;
+      let discountFee = "£0.00";
 
       // Apply billing interval discount
       if (billingInterval === 6) {
         totalPrice *= 0.95; // 5% discount for 6 months
-        discountFee = '£-5.00'; // Example of a discount
+        discountFee = '£-5.00';
       } else if (billingInterval === 12) {
         totalPrice *= 0.90; // 10% discount for 1 year
-        discountFee = '£-10.00'; // Example of a discount
+        discountFee = '£-10.00';
       }
 
       // Apply settlement type fee
@@ -205,6 +215,8 @@
       storageCostEl.textContent = storageCost.toFixed(2);
       cpuCostEl.textContent = cpuCost.toFixed(2);
       discountFeeEl.textContent = discountFee;
+      billingIntervalDisplay.textContent = billingInterval === 6 ? "6 Months / 180 Days" : billingInterval === 12 ? "1 Year / 365 Days" : "1 Month / 30 Days";
+      settlementTypeDisplay.textContent = settlementType === "prepaid" ? "Prepaid" : "Contract";
     }
 
     function updateValues() {
