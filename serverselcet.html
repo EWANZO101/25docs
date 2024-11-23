@@ -39,11 +39,6 @@
       width: 100%;
       background: transparent;
     }
-    .divider {
-      border-left: 2px solid #334155;
-      height: 100%;
-      margin: 0 20px;
-    }
   </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen p-4">
@@ -53,7 +48,7 @@
   </header>
 
   <div class="w-full max-w-6xl grid grid-cols-3 gap-6">
-    <!-- Left Side: Configurator -->
+    <!-- Left Side: Sliders Section -->
     <div class="configurator col-span-2 p-6">
       <h2 class="text-xl font-semibold mb-4">Server Configuration</h2>
 
@@ -74,9 +69,11 @@
         <label for="cpu" class="block mb-2 font-medium">CPU Cores: <span id="cpu-value">2</span> Cores</label>
         <input type="range" id="cpu" class="slider-track slider-thumb" min="2" max="8" step="1" value="2">
       </div>
-      
-      <!-- Divider -->
-      <div class="divider"></div>
+    </div>
+
+    <!-- Right Side: Dropdowns Section -->
+    <div class="configurator p-6">
+      <h3 class="text-xl font-semibold mb-4 text-blue-400">Server Options</h3>
 
       <!-- Operating System -->
       <div class="mb-6">
@@ -120,8 +117,10 @@
         </select>
       </div>
     </div>
+  </div>
 
-    <!-- Right Side: Price Breakdown -->
+  <div class="w-full max-w-6xl grid grid-cols-3 gap-6">
+    <!-- Price Breakdown -->
     <div class="configurator p-6">
       <h3 class="text-xl font-semibold mb-4 text-blue-400">Price Breakdown</h3>
       <ul>
