@@ -96,6 +96,36 @@
     </div>
   </section>
 
+  <!-- Services Section -->
+  <section id="services" class="py-16 bg-gray-900">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold text-white mb-8">Our Services</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col justify-between h-full transform hover:scale-105 transition">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-4">SnailyCAD Hosting</h3>
+            <p class="text-gray-300">Expert hosting solutions for roleplay communities, with 99.9% uptime and 24/7 support.</p>
+          </div>
+          <a href="https://www.swiftpeakhosting.co.uk/snailyinfo" class="custom-button mt-6 self-start">Go to Checkout</a>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col justify-between h-full transform hover:scale-105 transition">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-4">Domain Purchase</h3>
+            <p class="text-gray-300">Secure your domain for your hosting needs.</p>
+          </div>
+          <a href="https://buy.stripe.com/8wM00TaCjenleB26ou" class="custom-button mt-6 self-start">Learn More</a>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col justify-between h-full transform hover:scale-105 transition">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-4">VPS/VDS Hosting</h3>
+            <p class="text-gray-300">High-performance servers tailored for your business.</p>
+          </div>
+          <a href="VPS.html" class="custom-button mt-6 self-start">Explore Plans</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="bg-gray-800 py-6">
     <div class="container mx-auto text-center">
@@ -109,13 +139,12 @@
   </footer>
 
   <script>
-    // Toggle dropdown menu visibility
+    // Dropdown menu toggle
     document.getElementById('userMenuButton').addEventListener('click', () => {
       const menu = document.getElementById('userMenu');
       menu.classList.toggle('hidden');
     });
 
-    // Close the dropdown menu when clicking outside
     document.addEventListener('click', (event) => {
       const menu = document.getElementById('userMenu');
       const button = document.getElementById('userMenuButton');
@@ -124,12 +153,10 @@
       }
     });
 
-    // Close announcement
     document.getElementById('closeAnnouncement').addEventListener('click', function () {
       document.getElementById('serviceAnnouncement').style.display = 'none';
     });
 
-    // Auto-hide announcement after 30 seconds
     setTimeout(() => {
       document.getElementById('serviceAnnouncement').style.display = 'none';
     }, 30000);
