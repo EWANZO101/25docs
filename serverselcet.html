@@ -53,48 +53,25 @@
       <h2 class="text-xl font-semibold mb-4">Server Configuration</h2>
 
       <!-- RAM Slider -->
-      <div class="mb-6" id="ram-config">
+      <div class="mb-6">
         <label for="ram" class="block mb-2 font-medium">RAM (GB): <span id="ram-value">4</span> GB</label>
         <input type="range" id="ram" class="slider-track slider-thumb" min="4" max="20" step="2" value="4">
       </div>
 
       <!-- Storage Slider -->
-      <div class="mb-6" id="storage-config">
+      <div class="mb-6">
         <label for="storage" class="block mb-2 font-medium">Storage (GB): <span id="storage-value">50</span> GB</label>
         <input type="range" id="storage" class="slider-track slider-thumb" min="50" max="2000" step="50" value="50">
       </div>
 
       <!-- CPU Cores Slider -->
-      <div class="mb-6" id="cpu-config">
+      <div class="mb-6">
         <label for="cpu" class="block mb-2 font-medium">CPU Cores: <span id="cpu-value">2</span> Cores</label>
         <input type="range" id="cpu" class="slider-track slider-thumb" min="2" max="8" step="1" value="2">
       </div>
 
-      <!-- Operating System -->
-      <div class="mb-6" id="os-config">
-        <label for="os" class="block mb-2 font-medium">Select Operating System:</label>
-        <select id="os" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-          <option value="linux">Linux (Default)</option>
-          <option value="ubuntu">Ubuntu</option>
-          <option value="windows">Windows Server</option>
-        </select>
-      </div>
-
-      <!-- Server Location -->
-      <div class="mb-6" id="location-config">
-        <label for="location" class="block mb-2 font-medium">Server Location:</label>
-        <select id="location" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
-          <option value="us">USA (Coming Soon)</option>
-          <option value="eu">Europe (Coming Soon)</option>
-          <option value="asia">Asia (Coming Soon)</option>
-          <option value="uk">United Kingdom</option>
-          <option value="sa">South Africa (Coming Soon)</option>
-          <option value="au">Australia (Coming Soon)</option>
-        </select>
-      </div>
-
       <!-- Billing Interval -->
-      <div class="mb-6" id="billing-interval-config">
+      <div class="mb-6">
         <label for="billing-interval" class="block mb-2 font-medium">Billing Interval:</label>
         <select id="billing-interval" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
           <option value="1">1 Month / 30 Days</option>
@@ -104,7 +81,7 @@
       </div>
 
       <!-- Settlement Type -->
-      <div class="mb-6" id="settlement-type-config">
+      <div class="mb-6">
         <label for="settlement-type" class="block mb-2 font-medium">Settlement Type:</label>
         <select id="settlement-type" class="w-full p-3 bg-gray-700 border border-gray-600 rounded">
           <option value="contract">Contract</option>
@@ -141,7 +118,7 @@
           <span>Settlement Type:</span>
           <span id="settlement-type-display">Contract</span>
         </li>
-       
+      </ul>
       <hr class="my-4 border-gray-600">
       <h3 class="text-2xl font-semibold text-blue-400 flex justify-between">
         <span>Total Price:</span>
@@ -151,19 +128,17 @@
   </div>
 
   <script>
-    const basePrice = 5.99; // Fixed base price
+    const basePrice = 5.99; // Base price
     const ramPricePerGB = 1.50; // Price per GB of RAM
     const corePricePerCore = 2.50; // Price per CPU core
     const storagePricePerGB = 0.005; // Price per GB of storage
 
-    // Inputs
+    // Element references
     const ramSlider = document.getElementById("ram");
     const storageSlider = document.getElementById("storage");
     const cpuSlider = document.getElementById("cpu");
     const billingIntervalDropdown = document.getElementById("billing-interval");
     const settlementTypeDropdown = document.getElementById("settlement-type");
-
-    // Display Elements
     const ramValueEl = document.getElementById("ram-value");
     const storageValueEl = document.getElementById("storage-value");
     const cpuValueEl = document.getElementById("cpu-value");
@@ -171,66 +146,55 @@
     const ramCostEl = document.getElementById("price-ram");
     const storageCostEl = document.getElementById("price-storage");
     const cpuCostEl = document.getElementById("price-cpu");
-    const discountFeeEl = document.getElementById("discount-fee");
     const billingIntervalDisplay = document.getElementById("billing-interval-display");
     const settlementTypeDisplay = document.getElementById("settlement-type-display");
 
-    // Update sliders and price breakdown
     function calculateTotal() {
-      const ramAmount = parseInt(ramSlider.value);
-      const storageAmount = parseInt(storageSlider.value);
-      const cpuAmount = parseInt(cpuSlider.value);
+      const ram = parseInt(ramSlider.value);
+      const storage = parseInt(storageSlider.value);
+      const cpu = parseInt(cpuSlider.value);
       const billingInterval = parseInt(billingIntervalDropdown.value);
       const settlementType = settlementTypeDropdown.value;
 
-      // Calculate costs
-      const ramCost = ramAmount * ramPricePerGB;
-      const storageCost = storageAmount * storagePricePerGB;
-      const cpuCost = cpuAmount * corePricePerCore;
-      let totalPrice = basePrice + ramCost + storageCost + cpuCost;
-      let discountFee = "£0.00";
+      // Calculate individual costs
+      const ramCost = ram * ramPricePerGB;
+      const storageCost = storage * storagePricePerGB;
+      const cpuCost = cpu * corePricePerCore;
 
-      // Apply billing interval discount
-      if (billingInterval === 6) {
-        totalPrice *= 0.95; // 5% discount for 6 months
-        discountFee = '£-5.00';
-      } else if (billingInterval === 12) {
-        totalPrice *= 0.90; // 10% discount for 1 year
-        discountFee = '£-10.00';
-      }
-
-      // Apply settlement type fee
-      if (settlementType === "prepaid") {
-        totalPrice *= 1.08; // 8% increase for prepaid
-        discountFee = '£+8% Fee';
-      }
+      // Calculate total
+      let total = basePrice + ramCost + storageCost + cpuCost;
+      if (billingInterval === 6) total *= 0.95; // 5% discount
+      if (billingInterval === 12) total *= 0.90; // 10% discount
+      if (settlementType === "prepaid") total *= 1.08; // 8% surcharge
 
       // Update UI
-      totalPriceEl.textContent = totalPrice.toFixed(2);
       ramCostEl.textContent = ramCost.toFixed(2);
       storageCostEl.textContent = storageCost.toFixed(2);
       cpuCostEl.textContent = cpuCost.toFixed(2);
-      discountFeeEl.textContent = discountFee;
       billingIntervalDisplay.textContent = billingInterval === 6 ? "6 Months / 180 Days" : billingInterval === 12 ? "1 Year / 365 Days" : "1 Month / 30 Days";
       settlementTypeDisplay.textContent = settlementType === "prepaid" ? "Prepaid" : "Contract";
+      totalPriceEl.textContent = total.toFixed(2);
     }
 
-    function updateValues() {
+    ramSlider.addEventListener("input", () => {
       ramValueEl.textContent = ramSlider.value;
+      calculateTotal();
+    });
+
+    storageSlider.addEventListener("input", () => {
       storageValueEl.textContent = storageSlider.value;
+      calculateTotal();
+    });
+
+    cpuSlider.addEventListener("input", () => {
       cpuValueEl.textContent = cpuSlider.value;
       calculateTotal();
-    }
+    });
 
-    // Event Listeners
-    ramSlider.addEventListener("input", updateValues);
-    storageSlider.addEventListener("input", updateValues);
-    cpuSlider.addEventListener("input", updateValues);
     billingIntervalDropdown.addEventListener("change", calculateTotal);
     settlementTypeDropdown.addEventListener("change", calculateTotal);
 
-    // Initialize
-    updateValues();
+    calculateTotal(); // Initial calculation
   </script>
 </body>
 </html>
