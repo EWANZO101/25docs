@@ -51,7 +51,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.6/flowbite.bundle.min.js"></script>
     <script>
-        // Function to check if the URL is reachable
+        // Function to check if the specific page is reachable
         function checkURL(url) {
             fetch(url, {
                 method: 'HEAD', // Use HEAD method to just check the headers, not download the whole page
@@ -59,15 +59,15 @@
             })
             .then(response => {
                 if (response.ok) {
-                    console.log("URL is reachable");
+                    console.log("Page is reachable");
                     redirectUser();
                 } else {
-                    console.log("URL not reachable, redirecting...");
+                    console.log("Page not reachable, redirecting to downtime...");
                     window.location.href = "https://www.swiftpeakhosting.co.uk/downtime"; // Redirect to downtime page
                 }
             })
             .catch(() => {
-                console.log("No response from the server, redirecting...");
+                console.log("No response from the server, redirecting to downtime...");
                 window.location.href = "https://www.swiftpeakhosting.co.uk/downtime"; // Redirect to downtime page
             });
         }
@@ -76,14 +76,14 @@
         function redirectUser() {
             document.getElementById("buttonText").textContent = "Redirecting...";
             setTimeout(() => {
-                window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/56"; // Redirect after 1 second
+                window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/37"; // Redirect after 1 second
             }, 1000); // Redirect after 1 second
         }
 
         // Button click event to confirm acceptance and check the URL before redirecting
         document.getElementById("confirmButton").addEventListener("click", function() {
             document.getElementById("buttonText").textContent = "Checking URL...";
-            checkURL('https://store.swiftpeakhosting.co.uk'); // Check the store URL before redirecting
+            checkURL('https://store.swiftpeakhosting.co.uk/store/view/37'); // Check the specific URL before redirecting
         });
     </script>
 </body>
