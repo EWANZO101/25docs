@@ -139,6 +139,34 @@
   </footer>
 
   <script>
+    // Function to check if domains are reachable
+    async function checkDomains() {
+      const domains = [
+        'https://store.swiftpeakhosting.co.uk/auth/login',
+        'https://store.swiftpeakhosting.co.uk/auth/logout',
+        'https://store.swiftpeakhosting.co.uk/dashboard',
+        'https://store.swiftpeakhosting.co.uk/admin'
+      ];
+
+      const failedDomains = [];
+      
+      for (const domain of domains) {
+        try {
+          const response = await fetch(domain, { method: 'HEAD', mode: 'no-cors' });
+          if (!response.ok) failedDomains.push(domain);
+        } catch (error) {
+          failedDomains.push(domain);
+        }
+      }
+
+      if (failedDomains.length > 0) {
+        window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
+      }
+    }
+
+    // Run domain check on page load
+    window.onload = checkDomains;
+
     // Dropdown menu toggle
     document.getElementById('userMenuButton').addEventListener('click', () => {
       const menu = document.getElementById('userMenu');
