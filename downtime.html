@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.6/flowbite.min.css" rel="stylesheet" />
     <style>
         .bg-dark {
-            background-color: #121212; /* Darker background for a professional, sleek look */
+            background-color: #121212;
         }
         .flashing {
             animation: flash 1.5s ease-in-out infinite;
@@ -39,25 +39,21 @@
         <p class="text-lg mb-6">
             We're currently experiencing an outage, and our team is working hard to resolve the issue. Please check back later for updates.
         </p>
-        
-        <!-- Status Indicator -->
+
         <div class="flex justify-center items-center mb-8">
             <div class="w-8 h-8 bg-yellow-400 rounded-full mr-4 animate-pulse"></div>
             <span class="text-lg text-yellow-400">Service is temporarily down. We're on it!</span>
         </div>
 
-        <!-- Countdown Timer -->
         <div class="text-lg mb-6">
             <span id="countdownTimer" class="font-semibold text-yellow-500">Next Check in: 30s</span>
         </div>
 
-        <!-- Retry Button -->
         <a href="https://status.swiftpeakhosting.co.uk" 
            class="px-8 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 transition pulse-button mb-6">
             Check Status Page
         </a>
 
-        <!-- Additional Information -->
         <div class="mt-6">
             <p class="text-gray-400 text-sm">
                 If you have any questions, please feel free to <a href="https://www.swiftpeakhosting.co.uk/contact" class="text-blue-400 hover:underline">contact our support team</a>.
@@ -75,23 +71,30 @@
             window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/56";
         }
 
-        // Countdown function
+        // Countdown function and logic for retries
         let countdown = 1; // Set countdown timer for 30 seconds
         const countdownTimerElement = document.getElementById('countdownTimer');
+        let tryCount = 0;
 
         function updateCountdown() {
             countdownTimerElement.textContent = `Next Check in: ${countdown}s`;
             countdown--;
             if (countdown <= 0) {
-                // Attempt to redirect after 30 seconds
-                redirectToStore();
-                countdown = 1; // Reset the countdown after redirect
+                if (tryCount < 2) {
+                    // Attempt to reload the page immediately
+                    tryCount++;
+                    window.location.reload();
+                    countdown = 1; // Reset countdown to immediately retry
+                } else {
+                    // After 2 tries, set the countdown to 30 seconds
+                    countdown = 30;
+                    tryCount = 0; // Reset tryCount for future attempts
+                }
             }
         }
 
         // Update countdown every second
         setInterval(updateCountdown, 1000);
-
     </script>
 
 </body>
