@@ -51,40 +51,16 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.6/flowbite.bundle.min.js"></script>
     <script>
-        // Function to check if the specific page is reachable
-        function checkURL(url) {
-            fetch(url, {
-                method: 'GET', // Use GET method to load the full content of the page
-                mode: 'no-cors' // Avoid blocking the response if there's a CORS issue
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log("Page is reachable");
-                    redirectUser();
-                } else {
-                    console.log("Page not reachable, redirecting to downtime...");
-                    window.location.href = "https://www.swiftpeakhosting.co.uk/downtime"; // Redirect to downtime page
-                }
-            })
-            .catch(() => {
-                console.log("No response from the server, redirecting to downtime...");
-                window.location.href = "https://www.swiftpeakhosting.co.uk/downtime"; // Redirect to downtime page
-            });
-        }
-
-        // Redirect user after accepting the terms
+        // Function to redirect user after accepting the terms
         function redirectUser() {
             document.getElementById("buttonText").textContent = "Redirecting...";
             setTimeout(() => {
-                window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/37"; // Redirect after 1 second
+                window.location.href = "https://www.swiftpeakhosting.co.uk/pages-status.html"; // Redirect to status page
             }, 1000); // 1 second delay before redirect
         }
 
-        // Button click event to confirm acceptance and check the URL before redirecting
-        document.getElementById("confirmButton").addEventListener("click", function() {
-            document.getElementById("buttonText").textContent = "Checking URL...";
-            checkURL('https://store.swiftpeakhosting.co.uk/store/view/37'); // Check the specific URL before redirecting
-        });
+        // Button click event to confirm acceptance and redirect
+        document.getElementById("confirmButton").addEventListener("click", redirectUser);
     </script>
 </body>
 </html>
