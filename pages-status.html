@@ -85,6 +85,7 @@
     </div>
 
     <script>
+        // Function to check website status using XMLHttpRequest
         function checkWebsiteStatus() {
             const url = 'https://store.swiftpeakhosting.co.uk';
             const statusIndicator = document.getElementById('statusIndicator');
@@ -92,27 +93,15 @@
             const loading = document.getElementById('loading');
             const statusInfo = document.getElementById('statusInfo');
 
-            // Simulate delay for a more realistic check (e.g. 3 seconds)
+            // Simulate a delay to make the checking process more natural
             setTimeout(() => {
-                fetch(url, {
-                        method: 'GET',
-                        mode: 'cors', // Ensure proper CORS mode for fetch
-                        headers: {
-                            'Accept': 'text/html'
-                        }
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // Check if the page contains expected content to ensure the right page is loaded
-                            return response.text();
-                        } else {
-                            throw new Error('Site is not reachable');
-                        }
-                    })
-                    .then(pageContent => {
-                        // Check if the page contains expected content, like "Swift Peak Hosting"
-                        if (pageContent.includes('Swift Peak Hosting')) {
-                            // If the site content matches, it's up
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        // Check if HTTP status code is 200 (OK)
+                        if (xhr.status === 200) {
+                            // The website is up
                             statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse');
                             statusIndicator.classList.add('bg-green-400');
                             statusText.textContent = 'Website is up and running!';
@@ -122,14 +111,16 @@
                                 window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
                             }, 2000); // Redirect after 2 seconds
                         } else {
-                            // If unexpected content is found, assume the page isn't correct (check for maintenance pages)
+                            // Website is down or has an error status
                             handleDowntime();
                         }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        handleDowntime(); // Redirect to downtime if fetch fails
-                    });
+                    }
+                };
+                xhr.onerror = function () {
+                    // Error in making the request (e.g., network error)
+                    handleDowntime();
+                };
+                xhr.send();
             }, 3000); // Simulated delay for checking
         }
 
