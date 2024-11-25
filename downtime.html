@@ -47,8 +47,8 @@
         </div>
 
         <!-- Retry Button -->
-        <a href="https://www.swiftpeakhosting.co.uk/downtime.html" 
-           class="px-8 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 transition pulse-button">
+        <a href="https://status.swiftpeakhosting.co.uk" 
+           class="px-8 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 transition pulse-button mb-6">
             Check Status Page
         </a>
 
@@ -63,6 +63,34 @@
             <p>&copy; 2024 Swift Peak Hosting. All Rights Reserved.</p>
         </footer>
     </div>
+
+    <script>
+        // Function to check URL and refresh the page if not accessible
+        function checkAndRedirect() {
+            fetch('https://store.swiftpeakhosting.co.uk/store/view/56', {
+                method: 'HEAD', // Use HEAD method to just check the headers, not download the whole page
+                mode: 'no-cors' // Avoid CORS issues
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("URL is reachable, proceeding to redirect.");
+                    window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/56";
+                } else {
+                    console.log("URL not reachable, staying on the outage page.");
+                }
+            })
+            .catch(() => {
+                console.log("Error or no response from the URL, staying on the outage page.");
+            });
+        }
+
+        // Refresh the page every 30 seconds
+        setInterval(function() {
+            console.log("Refreshing and retrying the URL...");
+            checkAndRedirect();
+        }, 30000); // 30000ms = 30 seconds
+
+    </script>
 
 </body>
 </html>
