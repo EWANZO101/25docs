@@ -3,50 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Outage</title>
+    <title>Service Outage - Swift Peak Hosting</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.6/flowbite.min.css" rel="stylesheet" />
     <style>
         .bg-dark {
-            background-color: #1f2937; /* Tailwind dark gray */
+            background-color: #121212; /* Darker background for a professional, sleek look */
         }
         .flashing {
-            animation: flash 1s infinite;
+            animation: flash 1.5s ease-in-out infinite;
         }
         @keyframes flash {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            50% { opacity: 0.7; }
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.8);
+        }
+        .pulse-button {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
 <body class="bg-dark text-gray-300 flex justify-center items-center min-h-screen">
 
-    <div class="bg-gray-800 p-8 rounded-lg shadow-lg max-w-xl w-full mx-auto text-center">
-        <h1 class="text-4xl font-bold text-red-500 flashing mb-6">
-            We're Currently Experiencing an Outage
+    <div class="bg-gray-800 p-10 rounded-xl shadow-xl max-w-3xl w-full mx-auto text-center">
+        <h1 class="text-5xl font-bold text-red-500 mb-8 glow-text flashing">
+            Service Unavailable
         </h1>
         <p class="text-lg mb-6">
-            We are currently working to resolve the issue and restore service as soon as possible. Thank you for your patience.
+            We're currently experiencing an outage and our team is working hard to resolve the issue. Please check back later for updates.
         </p>
         
-        <!-- Status Indicators -->
-        <div class="flex justify-center mb-6">
-            <div class="w-4 h-4 bg-yellow-400 rounded-full mr-3 animate-pulse"></div>
-            <span class="text-yellow-400">Service Unavailable</span>
+        <!-- Status Indicator -->
+        <div class="flex justify-center items-center mb-8">
+            <div class="w-8 h-8 bg-yellow-400 rounded-full mr-4 animate-pulse"></div>
+            <span class="text-lg text-yellow-400">Service is temporarily down. We're on it!</span>
         </div>
 
         <!-- Retry Button -->
         <a href="https://www.swiftpeakhosting.co.uk/downtime.html" 
-           class="px-6 py-2 bg-red-700 text-white font-bold rounded-full hover:bg-red-600 transition mb-4">
+           class="px-8 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-500 transition pulse-button">
             Check Status Page
         </a>
-        
-        <!-- Additional Information -->
-        <p class="text-gray-400 text-sm mb-4">
-            If you have any questions, feel free to reach out to our support team. We apologize for any inconvenience caused.
-        </p>
 
-        <footer class="text-gray-500 text-sm">
+        <!-- Additional Information -->
+        <div class="mt-6">
+            <p class="text-gray-400 text-sm">
+                If you have any questions, please feel free to <a href="https://www.swiftpeakhosting.co.uk/contact" class="text-blue-400 hover:underline">contact our support team</a>.
+            </p>
+        </div>
+
+        <footer class="mt-8 text-gray-500 text-sm">
             <p>&copy; 2024 Swift Peak Hosting. All Rights Reserved.</p>
         </footer>
     </div>
