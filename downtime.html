@@ -74,7 +74,7 @@
         // Countdown function and logic for retries
         let countdown = 1; // Set countdown timer for 30 seconds
         const countdownTimerElement = document.getElementById('countdownTimer');
-        let tryCount = 0;
+        let tryCount = localStorage.getItem('tryCount') || 0;
 
         function updateCountdown() {
             countdownTimerElement.textContent = `Next Check in: ${countdown}s`;
@@ -83,12 +83,13 @@
                 if (tryCount < 2) {
                     // Attempt to reload the page immediately
                     tryCount++;
+                    localStorage.setItem('tryCount', tryCount); // Save retry count
                     window.location.reload();
                     countdown = 1; // Reset countdown to immediately retry
                 } else {
                     // After 2 tries, set the countdown to 30 seconds
                     countdown = 30;
-                    tryCount = 0; // Reset tryCount for future attempts
+                    localStorage.removeItem('tryCount'); // Reset retry count
                 }
             }
         }
