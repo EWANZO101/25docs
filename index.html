@@ -139,39 +139,52 @@
   </footer>
 
   <script>
-    async function checkAndRedirect(event) {
-      const url = event.target.href;
+  async function checkAndRedirect(event) {
+    const url = event.target.href;
+    if (!url.startsWith("https://store.swiftpeakhosting.co.uk")) {
+      return;  // Only proceed for the specified domain
+    }
+
+    // Attempt to fetch the URL
+    try {
       const response = await fetch(url, { method: 'HEAD', mode: 'no-cors' });
       if (!response.ok) {
+        // If the response is not OK, redirect to the downtime page
         event.preventDefault();
         window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
       }
+    } catch (error) {
+      // If the request fails (network error, domain down), redirect to the downtime page
+      event.preventDefault();
+      window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
     }
+  }
 
-    document.querySelectorAll('a[href^="https://store.swiftpeakhosting.co.uk/auth/login"], a[href^="https://store.swiftpeakhosting.co.uk/auth/logout"], a[href^="https://store.swiftpeakhosting.co.uk/dashboard"], a[href^="https://store.swiftpeakhosting.co.uk/admin"]')
-      .forEach(link => link.addEventListener('click', checkAndRedirect));
+  // Only add event listeners to links starting with the specified domain
+  document.querySelectorAll('a[href^="https://store.swiftpeakhosting.co.uk/auth/login"], a[href^="https://store.swiftpeakhosting.co.uk/auth/logout"], a[href^="https://store.swiftpeakhosting.co.uk/dashboard"], a[href^="https://store.swiftpeakhosting.co.uk/admin"]')
+    .forEach(link => link.addEventListener('click', checkAndRedirect));
 
-    // Dropdown menu toggle
-    document.getElementById('userMenuButton').addEventListener('click', () => {
-      const menu = document.getElementById('userMenu');
-      menu.classList.toggle('hidden');
-    });
+  // Dropdown menu toggle
+  document.getElementById('userMenuButton').addEventListener('click', () => {
+    const menu = document.getElementById('userMenu');
+    menu.classList.toggle('hidden');
+  });
 
-    document.addEventListener('click', (event) => {
-      const menu = document.getElementById('userMenu');
-      const button = document.getElementById('userMenuButton');
-      if (!menu.contains(event.target) && !button.contains(event.target)) {
-        menu.classList.add('hidden');
-      }
-    });
+  document.addEventListener('click', (event) => {
+    const menu = document.getElementById('userMenu');
+    const button = document.getElementById('userMenuButton');
+    if (!menu.contains(event.target) && !button.contains(event.target)) {
+      menu.classList.add('hidden');
+    }
+  });
 
-    document.getElementById('closeAnnouncement').addEventListener('click', function () {
-      document.getElementById('serviceAnnouncement').style.display = 'none';
-    });
+  document.getElementById('closeAnnouncement').addEventListener('click', function () {
+    document.getElementById('serviceAnnouncement').style.display = 'none';
+  });
 
-    setTimeout(() => {
-      document.getElementById('serviceAnnouncement').style.display = 'none';
-    }, 30000);
-  </script>
+  setTimeout(() => {
+    document.getElementById('serviceAnnouncement').style.display = 'none';
+  }, 30000);
+</script>
 </body>
 </html>
