@@ -70,24 +70,9 @@
     </div>
 
     <script>
-        // Function to check the URL and refresh the page if it's down or redirect if it's up
-        function checkAndRedirect() {
-            fetch('https://store.swiftpeakhosting.co.uk/store/view/56', {
-                method: 'HEAD', // Use HEAD to check if the URL is reachable
-                mode: 'no-cors' // Avoid CORS issues
-            })
-            .then(response => {
-                if (response.ok) {
-                    // If the page is available, redirect to the store page
-                    console.log("Page is up. Redirecting...");
-                    window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/56";
-                } else {
-                    console.log("Page is down. Staying on outage page.");
-                }
-            })
-            .catch(() => {
-                console.log("No response or error from the URL. Staying on outage page.");
-            });
+        // Function to attempt redirect if the page is up
+        function redirectToStore() {
+            window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/56";
         }
 
         // Countdown function
@@ -98,8 +83,9 @@
             countdownTimerElement.textContent = `Next Check in: ${countdown}s`;
             countdown--;
             if (countdown <= 0) {
-                checkAndRedirect();
-                countdown = 30; // Reset the countdown after check
+                // Attempt to redirect after 30 seconds
+                redirectToStore();
+                countdown = 30; // Reset the countdown after redirect
             }
         }
 
