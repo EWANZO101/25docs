@@ -87,7 +87,7 @@
     <script>
         // Function to check website status using XMLHttpRequest
         function checkWebsiteStatus() {
-            const url = 'https://store.swiftpeakhosting.co.uk';
+            const url = 'https://store.swiftpeakhosting.co.uk'; // Website to check
             const statusIndicator = document.getElementById('statusIndicator');
             const statusText = document.getElementById('statusText');
             const loading = document.getElementById('loading');
@@ -102,11 +102,7 @@
                         // Check if HTTP status code is 200 (OK)
                         if (xhr.status === 200) {
                             // The website is up
-                            statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse');
-                            statusIndicator.classList.add('bg-green-400');
-                            statusText.textContent = 'Website is up and running!';
-                            statusText.classList.remove('text-yellow-400');
-                            statusText.classList.add('text-green-400');
+                            updateStatus('Website is up and running!', 'bg-green-400', 'text-green-400');
                             setTimeout(() => {
                                 window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
                             }, 2000); // Redirect after 2 seconds
@@ -124,14 +120,20 @@
             }, 3000); // Simulated delay for checking
         }
 
-        function handleDowntime() {
+        // Function to update the status display
+        function updateStatus(message, indicatorClass, textClass) {
             const statusIndicator = document.getElementById('statusIndicator');
             const statusText = document.getElementById('statusText');
-            statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse');
-            statusIndicator.classList.add('bg-red-600');
-            statusText.textContent = 'The website is currently down!';
-            statusText.classList.remove('text-yellow-400');
-            statusText.classList.add('text-red-600');
+            statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse', 'bg-red-600');
+            statusIndicator.classList.add(indicatorClass);
+            statusText.textContent = message;
+            statusText.classList.remove('text-yellow-400', 'text-red-600');
+            statusText.classList.add(textClass);
+        }
+
+        // Function to handle website downtime
+        function handleDowntime() {
+            updateStatus('The website is currently down!', 'bg-red-600', 'text-red-600');
             setTimeout(() => {
                 window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
             }, 2000); // Redirect to downtime page
