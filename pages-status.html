@@ -99,15 +99,27 @@
             const loading = document.getElementById('loading');
             const statusInfo = document.getElementById('statusInfo');
 
-            // Simulating delay for a more realistic check (e.g. 5 seconds)
+            // Simulate delay for a more realistic check (e.g. 5 seconds)
             setTimeout(() => {
                 fetch(url, {
                         method: 'GET',
-                        mode: 'no-cors', // To prevent CORS issues during status check
+                        mode: 'cors', // Ensure proper CORS mode for fetch
+                        headers: {
+                            'Accept': 'text/html'
+                        }
                     })
                     .then(response => {
                         if (response.ok) {
-                            // Site is up, redirect after confirmation
+                            // Check the content of the page to ensure it's the correct one
+                            return response.text();
+                        } else {
+                            throw new Error('Site unavailable');
+                        }
+                    })
+                    .then(pageContent => {
+                        // Check if the page contains the expected content (e.g. a title or a specific HTML element)
+                        if (pageContent.includes('Swift Peak Hosting')) {
+                            // Site is up and contains expected content, redirect after confirmation
                             statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse');
                             statusIndicator.classList.add('bg-green-400');
                             statusText.textContent = 'The website is up and running!';
@@ -117,29 +129,29 @@
                                 window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
                             }, 2000); // Redirect after 2 seconds
                         } else {
-                            // Site is down, show red indicator and downtime page
-                            statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse');
-                            statusIndicator.classList.add('bg-red-600');
-                            statusText.textContent = 'The website is currently down!';
-                            statusText.classList.remove('text-yellow-400');
-                            statusText.classList.add('text-red-600');
-                            setTimeout(() => {
-                                window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
-                            }, 2000); // Redirect after 2 seconds
+                            // Site is up but unexpected content, assume it is down
+                            handleDowntime();
                         }
                     })
-                    .catch(() => {
-                        // Handle errors if the fetch fails
-                        statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse');
-                        statusIndicator.classList.add('bg-red-600');
-                        statusText.textContent = 'Unable to check the website status.';
-                        statusText.classList.remove('text-yellow-400');
-                        statusText.classList.add('text-red-600');
-                        setTimeout(() => {
-                            window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
-                        }, 2000); // Redirect to downtime page
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        // Site is down or error occurred, show red indicator
+                        handleDowntime();
                     });
             }, 3000); // Simulated delay for checking
+        }
+
+        function handleDowntime() {
+            const statusIndicator = document.getElementById('statusIndicator');
+            const statusText = document.getElementById('statusText');
+            statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse');
+            statusIndicator.classList.add('bg-red-600');
+            statusText.textContent = 'The website is currently down!';
+            statusText.classList.remove('text-yellow-400');
+            statusText.classList.add('text-red-600');
+            setTimeout(() => {
+                window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
+            }, 2000); // Redirect to downtime page
         }
 
         // Call the checkWebsiteStatus function when the page loads
