@@ -76,7 +76,7 @@
         }
 
         // Countdown function
-        let countdown = 30; // Set countdown timer for 30 seconds
+        let countdown = 1; // Set countdown timer for 30 seconds
         const countdownTimerElement = document.getElementById('countdownTimer');
 
         function updateCountdown() {
@@ -85,7 +85,7 @@
             if (countdown <= 0) {
                 // Attempt to redirect after 30 seconds
                 redirectToStore();
-                countdown = 30; // Reset the countdown after redirect
+                countdown = 1; // Reset the countdown after redirect
             }
         }
 
