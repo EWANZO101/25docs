@@ -63,12 +63,12 @@
                     redirectUser();
                 } else {
                     console.log("URL not reachable, redirecting...");
-                    window.location.href = "https://www.swiftpeakhosting.co.uk/downtime.html"; // Redirect to downtime page
+                    window.location.href = "https://www.swiftpeakhosting.co.uk/downtime"; // Redirect to downtime page
                 }
             })
             .catch(() => {
                 console.log("No response from the server, redirecting...");
-                window.location.href = "https://www.swiftpeakhosting.co.uk/downtime.html"; // Redirect to downtime page
+                window.location.href = "https://www.swiftpeakhosting.co.uk/downtime"; // Redirect to downtime page
             });
         }
 
@@ -76,14 +76,14 @@
         function redirectUser() {
             document.getElementById("buttonText").textContent = "Redirecting...";
             setTimeout(() => {
-                window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/56";
+                window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/56"; // Redirect after 1 second
             }, 1000); // Redirect after 1 second
         }
 
         // Button click event to confirm acceptance and check the URL before redirecting
         document.getElementById("confirmButton").addEventListener("click", function() {
             document.getElementById("buttonText").textContent = "Checking URL...";
-            checkURL('https://store.swiftpeakhosting.co.uk/store/view/56'); // Check the URL before redirecting
+            checkURL('https://store.swiftpeakhosting.co.uk'); // Check the store URL before redirecting
         });
     </script>
 </body>
