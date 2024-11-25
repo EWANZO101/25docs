@@ -37,13 +37,18 @@
             Service Unavailable
         </h1>
         <p class="text-lg mb-6">
-            We're currently experiencing an outage and our team is working hard to resolve the issue. Please check back later for updates.
+            We're currently experiencing an outage, and our team is working hard to resolve the issue. Please check back later for updates.
         </p>
         
         <!-- Status Indicator -->
         <div class="flex justify-center items-center mb-8">
             <div class="w-8 h-8 bg-yellow-400 rounded-full mr-4 animate-pulse"></div>
             <span class="text-lg text-yellow-400">Service is temporarily down. We're on it!</span>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="text-lg mb-6">
+            <span id="countdownTimer" class="font-semibold text-yellow-500">Next Check in: 30s</span>
         </div>
 
         <!-- Retry Button -->
@@ -65,30 +70,41 @@
     </div>
 
     <script>
-        // Function to check URL and refresh the page if not accessible
+        // Function to check the URL and refresh the page if it's down or redirect if it's up
         function checkAndRedirect() {
             fetch('https://store.swiftpeakhosting.co.uk/store/view/56', {
-                method: 'HEAD', // Use HEAD method to just check the headers, not download the whole page
+                method: 'HEAD', // Use HEAD to check if the URL is reachable
                 mode: 'no-cors' // Avoid CORS issues
             })
             .then(response => {
                 if (response.ok) {
-                    console.log("URL is reachable, proceeding to redirect.");
+                    // If the page is available, redirect to the store page
+                    console.log("Page is up. Redirecting...");
                     window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/56";
                 } else {
-                    console.log("URL not reachable, staying on the outage page.");
+                    console.log("Page is down. Staying on outage page.");
                 }
             })
             .catch(() => {
-                console.log("Error or no response from the URL, staying on the outage page.");
+                console.log("No response or error from the URL. Staying on outage page.");
             });
         }
 
-        // Refresh the page every 30 seconds
-        setInterval(function() {
-            console.log("Refreshing and retrying the URL...");
-            checkAndRedirect();
-        }, 30000); // 30000ms = 30 seconds
+        // Countdown function
+        let countdown = 30; // Set countdown timer for 30 seconds
+        const countdownTimerElement = document.getElementById('countdownTimer');
+
+        function updateCountdown() {
+            countdownTimerElement.textContent = `Next Check in: ${countdown}s`;
+            countdown--;
+            if (countdown <= 0) {
+                checkAndRedirect();
+                countdown = 30; // Reset the countdown after check
+            }
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
 
     </script>
 
