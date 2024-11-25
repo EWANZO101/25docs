@@ -66,7 +66,7 @@
     </div>
 
     <script>
-        // Function to attempt redirect if the page is up
+        // Function to attempt redirect to store page
         function redirectToStore() {
             window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/56";
         }
@@ -75,6 +75,7 @@
         let countdown = 1; // Set countdown timer for 30 seconds
         const countdownTimerElement = document.getElementById('countdownTimer');
         let tryCount = localStorage.getItem('tryCount') || 0;
+        let redirected = localStorage.getItem('redirected') || false; // Track if redirect has happened
 
         function updateCountdown() {
             countdownTimerElement.textContent = `Next Check in: ${countdown}s`;
@@ -86,10 +87,10 @@
                     localStorage.setItem('tryCount', tryCount); // Save retry count
                     window.location.reload();
                     countdown = 1; // Reset countdown to immediately retry
-                } else {
-                    // After 2 tries, set the countdown to 30 seconds
-                    countdown = 30;
-                    localStorage.removeItem('tryCount'); // Reset retry count
+                } else if (!redirected) {
+                    // After 2 tries, set the countdown to 30 seconds and redirect to store
+                    localStorage.setItem('redirected', 'true'); // Mark as redirected
+                    redirectToStore(); // Redirect user to the store page
                 }
             }
         }
