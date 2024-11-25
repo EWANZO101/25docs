@@ -8,7 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.6/flowbite.min.css" rel="stylesheet" />
     <style>
-        /* Custom Styles */
         body {
             background-color: #121212;
         }
@@ -54,29 +53,24 @@
 <body class="text-gray-200 flex justify-center items-center min-h-screen">
 
     <div class="w-full max-w-3xl p-6">
-        <!-- Header -->
         <h1 class="text-4xl font-bold text-center text-white mb-6 text-glow">
             Swift Peak Hosting Service Status
         </h1>
 
         <div class="status-box">
-            <!-- Status Information -->
             <div id="statusInfo" class="text-center mb-6">
                 <p class="text-lg mb-4">
-                    We're currently checking the status of <strong>swiftpeakhosting.co.uk</strong>. Please hold on while we
-                    verify the availability of our services.
+                    We are checking the status of <strong>swiftpeakhosting.co.uk</strong>. Please wait while we verify the website's availability.
                 </p>
                 <div class="flex justify-center items-center mb-4">
                     <div id="statusIndicator" class="status-indicator bg-yellow-400 animate-pulse"></div>
-                    <span id="statusText" class="text-lg text-yellow-400">Checking the status...</span>
+                    <span id="statusText" class="text-lg text-yellow-400">Checking...</span>
                 </div>
                 <p class="text-sm text-gray-400">
-                    This may take a few seconds to ensure accurate results. Please be patient while we confirm the status of
-                    the website.
+                    This may take a few seconds to ensure the result is accurate. Please be patient while we confirm the website status.
                 </p>
             </div>
 
-            <!-- Loading Animation -->
             <div id="loading" class="flex justify-center items-center mb-6">
                 <svg role="status" class="w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                     viewBox="0 0 100 101" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice"
@@ -91,7 +85,6 @@
     </div>
 
     <script>
-        // Function to check the website status
         function checkWebsiteStatus() {
             const url = 'https://store.swiftpeakhosting.co.uk';
             const statusIndicator = document.getElementById('statusIndicator');
@@ -99,7 +92,7 @@
             const loading = document.getElementById('loading');
             const statusInfo = document.getElementById('statusInfo');
 
-            // Simulate delay for a more realistic check (e.g. 5 seconds)
+            // Simulate delay for a more realistic check (e.g. 3 seconds)
             setTimeout(() => {
                 fetch(url, {
                         method: 'GET',
@@ -110,33 +103,32 @@
                     })
                     .then(response => {
                         if (response.ok) {
-                            // Check the content of the page to ensure it's the correct one
+                            // Check if the page contains expected content to ensure the right page is loaded
                             return response.text();
                         } else {
-                            throw new Error('Site unavailable');
+                            throw new Error('Site is not reachable');
                         }
                     })
                     .then(pageContent => {
-                        // Check if the page contains the expected content (e.g. a title or a specific HTML element)
+                        // Check if the page contains expected content, like "Swift Peak Hosting"
                         if (pageContent.includes('Swift Peak Hosting')) {
-                            // Site is up and contains expected content, redirect after confirmation
+                            // If the site content matches, it's up
                             statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse');
                             statusIndicator.classList.add('bg-green-400');
-                            statusText.textContent = 'The website is up and running!';
+                            statusText.textContent = 'Website is up and running!';
                             statusText.classList.remove('text-yellow-400');
                             statusText.classList.add('text-green-400');
                             setTimeout(() => {
                                 window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
                             }, 2000); // Redirect after 2 seconds
                         } else {
-                            // Site is up but unexpected content, assume it is down
+                            // If unexpected content is found, assume the page isn't correct (check for maintenance pages)
                             handleDowntime();
                         }
                     })
-                    .catch((error) => {
+                    .catch(error => {
                         console.error('Error:', error);
-                        // Site is down or error occurred, show red indicator
-                        handleDowntime();
+                        handleDowntime(); // Redirect to downtime if fetch fails
                     });
             }, 3000); // Simulated delay for checking
         }
@@ -154,7 +146,7 @@
             }, 2000); // Redirect to downtime page
         }
 
-        // Call the checkWebsiteStatus function when the page loads
+        // Start the status check on page load
         window.onload = function () {
             checkWebsiteStatus();
         };
