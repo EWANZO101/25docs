@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Status - Swift Peak Hosting</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.6/flowbite.min.css" rel="stylesheet" />
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #121212;
+        }
+
+        .loading-text {
+            animation: fadeIn 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .status-box {
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .status-indicator {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+
+<body class="text-gray-200 flex justify-center items-center min-h-screen">
+
+    <div class="w-full max-w-3xl p-6">
+        <!-- Header -->
+        <h1 class="text-4xl font-bold text-center text-white mb-6 text-glow">
+            Swift Peak Hosting Service Status
+        </h1>
+
+        <div class="status-box">
+            <!-- Status Information -->
+            <div id="statusInfo" class="text-center mb-6">
+                <p class="text-lg mb-4">
+                    We're currently checking the status of <strong>swiftpeakhosting.co.uk</strong>. Please hold on while we
+                    verify the availability of our services.
+                </p>
+                <div class="flex justify-center items-center mb-4">
+                    <div id="statusIndicator" class="status-indicator bg-yellow-400 animate-pulse"></div>
+                    <span id="statusText" class="text-lg text-yellow-400">Checking the status...</span>
+                </div>
+                <p class="text-sm text-gray-400">
+                    This may take a few seconds to ensure accurate results. Please be patient while we confirm the status of
+                    the website.
+                </p>
+            </div>
+
+            <!-- Loading Animation -->
+            <div id="loading" class="flex justify-center items-center mb-6">
+                <svg role="status" class="w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                    viewBox="0 0 100 101" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice"
+                    shape-rendering="auto">
+                    <circle cx="50" cy="50" fill="none" stroke="currentColor" stroke-width="10" r="35"
+                        stroke-dasharray="164.93361431346415 56.97787143736448">
+                    </circle>
+                </svg>
+                <span class="text-lg">Checking...</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to check the website status
+        function checkWebsiteStatus() {
+            const url = 'https://store.swiftpeakhosting.co.uk';
+            const statusIndicator = document.getElementById('statusIndicator');
+            const statusText = document.getElementById('statusText');
+            const loading = document.getElementById('loading');
+            const statusInfo = document.getElementById('statusInfo');
+
+            // Simulating delay for a more realistic check (e.g. 5 seconds)
+            setTimeout(() => {
+                fetch(url, {
+                        method: 'GET',
+                        mode: 'no-cors', // To prevent CORS issues during status check
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Site is up, redirect after confirmation
+                            statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse');
+                            statusIndicator.classList.add('bg-green-400');
+                            statusText.textContent = 'The website is up and running!';
+                            statusText.classList.remove('text-yellow-400');
+                            statusText.classList.add('text-green-400');
+                            setTimeout(() => {
+                                window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
+                            }, 2000); // Redirect after 2 seconds
+                        } else {
+                            // Site is down, show red indicator and downtime page
+                            statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse');
+                            statusIndicator.classList.add('bg-red-600');
+                            statusText.textContent = 'The website is currently down!';
+                            statusText.classList.remove('text-yellow-400');
+                            statusText.classList.add('text-red-600');
+                            setTimeout(() => {
+                                window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
+                            }, 2000); // Redirect after 2 seconds
+                        }
+                    })
+                    .catch(() => {
+                        // Handle errors if the fetch fails
+                        statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse');
+                        statusIndicator.classList.add('bg-red-600');
+                        statusText.textContent = 'Unable to check the website status.';
+                        statusText.classList.remove('text-yellow-400');
+                        statusText.classList.add('text-red-600');
+                        setTimeout(() => {
+                            window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
+                        }, 2000); // Redirect to downtime page
+                    });
+            }, 3000); // Simulated delay for checking
+        }
+
+        // Call the checkWebsiteStatus function when the page loads
+        window.onload = function () {
+            checkWebsiteStatus();
+        };
+    </script>
+</body>
+
+</html>
