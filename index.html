@@ -139,47 +139,50 @@
   </footer>
 
   <!-- Service Check Script -->
-  <script>
-    let serviceDown = false;
-    let pingTimeout;
+<script>
+  let serviceDown = false;
+  let pingTimeout;
 
-    async function pingStore() {
-      try {
-        const response = await fetch('https://store.swiftpeakhosting.co.uk', { method: 'HEAD', mode: 'no-cors' });
-        if (!response.ok && !serviceDown) {
-          serviceDown = true;
-          showServiceAnnouncement();
-        }
-        if (response.ok && serviceDown) {
-          serviceDown = false;
-          hideServiceAnnouncement();
-        }
-      } catch (error) {
-        if (!serviceDown) {
-          serviceDown = true;
-          showServiceAnnouncement();
-        }
+  async function pingStore() {
+    try {
+      const response = await fetch('https://store.swiftpeakhosting.co.uk', { method: 'HEAD', mode: 'no-cors' });
+      if (!response.ok && !serviceDown) {
+        serviceDown = true;
+        showServiceAnnouncement();
+      }
+      if (response.ok && serviceDown) {
+        serviceDown = false;
+        hideServiceAnnouncement();
+      }
+    } catch (error) {
+      if (!serviceDown) {
+        serviceDown = true;
+        showServiceAnnouncement();
       }
     }
+  }
 
-    function showServiceAnnouncement() {
-      const announcement = document.getElementById('serviceAnnouncement');
-      const message = announcement.querySelector('p');
-      message.textContent = "Our services are temporarily unavailable. Please check back later.";
-      announcement.style.display = 'block';
-      clearTimeout(pingTimeout);
-    }
+  function showServiceAnnouncement() {
+    const announcement = document.getElementById('serviceAnnouncement');
+    const message = announcement.querySelector('p');
+    const lastUpdated = document.getElementById('lastUpdated');
+    const currentDate = new Date().toLocaleString();
 
-    function hideServiceAnnouncement() {
-      const announcement = document.getElementById('serviceAnnouncement');
-      announcement.style.display = 'none';
-    }
+    message.textContent = "Our services are temporarily unavailable. Please check back later.";
+    lastUpdated.textContent = `Last updated: ${currentDate}`;
+    announcement.style.display = 'block';
+  }
 
-    // Ping the store every 30 seconds
-    setInterval(pingStore, 30000);
+  function hideServiceAnnouncement() {
+    const announcement = document.getElementById('serviceAnnouncement');
+    announcement.style.display = 'none';
+  }
 
-    // Initial call to ping the store when the page loads
-    pingStore();
-  </script>
+  // Ping the store every 30 seconds
+  setInterval(pingStore, 30000);
+
+  // Initial call to ping the store when the page loads
+  pingStore();
+</script>
 </body>
 </html>
