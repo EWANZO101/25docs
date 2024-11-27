@@ -84,12 +84,12 @@
   </section>
 
   <!-- Service Announcement -->
-  <section id="serviceAnnouncement" class="py-6">
+  <section id="serviceAnnouncement" class="py-6" style="display: none;">
     <div class="container mx-auto">
-      <div class="bg-green-600 text-white p-4 rounded-md shadow-md relative">
-        <button id="closeAnnouncement" class="absolute top-4 right-4 bg-green-700 hover:bg-green-800 text-white rounded-full w-8 h-8">&times;</button>
+      <div class="bg-red-600 text-white p-4 rounded-md shadow-md relative">
+        <button id="closeAnnouncement" class="absolute top-4 right-4 bg-red-700 hover:bg-red-800 text-white rounded-full w-8 h-8">&times;</button>
         <h2 class="text-lg font-bold">Service Update</h2>
-        <p>All services operational at this time.</p>
+        <p>Our services are temporarily unavailable. Please check back later.</p>
         <p class="text-sm">Last updated: 16:55, 17/10/2024</p>
         <a href="https://status.swiftpeakhosting.co.uk/status/main" target="_blank" class="custom-button mt-4 inline-block">Learn More</a>
       </div>
@@ -133,58 +133,53 @@
       <div class="flex justify-center space-x-4 mt-4">
         <a href="tnc.html" class="text-sm hover:text-gray-300">Terms & Conditions</a>
         <a href="https://docs.swiftpeakhosting.co.uk/privacy" class="text-sm hover:text-gray-300">Privacy Policy</a>
-        <a href="https://find-and-update.company-information.service.gov.uk/company/15612395" class="text-sm hover:text-gray-300">Company Info</a>
+        <a href="https://find-and-update.company-information.service.gov.uk/company/15612395" class="text-sm hover:text-gray-300">Company Registration</a>
       </div>
     </div>
   </footer>
 
+  <!-- Service Check Script -->
   <script>
-  async function checkAndRedirect(event) {
-    const url = event.target.href;
-    if (!url.startsWith("https://store.swiftpeakhosting.co.uk")) {
-      return;  // Only proceed for the specified domain
-    }
+    let serviceDown = false;
+    let pingTimeout;
 
-    // Attempt to fetch the URL
-    try {
-      const response = await fetch(url, { method: 'HEAD', mode: 'no-cors' });
-      if (!response.ok) {
-        // If the response is not OK, redirect to the downtime page
-        event.preventDefault();
-        window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
+    async function pingStore() {
+      try {
+        const response = await fetch('https://store.swiftpeakhosting.co.uk', { method: 'HEAD', mode: 'no-cors' });
+        if (!response.ok && !serviceDown) {
+          serviceDown = true;
+          showServiceAnnouncement();
+        }
+        if (response.ok && serviceDown) {
+          serviceDown = false;
+          hideServiceAnnouncement();
+        }
+      } catch (error) {
+        if (!serviceDown) {
+          serviceDown = true;
+          showServiceAnnouncement();
+        }
       }
-    } catch (error) {
-      // If the request fails (network error, domain down), redirect to the downtime page
-      event.preventDefault();
-      window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
     }
-  }
 
-  // Only add event listeners to links starting with the specified domain
-  document.querySelectorAll('a[href^="https://store.swiftpeakhosting.co.uk/auth/login"], a[href^="https://store.swiftpeakhosting.co.uk/auth/logout"], a[href^="https://store.swiftpeakhosting.co.uk/dashboard"], a[href^="https://store.swiftpeakhosting.co.uk/admin"]')
-    .forEach(link => link.addEventListener('click', checkAndRedirect));
-
-  // Dropdown menu toggle
-  document.getElementById('userMenuButton').addEventListener('click', () => {
-    const menu = document.getElementById('userMenu');
-    menu.classList.toggle('hidden');
-  });
-
-  document.addEventListener('click', (event) => {
-    const menu = document.getElementById('userMenu');
-    const button = document.getElementById('userMenuButton');
-    if (!menu.contains(event.target) && !button.contains(event.target)) {
-      menu.classList.add('hidden');
+    function showServiceAnnouncement() {
+      const announcement = document.getElementById('serviceAnnouncement');
+      const message = announcement.querySelector('p');
+      message.textContent = "Our services are temporarily unavailable. Please check back later.";
+      announcement.style.display = 'block';
+      clearTimeout(pingTimeout);
     }
-  });
 
-  document.getElementById('closeAnnouncement').addEventListener('click', function () {
-    document.getElementById('serviceAnnouncement').style.display = 'none';
-  });
+    function hideServiceAnnouncement() {
+      const announcement = document.getElementById('serviceAnnouncement');
+      announcement.style.display = 'none';
+    }
 
-  setTimeout(() => {
-    document.getElementById('serviceAnnouncement').style.display = 'none';
-  }, 30000);
-</script>
+    // Ping the store every 30 seconds
+    setInterval(pingStore, 30000);
+
+    // Initial call to ping the store when the page loads
+    pingStore();
+  </script>
 </body>
 </html>
