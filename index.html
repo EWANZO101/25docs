@@ -145,16 +145,22 @@
 
   async function pingStore() {
     try {
+      // Attempt to ping the store's URL with a 'HEAD' request
       const response = await fetch('https://store.swiftpeakhosting.co.uk', { method: 'HEAD', mode: 'no-cors' });
+      
+      // If the store is not reachable and serviceDown is false, show the announcement
       if (!response.ok && !serviceDown) {
         serviceDown = true;
         showServiceAnnouncement();
       }
+      
+      // If the store is reachable and serviceDown is true, hide the announcement
       if (response.ok && serviceDown) {
         serviceDown = false;
         hideServiceAnnouncement();
       }
     } catch (error) {
+      // If an error occurs (like network failure), show the announcement
       if (!serviceDown) {
         serviceDown = true;
         showServiceAnnouncement();
@@ -162,17 +168,24 @@
     }
   }
 
+  // Function to display the service announcement
   function showServiceAnnouncement() {
     const announcement = document.getElementById('serviceAnnouncement');
     const message = announcement.querySelector('p');
     const lastUpdated = document.getElementById('lastUpdated');
+    
+    // Get the current date and time for the "Last updated" message
     const currentDate = new Date().toLocaleString();
-
+    
+    // Update the message and last updated time
     message.textContent = "Our services are temporarily unavailable. Please check back later.";
     lastUpdated.textContent = `Last updated: ${currentDate}`;
+    
+    // Show the service announcement
     announcement.style.display = 'block';
   }
 
+  // Function to hide the service announcement
   function hideServiceAnnouncement() {
     const announcement = document.getElementById('serviceAnnouncement');
     announcement.style.display = 'none';
