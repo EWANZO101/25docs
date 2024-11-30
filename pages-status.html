@@ -85,35 +85,32 @@
     </div>
 
     <script>
-        // Function to check website status using the check-host.net service
+        // The CORS proxy URL (you can use this or any other CORS proxy service)
+        const corsProxy = 'https://cors-proxy.htmldriven.com/';
+        const apiUrl = 'https://check-host.net/check-ping?host=https%3A%2F%2Fstore.swiftpeakhosting.co.uk%2Fadmin%2Fapi-v1&csrf_token=dc6893f8aaee26e5504adc2b53cd6206b4bd5d14';
+        const fullUrl = corsProxy + apiUrl;
+
+        // Function to check website status using the CORS proxy
         function checkWebsiteStatus() {
             const statusIndicator = document.getElementById('statusIndicator');
             const statusText = document.getElementById('statusText');
             const loading = document.getElementById('loading');
             const statusInfo = document.getElementById('statusInfo');
 
-            // URL of the check-host.net API with encoded host and csrf_token
-            const checkUrl = 'https://check-host.net/check-ping?host=https%3A%2F%2Fstore.swiftpeakhosting.co.uk%2Fadmin%2Fapi-v1&csrf_token=dc6893f8aaee26e5504adc2b53cd6206b4bd5d14';
-
             // Simulate a delay to make the checking process more natural
             setTimeout(() => {
-                fetch(checkUrl)
+                fetch(fullUrl)
                     .then(response => response.json())
                     .then(data => {
-                        // Check if the status response indicates success
-                        if (data.status === "success" && data.result && data.result[0].host) {
-                            // The API is reachable
+                        if (data && data.status === 'OK') {
+                            // Website is up
                             updateStatus('Website is up and running!', 'bg-green-400', 'text-green-400');
-                            setTimeout(() => {
-                                window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56'; // Redirect if success
-                            }, 2000);
                         } else {
-                            // API is not reachable or timeout
+                            // Handle downtime
                             handleDowntime();
                         }
                     })
                     .catch(error => {
-                        // If there is an error in the fetch call
                         console.error('Error fetching status:', error);
                         handleDowntime();
                     });
@@ -135,8 +132,8 @@
         function handleDowntime() {
             updateStatus('The website is currently down!', 'bg-red-600', 'text-red-600');
             setTimeout(() => {
-                window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime'; // Redirect to downtime page
-            }, 2000); // Redirect after 2 seconds
+                window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
+            }, 2000); // Redirect to downtime page
         }
 
         // Start the status check on page load
