@@ -60,14 +60,14 @@
         <div class="status-box">
             <div id="statusInfo" class="text-center mb-6">
                 <p class="text-lg mb-4">
-                    We are checking the status of our store page to make sure you have the latest information and updates. Please wait while we verify the current status.
+                    We are checking the status of <strong>swiftpeakhosting.co.uk</strong>. Please wait while we verify the website's availability.
                 </p>
                 <div class="flex justify-center items-center mb-4">
                     <div id="statusIndicator" class="status-indicator bg-yellow-400 animate-pulse"></div>
                     <span id="statusText" class="text-lg text-yellow-400">Checking...</span>
                 </div>
                 <p class="text-sm text-gray-400">
-                    This may take a few seconds. Thank you for your patience.
+                    This may take a few seconds to ensure the result is accurate. Please be patient while we confirm the website status.
                 </p>
             </div>
 
@@ -85,57 +85,39 @@
     </div>
 
     <script>
-        // Function to handle login (simulate POST request to login)
-        async function loginToApi() {
-            const loginUrl = 'https://store.swiftpeakhosting.co.uk/auth/login'; // Update with actual login endpoint
-            const loginData = {
-                username: 'YOUR_USERNAME',  // Replace with actual username
-                password: 'YOUR_PASSWORD'   // Replace with actual password
-            };
-
-            const response = await fetch(loginUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(loginData),
-                credentials: 'same-origin'  // To send cookies along with the request
-            });
-
-            if (response.ok) {
-                console.log("Login successful!");
-                checkApiStatus();  // After login, check API status
-            } else {
-                console.error("Login failed.");
-                updateStatus('Login failed. Please check your credentials.', 'bg-red-600', 'text-red-600');
-            }
-        }
-
-        // Function to check the API status
-        async function checkApiStatus() {
-            const apiEndpoint = 'https://store.swiftpeakhosting.co.uk/admin/api-v1'; // API endpoint
+        // Function to check website status using the check-host.net service
+        function checkWebsiteStatus() {
             const statusIndicator = document.getElementById('statusIndicator');
             const statusText = document.getElementById('statusText');
+            const loading = document.getElementById('loading');
+            const statusInfo = document.getElementById('statusInfo');
 
-            try {
-                const response = await fetch(apiEndpoint, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer YOUR_API_TOKEN'  // Optional if using API token
-                    },
-                    credentials: 'same-origin'  // Send cookies along with the request
-                });
+            // URL of the check-host.net API with encoded host and csrf_token
+            const checkUrl = 'https://check-host.net/check-ping?host=https%3A%2F%2Fstore.swiftpeakhosting.co.uk%2Fadmin%2Fapi-v1&csrf_token=dc6893f8aaee26e5504adc2b53cd6206b4bd5d14';
 
-                if (response.ok) {
-                    updateStatus('The store page is online and accessible!', 'bg-green-400', 'text-green-400');
-                } else {
-                    updateStatus(`Error: Unable to reach the store page (Status: ${response.status})`, 'bg-red-600', 'text-red-600');
-                }
-            } catch (error) {
-                console.error('Error reaching the API:', error);
-                updateStatus('Error reaching the API. Please check your connection.', 'bg-red-600', 'text-red-600');
-            }
+            // Simulate a delay to make the checking process more natural
+            setTimeout(() => {
+                fetch(checkUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Check if the status response indicates success
+                        if (data.status === "success" && data.result && data.result[0].host) {
+                            // The API is reachable
+                            updateStatus('Website is up and running!', 'bg-green-400', 'text-green-400');
+                            setTimeout(() => {
+                                window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56'; // Redirect if success
+                            }, 2000);
+                        } else {
+                            // API is not reachable or timeout
+                            handleDowntime();
+                        }
+                    })
+                    .catch(error => {
+                        // If there is an error in the fetch call
+                        console.error('Error fetching status:', error);
+                        handleDowntime();
+                    });
+            }, 3000); // Simulated delay for checking
         }
 
         // Function to update the status display
@@ -149,9 +131,17 @@
             statusText.classList.add(textClass);
         }
 
-        // Start the login and status check when the page loads
+        // Function to handle website downtime
+        function handleDowntime() {
+            updateStatus('The website is currently down!', 'bg-red-600', 'text-red-600');
+            setTimeout(() => {
+                window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime'; // Redirect to downtime page
+            }, 2000); // Redirect after 2 seconds
+        }
+
+        // Start the status check on page load
         window.onload = function () {
-            loginToApi();  // Start login to get session and then check API status
+            checkWebsiteStatus();
         };
     </script>
 </body>
