@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Status Checker</title>
+    <title>Store Page Status Checker</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
@@ -32,6 +32,7 @@
 </head>
 
 <body class="text-gray-200 flex justify-center items-center min-h-screen">
+
     <main class="w-full max-w-3xl p-6">
         <h1 class="text-4xl font-bold text-center text-white mb-6 text-glow">
             Store Page Status Checker
@@ -40,7 +41,8 @@
         <div class="status-box">
             <div id="statusInfo" class="text-center mb-6">
                 <p class="text-lg mb-4">
-                    We are checking the status of our store page to make sure you have the latest information and updates. Please wait while we verify the current status.
+                    We are checking the status of our store page to make sure you have the latest information and updates. 
+                    Please wait while we verify the current status.
                 </p>
                 <div class="flex justify-center items-center mb-4">
                     <div id="statusIndicator" class="status-indicator bg-yellow-400 animate-pulse" aria-label="Status Indicator"></div>
@@ -60,23 +62,22 @@
             const statusText = document.getElementById('statusText');
 
             try {
-                // Simulate delay for user experience
+                // Simulate a delay for user experience
                 await new Promise(resolve => setTimeout(resolve, 2000));
 
-                // Make a GET request to check the API status
+                // Send a GET request to check the API status
                 const response = await fetch(apiEndpoint, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        // Include authentication if required
-                        'Authorization': 'Bearer YOUR_API_TOKEN'
+                        'Authorization': '4511e5A88sZsWPHnSdjlgJzGpYlyuDGGHMboQi0wpGKJ6qCez8o0svuhEizv' // Replace with your actual token
                     }
                 });
 
                 if (response.ok) {
-                    updateStatus('API is online and responsive!', 'bg-green-400', 'text-green-400');
+                    updateStatus('The store page is online and accessible!', 'bg-green-400', 'text-green-400');
                 } else {
-                    updateStatus(`API is unreachable. Status: ${response.status}`, 'bg-red-600', 'text-red-600');
+                    updateStatus(`Error: Unable to reach the store page (Status: ${response.status})`, 'bg-red-600', 'text-red-600');
                 }
             } catch (error) {
                 updateStatus('Error reaching the API. Please check your connection.', 'bg-red-600', 'text-red-600');
