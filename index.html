@@ -151,7 +151,7 @@
     function showServiceAnnouncement() {
       const announcement = document.getElementById('serviceAnnouncement');
       const currentDate = new Date().toLocaleString();
-      announcement.querySelector('p').textContent = "Our services are temporarily unavailable. Please check back later.";
+      announcement.querySelector('p').textContent = "";
       document.getElementById('lastUpdated').textContent = `Last updated: ${currentDate}`;
       announcement.classList.remove('hidden');
     }
