@@ -52,7 +52,7 @@
 
 <body class="text-gray-200 flex justify-center items-center min-h-screen">
 
-    <div class="w-full max-w-3xl p-6">
+    <main class="w-full max-w-3xl p-6">
         <h1 class="text-4xl font-bold text-center text-white mb-6 text-glow">
             Swift Peak Hosting Service Status
         </h1>
@@ -63,7 +63,7 @@
                     We are checking the status of <strong>swiftpeakhosting.co.uk</strong>. Please wait while we verify the website's availability.
                 </p>
                 <div class="flex justify-center items-center mb-4">
-                    <div id="statusIndicator" class="status-indicator bg-yellow-400 animate-pulse"></div>
+                    <div id="statusIndicator" class="status-indicator bg-yellow-400 animate-pulse" aria-label="Status Indicator"></div>
                     <span id="statusText" class="text-lg text-yellow-400">Checking...</span>
                 </div>
                 <p class="text-sm text-gray-400">
@@ -73,76 +73,56 @@
 
             <div id="loading" class="flex justify-center items-center mb-6">
                 <svg role="status" class="w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
-                    viewBox="0 0 100 101" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice"
-                    shape-rendering="auto">
+                    viewBox="0 0 100 101" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <circle cx="50" cy="50" fill="none" stroke="currentColor" stroke-width="10" r="35"
-                        stroke-dasharray="164.93361431346415 56.97787143736448">
-                    </circle>
+                        stroke-dasharray="164.93361431346415 56.97787143736448"></circle>
                 </svg>
                 <span class="text-lg">Checking...</span>
             </div>
         </div>
-    </div>
+    </main>
 
     <script>
-        // Function to check website status using XMLHttpRequest
-        function checkWebsiteStatus() {
-            const url = 'https://store.swiftpeakhosting.co.uk'; // Website to check
+        async function checkWebsiteStatus() {
+            const url = 'https://store.swiftpeakhosting.co.uk';
             const statusIndicator = document.getElementById('statusIndicator');
             const statusText = document.getElementById('statusText');
-            const loading = document.getElementById('loading');
-            const statusInfo = document.getElementById('statusInfo');
 
-            // Simulate a delay to make the checking process more natural
-            setTimeout(() => {
-                const xhr = new XMLHttpRequest();
-                xhr.open('GET', url, true);
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4) {
-                        // Check if HTTP status code is 200 (OK)
-                        if (xhr.status === 200) {
-                            // The website is up
-                            updateStatus('Website is up and running!', 'bg-green-400', 'text-green-400');
-                            setTimeout(() => {
-                                window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
-                            }, 2000); // Redirect after 2 seconds
-                        } else {
-                            // Website is down or has an error status
-                            handleDowntime();
-                        }
-                    }
-                };
-                xhr.onerror = function () {
-                    // Error in making the request (e.g., network error)
+            // Simulate delay
+            await new Promise(resolve => setTimeout(resolve, 3000));
+
+            try {
+                const response = await fetch(url, { method: 'HEAD' });
+
+                if (response.ok) {
+                    updateStatus('Website is up and running!', 'bg-green-400', 'text-green-400');
+                    setTimeout(() => {
+                        window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
+                    }, 2000);
+                } else {
                     handleDowntime();
-                };
-                xhr.send();
-            }, 3000); // Simulated delay for checking
+                }
+            } catch (error) {
+                handleDowntime();
+            }
         }
 
-        // Function to update the status display
         function updateStatus(message, indicatorClass, textClass) {
             const statusIndicator = document.getElementById('statusIndicator');
             const statusText = document.getElementById('statusText');
-            statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse', 'bg-red-600');
-            statusIndicator.classList.add(indicatorClass);
+            statusIndicator.className = `status-indicator ${indicatorClass}`;
             statusText.textContent = message;
-            statusText.classList.remove('text-yellow-400', 'text-red-600');
-            statusText.classList.add(textClass);
+            statusText.className = `text-lg ${textClass}`;
         }
 
-        // Function to handle website downtime
         function handleDowntime() {
             updateStatus('The website is currently down!', 'bg-red-600', 'text-red-600');
             setTimeout(() => {
                 window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
-            }, 2000); // Redirect to downtime page
+            }, 2000);
         }
 
-        // Start the status check on page load
-        window.onload = function () {
-            checkWebsiteStatus();
-        };
+        window.onload = checkWebsiteStatus;
     </script>
 </body>
 
