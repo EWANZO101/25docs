@@ -20,6 +20,7 @@
             const savedTheme = localStorage.getItem('theme') || 'light';
             if (savedTheme === 'dark') {
                 document.documentElement.classList.add('dark');
+                document.getElementById('darkModeToggle').checked = true;
             }
         });
     </script>
@@ -28,13 +29,15 @@
     <div class="container mx-auto p-6">
         <!-- Dark Mode Toggle -->
         <div class="flex justify-end mb-6">
-            <label for="darkModeToggle" class="flex items-center space-x-2 cursor-pointer">
+            <label for="darkModeToggle" class="flex items-center cursor-pointer space-x-3">
                 <span class="text-lg">🌙</span>
-                <input id="darkModeToggle" type="checkbox" class="hidden" onchange="toggleDarkMode()" 
-                    <?php if (isset($_COOKIE['theme']) && $_COOKIE['theme'] === 'dark') echo 'checked'; ?>>
-                <span class="w-12 h-6 bg-gray-300 dark:bg-gray-700 rounded-full relative">
-                    <span class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition transform"></span>
-                </span>
+                <!-- Slider -->
+                <div class="relative">
+                    <input id="darkModeToggle" type="checkbox" class="hidden" onchange="toggleDarkMode()" />
+                    <div class="w-12 h-6 bg-gray-300 dark:bg-gray-700 rounded-full relative">
+                        <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition transform"></div>
+                    </div>
+                </div>
                 <span class="text-lg">🌞</span>
             </label>
         </div>
@@ -116,7 +119,7 @@
             <section class="mb-8">
                 <h2 class="text-2xl font-semibold text-blue-600 dark:text-blue-400">4. Hardware Replacement</h2>
                 <p class="mt-2 text-gray-700 dark:text-gray-300">
-                    In the rare event of hardware failure, Swift Peak Hosting is committed to sourcing and replacing the affected hardware within <strong>48 hours</strong> of identification. However, unforeseen circumstances, such as supply chain disruptions, may result in extended resolution times.
+                    In the rare event of hardware failure, Swift Peak Hosting is committed to sourcing and replacing the affected hardware within <strong>48 hours</strong> of identification. However, unforeseen circumstances may result in extended resolution times.
                 </p>
             </section>
 
@@ -135,19 +138,19 @@
                         <li><strong>Traffic Filtering:</strong> Network-level traffic inspection is employed to identify and block malicious patterns, mitigating smaller-scale attacks.</li>
                         <li><strong>Intrusion Detection and Prevention:</strong> Our infrastructure includes advanced intrusion detection systems (IDS) to identify and respond to potential DDoS threats in real-time.</li>
                         <li><strong>Rate Limiting:</strong> We implement rate limiting and traffic throttling to reduce the impact of high-traffic volume spikes, ensuring legitimate users experience minimal disruption.</li>
-                        <li><strong>Custom Firewall Rules:</strong> Clients can configure firewall rules to restrict suspicious or known malicious IPs and control traffic flow, minimizing exposure to potential DDoS risks.</li>
+                        <li><strong>Custom Firewall Rules:</strong> Clients can configure firewall rules to restrict suspicious or known malicious IPs from accessing their services.</li>
                     </ul>
                 </div>
                 <div class="mt-4">
                     <h3 class="font-medium text-lg">5.3 Limitations</h3>
                     <p class="text-gray-700 dark:text-gray-300">
-                        While Swift Peak Hosting’s DDoS protection provides a solid defense against smaller and targeted attacks, it may not be sufficient for handling large-scale volumetric DDoS attacks or application layer (Layer 7) threats. For comprehensive DDoS protection against high-bandwidth attacks, we recommend utilizing dedicated cloud-based DDoS mitigation services from leading providers such as Cloudflare, AWS Shield, Akamai, or services provided by your Internet Service Provider (ISP).
+                        While Swift Peak Hosting’s DDoS protection provides robust defense against smaller and targeted attacks, it may not be sufficient for handling large-scale volumetric DDoS incidents. We recommend clients assess their specific needs for additional protection services in the event of large-scale threats.
                     </p>
                 </div>
                 <div class="mt-4">
                     <h3 class="font-medium text-lg">5.4 Summary</h3>
                     <p class="text-gray-700 dark:text-gray-300">
-                        Swift Peak Hosting’s DDoS protection offers effective mitigation for low to moderate-level attacks. For more advanced, large-scale threats, clients are encouraged to utilize third-party specialized DDoS protection solutions to ensure optimal service availability and security.
+                        Swift Peak Hosting’s DDoS protection offers effective mitigation for low to moderate-level attacks. Clients requiring additional security for larger threats are encouraged to explore specialized solutions suited to their needs.
                     </p>
                 </div>
             </section>
