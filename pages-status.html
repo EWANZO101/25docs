@@ -29,6 +29,11 @@
         .dropdown {
             cursor: pointer;
         }
+
+        .faq-toggle {
+            color: #00A9FF;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -51,31 +56,28 @@
         <!-- Domain Setup Section -->
         <div id="domainSetupSection" class="box hidden-content">
             <h3 class="text-xl font-bold mb-4">Do you have a Cloudflare account?</h3>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="showSection('cloudflareSteps')">Yes</button>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="showSection('cloudflareSection')">Yes</button>
             <button class="bg-gray-500 text-white px-4 py-2 rounded ml-4" onclick="showSection('cloudflareSignup')">No</button>
         </div>
 
-        <!-- Cloudflare Steps -->
-        <div id="cloudflareSteps" class="box hidden-content">
-            <p class="mb-4">Follow this guide to integrate your domain with Cloudflare:</p>
-            <a href="https://one.dash.cloudflare.com" target="_blank" class="text-blue-400 underline">Cloudflare Setup</a><br>
+        <!-- Cloudflare Setup or Signup Section -->
+        <div id="cloudflareSection" class="box hidden-content">
+            <p class="mb-4">If you already have a Cloudflare account, follow the guide below to integrate your domain:</p>
+            <a href="https://one.dash.cloudflare.com" target="_blank" class="text-blue-400 underline">Cloudflare Setup Guide</a><br>
             <a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" target="_blank" class="text-blue-400 underline">Video Tutorial</a>
-            <p class="mt-4">After completing the setup, proceed to configure your DNS settings based on your provider below.</p>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4" onclick="showSection('dnsConfiguration')">Next</button>
+            <p class="mt-4">Once you've set up Cloudflare, proceed with configuring your DNS settings below.</p>
         </div>
 
-        <!-- Cloudflare Signup -->
         <div id="cloudflareSignup" class="box hidden-content">
-            <p class="mb-4">Create a Cloudflare account and add your domain by following these steps:</p>
+            <p class="mb-4">Create a Cloudflare account and add your domain:</p>
             <a href="https://www.cloudflare.com/" target="_blank" class="text-blue-400 underline">Sign Up for Cloudflare</a>
-            <p class="mt-4">Once you’ve created an account, return here to configure your DNS settings based on your provider below.</p>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4" onclick="showSection('dnsConfiguration')">Next</button>
+            <p class="mt-4">Once you’ve created an account, return here to configure your DNS settings below.</p>
         </div>
 
         <!-- DNS Configuration Section -->
         <div id="dnsConfiguration" class="box hidden-content">
             <h3 class="text-xl font-bold mb-4">Select your domain host to view setup instructions:</h3>
-            <select id="finalStepButton" class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hidden-content" onclick="showSection('checkoutSection')">
+            <select id="domainHostDropdown" class="bg-blue-500 text-white px-4 py-2 rounded mt-4" onchange="showHostInstructions()">
                 <option value="" disabled selected>Select your domain host</option>
                 <option value="ionos">IONOS</option>
                 <option value="hostinger">Hostinger</option>
@@ -87,7 +89,9 @@
                 <option value="hubspot">HubSpot</option>
             </select>
             <div id="hostInstructions" class="hidden-content"></div>
-            <button id="finalStepButton" class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hidden-content" onclick="showSection('checkoutSection')">Complete Setup</button>
+            <button id="goToCheckoutButton" class="bg-green-500 text-white px-4 py-2 rounded mt-4 hidden-content">
+                Go to Checkout
+            </button>
         </div>
 
         <!-- Swift Peak Hosting Option -->
@@ -162,10 +166,10 @@
                     <p><strong>123-reg</strong></p>
                     <ul>
                         <li>Log in to your 123-reg account.</li>
-                        <li>From the dashboard, select Domain Names.</li>
-                        <li>Click on Manage next to the domain.</li>
-                        <li>Choose Change Nameservers.</li>
-                        <li>Enter the custom nameservers and click Update.</li>
+                        <li>Go to the Domain Management section.</li>
+                        <li>Click on the domain name you want to update.</li>
+                        <li>Under Nameservers, choose Use custom nameservers.</li>
+                        <li>Enter the custom nameservers and click Save.</li>
                     </ul>
                 `,
                 namecheap: `
@@ -173,36 +177,39 @@
                     <ul>
                         <li>Sign in to your Namecheap account.</li>
                         <li>Go to the Domain List section.</li>
-                        <li>Click Manage next to the domain.</li>
-                        <li>Under the Nameservers section, choose Custom DNS.</li>
-                        <li>Enter the custom nameservers and click the checkmark to save.</li>
+                        <li>Click on the Manage button next to the domain you want to modify.</li>
+                        <li>Go to the Nameservers section.</li>
+                        <li>Choose Custom DNS.</li>
+                        <li>Enter your custom nameservers and click the checkmark to save.</li>
                     </ul>
                 `,
                 fasthosts: `
                     <p><strong>Fasthosts</strong></p>
                     <ul>
                         <li>Log in to your Fasthosts account.</li>
-                        <li>Select Domain Names from your control panel.</li>
-                        <li>Click on the domain you want to update.</li>
-                        <li>Navigate to the DNS Settings section.</li>
-                        <li>Enter your custom nameservers in the Nameservers fields.</li>
-                        <li>Save your changes.</li>
+                        <li>Go to Manage Domains.</li>
+                        <li>Click on the domain name you want to update.</li>
+                        <li>In the Nameservers section, choose Custom Nameservers.</li>
+                        <li>Enter your custom nameservers and save the settings.</li>
                     </ul>
                 `,
                 hubspot: `
                     <p><strong>HubSpot</strong></p>
-                    <p>HubSpot domains are managed through external DNS providers. Log in to your DNS host (e.g., GoDaddy, IONOS, etc.) and follow their guide to update nameservers.</p>
+                    <ul>
+                        <li>Log in to your HubSpot account.</li>
+                        <li>Navigate to the DNS settings under Domain Management.</li>
+                        <li>Choose Use custom DNS records.</li>
+                        <li>Enter the custom nameservers and save the changes.</li>
+                    </ul>
                 `
             };
 
             const selectedHost = document.getElementById('domainHostDropdown').value;
-            const instructionsDiv = document.getElementById('hostInstructions');
-            instructionsDiv.innerHTML = hostInstructions[selectedHost];
-            instructionsDiv.classList.add('visible-content');
-            document.getElementById('finalStepButton').classList.remove('hidden-content');
+            document.getElementById('hostInstructions').innerHTML = hostInstructions[selectedHost] || '';
+            document.getElementById('hostInstructions').classList.add('visible-content');
+            document.getElementById('goToCheckoutButton').classList.add('visible-content');
         }
     </script>
-
 </body>
 
 </html>
