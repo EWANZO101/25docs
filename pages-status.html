@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domain Setup Checklist</title>
+    <title>Domain Setup for Swift Peak Hosting</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
@@ -24,10 +24,6 @@
 
         .visible-content {
             display: block;
-        }
-
-        .dropdown {
-            cursor: pointer;
         }
 
         .btn {
@@ -50,72 +46,70 @@
 
     <div class="w-full max-w-4xl p-6">
         <h1 class="text-4xl font-bold text-center text-white mb-6">
-            Swift Peak Hosting Domain Setup Checklist
+            Swift Peak Hosting Domain Setup
         </h1>
 
         <p class="text-center mb-6">
-            Swift Peak Hosting requires you to use Cloudflare Tunnels unless you're using our domain. If you’d prefer us to set it up for you, join our <a href="https://discord.gg/" class="text-blue-400 underline">Discord</a> and open a ticket following our format.
+            Swift Peak Hosting requires you to use Cloudflare Tunnels unless you're using our domain. If you'd prefer assistance, join our <a href="https://discord.gg/" class="text-blue-400 underline">Discord</a> and open a ticket with your domain details.
         </p>
 
         <!-- Domain Ownership Step -->
         <div class="box mb-6">
             <h2 class="text-2xl font-bold mb-4">1. Do you already own a domain?</h2>
-            <button class="btn" onclick="showSection('domainSetupSection')">Yes</button>
-            <button class="btn btn-secondary ml-4" onclick="showSection('useSwiftPeakSection')">No</button>
+            <button class="btn" onclick="showSection('hasDomain')">Yes</button>
+            <button class="btn btn-secondary ml-4" onclick="showSection('noDomain')">No</button>
         </div>
 
-        <!-- Domain Setup Section -->
-        <div id="domainSetupSection" class="box hidden-content">
-            <h3 class="text-xl font-bold mb-4">Do you have a Cloudflare account?</h3>
-            <button class="btn" onclick="showSection('cloudflareSteps')">Yes</button>
-            <button class="btn btn-secondary ml-4" onclick="showSection('cloudflareSignup')">No</button>
+        <!-- If they have a domain -->
+        <div id="hasDomain" class="box hidden-content">
+            <h3 class="text-xl font-bold mb-4">2. Do you have a Cloudflare account?</h3>
+            <button class="btn" onclick="showSection('cloudflareYes')">Yes</button>
+            <button class="btn btn-secondary ml-4" onclick="showSection('cloudflareNo')">No</button>
         </div>
 
-        <!-- Cloudflare Steps -->
-        <div id="cloudflareSteps" class="box hidden-content">
-            <p class="mb-4">Follow this guide to integrate your domain with Cloudflare:</p>
+        <!-- If they don't have a domain -->
+        <div id="noDomain" class="box hidden-content">
+            <p>If you don’t have a domain, please visit our store to purchase a domain or use a subdomain from us.</p>
+            <a href="https://mellowservices.com/snailycad" class="btn mt-4">Go to Store</a>
+        </div>
+
+        <!-- If they have Cloudflare account -->
+        <div id="cloudflareYes" class="box hidden-content">
+            <h3 class="text-xl font-bold mb-4">3. Follow the Cloudflare integration guide:</h3>
+            <p>Follow this guide to integrate your domain with Cloudflare:</p>
             <a href="https://one.dash.cloudflare.com" target="_blank" class="text-blue-400 underline">Cloudflare Setup Guide</a><br>
             <a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" target="_blank" class="text-blue-400 underline">Video Tutorial</a>
-            <p class="mt-4">Once you've set up Cloudflare, proceed with configuring your DNS settings below.</p>
-            <button class="btn mt-4" onclick="showSection('dnsConfiguration')">Next</button>
+            <button class="btn mt-4" onclick="showSection('dnsConfiguration')">Proceed to DNS Configuration</button>
         </div>
 
-        <!-- Cloudflare Signup -->
-        <div id="cloudflareSignup" class="box hidden-content">
-            <p class="mb-4">Create a Cloudflare account and add your domain by following these steps:</p>
-            <a href="https://www.cloudflare.com/" target="_blank" class="text-blue-400 underline">Sign Up for Cloudflare</a>
-            <p class="mt-4">Once you’ve created an account, return here to configure your DNS settings below.</p>
-            <button class="btn mt-4" onclick="showSection('dnsConfiguration')">Next</button>
+        <!-- If they don't have Cloudflare account -->
+        <div id="cloudflareNo" class="box hidden-content">
+            <h3 class="text-xl font-bold mb-4">3. Create a Cloudflare account:</h3>
+            <p>Sign up for Cloudflare and add your domain:</p>
+            <a href="https://www.cloudflare.com/" target="_blank" class="text-blue-400 underline">Sign up for Cloudflare</a>
+            <button class="btn mt-4" onclick="showSection('dnsConfiguration')">Proceed to DNS Configuration</button>
         </div>
 
         <!-- DNS Configuration Section -->
         <div id="dnsConfiguration" class="box hidden-content">
-            <h3 class="text-xl font-bold mb-4">Select your domain host to view setup instructions:</h3>
+            <h3 class="text-xl font-bold mb-4">4. Select your domain host to configure DNS:</h3>
             <select id="domainHostDropdown" class="bg-gray-800 text-white px-4 py-2 rounded w-full mb-4" onchange="showHostInstructions()">
                 <option value="" disabled selected>Select your domain host</option>
                 <option value="ionos">IONOS</option>
                 <option value="hostinger">Hostinger</option>
                 <option value="bluehost">Bluehost</option>
                 <option value="godaddy">GoDaddy</option>
-                <option value="123reg">123-reg</option>
                 <option value="namecheap">Namecheap</option>
                 <option value="fasthosts">Fasthosts</option>
-                <option value="hubspot">HubSpot</option>
             </select>
             <div id="hostInstructions" class="hidden-content mb-4"></div>
-            <button id="finalStepButton" class="btn hidden-content mt-4" onclick="showSection('checkoutSection')">Complete Setup</button>
-        </div>
-
-        <!-- Swift Peak Hosting Option (No Domain) -->
-        <div id="useSwiftPeakSection" class="box hidden-content">
-            <p>To use Swift Peak Hosting's domain, simply provide a community name (e.g., <strong>LSARP.snailycad.co.uk</strong>) at checkout. For assistance, check out our guide:</p>
-            <a href="https://mellowservices.com/snailycad" target="_blank" class="text-blue-400 underline">Swift Peak Hosting Store</a>
+            <button id="finalStepButton" class="btn hidden-content mt-4" onclick="showSection('checkoutSection')">Proceed to Checkout</button>
         </div>
 
         <!-- Checkout Section -->
         <div id="checkoutSection" class="box hidden-content">
-            <h3 class="text-2xl font-bold mb-4">You're all set!</h3>
-            <p class="mb-4">You’ve completed all the steps. Click below to proceed to checkout and finalize your setup:</p>
+            <h3 class="text-2xl font-bold mb-4">You're ready to complete your setup!</h3>
+            <p class="mb-4">Click below to go to checkout and finalize your setup:</p>
             <a href="https://store.swiftpeakhosting.co.uk/store/view/56" class="btn">
                 Go to Checkout
             </a>
@@ -174,16 +168,6 @@
                         <li>Enter your custom nameservers and click Save.</li>
                     </ul>
                 `,
-                '123reg': `
-                    <p><strong>123-reg</strong></p>
-                    <ul>
-                        <li>Log in to your 123-reg account.</li>
-                        <li>Select Domain Names from your dashboard.</li>
-                        <li>Click on Manage next to the domain you want to configure.</li>
-                        <li>Choose Change Nameservers.</li>
-                        <li>Enter your custom nameservers and click Update.</li>
-                    </ul>
-                `,
                 namecheap: `
                     <p><strong>Namecheap</strong></p>
                     <ul>
@@ -204,17 +188,13 @@
                         <li>Enter your custom nameservers in the Nameservers fields.</li>
                         <li>Save your changes.</li>
                     </ul>
-                `,
-                hubspot: `
-                    <p><strong>HubSpot</strong></p>
-                    <p>HubSpot domains are managed through external DNS providers. Log in to your DNS host (e.g., GoDaddy, IONOS, etc.) and follow their guide to update nameservers.</p>
                 `
             };
 
             const selectedHost = document.getElementById('domainHostDropdown').value;
             const instructionsDiv = document.getElementById('hostInstructions');
             instructionsDiv.innerHTML = hostInstructions[selectedHost];
-            instructionsDiv.classList.add('visible-content');
+            instructionsDiv.classList.remove('hidden-content');
             document.getElementById('finalStepButton').classList.remove('hidden-content');
         }
     </script>
