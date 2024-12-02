@@ -87,23 +87,22 @@
                 <option value="hubspot">HubSpot</option>
             </select>
             <div id="hostInstructions" class="hidden-content"></div>
+            <button id="finalStepButton" class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hidden-content" onclick="showSection('checkoutSection')">Complete Setup</button>
         </div>
 
+        <!-- Swift Peak Hosting Option -->
+        <div id="useSwiftPeakSection" class="box hidden-content">
+            <p>To use Swift Peak Hosting's domain, simply provide a community name (e.g., <strong>LSARP.snailycad.co.uk</strong>) at checkout. For assistance, check out our guide:</p>
+            <a href="https://mellowservices.com/snailycad" target="_blank" class="text-blue-400 underline">Swift Peak Hosting Store</a>
+        </div>
 
-          <!-- Checkout Section -->
+        <!-- Checkout Section -->
         <div id="checkoutSection" class="box hidden-content">
             <h3 class="text-2xl font-bold mb-4">You're all set!</h3>
             <p class="mb-4">You’ve completed all the steps. Click below to proceed to checkout and finalize your setup:</p>
             <a href="https://store.swiftpeakhosting.co.uk/store/view/56" class="bg-green-500 text-white px-4 py-2 rounded block text-center">
                 Go to Checkout
             </a>
-        </div>
-    </div>
-
-        <!-- Swift Peak Hosting Option -->
-        <div id="useSwiftPeakSection" class="box hidden-content">
-            <p>To use Swift Peak Hosting's domain, simply provide a community name (e.g., <strong>LSARP.snailycad.co.uk</strong>) at checkout. For assistance, check out our guide:</p>
-            <a href="https://mellowservices.com/snailycad" target="_blank" class="text-blue-400 underline">Swift Peak Hosting Store</a>
         </div>
     </div>
 
@@ -133,8 +132,8 @@
                         <li>Go to the Domains section in your dashboard.</li>
                         <li>Select the domain you want to configure.</li>
                         <li>Click on DNS / Nameservers.</li>
-                        <li>Choose Use custom nameservers and enter them.</li>
-                        <li>Save the settings.</li>
+                        <li>Choose Use custom nameservers.</li>
+                        <li>Enter your custom nameservers and save the settings.</li>
                     </ul>
                 `,
                 bluehost: `
@@ -159,7 +158,7 @@
                         <li>Enter your custom nameservers and click Save.</li>
                     </ul>
                 `,
-                "123reg": `
+                '123reg': `
                     <p><strong>123-reg</strong></p>
                     <ul>
                         <li>Log in to your 123-reg account.</li>
@@ -192,18 +191,15 @@
                 `,
                 hubspot: `
                     <p><strong>HubSpot</strong></p>
-                    <ul>
-                        <li>HubSpot domains are managed through external DNS providers.</li>
-                        <li>Log in to your DNS host (e.g., GoDaddy, IONOS, etc.) associated with your domain.</li>
-                        <li>Follow that provider’s guide to update nameservers with custom ones.</li>
-                        <li>For specific HubSpot integrations, consult their domain setup guide.</li>
-                    </ul>
-                `,
+                    <p>HubSpot domains are managed through external DNS providers. Log in to your DNS host (e.g., GoDaddy, IONOS, etc.) and follow their guide to update nameservers.</p>
+                `
             };
 
-            const selectedHost = document.getElementById("domainHostDropdown").value;
-            document.getElementById("hostInstructions").innerHTML = hostInstructions[selectedHost] || '';
-            document.getElementById("hostInstructions").classList.remove('hidden-content');
+            const selectedHost = document.getElementById('domainHostDropdown').value;
+            const instructionsDiv = document.getElementById('hostInstructions');
+            instructionsDiv.innerHTML = hostInstructions[selectedHost];
+            instructionsDiv.classList.add('visible-content');
+            document.getElementById('finalStepButton').classList.remove('hidden-content');
         }
     </script>
 
