@@ -4,55 +4,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting to Swift Peak Hosting Store</title>
+    <title>Domain Setup Checklist</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #121212;
         }
 
-        .loading-box {
+        .box {
             background-color: #2d2d2d;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 2s;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        .hidden-content {
+            display: none;
+        }
+
+        .visible-content {
+            display: block;
+        }
+
+        .dropdown {
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body class="text-gray-200 flex justify-center items-center min-h-screen">
 
-    <div class="loading-box text-center">
-        <h1 class="text-3xl font-bold text-white mb-4">
-            Taking you to Swift Peak Hosting Store
+    <div class="w-full max-w-4xl p-6">
+        <h1 class="text-4xl font-bold text-center text-white mb-6">
+            Swift Peak Hosting Domain Setup Checklist
         </h1>
-        <p class="text-lg mb-4">
-            Please wait while we redirect you. This will only take a few seconds.
+        <p class="text-center mb-6">
+            Swift Peak Hosting requires you to use Cloudflare Tunnels unless you're using our domain. If you’d prefer us to set it up for you, join our <a href="https://discord.gg/" class="text-blue-400 underline">Discord</a> and open a ticket following our format.
         </p>
-        <div class="flex justify-center items-center">
-            <div class="w-8 h-8 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
+
+        <div class="box mb-6">
+            <h2 class="text-2xl font-bold mb-4">1. Do you already own a domain?</h2>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="showSection('domainSetupSection')">Yes</button>
+            <button class="bg-gray-500 text-white px-4 py-2 rounded ml-4" onclick="showSection('useSwiftPeakSection')">No</button>
         </div>
-        <p class="text-sm text-gray-400 mt-4">
-            If you are not redirected automatically, <a href="https://store.swiftpeakhosting.co.uk/store/view/56"
-                class="text-blue-400 underline">click here</a>.
-        </p>
+
+        <!-- Domain Setup Section -->
+        <div id="domainSetupSection" class="box hidden-content">
+            <h3 class="text-xl font-bold mb-4">Do you have a Cloudflare account?</h3>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="showSection('cloudflareSteps')">Yes</button>
+            <button class="bg-gray-500 text-white px-4 py-2 rounded ml-4" onclick="showSection('cloudflareSignup')">No</button>
+        </div>
+
+        <!-- Cloudflare Steps -->
+        <div id="cloudflareSteps" class="box hidden-content">
+            <p class="mb-4">Follow this guide to integrate your domain with Cloudflare:</p>
+            <a href="https://one.dash.cloudflare.com" target="_blank" class="text-blue-400 underline">Cloudflare Setup</a><br>
+            <a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" target="_blank" class="text-blue-400 underline">Video Tutorial</a>
+            <p class="mt-4">After completing the setup, proceed to configure your DNS settings based on your provider below.</p>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4" onclick="showSection('dnsConfiguration')">Next</button>
+        </div>
+
+        <!-- Cloudflare Signup -->
+        <div id="cloudflareSignup" class="box hidden-content">
+            <p class="mb-4">Create a Cloudflare account and add your domain by following these steps:</p>
+            <a href="https://www.cloudflare.com/" target="_blank" class="text-blue-400 underline">Sign Up for Cloudflare</a>
+            <p class="mt-4">Once you’ve created an account, return here to configure your DNS settings based on your provider below.</p>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4" onclick="showSection('dnsConfiguration')">Next</button>
+        </div>
+
+        <!-- DNS Configuration Section -->
+        <div id="dnsConfiguration" class="box hidden-content">
+            <h3 class="text-xl font-bold mb-4">Select your domain host to view setup instructions:</h3>
+            <select id="domainHostDropdown" class="bg-gray-800 text-white px-4 py-2 rounded w-full mb-4" onchange="showHostInstructions()">
+                <option value="" disabled selected>Select your domain host</option>
+                <option value="ionos">IONOS</option>
+                <option value="hostinger">Hostinger</option>
+                <option value="bluehost">Bluehost</option>
+                <option value="godaddy">GoDaddy</option>
+                <option value="123reg">123-reg</option>
+                <option value="namecheap">Namecheap</option>
+                <option value="fasthosts">Fasthosts</option>
+                <option value="hubspot">HubSpot</option>
+            </select>
+            <div id="hostInstructions" class="hidden-content"></div>
+        </div>
+
+        <!-- Swift Peak Hosting Option -->
+        <div id="useSwiftPeakSection" class="box hidden-content">
+            <p>To use Swift Peak Hosting's domain, simply provide a community name (e.g., <strong>LSARP.snailycad.co.uk</strong>) at checkout. For assistance, check out our guide:</p>
+            <a href="https://mellowservices.com/snailycad" target="_blank" class="text-blue-400 underline">Swift Peak Hosting Store</a>
+        </div>
     </div>
 
     <script>
-        // Redirect after 5 seconds
-        setTimeout(() => {
-            window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/56";
-        }, 5000);
+        function showSection(sectionId) {
+            document.querySelectorAll('.box').forEach(box => box.classList.add('hidden-content'));
+            document.getElementById(sectionId).classList.remove('hidden-content');
+        }
+
+        function showHostInstructions() {
+            const hostInstructions = {
+                ionos: `
+                    <p><strong>IONOS</strong></p>
+                    <ul>
+                        <li>Log in to your IONOS account.</li>
+                        <li>Navigate to Domains & SSL in the main menu.</li>
+                        <li>Select the domain you want to update.</li>
+                        <li>Click on DNS Settings.</li>
+                        <li>Scroll to the Nameserver Settings section and choose Use custom nameservers.</li>
+                        <li>Enter your custom nameservers and save the changes.</li>
+                    </ul>
+                `,
+                hostinger: `
+                    <p><strong>Hostinger</strong></p>
+                    <ul>
+                        <li>Log in to your Hostinger account.</li>
+                        <li>Go to the Domains section in your dashboard.</li>
+                        <li>Select the domain you want to configure.</li>
+                        <li>Click on DNS / Nameservers.</li>
+                        <li>Choose Use custom nameservers and enter them.</li>
+                        <li>Save the settings.</li>
+                    </ul>
+                `,
+                bluehost: `
+                    <p><strong>Bluehost</strong></p>
+                    <ul>
+                        <li>Sign in to your Bluehost account.</li>
+                        <li>Go to the Domains tab in your dashboard.</li>
+                        <li>Select the domain you want to modify.</li>
+                        <li>Click on the Nameservers tab.</li>
+                        <li>Choose Custom Nameservers.</li>
+                        <li>Input the custom nameserver details and click Save.</li>
+                    </ul>
+                `,
+                godaddy: `
+                    <p><strong>GoDaddy</strong></p>
+                    <ul>
+                        <li>Log in to your GoDaddy account.</li>
+                        <li>Select My Products from the account menu.</li>
+                        <li>Click on Manage DNS next to the domain you want to update.</li>
+                        <li>Under the Nameservers section, click Change.</li>
+                        <li>Choose Enter my own nameservers (advanced).</li>
+                        <li>Enter your custom nameservers and click Save.</li>
+                    </ul>
+                `,
+                "123reg": `
+                    <p><strong>123-reg</strong></p>
+                    <ul>
+                        <li>Log in to your 123-reg account.</li>
+                        <li>From the dashboard, select Domain Names.</li>
+                        <li>Click on Manage next to the domain.</li>
+                        <li>Choose Change Nameservers.</li>
+                        <li>Enter the custom nameservers and click Update.</li>
+                    </ul>
+                `,
+                namecheap: `
+                    <p><strong>Namecheap</strong></p>
+                    <ul>
+                        <li>Sign in to your Namecheap account.</li>
+                        <li>Go to the Domain List section.</li>
+                        <li>Click Manage next to the domain.</li>
+                        <li>Under the Nameservers section, choose Custom DNS.</li>
+                        <li>Enter the custom nameservers and click the checkmark to save.</li>
+                    </ul>
+                `,
+                fasthosts: `
+                    <p><strong>Fasthosts</strong></p>
+                    <ul>
+                        <li>Log in to your Fasthosts account.</li>
+                        <li>Select Domain Names from your control panel.</li>
+                        <li>Click on the domain you want to update.</li>
+                        <li>Navigate to the DNS Settings section.</li>
+                        <li>Enter your custom nameservers in the Nameservers fields.</li>
+                        <li>Save your changes.</li>
+                    </ul>
+                `,
+                hubspot: `
+                    <p><strong>HubSpot</strong></p>
+                    <ul>
+                        <li>HubSpot domains are managed through external DNS providers.</li>
+                        <li>Log in to your DNS host (e.g., GoDaddy, IONOS, etc.) associated with your domain.</li>
+                        <li>Follow that provider’s guide to update nameservers with custom ones.</li>
+                        <li>For specific HubSpot integrations, consult their domain setup guide.</li>
+                    </ul>
+                `,
+            };
+
+            const selectedHost = document.getElementById("domainHostDropdown").value;
+            document.getElementById("hostInstructions").innerHTML = hostInstructions[selectedHost] || '';
+            document.getElementById("hostInstructions").classList.remove('hidden-content');
+        }
     </script>
 
 </body>
