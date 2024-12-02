@@ -4,104 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Status</title>
+    <title>Redirecting to Swift Peak Hosting Store</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #121212;
         }
 
-        .status-box {
+        .loading-box {
             background-color: #2d2d2d;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s;
         }
 
-        .status-indicator {
-            height: 30px;
-            width: 30px;
-            border-radius: 50%;
-            margin-right: 10px;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
-
-        .text-glow {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-
-        /* Add more styling as per your design */
     </style>
 </head>
 
 <body class="text-gray-200 flex justify-center items-center min-h-screen">
 
-    <div class="w-full max-w-3xl p-6">
-        <h1 class="text-4xl font-bold text-center text-white mb-6 text-glow">
-            Swift Peak Hosting Service Status
+    <div class="loading-box text-center">
+        <h1 class="text-3xl font-bold text-white mb-4">
+            Taking you to Swift Peak Hosting Store
         </h1>
-
-        <div class="status-box">
-            <div id="statusInfo" class="text-center mb-6">
-                <p class="text-lg mb-4">
-                    We are checking the status of our store page to make sure you have the latest information and updates.
-                    Please wait while we verify the current status.
-                </p>
-                <div class="flex justify-center items-center mb-4">
-                    <div id="statusIndicator" class="status-indicator bg-yellow-400 animate-pulse"></div>
-                    <span id="statusText" class="text-lg text-yellow-400">Checking...</span>
-                </div>
-                <p class="text-sm text-gray-400">
-                    This may take a few seconds. Thank you for your patience.
-                </p>
-            </div>
+        <p class="text-lg mb-4">
+            Please wait while we redirect you. This will only take a few seconds.
+        </p>
+        <div class="flex justify-center items-center">
+            <div class="w-8 h-8 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
         </div>
+        <p class="text-sm text-gray-400 mt-4">
+            If you are not redirected automatically, <a href="https://store.swiftpeakhosting.co.uk/dashboard"
+                class="text-blue-400 underline">click here</a>.
+        </p>
     </div>
 
     <script>
-        // URL of the Node.js server running the status check (replace with actual server URL if different)
-        const nodeServerUrl = 'http://94.130.128.253:3000/check-status';
-
-        // Function to check website status via Node.js API
-        async function checkWebsiteStatus() {
-            try {
-                const response = await fetch(nodeServerUrl);
-                const data = await response.json();
-
-                if (response.ok) {
-                    // If the status is OK, update the status indicator
-                    updateStatus('Website is up and running!', 'bg-green-400', 'text-green-400');
-                } else {
-                    // If there was an error or downtime
-                    handleDowntime();
-                }
-            } catch (error) {
-                console.error('Error fetching status:', error);
-                handleDowntime();
-            }
-        }
-
-        // Function to update the status display
-        function updateStatus(message, indicatorClass, textClass) {
-            const statusIndicator = document.getElementById('statusIndicator');
-            const statusText = document.getElementById('statusText');
-            statusIndicator.classList.remove('bg-yellow-400', 'animate-pulse', 'bg-red-600');
-            statusIndicator.classList.add(indicatorClass);
-            statusText.textContent = message;
-            statusText.classList.remove('text-yellow-400', 'text-red-600');
-            statusText.classList.add(textClass);
-        }
-
-        // Function to handle website downtime
-        function handleDowntime() {
-            updateStatus('The website is currently down!', 'bg-red-600', 'text-red-600');
-            // Redirect to downtime page
-            setTimeout(() => {
-                window.location.href = 'https://www.swiftpeakhosting.co.uk/downtime';
-            }, 2000); // Redirect after 2 seconds
-        }
-
-        // Start the status check when the page loads
-        window.onload = checkWebsiteStatus;
+        // Redirect after 5 seconds
+        setTimeout(() => {
+            window.location.href = "https://store.swiftpeakhosting.co.uk/dashboard";
+        }, 5000);
     </script>
 
 </body>
