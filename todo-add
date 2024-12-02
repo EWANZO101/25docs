@@ -1,9 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A comprehensive marketing to-do list for promoting SnellyCAD hosting services.">
     <title>Marketing To-Do List</title>
     <style>
         body {
@@ -22,8 +22,9 @@
         header h1 {
             margin: 0;
             font-size: 2.5em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
         }
-        section {
+        main {
             max-width: 800px;
             margin: 20px auto;
             background: rgba(255, 255, 255, 0.1);
@@ -41,6 +42,18 @@
         }
         li {
             margin: 10px 0;
+            transition: transform 0.2s ease-in-out;
+        }
+        li:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            main {
+                padding: 15px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
         }
     </style>
 </head>
@@ -48,7 +61,7 @@
     <header>
         <h1>Marketing To-Do List</h1>
     </header>
-    <section>
+    <main>
         <h2>1. Holiday Promotions</h2>
         <ul>
             <li>Offer Christmas discounts or bundle deals for hosting SnellyCAD.</li>
@@ -88,6 +101,6 @@
         <ul>
             <li>Offer a free tier for SnellyCAD hosting with basic features to attract new users.</li>
         </ul>
-    </section>
+    </main>
 </body>
 </html>
