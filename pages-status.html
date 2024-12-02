@@ -75,7 +75,7 @@
         <!-- DNS Configuration Section -->
         <div id="dnsConfiguration" class="box hidden-content">
             <h3 class="text-xl font-bold mb-4">Select your domain host to view setup instructions:</h3>
-            <select id="domainHostDropdown" class="bg-gray-800 text-white px-4 py-2 rounded w-full mb-4" onchange="showHostInstructions()">
+            <select id="finalStepButton" class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hidden-content" onclick="showSection('checkoutSection')">
                 <option value="" disabled selected>Select your domain host</option>
                 <option value="ionos">IONOS</option>
                 <option value="hostinger">Hostinger</option>
