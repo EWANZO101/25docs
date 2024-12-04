@@ -93,7 +93,8 @@
                     <a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" target="_blank" class="text-blue-400 underline">Video Tutorial</a>
                 </li>
             </ul>
-            <button id="finalStepButton" class="btn hidden-content mt-4" onclick="showSection('checkoutSection')">Proceed to Checkout</button>
+            <!-- Added "Proceed to Checkout" button here -->
+            <button class="btn mt-4" onclick="showSection('checkoutSection')">Proceed to Checkout</button>
         </div>
 
         <!-- If they don't have Cloudflare account -->
@@ -189,7 +190,7 @@
                         <li>Go to the Domain List section.</li>
                         <li>Click Manage next to the domain.</li>
                         <li>Under the Nameservers section, choose Custom DNS.</li>
-                        <li>Enter the custom nameservers and click the checkmark to save.</li>
+                        <li>Enter your custom nameservers and save the changes.</li>
                     </ul>
                 `,
                 fasthosts: `
@@ -208,6 +209,7 @@
             const instructionsContainer = document.getElementById("hostInstructions");
             instructionsContainer.innerHTML = hostInstructions[selectedHost] || '';
             instructionsContainer.classList.remove('hidden-content');
+            document.getElementById("finalStepButton").classList.remove('hidden-content');
         }
     </script>
 
