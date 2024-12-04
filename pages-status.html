@@ -93,7 +93,6 @@
                     <a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" target="_blank" class="text-blue-400 underline">Video Tutorial</a>
                 </li>
             </ul>
-            <!-- Added "Proceed to Checkout" button here -->
             <button class="btn mt-4" onclick="showSection('checkoutSection')">Proceed to Checkout</button>
         </div>
 
@@ -103,22 +102,6 @@
             <p>Sign up for Cloudflare and add your domain:</p>
             <a href="https://www.cloudflare.com/" target="_blank" class="text-blue-400 underline">Sign up for Cloudflare</a>
             <button class="btn mt-4" onclick="showSection('checkoutSection')">Proceed to Checkout</button>
-        </div>
-
-        <!-- DNS Configuration Section -->
-        <div id="dnsConfiguration" class="box hidden-content">
-            <h3 class="text-xl font-bold mb-4">4. Select your domain host to configure DNS:</h3>
-            <select id="domainHostDropdown" class="bg-gray-800 text-white px-4 py-2 rounded w-full mb-4" onchange="showHostInstructions()">
-                <option value="" disabled selected>Select your domain host</option>
-                <option value="ionos">IONOS</option>
-                <option value="hostinger">Hostinger</option>
-                <option value="bluehost">Bluehost</option>
-                <option value="godaddy">GoDaddy</option>
-                <option value="namecheap">Namecheap</option>
-                <option value="fasthosts">Fasthosts</option>
-            </select>
-            <div id="hostInstructions" class="hidden-content mb-4"></div>
-            <button id="finalStepButton" class="btn hidden-content mt-4" onclick="showSection('checkoutSection')">Proceed to Checkout</button>
         </div>
 
         <!-- Checkout Section -->
@@ -135,81 +118,6 @@
         function showSection(sectionId) {
             document.querySelectorAll('.box').forEach(box => box.classList.add('hidden-content'));
             document.getElementById(sectionId).classList.remove('hidden-content');
-        }
-
-        function showHostInstructions() {
-            const hostInstructions = {
-                ionos: `
-                    <p><strong>IONOS</strong></p>
-                    <ul>
-                        <li>Log in to your IONOS account.</li>
-                        <li>Navigate to Domains & SSL in the main menu.</li>
-                        <li>Select the domain you want to update.</li>
-                        <li>Click on DNS Settings.</li>
-                        <li>Scroll to the Nameserver Settings section and choose Use custom nameservers.</li>
-                        <li>Enter your custom nameservers and save the changes.</li>
-                    </ul>
-                `,
-                hostinger: `
-                    <p><strong>Hostinger</strong></p>
-                    <ul>
-                        <li>Log in to your Hostinger account.</li>
-                        <li>Go to the Domains section in your dashboard.</li>
-                        <li>Select the domain you want to configure.</li>
-                        <li>Click on DNS / Nameservers.</li>
-                        <li>Choose Use custom nameservers.</li>
-                        <li>Enter your custom nameservers and save the settings.</li>
-                    </ul>
-                `,
-                bluehost: `
-                    <p><strong>Bluehost</strong></p>
-                    <ul>
-                        <li>Sign in to your Bluehost account.</li>
-                        <li>Go to the Domains tab in your dashboard.</li>
-                        <li>Select the domain you want to modify.</li>
-                        <li>Click on the Nameservers tab.</li>
-                        <li>Choose Custom Nameservers.</li>
-                        <li>Input the custom nameserver details and click Save.</li>
-                    </ul>
-                `,
-                godaddy: `
-                    <p><strong>GoDaddy</strong></p>
-                    <ul>
-                        <li>Log in to your GoDaddy account.</li>
-                        <li>Select My Products from the account menu.</li>
-                        <li>Click on Manage DNS next to the domain you want to update.</li>
-                        <li>Under the Nameservers section, click Change.</li>
-                        <li>Choose Enter my own nameservers (advanced).</li>
-                        <li>Enter your custom nameservers and click Save.</li>
-                    </ul>
-                `,
-                namecheap: `
-                    <p><strong>Namecheap</strong></p>
-                    <ul>
-                        <li>Sign in to your Namecheap account.</li>
-                        <li>Go to the Domain List section.</li>
-                        <li>Click Manage next to the domain.</li>
-                        <li>Under the Nameservers section, choose Custom DNS.</li>
-                        <li>Enter your custom nameservers and save the changes.</li>
-                    </ul>
-                `,
-                fasthosts: `
-                    <p><strong>Fasthosts</strong></p>
-                    <ul>
-                        <li>Log in to your Fasthosts account.</li>
-                        <li>Go to the Domains section.</li>
-                        <li>Select the domain you want to edit.</li>
-                        <li>Click DNS Settings.</li>
-                        <li>Enter your custom nameservers and save the changes.</li>
-                    </ul>
-                `
-            };
-
-            const selectedHost = document.getElementById("domainHostDropdown").value;
-            const instructionsContainer = document.getElementById("hostInstructions");
-            instructionsContainer.innerHTML = hostInstructions[selectedHost] || '';
-            instructionsContainer.classList.remove('hidden-content');
-            document.getElementById("finalStepButton").classList.remove('hidden-content');
         }
     </script>
 
