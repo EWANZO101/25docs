@@ -39,6 +39,14 @@
         .btn-secondary {
             background-color: #808080;
         }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .btn-secondary:hover {
+            background-color: #6c6c6c;
+        }
     </style>
 </head>
 
@@ -74,19 +82,19 @@
         </div>
 
         <!-- If they have Cloudflare account -->
-     <div id="cloudflareYes" class="box hidden-content">
-    <h3 class="text-xl font-bold mb-4">3. Follow the Cloudflare Integration Guide:</h3>
-    <p>Follow this guide to integrate your domain with Cloudflare:</p>
-    <ul class="list-disc pl-5">
-        <li>
-            <a href="https://one.dash.cloudflare.com" target="_blank" class="text-blue-400 underline">Cloudflare Setup Guide</a>
-        </li>
-        <li>
-            <a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" target="_blank" class="text-blue-400 underline">Video Tutorial</a>
-        </li>
-    </ul>
-    <button id="finalStepButton" class="btn hidden-content mt-4" onclick="showSection('checkoutSection')">Proceed to Checkout</button>
-</div>
+        <div id="cloudflareYes" class="box hidden-content">
+            <h3 class="text-xl font-bold mb-4">3. Follow the Cloudflare Integration Guide:</h3>
+            <p>Follow this guide to integrate your domain with Cloudflare:</p>
+            <ul class="list-disc pl-5">
+                <li>
+                    <a href="https://one.dash.cloudflare.com" target="_blank" class="text-blue-400 underline">Cloudflare Setup Guide</a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" target="_blank" class="text-blue-400 underline">Video Tutorial</a>
+                </li>
+            </ul>
+            <button id="finalStepButton" class="btn hidden-content mt-4" onclick="showSection('checkoutSection')">Proceed to Checkout</button>
+        </div>
 
         <!-- If they don't have Cloudflare account -->
         <div id="cloudflareNo" class="box hidden-content">
@@ -188,20 +196,18 @@
                     <p><strong>Fasthosts</strong></p>
                     <ul>
                         <li>Log in to your Fasthosts account.</li>
-                        <li>Select Domain Names from your control panel.</li>
-                        <li>Click on the domain you want to update.</li>
-                        <li>Navigate to the DNS Settings section.</li>
-                        <li>Enter your custom nameservers in the Nameservers fields.</li>
-                        <li>Save your changes.</li>
+                        <li>Go to the Domains section.</li>
+                        <li>Select the domain you want to edit.</li>
+                        <li>Click DNS Settings.</li>
+                        <li>Enter your custom nameservers and save the changes.</li>
                     </ul>
                 `
             };
 
-            const selectedHost = document.getElementById('domainHostDropdown').value;
-            const instructionsDiv = document.getElementById('hostInstructions');
-            instructionsDiv.innerHTML = hostInstructions[selectedHost];
-            instructionsDiv.classList.remove('hidden-content');
-            document.getElementById('finalStepButton').classList.remove('hidden-content');
+            const selectedHost = document.getElementById("domainHostDropdown").value;
+            const instructionsContainer = document.getElementById("hostInstructions");
+            instructionsContainer.innerHTML = hostInstructions[selectedHost] || '';
+            instructionsContainer.classList.remove('hidden-content');
         }
     </script>
 
