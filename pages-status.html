@@ -74,13 +74,19 @@
         </div>
 
         <!-- If they have Cloudflare account -->
-        <div id="cloudflareYes" class="box hidden-content">
-            <h3 class="text-xl font-bold mb-4">3. Follow the Cloudflare integration guide:</h3>
-            <p>Follow this guide to integrate your domain with Cloudflare:</p>
-            <a href="https://one.dash.cloudflare.com" target="_blank" class="text-blue-400 underline">Cloudflare Setup Guide</a><br>
+     <div id="cloudflareYes" class="box hidden-content">
+    <h3 class="text-xl font-bold mb-4">3. Follow the Cloudflare Integration Guide:</h3>
+    <p>Follow this guide to integrate your domain with Cloudflare:</p>
+    <ul class="list-disc pl-5">
+        <li>
+            <a href="https://one.dash.cloudflare.com" target="_blank" class="text-blue-400 underline">Cloudflare Setup Guide</a>
+        </li>
+        <li>
             <a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" target="_blank" class="text-blue-400 underline">Video Tutorial</a>
-            <button id="finalStepButton" class="btn hidden-content mt-4" onclick="showSection('checkoutSection')">Proceed to Checkout</button>
-        </div>
+        </li>
+    </ul>
+    <button id="finalStepButton" class="btn hidden-content mt-4" onclick="showSection('checkoutSection')">Proceed to Checkout</button>
+</div>
 
         <!-- If they don't have Cloudflare account -->
         <div id="cloudflareNo" class="box hidden-content">
