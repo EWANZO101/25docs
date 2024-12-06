@@ -137,11 +137,12 @@
   <script>
   // Function to check if it's time for maintenance
   function checkMaintenanceTime() {
-    const scheduledTime = new Date('2024-12-07T04:00:00Z'); // 4 AM GMT on 07/12/2024
+    const startTime = new Date('2024-12-07T04:00:00Z'); // 4 AM GMT on 07/12/2024
+    const endTime = new Date('2024-12-07T05:00:00Z');   // 5 AM GMT on 07/12/2024
     const currentTime = new Date();
 
-    // Check if the current time matches the scheduled maintenance time
-    if (currentTime >= scheduledTime) {
+    // Check if the current time is within the maintenance window (4 AM to 5 AM GMT)
+    if (currentTime >= startTime && currentTime < endTime) {
       window.location.href = "https://www.swiftpeakhosting.co.uk/maintenance.html";
     }
   }
