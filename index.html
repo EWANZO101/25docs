@@ -135,21 +135,33 @@
   </footer>
 
   <script>
-    // Toggle dropdown menu
-    document.getElementById('userMenuButton').addEventListener('click', () => {
-      const userMenu = document.getElementById('userMenu');
-      userMenu.classList.toggle('hidden');
-    });
+  // Function to check if it's time for maintenance
+  function checkMaintenanceTime() {
+    const scheduledTime = new Date('2024-12-07T04:00:00Z'); // 4 AM GMT on 07/12/2024
+    const currentTime = new Date();
 
-    // Service announcement display
-    const serviceAnnouncement = document.getElementById('serviceAnnouncement');
-    const serviceMessage = document.getElementById('serviceMessage');
-    const lastUpdated = document.getElementById('lastUpdated');
+    // Check if the current time matches the scheduled maintenance time
+    if (currentTime >= scheduledTime) {
+      window.location.href = "https://www.swiftpeakhosting.co.uk/maintenance.html";
+    }
+  }
 
-    serviceMessage.innerText = "Scheduled Maintenance for 4 AM GMT UK Time 07/12/2024";
-    lastUpdated.innerText = "Last updated: Dec 1, 2024 12:00 PM";
+  // Call the function immediately when the page loads
+  checkMaintenanceTime();
 
-    serviceAnnouncement.classList.remove('hidden');
-  </script>
-</body>
-</html>
+  // Toggle dropdown menu
+  document.getElementById('userMenuButton').addEventListener('click', () => {
+    const userMenu = document.getElementById('userMenu');
+    userMenu.classList.toggle('hidden');
+  });
+
+  // Service announcement display
+  const serviceAnnouncement = document.getElementById('serviceAnnouncement');
+  const serviceMessage = document.getElementById('serviceMessage');
+  const lastUpdated = document.getElementById('lastUpdated');
+
+  serviceMessage.innerText = "Scheduled Maintenance for 4 AM GMT UK Time 07/12/2024";
+  lastUpdated.innerText = "Last updated: Dec 1, 2024 12:00 PM";
+
+  serviceAnnouncement.classList.remove('hidden');
+</script>
