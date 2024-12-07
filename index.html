@@ -138,7 +138,7 @@
   // Function to check if it's time for maintenance
   function checkMaintenanceTime() {
     const startTime = new Date('2024-12-07T00:46:00Z'); // 4 AM GMT on 07/12/2024
-    const endTime = new Date('2024-12-07T05:00:00Z');   // 5 AM GMT on 07/12/2024
+    const endTime = new Date('2024-12-07T01:00:00Z');   // 5 AM GMT on 07/12/2024
     const currentTime = new Date();
 
     // Check if the current time is within the maintenance window (4 AM to 5 AM GMT)
@@ -161,8 +161,8 @@
   const serviceMessage = document.getElementById('serviceMessage');
   const lastUpdated = document.getElementById('lastUpdated');
 
-  serviceMessage.innerText = "Scheduled Maintenance for 4 AM GMT UK Time 07/12/2024";
-  lastUpdated.innerText = "Last updated: Dec 7, 2024 12:00 PM";
+  serviceMessage.innerText = "Scheduled Maintenance for 00:47 AM GMT UK Time 07/12/2024";
+  lastUpdated.innerText = "Last updated: Dec 7, 2024 12:00 PAM";
 
   serviceAnnouncement.classList.remove('hidden');
 </script>
