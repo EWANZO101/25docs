@@ -21,6 +21,9 @@
   <div class="z-10 text-center p-8 max-w-md">
     <h1 class="text-4xl font-bold mb-4">Please Stand By</h1>
     <p class="text-lg mb-6">Our team is working hard to provide you with your CAD. Your patience is appreciated!</p>
+    <p class="text-sm text-yellow-400 mb-4">
+      There is a slight delay. We will have your CAD ready in 20 minutes from now (GMT UK time).
+    </p>
     <div class="mb-8">
       <span class="text-lg">Your CAD will be available here in:</span>
       <div id="timer" class="text-3xl font-bold mt-2"></div>
@@ -36,9 +39,9 @@
   </div>
 
   <script>
-    // Set target time: 23:30 GMT
+    // Set target time: 20 minutes from now in GMT
     const targetTime = new Date();
-    targetTime.setUTCHours(23, 30, 0, 0); // 23:30 UTC
+    targetTime.setMinutes(targetTime.getMinutes() + 20); // Add 20 minutes
     const timerElement = document.getElementById("timer");
     const accessButton = document.getElementById("access-cad-button");
 
