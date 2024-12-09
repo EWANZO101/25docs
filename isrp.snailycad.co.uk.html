@@ -30,23 +30,12 @@
       </div>
     </div>
 
-    <!-- Access CAD Button -->
-    <a 
-      href="https://cad-isrp.snailycad.co.uk" 
-      id="access-cad-button" 
-      class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg transition opacity-50 cursor-not-allowed pointer-events-none mb-4"
-      aria-disabled="true"
-    >
-      Access CAD
-    </a>
-
     <!-- Links Section -->
-    <div id="additional-links" class="hidden">
-      <p class="text-lg font-semibold mb-4">Your CAD is ready! Access it below:</p>
-      <a href="https://ssh-isrp.snailycad.co.uk" class="bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition hover:bg-green-500 mb-2 block">
+    <div id="additional-links" class="hidden space-y-4">
+      <a href="https://ssh-isrp.snailycad.co.uk" class="bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition hover:bg-green-500 block">
         Access SSH
       </a>
-      <a href="https://api-isrp.snailycad.co.uk" class="bg-purple-600 text-white font-semibold px-6 py-3 rounded-lg transition hover:bg-purple-500 mb-2 block">
+      <a href="https://api-isrp.snailycad.co.uk" class="bg-purple-600 text-white font-semibold px-6 py-3 rounded-lg transition hover:bg-purple-500 block">
         Access API
       </a>
       <a href="https://cad-isrp.snailycad.co.uk" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg transition hover:bg-blue-500 block">
@@ -64,7 +53,6 @@
     const progressBar = document.getElementById("progress-bar");
     const progressPercentage = document.getElementById("progress-percentage");
     const timeRemaining = document.getElementById("time-remaining");
-    const accessButton = document.getElementById("access-cad-button");
     const additionalLinks = document.getElementById("additional-links");
 
     const totalTime = endTime - startTime; // Total countdown time in milliseconds
@@ -78,11 +66,6 @@
         timeRemaining.textContent = "00:00";
         progressBar.style.width = "100%";
         progressPercentage.textContent = "100%";
-
-        // Enable Access CAD button
-        accessButton.classList.remove("opacity-50", "cursor-not-allowed", "pointer-events-none");
-        accessButton.removeAttribute("aria-disabled");
-        accessButton.classList.add("hover:bg-blue-500");
 
         // Show additional links
         additionalLinks.classList.remove("hidden");
