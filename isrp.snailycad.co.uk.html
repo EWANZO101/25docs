@@ -25,26 +25,44 @@
       <span class="text-lg">Your CAD will be available here in:</span>
       <div id="timer" class="text-3xl font-bold mt-2"></div>
     </div>
-    <a href="https://cad-isrp.snailycad.co.uk" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg transition">
+    <a 
+      href="https://cad-isrp.snailycad.co.uk" 
+      id="access-cad-button" 
+      class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg transition opacity-50 cursor-not-allowed pointer-events-none"
+      aria-disabled="true"
+    >
       Access CAD
     </a>
   </div>
 
   <script>
-    // Countdown Timer Logic
+    // Set target time: 23:30 GMT
+    const targetTime = new Date();
+    targetTime.setUTCHours(23, 30, 0, 0); // 23:30 UTC
     const timerElement = document.getElementById("timer");
-    let countdown = 15 * 60; // 15 minutes in seconds
+    const accessButton = document.getElementById("access-cad-button");
 
     function updateTimer() {
-      const minutes = Math.floor(countdown / 60).toString().padStart(2, "0");
-      const seconds = (countdown % 60).toString().padStart(2, "0");
-      timerElement.textContent = `${minutes}:${seconds}`;
-      if (countdown > 0) countdown--;
+      const now = new Date();
+      const diff = targetTime - now;
+
+      if (diff <= 0) {
+        // Timer has reached 0
+        timerElement.textContent = "00:00";
+        accessButton.classList.remove("opacity-50", "cursor-not-allowed", "pointer-events-none");
+        accessButton.removeAttribute("aria-disabled");
+        accessButton.classList.add("hover:bg-blue-500");
+      } else {
+        // Update countdown
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, "0");
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, "0");
+        timerElement.textContent = `${minutes}:${seconds}`;
+      }
     }
 
+    // Initialize countdown and refresh every second
     updateTimer();
     setInterval(updateTimer, 1000);
   </script>
-
 </body>
 </html>
