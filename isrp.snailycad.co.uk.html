@@ -24,9 +24,14 @@
     <p class="text-sm text-yellow-400 mb-4">
       There is a slight delay. We will have your CAD ready in 20 minutes from now (GMT UK time).
     </p>
-    <div class="mb-8">
-      <span class="text-lg">Your CAD will be available here in:</span>
-      <div id="timer" class="text-3xl font-bold mt-2"></div>
+    <div class="mb-6">
+      <div class="flex justify-between text-sm mb-2">
+        <span>Time Remaining: <span id="time-remaining">20:00</span></span>
+        <span>Progress: <span id="progress-percentage">0%</span></span>
+      </div>
+      <div class="w-full bg-gray-700 rounded-full h-4">
+        <div id="progress-bar" class="bg-blue-600 h-4 rounded-full" style="width: 0%;"></div>
+      </div>
     </div>
     <a 
       href="https://cad-isrp.snailycad.co.uk" 
@@ -42,30 +47,41 @@
     // Set target time: 20 minutes from now in GMT
     const targetTime = new Date();
     targetTime.setMinutes(targetTime.getMinutes() + 20); // Add 20 minutes
-    const timerElement = document.getElementById("timer");
+    const progressBar = document.getElementById("progress-bar");
+    const progressPercentage = document.getElementById("progress-percentage");
+    const timeRemaining = document.getElementById("time-remaining");
     const accessButton = document.getElementById("access-cad-button");
 
-    function updateTimer() {
+    const totalTime = 20 * 60 * 1000; // 20 minutes in milliseconds
+
+    function updateProgress() {
       const now = new Date();
       const diff = targetTime - now;
 
       if (diff <= 0) {
         // Timer has reached 0
-        timerElement.textContent = "00:00";
+        timeRemaining.textContent = "00:00";
+        progressBar.style.width = "100%";
+        progressPercentage.textContent = "100%";
+
         accessButton.classList.remove("opacity-50", "cursor-not-allowed", "pointer-events-none");
         accessButton.removeAttribute("aria-disabled");
         accessButton.classList.add("hover:bg-blue-500");
       } else {
-        // Update countdown
+        // Calculate remaining time and progress
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, "0");
         const seconds = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, "0");
-        timerElement.textContent = `${minutes}:${seconds}`;
+        timeRemaining.textContent = `${minutes}:${seconds}`;
+
+        const progress = 100 - (diff / totalTime) * 100;
+        progressBar.style.width = `${progress.toFixed(2)}%`;
+        progressPercentage.textContent = `${progress.toFixed(0)}%`;
       }
     }
 
     // Initialize countdown and refresh every second
-    updateTimer();
-    setInterval(updateTimer, 1000);
+    updateProgress();
+    setInterval(updateProgress, 1000);
   </script>
 </body>
 </html>
