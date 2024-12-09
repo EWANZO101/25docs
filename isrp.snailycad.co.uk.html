@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Please Stand By - Your CAD is Coming Soon</title>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center h-screen relative overflow-hidden">
+
+  <!-- Animated Background -->
+  <div class="absolute inset-0">
+    <div class="animate-pulse bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 opacity-30 h-full"></div>
+    <div class="absolute top-1/3 left-1/4 bg-blue-600 blur-3xl h-48 w-48 rounded-full opacity-20"></div>
+    <div class="absolute bottom-1/4 right-1/3 bg-purple-600 blur-3xl h-64 w-64 rounded-full opacity-20"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="z-10 text-center p-8 max-w-md">
+    <h1 class="text-4xl font-bold mb-4">Please Stand By</h1>
+    <p class="text-lg mb-6">Our team is working hard to provide you with your CAD. Your patience is appreciated!</p>
+    <div class="mb-8">
+      <span class="text-lg">Your CAD will be available here in:</span>
+      <div id="timer" class="text-3xl font-bold mt-2"></div>
+    </div>
+    <a href="https://cad-isrp.snailycad.co.uk" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg transition">
+      Access CAD
+    </a>
+  </div>
+
+  <script>
+    // Countdown Timer Logic
+    const timerElement = document.getElementById("timer");
+    let countdown = 15 * 60; // 15 minutes in seconds
+
+    function updateTimer() {
+      const minutes = Math.floor(countdown / 60).toString().padStart(2, "0");
+      const seconds = (countdown % 60).toString().padStart(2, "0");
+      timerElement.textContent = `${minutes}:${seconds}`;
+      if (countdown > 0) countdown--;
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+
+</body>
+</html>
