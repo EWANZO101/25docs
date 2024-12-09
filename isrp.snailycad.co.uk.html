@@ -22,7 +22,7 @@
     <p class="text-lg mb-6">Our team is working hard to provide you with your CAD. Your patience is appreciated!</p>
     <div class="mb-6">
       <div class="flex justify-between text-sm mb-2">
-        <span>Time Remaining: <span id="time-remaining">15:00</span></span>
+        <span>Time Remaining: <span id="time-remaining">--:--</span></span>
         <span>Progress: <span id="progress-percentage">0%</span></span>
       </div>
       <div class="w-full bg-gray-700 rounded-full h-4">
@@ -40,9 +40,10 @@
   </div>
 
   <script>
-    // Set target time: 15 minutes from now in GMT
-    const targetTime = new Date();
-    targetTime.setMinutes(targetTime.getMinutes() + 15); // Add 15 minutes
+    // Define the target time in GMT
+    const targetTime = new Date(Date.UTC(2024, 11, 9, 23, 30)); // December 9th, 2024, 23:30 GMT
+
+    // Elements to update
     const progressBar = document.getElementById("progress-bar");
     const progressPercentage = document.getElementById("progress-percentage");
     const timeRemaining = document.getElementById("time-remaining");
@@ -50,12 +51,12 @@
 
     const totalTime = 15 * 60 * 1000; // 15 minutes in milliseconds
 
-    function updateProgress() {
-      const now = new Date();
-      const diff = targetTime - now;
+    function updateCountdown() {
+      const now = new Date(); // Get the current time
+      const diff = targetTime - now; // Calculate the difference in milliseconds
 
       if (diff <= 0) {
-        // Timer has reached 0
+        // Timer has expired
         timeRemaining.textContent = "00:00";
         progressBar.style.width = "100%";
         progressPercentage.textContent = "100%";
@@ -75,9 +76,9 @@
       }
     }
 
-    // Initialize countdown and refresh every second
-    updateProgress();
-    setInterval(updateProgress, 1000);
+    // Initialize the timer and update it every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
