@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Please Stand By - Your CAD is Coming Soon</title>
   <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-900 text-white flex items-center justify-center h-screen relative overflow-hidden">
@@ -21,12 +20,9 @@
   <div class="z-10 text-center p-8 max-w-md">
     <h1 class="text-4xl font-bold mb-4">Please Stand By</h1>
     <p class="text-lg mb-6">Our team is working hard to provide you with your CAD. Your patience is appreciated!</p>
-    <p class="text-sm text-yellow-400 mb-4">
-      There is a slight delay. We will have your CAD ready in 20 minutes from now (GMT UK time).
-    </p>
     <div class="mb-6">
       <div class="flex justify-between text-sm mb-2">
-        <span>Time Remaining: <span id="time-remaining">20:00</span></span>
+        <span>Time Remaining: <span id="time-remaining">15:00</span></span>
         <span>Progress: <span id="progress-percentage">0%</span></span>
       </div>
       <div class="w-full bg-gray-700 rounded-full h-4">
@@ -44,15 +40,15 @@
   </div>
 
   <script>
-    // Set target time: 20 minutes from now in GMT
+    // Set target time: 15 minutes from now in GMT
     const targetTime = new Date();
-    targetTime.setMinutes(targetTime.getMinutes() + 20); // Add 20 minutes
+    targetTime.setMinutes(targetTime.getMinutes() + 15); // Add 15 minutes
     const progressBar = document.getElementById("progress-bar");
     const progressPercentage = document.getElementById("progress-percentage");
     const timeRemaining = document.getElementById("time-remaining");
     const accessButton = document.getElementById("access-cad-button");
 
-    const totalTime = 20 * 60 * 1000; // 20 minutes in milliseconds
+    const totalTime = 15 * 60 * 1000; // 15 minutes in milliseconds
 
     function updateProgress() {
       const now = new Date();
