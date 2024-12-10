@@ -16,6 +16,11 @@
     #error-message {
       display: none;
     }
+
+    /* Support closed message styling */
+    #support-closed {
+      display: none;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white flex items-center justify-center h-screen relative overflow-hidden">
@@ -37,6 +42,11 @@
       <p class="text-lg">We cannot give you a time frame as you have not provided your Cloudflare install code or domains. Please check your email or watch this video: 
         <a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" class="text-blue-300 hover:underline" target="_blank">Watch the video</a>.
       </p>
+    </div>
+
+    <!-- Support Closed Message -->
+    <div id="support-closed" class="bg-yellow-600 text-black p-4 rounded-md mb-6">
+      <p class="text-lg">Support is now closed. Please email us your install code or open a ticket in our Discord with the install code and your API domain and CAD domain (e.g., api.example.com, cad.example.com). We reopen at 8 AM UK Time (GMT).</p>
     </div>
 
     <!-- Countdown and Progress -->
@@ -69,7 +79,7 @@
 
     <!-- Contact and Livemap Info -->
     <div class="mt-8 text-sm text-gray-400">
-      <p>If you wish to have a live map with us, please contact us via Discord and open a ticket. Provide the email you used to sign up for our CAD and your server IP. Your live map domain will be <a href="https://livemap-exmaple.snailycad.co.uk" class="text-blue-500 hover:underline">https://livemap-exmaple.com.snailycad.co.uk</a>. Once we have made it live, if you do not wish to join our Discord, you can email us at <a href="mailto:swiftpeakhosting@outlook.com" class="text-blue-500 hover:underline">swiftpeakhosting@outlook.com</a>.</p>
+      <p>If you wish to have a live map with us, please contact us via Discord and open a ticket. Provide the email you used to sign up for our CAD and your server IP. Your live map domain will be <a href="https://livemap-isrp.snailycad.co.uk" class="text-blue-500 hover:underline">https://livemap-isrp.snailycad.co.uk</a>. Once we have made it live, if you do not wish to join our Discord, you can email us at <a href="mailto:swiftpeakhosting@outlook.com" class="text-blue-500 hover:underline">swiftpeakhosting@outlook.com</a>.</p>
     </div>
   </div>
 
@@ -84,6 +94,7 @@
     const timeRemaining = document.getElementById("time-remaining");
     const additionalLinks = document.getElementById("additional-links");
     const errorMessage = document.getElementById("error-message");
+    const supportClosed = document.getElementById("support-closed");
 
     const totalTime = endTime - startTime; // Total countdown time in milliseconds
 
@@ -94,6 +105,13 @@
     // If Cloudflare info is missing, show the error message
     if (!cloudflareCodeProvided || !domainsProvided) {
       errorMessage.style.display = "block"; // Show error message
+      additionalLinks.style.display = "none"; // Hide additional links
+    }
+
+    // Check if support is closed (for demonstration, always showing closed message)
+    const supportClosedStatus = true; // Set this to true when support is closed
+    if (supportClosedStatus) {
+      supportClosed.style.display = "block"; // Show support closed message
       additionalLinks.style.display = "none"; // Hide additional links
     }
 
