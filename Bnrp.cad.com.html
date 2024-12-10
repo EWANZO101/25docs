@@ -11,6 +11,11 @@
     #additional-links {
       display: none;
     }
+
+    /* Hide error message by default */
+    #error-message {
+      display: none;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white flex items-center justify-center h-screen relative overflow-hidden">
@@ -27,6 +32,13 @@
     <h1 class="text-4xl font-bold mb-4">Please Stand By</h1>
     <p class="text-lg mb-6">Our team is working hard to provide you with your CAD. Your patience is appreciated!</p>
     
+    <!-- Error Message Section -->
+    <div id="error-message" class="bg-red-600 text-white p-4 rounded-md mb-6">
+      <p class="text-lg">We cannot give you a time frame as you have not provided your Cloudflare install code or domains. Please check your email or watch this video: 
+        <a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" class="text-blue-300 hover:underline" target="_blank">Watch the video</a>.
+      </p>
+    </div>
+
     <!-- Countdown and Progress -->
     <div class="mb-6">
       <div class="flex justify-between text-sm mb-2">
@@ -71,8 +83,19 @@
     const progressPercentage = document.getElementById("progress-percentage");
     const timeRemaining = document.getElementById("time-remaining");
     const additionalLinks = document.getElementById("additional-links");
+    const errorMessage = document.getElementById("error-message");
 
     const totalTime = endTime - startTime; // Total countdown time in milliseconds
+
+    // Check if Cloudflare install code or domains are provided
+    const cloudflareCodeProvided = false; // Replace with your condition, e.g., check if a variable is set
+    const domainsProvided = false; // Replace with your condition
+
+    // If Cloudflare info is missing, show the error message
+    if (!cloudflareCodeProvided || !domainsProvided) {
+      errorMessage.style.display = "block"; // Show error message
+      additionalLinks.style.display = "none"; // Hide additional links
+    }
 
     function updateCountdown() {
       const now = new Date(); // Get the current time
