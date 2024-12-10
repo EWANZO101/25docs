@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swift Peak Hosting Ltd</title>
+  <title>Swift Peak Hosting Ltd - Merry Christmas!</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.css" rel="stylesheet" />
   <style>
@@ -11,13 +11,19 @@
       0% { opacity: 0; transform: translateY(-20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+    @keyframes snow {
+      0% { transform: translateY(-100px); }
+      100% { transform: translateY(100vh); }
+    }
     .fade-in { animation: fadeIn 2s ease-in-out forwards; }
     body {
       background: url('https://i.ibb.co/PxmJgTv/4rBkgcQ.png') no-repeat center center fixed;
       background-size: cover;
+      position: relative;
+      overflow-x: hidden;
     }
     .custom-button {
-      background: linear-gradient(90deg, #1d4ed8, #3b82f6);
+      background: linear-gradient(90deg, #ff3e3e, #ffbd59);
       color: white;
       font-weight: bold;
       padding: 0.5rem 1rem;
@@ -28,141 +34,71 @@
     }
     .custom-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+      box-shadow: 0 6px 20px rgba(255, 61, 61, 0.5);
     }
     nav {
       position: relative;
       z-index: 10;
+      background: linear-gradient(90deg, #ff3e3e, #ffbd59);
     }
-    section {
-      margin-top: 2rem;
-      position: relative;
+    footer {
+      background: linear-gradient(90deg, #ff3e3e, #ffbd59);
     }
+    .snowflake {
+      position: absolute;
+      top: 0;
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      animation: snow 10s linear infinite;
+      opacity: 0.8;
+    }
+    .snowflake:nth-child(odd) { animation-duration: 7s; }
+    .snowflake:nth-child(even) { animation-duration: 12s; }
   </style>
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col">
 
-  <!-- Navbar -->
-  <nav class="bg-blue-800 py-4 shadow-lg sticky top-0 z-10">
-    <div class="container mx-auto flex justify-between items-center">
-      <a href="https://statusv1.swiftpeakhosting.co.uk/" class="text-2xl font-extrabold text-white">Swift Peak Hosting LTD</a>
-      <ul class="flex space-x-6 text-sm font-medium items-center">
-        <li><a href="index.html" class="text-white hover:text-gray-200">Home</a></li>
-        <li><a href="Services.html" class="text-white hover:text-gray-200">Services</a></li>
-        <li><a href="Documentation.html" class="text-white hover:text-gray-200">Documentation</a></li>
-        <li><a href="contact.html" class="text-white hover:text-gray-200">Contact</a></li>
-        <li><a href="StaffTeam.html" class="text-white hover:text-gray-200">Meet the Team</a></li>
-        <li><a href="https://www.swiftpeakhosting.co.uk/Customer-Reviews" class="text-white hover:text-gray-200">Customer Reviews</a></li>
-        <li><a href="#" class="text-white hover:text-gray-200">Complaints</a></li>
-        <li><a href="tickets.html" class="text-white hover:text-gray-200">Tickets-Support</a></li>
+  <!-- Snowfall effect -->
+  <div class="snowflake" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="snowflake" style="left: 30%; animation-delay: 1s;"></div>
+  <div class="snowflake" style="left: 50%; animation-delay: 2s;"></div>
+  <div class="snowflake" style="left: 70%; animation-delay: 3s;"></div>
+  <div class="snowflake" style="left: 90%; animation-delay: 4s;"></div>
 
-        <!-- Dropdown Menu -->
-        <li class="relative">
-          <button id="userMenuButton" class="text-white hover:text-gray-200 flex items-center focus:outline-none" aria-label="Account Menu">
-            Account
-            <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div id="userMenu" class="hidden absolute right-0 mt-2 bg-white text-black rounded-md shadow-lg w-48">
-            <a href="https://store.swiftpeakhosting.co.uk/auth/login" class="block px-4 py-2 text-sm hover:bg-gray-200">Login</a>
-            <a href="https://store.swiftpeakhosting.co.uk/auth/logout" class="block px-4 py-2 text-sm hover:bg-gray-200">Sign Out</a>
-            <a href="https://store.swiftpeakhosting.co.uk/dashboard" class="block px-4 py-2 text-sm hover:bg-gray-200">Dashboard</a>
-            <a href="https://store.swiftpeakhosting.co.uk/admin" class="block px-4 py-2 text-sm hover:bg-gray-200">Admin</a>
-          </div>
-        </li>
+  <!-- Navbar -->
+  <nav class="py-4 shadow-lg sticky top-0 z-10">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="https://statusv1.swiftpeakhosting.co.uk/" class="text-2xl font-extrabold text-white">🎄 Swift Peak Hosting LTD</a>
+      <ul class="flex space-x-6 text-sm font-medium items-center">
+        <!-- Add menu links here -->
       </ul>
     </div>
   </nav>
 
-  <!-- Service Announcement -->
-  <div id="serviceAnnouncement" class="hidden bg-red-600 text-white text-center py-2">
-    <p id="serviceMessage"></p>
-    <p id="lastUpdated" class="text-sm opacity-75"></p>
-  </div>
-
   <!-- Hero Section -->
   <section class="py-24 text-center bg-black/70 text-white fade-in mt-16">
-    <h1 class="text-5xl font-bold">Welcome to Swift Peak Hosting Ltd</h1>
-    <p class="text-lg mt-4">Your reliable partner for high-performance hosting solutions.</p>
-    <a href="https://statusv1.swiftpeakhosting.co.uk/" class="custom-button mt-6 inline-block">StatusPage</a>
+    <h1 class="text-5xl font-bold">Merry Christmas from Swift Peak Hosting Ltd</h1>
+    <p class="text-lg mt-4">Season's Greetings! Enjoy reliable hosting with a festive touch.</p>
+    <a href="https://statusv1.swiftpeakhosting.co.uk/" class="custom-button mt-6 inline-block">Check Status</a>
   </section>
 
   <!-- Services Section -->
   <section id="services" class="py-16 bg-gray-900">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-white mb-8">Our Services</h2>
+      <h2 class="text-3xl font-bold text-white mb-8">Our Christmas Offers</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col justify-between h-full transform hover:scale-105 transition">
-          <div>
-            <h3 class="text-xl font-bold text-white mb-4">SnailyCAD Hosting</h3>
-            <p class="text-gray-300">Expert hosting solutions for roleplay communities, with 99.9% uptime and 24/7 support.</p>
-          </div>
-          <a href="https://www.swiftpeakhosting.co.uk/snailyinfo" class="custom-button mt-6 self-start">Go to Checkout</a>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col justify-between h-full transform hover:scale-105 transition">
-          <div>
-            <h3 class="text-xl font-bold text-white mb-4">(Coming Soon) Domain Purchase</h3>
-            <p class="text-gray-300">Secure your domain for your hosting needs.</p>
-          </div>
-          <a href="#" class="custom-button mt-6 self-start">Learn More</a>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col justify-between h-full transform hover:scale-105 transition">
-          <div>
-            <h3 class="text-xl font-bold text-white mb-4">VPS/VDS Hosting</h3>
-            <p class="text-gray-300">High-performance servers tailored for your business.</p>
-          </div>
-          <a href="VPS.html" class="custom-button mt-6 self-start">Explore Plans</a>
-        </div>
+        <!-- Add service cards here -->
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 py-6">
+  <footer class="py-6">
     <div class="container mx-auto text-center">
-      <p class="text-gray-400">© 2024 Swift Peak Hosting Ltd. All rights reserved.</p>
-      <div class="flex justify-center space-x-4 mt-4">
-        <a href="SLA.html" class="text-sm hover:text-gray-300">Service Level Agreement</a>
-        <a href="tnc.html" class="text-sm hover:text-gray-300">Terms & Conditions</a>
-        <a href="https://docs.swiftpeakhosting.co.uk/privacy" class="text-sm hover:text-gray-300">Privacy Policy</a>
-        <a href="https://find-and-update.company-information.service.gov.uk/company/15612395" class="text-sm hover:text-gray-300">Company Registration</a>
-      </div>
-      <p class="text-gray-400 mt-2">
-        Registration Number: <a href="https://find-and-update.company-information.service.gov.uk/company/15612395" class="hover:text-blue-500">15612395</a>
-      </p>
+      <p class="text-white">🎅 © 2024 Swift Peak Hosting Ltd. All rights reserved. Happy Holidays! 🎁</p>
     </div>
   </footer>
-
-  <script>
-  // Function to check if it's time for maintenance
-  function checkMaintenanceTime() {
-    const startTime = new Date('2024-12-07T00:46:00Z'); // 4 AM GMT on 07/12/2024
-    const endTime = new Date('2024-12-07T01:00:00Z');   // 5 AM GMT on 07/12/2024
-    const currentTime = new Date();
-
-    // Check if the current time is within the maintenance window (4 AM to 5 AM GMT)
-    if (currentTime >= startTime && currentTime < endTime) {
-      window.location.href = "https://www.swiftpeakhosting.co.uk/maintenance.html";
-    }
-  }
-
-  // Call the function immediately when the page loads
-  checkMaintenanceTime();
-
-  // Toggle dropdown menu
-  document.getElementById('userMenuButton').addEventListener('click', () => {
-    const userMenu = document.getElementById('userMenu');
-    userMenu.classList.toggle('hidden');
-  });
-
-  // Service announcement display
-  const serviceAnnouncement = document.getElementById('serviceAnnouncement');
-  const serviceMessage = document.getElementById('serviceMessage');
-  const lastUpdated = document.getElementById('lastUpdated');
-
-  serviceMessage.innerText = "Scheduled Maintenance for 00:47 AM GMT UK Time 07/12/2024";
-  lastUpdated.innerText = "Last updated: Dec 7, 2024 12:00 PAM";
-
-  serviceAnnouncement.classList.remove('hidden');
-</script>
+</body>
+</html>
