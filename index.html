@@ -49,9 +49,33 @@
       0% { transform: translateY(0); }
       100% { transform: translateY(100vh); }
     }
+     }
+    nav {
+      position: relative;
+      z-index: 10;
+    }
+    section {
+      margin-top: 2rem;
+      position: relative;
+    }
   </style>
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <nav class="bg-blue-800 py-4 shadow-lg sticky top-0 z-10">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="https://statusv1.swiftpeakhosting.co.uk/" class="text-2xl font-extrabold text-white">Swift Peak Hosting LTD</a>
+      <ul class="flex space-x-6 text-sm font-medium items-center">
+        <li><a href="index.html" class="text-white hover:text-gray-200">Home</a></li>
+        <li><a href="Services.html" class="text-white hover:text-gray-200">Services</a></li>
+        <li><a href="Documentation.html" class="text-white hover:text-gray-200">Documentation</a></li>
+        <li><a href="contact.html" class="text-white hover:text-gray-200">Contact</a></li>
+        <li><a href="StaffTeam.html" class="text-white hover:text-gray-200">Meet the Team</a></li>
+        <li><a href="https://www.swiftpeakhosting.co.uk/Customer-Reviews" class="text-white hover:text-gray-200">Customer Reviews</a></li>
+        <li><a href="#" class="text-white hover:text-gray-200">Complaints</a></li>
+        <li><a href="tickets.html" class="text-white hover:text-gray-200">Tickets-Support</a></li>
+
 
   <!-- Falling Snowflakes -->
   <div class="snowflake" style="left: 10%; animation-delay: 0s;">❄</div>
