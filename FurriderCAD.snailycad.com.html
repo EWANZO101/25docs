@@ -32,16 +32,16 @@
       </div>
     </div>
 
-   <!-- Links Section -->
-<div id="additional-links" class="hidden space-y-4">
-  <a href="https://ssh-furrider.snailycad.co.uk" class="bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition hover:bg-green-500 block">
-    Access SSH
-  </a>
-  <p class="text-sm text-gray-300 mt-2">
-    NOTE: The username and password for SSH can be found on your dashboard at 
-    <a href="https://store.swiftpeakhosting.co.uk/dashboard" class="text-blue-500 hover:underline" target="_blank">https://store.swiftpeakhosting.co.uk/dashboard</a>
-  </p>
-  <a href="https://api-furrider.snailycad.co.uk" class="bg-purple-600 text-white font-semibold px-6 py-3 rounded-lg transition hover:bg-purple-500 block">
+    <!-- Links Section -->
+    <div id="additional-links" class="hidden space-y-4">
+      <a href="https://ssh-furrider.snailycad.co.uk" class="bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition hover:bg-green-500 block">
+        Access SSH
+      </a>
+      <p class="text-sm text-gray-300 mt-2">
+        NOTE: The username and password for SSH can be found on your dashboard at 
+        <a href="https://store.swiftpeakhosting.co.uk/dashboard" class="text-blue-500 hover:underline" target="_blank">https://store.swiftpeakhosting.co.uk/dashboard</a>
+      </p>
+      <a href="https://api-furrider.snailycad.co.uk" class="bg-purple-600 text-white font-semibold px-6 py-3 rounded-lg transition hover:bg-purple-500 block">
         Access API
       </a>
       <a href="https://cad-furrider.snailycad.co.uk" class="bg-purple-600 text-white font-semibold px-6 py-3 rounded-lg transition hover:bg-purple-500 block">
@@ -55,16 +55,20 @@
     </div>
   </div>
 
+  <!-- Audio Element for Countdown Music -->
+  <audio id="countdown-music" src="path-to-your-music-file.mp3" loop></audio>
+
   <script>
     // Define the target time in GMT
     const endTime = new Date(Date.UTC(2024, 11, 11, 15, 45)); // December 9th, 2024, 23:45 GMT
-    const startTime = new Date(Date.UTC(2024, 11, 11, 14,51 )); // Start the 15-minute timer at 23:30 GMT
+    const startTime = new Date(Date.UTC(2024, 11, 11, 14, 51)); // Start the 15-minute timer at 23:30 GMT
 
     // Elements to update
     const progressBar = document.getElementById("progress-bar");
     const progressPercentage = document.getElementById("progress-percentage");
     const timeRemaining = document.getElementById("time-remaining");
     const additionalLinks = document.getElementById("additional-links");
+    const countdownMusic = document.getElementById("countdown-music");
 
     const totalTime = endTime - startTime; // Total countdown time in milliseconds
 
@@ -80,6 +84,10 @@
 
         // Show additional links
         additionalLinks.classList.remove("hidden");
+
+        // Stop the music
+        countdownMusic.pause();
+        countdownMusic.currentTime = 0;
       } else {
         // Calculate remaining time and progress
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, "0");
@@ -89,6 +97,11 @@
         const progress = 100 - (diff / totalTime) * 100;
         progressBar.style.width = `${progress.toFixed(2)}%`;
         progressPercentage.textContent = `${progress.toFixed(0)}%`;
+
+        // Start the music if not already playing
+        if (countdownMusic.paused) {
+          countdownMusic.play();
+        }
       }
     }
 
