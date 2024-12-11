@@ -19,8 +19,8 @@
   <!-- Main Content -->
   <div class="z-10 text-center p-8 max-w-md">
     <h1 class="text-4xl font-bold mb-4">Please Stand By</h1>
-    <p class="text-lg mb-6">Our team is working hard to provide you with your CAD. Your patience is appreciated!</p>
-    
+    <p id="status-message" class="text-lg mb-6">Our team is working hard to provide you with your CAD. Your patience is appreciated!</p>
+
     <!-- Countdown and Progress -->
     <div class="mb-6">
       <div class="flex justify-between text-sm mb-2">
@@ -60,8 +60,8 @@
 
   <script>
     // Define the target time in GMT
-    const endTime = new Date(Date.UTC(2024, 11, 11, 15, 25)); // December 9th, 2024, 23:45 GMT
-    const startTime = new Date(Date.UTC(2024, 11, 11, 14, 51)); // Start the 15-minute timer at 23:30 GMT
+    const endTime = new Date(Date.UTC(2024, 11, 11, 15, 25)); // December 11th, 2024, 15:25 GMT
+    const startTime = new Date(Date.UTC(2024, 11, 11, 14, 51)); // Start the 15-minute timer at 14:51 GMT
 
     // Elements to update
     const progressBar = document.getElementById("progress-bar");
@@ -69,6 +69,7 @@
     const timeRemaining = document.getElementById("time-remaining");
     const additionalLinks = document.getElementById("additional-links");
     const countdownMusic = document.getElementById("countdown-music");
+    const statusMessage = document.getElementById("status-message");
 
     const totalTime = endTime - startTime; // Total countdown time in milliseconds
 
@@ -81,6 +82,9 @@
         timeRemaining.textContent = "00:00";
         progressBar.style.width = "100%";
         progressPercentage.textContent = "100%";
+
+        // Update the status message
+        statusMessage.textContent = "Your CAD order is being processed and is ready to use.";
 
         // Show additional links
         additionalLinks.classList.remove("hidden");
