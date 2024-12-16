@@ -8,8 +8,7 @@
         function checkDate() {
             const targetDate = new Date('2024-12-19T23:59:00');
             const currentDate = new Date();
-            
-            // If current date is equal to or greater than the target date, show the sale content
+
             if (currentDate >= targetDate) {
                 document.getElementById('sale-content').style.display = 'block';
                 document.getElementById('error-message').style.display = 'none';
@@ -19,7 +18,10 @@
             }
         }
 
-        window.onload = checkDate;
+        window.onload = function () {
+            checkDate();
+            showPopup();
+        };
 
         function toggleSpoiler() {
             const spoilerContent = document.getElementById('spoiler-content');
@@ -34,18 +36,42 @@
                 spoilerButton.classList.replace('bg-red-600', 'bg-green-600');
             }
         }
+
+        function showPopup() {
+            const popup = document.getElementById('terms-popup');
+            popup.style.display = 'block';
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('terms-popup');
+            popup.style.display = 'none';
+        }
     </script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://unpkg.com/flowbite@1.6.5/dist/flowbite.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-800 text-white">
+    <!-- Terms and Conditions Popup -->
+    <div id="terms-popup" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50" style="display: none;">
+        <div class="bg-white text-black rounded-lg shadow-lg p-6 w-11/12 max-w-lg">
+            <h2 class="text-2xl font-bold mb-4">Terms and Conditions</h2>
+            <p class="text-lg mb-6">
+                By proceeding, you accept that all deals are only applicable for the first paid month of the plans. 
+                After this period, the prices will return to their current rates.
+            </p>
+            <button 
+                class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-all"
+                onclick="closePopup()">
+                Accept
+            </button>
+        </div>
+    </div>
 
     <div class="container mx-auto text-center p-8">
         <h1 class="text-5xl font-bold text-green-500 mb-8">🎄 Upcoming Christmas Sale 🎄</h1>
-         <!-- Notice about Sale End Date -->
+        <!-- Notice about Sale End Date -->
         <div class="bg-red-600 text-white py-3 px-6 rounded-lg mb-6">
             <p class="text-xl font-semibold">🚨 The Christmas Sale starts on December 19, 2024, at 23:59. 🚨</p>
-            <p class="text-lg mt-2"></p>
         </div>
 
         <!-- Error message if the date hasn't passed -->
@@ -55,7 +81,7 @@
         </div>
 
         <!-- Notice about Sale End Date -->
-         <div class="bg-red-600 text-white py-3 px-6 rounded-lg mb-6">
+        <div class="bg-red-600 text-white py-3 px-6 rounded-lg mb-6">
             <p class="text-xl font-semibold">🚨 Hurry! All discounts end on December 31, 2024! 🚨</p>
             <p class="text-lg mt-2">Make sure to grab your deals before the sale ends!</p>
             <p class="text-lg mt-2">After the sale ends, all prices will return to their current pricing.</p>
@@ -68,73 +94,7 @@
 
         <!-- Spoiler Content -->
         <div id="spoiler-content" style="display: none;">
-            <p class="text-3xl font-semibold text-green-300 mb-6">🎁 Exclusive Deals Coming Soon 🎁</p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Deal 1: VPS Standard -->
-                <div class="bg-green-700 p-6 rounded-lg shadow-lg transition-all hover:scale-105">
-                    <h2 class="text-2xl font-semibold text-white mb-4">Standard VPS</h2>
-                    <p class="text-lg text-gray-300 mb-4">Enjoy a two-week free trial!</p>
-                    <p class="text-xl text-white mb-4">
-                        <span class="line-through text-gray-400">£21.99/month</span> <br>
-                        <strong class="text-red-500">Now Only: £12.09 </strong>
-                        <p class="text-lg text-gray-300 mb-4">After the sale ends, all prices will return to their current pricing.</p>
-                    </p>
-                    <ul class="list-disc pl-6 text-gray-300 mb-4">
-                        <li>17 GB RAM</li>
-                        <li>5 CPU Cores</li>
-                        <li>SSH & RDP Access</li>
-                        <li>100 GB SSD</li>
-                        <li>300 GB HDD</li>
-                    </ul>
-                    <button class="bg-green-500 text-white px-6 py-2 rounded-md transition-all hover:bg-green-600">Choose Plan</button>
-                </div>
-
-                <!-- Deal 2: VPS Basic -->
-                <div class="bg-green-700 p-6 rounded-lg shadow-lg transition-all hover:scale-105">
-                    <h2 class="text-2xl font-semibold text-white mb-4">Basic VPS</h2>
-                    <p class="text-lg text-gray-300 mb-4">Reliable performance for your needs</p>
-                    <p class="text-xl text-white mb-4">
-                        <span class="line-through text-gray-400">£13.99/month</span> <br>
-                        <strong class="text-red-500">Now Only: £7.69/month</strong>
-                        <p class="text-lg text-gray-300 mb-4">After the sale ends, all prices will return to their current pricing.</p>
-                    </p>
-                    <ul class="list-disc pl-6 text-gray-300 mb-4">
-                        <li>6 GB RAM</li>
-                        <li>4 CPU Cores</li>
-                        <li>SSH Access</li>
-                        <li>120 GB Storage</li>
-                    </ul>
-                    <button class="bg-green-500 text-white px-6 py-2 rounded-md transition-all hover:bg-green-600">Choose Plan</button>
-                </div>
-
-                <!-- Deal 3: SnailyCAD -->
-                <div class="bg-red-700 p-6 rounded-lg shadow-lg transition-all hover:scale-105">
-                    <h2 class="text-2xl font-semibold text-white mb-4">SnailyCAD</h2>
-                    <p class="text-xl font-semibold text-white mb-4">
-                        <span class="line-through text-gray-400">was £7.99</span>
-                        <span class="text-green-600 font-bold ml-2">Now Only: Free trial for 14 days, Then £4.99/month</span>
-                        <p class="text-lg text-gray-300 mb-4">After the sale ends, all prices will return to their current pricing.</p>
-                    </p>
-                    <p class="text-lg text-gray-300 mb-4">Perfect for your CAD needs!</p>
-                    <button class="bg-green-500 text-white px-6 py-2 rounded-md transition-all hover:bg-green-600">Get SnailyCAD</button>
-                </div>
-
-                <!-- Deal 4: Referral Offer -->
-                <div class="bg-blue-700 p-6 rounded-lg shadow-lg transition-all hover:scale-105">
-                    <h2 class="text-2xl font-semibold text-white mb-4">Exclusive Offer for Current Customers</h2>
-                    <p class="text-xl text-white mb-4">
-                        Refer two friends to us who purchase a VPS plan, and you'll receive 2 months free on your current package!
-                    </p>
-                    <p class="text-lg text-gray-300 mb-4">
-                        It's that simple! For every two successful referrals, you’ll get 2 months added to your current plan for free.
-                    </p>
-                    <p class="text-lg text-gray-300 mb-4">
-                        To start, simply visit our <a href="https://store.swiftpeakhosting.co.uk/affiliates" class="text-green-500 underline">affiliate page</a> or go to your dashboard, click on your profile logo, and you'll find the affiliate section.
-                    </p>
-                    <button class="bg-green-500 text-white px-6 py-2 rounded-md transition-all hover:bg-green-600">Refer Now</button>
-                </div>
-            </div>
+            <!-- Your existing deal cards go here -->
         </div>
     </div>
 
