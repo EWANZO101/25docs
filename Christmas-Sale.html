@@ -5,27 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upcoming Christmas Sale Deals</title>
     <script>
+        // Show or hide elements based on the current date
         function checkDate() {
             const targetDate = new Date('2024-12-19T23:59:00');
             const currentDate = new Date();
 
+            const saleContent = document.getElementById('sale-content');
+            const errorMessage = document.getElementById('error-message');
+
             if (currentDate >= targetDate) {
-                document.getElementById('sale-content').style.display = 'block';
-                document.getElementById('error-message').style.display = 'none';
+                saleContent.style.display = 'block';
+                errorMessage.style.display = 'none';
             } else {
-                document.getElementById('sale-content').style.display = 'none';
-                document.getElementById('error-message').style.display = 'block';
+                saleContent.style.display = 'none';
+                errorMessage.style.display = 'block';
             }
         }
 
-        window.onload = function () {
-            checkDate();
-            showPopup();
-        };
-
+        // Toggle spoiler visibility
         function toggleSpoiler() {
             const spoilerContent = document.getElementById('spoiler-content');
             const spoilerButton = document.getElementById('spoiler-button');
+
             if (spoilerContent.style.display === 'none' || spoilerContent.style.display === '') {
                 spoilerContent.style.display = 'block';
                 spoilerButton.innerText = 'Hide Deals';
@@ -37,64 +38,82 @@
             }
         }
 
-        function showPopup() {
-            const popup = document.getElementById('terms-popup');
-            popup.style.display = 'block';
-        }
-
-        function closePopup() {
-            const popup = document.getElementById('terms-popup');
-            popup.style.display = 'none';
-        }
+        // Execute date check on page load
+        window.onload = checkDate;
     </script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://unpkg.com/flowbite@1.6.5/dist/flowbite.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-800 text-white">
-    <!-- Terms and Conditions Popup -->
-    <div id="terms-popup" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50" style="display: none;">
-        <div class="bg-white text-black rounded-lg shadow-lg p-6 w-11/12 max-w-lg">
-            <h2 class="text-2xl font-bold mb-4">Terms and Conditions</h2>
-            <p class="text-lg mb-6">
-                By proceeding, you accept that all deals are only applicable for the first paid month of the plans. 
-                After this period, the prices will return to their current rates.
-            </p>
-            <button 
-                class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-all"
-                onclick="closePopup()">
-                Accept
-            </button>
-        </div>
-    </div>
 
     <div class="container mx-auto text-center p-8">
         <h1 class="text-5xl font-bold text-green-500 mb-8">🎄 Upcoming Christmas Sale 🎄</h1>
-        <!-- Notice about Sale End Date -->
-        <div class="bg-red-600 text-white py-3 px-6 rounded-lg mb-6">
-            <p class="text-xl font-semibold">🚨 The Christmas Sale starts on December 19, 2024, at 23:59. 🚨</p>
-        </div>
 
-        <!-- Error message if the date hasn't passed -->
-        <div id="error-message" style="display: none;" class="bg-yellow-500 text-black p-4 rounded-lg shadow-lg mb-6">
+        <div id="error-message" class="bg-yellow-500 text-black p-4 rounded-lg shadow-lg mb-6" style="display: none;">
             <p class="text-2xl font-semibold">The Christmas Sale starts on December 19, 2024, at 23:59.</p>
             <p class="text-lg mt-4">Check back soon!</p>
         </div>
 
-        <!-- Notice about Sale End Date -->
-        <div class="bg-red-600 text-white py-3 px-6 rounded-lg mb-6">
-            <p class="text-xl font-semibold">🚨 Hurry! All discounts end on December 31, 2024! 🚨</p>
-            <p class="text-lg mt-2">Make sure to grab your deals before the sale ends!</p>
-            <p class="text-lg mt-2">After the sale ends, all prices will return to their current pricing.</p>
-        </div>
+        <div id="sale-content" style="display: none;">
+            <div class="bg-red-600 text-white py-3 px-6 rounded-lg mb-6">
+                <p class="text-xl font-semibold">🚨 The Christmas Sale is Live! Hurry before December 31, 2024! 🚨</p>
+                <p class="text-lg mt-2">Grab your deals now!</p>
+            </div>
 
-        <!-- Spoiler Button -->
-        <button id="spoiler-button" class="bg-green-600 text-white py-3 px-8 rounded-lg hover:bg-green-700 transition-all mb-6" onclick="toggleSpoiler()">
-            Show Deals
-        </button>
+            <button id="spoiler-button" class="bg-green-600 text-white py-3 px-8 rounded-lg hover:bg-green-700 transition-all mb-6" onclick="toggleSpoiler()">
+                Show Deals
+            </button>
 
-        <!-- Spoiler Content -->
-        <div id="spoiler-content" style="display: none;">
-            <!-- Your existing deal cards go here -->
+            <div id="spoiler-content" style="display: none;">
+                <p class="text-3xl font-semibold text-green-300 mb-6">🎁 Exclusive Deals 🎁</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Deal 1 -->
+                    <div class="bg-green-700 p-6 rounded-lg shadow-lg transition-all hover:scale-105">
+                        <h2 class="text-2xl font-semibold text-white mb-4">Standard VPS</h2>
+                        <p class="text-lg text-gray-300 mb-4">Two-week free trial included!</p>
+                        <p class="text-xl text-white mb-4">
+                            <span class="line-through text-gray-400">£21.99/month</span><br>
+                            <strong class="text-red-500">Now Only: £12.09/month</strong>
+                        </p>
+                        <ul class="list-disc pl-6 text-gray-300 mb-4">
+                            <li>17 GB RAM</li>
+                            <li>5 CPU Cores</li>
+                            <li>SSH & RDP Access</li>
+                            <li>100 GB SSD</li>
+                            <li>300 GB HDD</li>
+                        </ul>
+                        <button class="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600">Choose Plan</button>
+                    </div>
+
+                    <!-- Deal 2 -->
+                    <div class="bg-green-700 p-6 rounded-lg shadow-lg transition-all hover:scale-105">
+                        <h2 class="text-2xl font-semibold text-white mb-4">Basic VPS</h2>
+                        <p class="text-lg text-gray-300 mb-4">Reliable performance for all needs!</p>
+                        <p class="text-xl text-white mb-4">
+                            <span class="line-through text-gray-400">£13.99/month</span><br>
+                            <strong class="text-red-500">Now Only: £7.69/month</strong>
+                        </p>
+                        <ul class="list-disc pl-6 text-gray-300 mb-4">
+                            <li>6 GB RAM</li>
+                            <li>4 CPU Cores</li>
+                            <li>SSH Access</li>
+                            <li>120 GB Storage</li>
+                        </ul>
+                        <button class="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600">Choose Plan</button>
+                    </div>
+
+                    <!-- Deal 3 -->
+                    <div class="bg-red-700 p-6 rounded-lg shadow-lg transition-all hover:scale-105">
+                        <h2 class="text-2xl font-semibold text-white mb-4">SnailyCAD</h2>
+                        <p class="text-xl text-white mb-4">
+                            <span class="line-through text-gray-400">£7.99/month</span><br>
+                            <strong class="text-green-500">Free Trial (14 Days), Then £4.99/month</strong>
+                        </p>
+                        <button class="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600">Get SnailyCAD</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
