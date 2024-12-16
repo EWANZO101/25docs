@@ -86,6 +86,20 @@
         <div id="spoiler-content" style="display: none;">
             <p class="text-3xl font-semibold text-green-300 mb-6">🎁 Exclusive Deals Coming Soon 🎁</p>
 
+            <!-- Terms and Conditions Popup -->
+<div id="terms-popup" class="hidden fixed inset-0 bg-gray-900 bg-opacity-80 flex items-center justify-center z-50">
+    <div class="bg-white text-gray-900 p-6 rounded-lg shadow-lg max-w-lg text-center">
+        <h2 class="text-2xl font-bold mb-4">🎄 Terms and Conditions</h2>
+        <p class="text-lg mb-4">
+            By exploring the Christmas Sale deals, you agree to the sale terms and conditions. 
+            Offers are valid until December 31, 2024. 
+        </p>
+        <button onclick="closePopup()" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700">
+            Accept
+        </button>
+    </div>
+</div>
+
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Deal 1 -->
                 <div class="bg-green-700 p-6 rounded-lg shadow-lg transition-all hover:scale-105">
