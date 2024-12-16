@@ -9,9 +9,9 @@
             const targetDate = new Date('2024-12-19T23:59:00');
             const currentDate = new Date();
             
+            // If current date is equal to or greater than the target date, redirect to the new page
             if (currentDate >= targetDate) {
-                document.getElementById('sale-content').style.display = 'block';
-                document.getElementById('error-message').style.display = 'none';
+                window.location.href = "https://www.swiftpeakhosting.co.uk/ChristmasSale.html";
             } else {
                 document.getElementById('sale-content').style.display = 'none';
                 document.getElementById('error-message').style.display = 'block';
@@ -30,7 +30,7 @@
         
         <div id="sale-content" style="display: none;">
             <p class="text-2xl mb-4">Hurry up! The Christmas Sale is live now!</p>
-            <p class="text-lg mb-8">Enjoy up to 50% off on selected items!</p>
+            <p class="text-lg mb-8">Enjoy up to 45% off on selected items!</p>
             <button class="bg-red-600 text-white py-2 px-6 rounded-lg hover:bg-red-700 transition">Shop Now</button>
         </div>
 
