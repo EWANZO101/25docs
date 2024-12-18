@@ -10,7 +10,7 @@
             text-decoration: line-through;
             color: red;
         }
-        
+
         /* Snowflakes animation */
         .snowflake {
             position: absolute;
@@ -35,24 +35,18 @@
         .snowflake:nth-child(even) {
             animation-duration: 15s;
         }
-        
-        .snowflake {
-            left: calc(100% * random());
-            font-size: calc(12px + random() * 30);
-        }
-
     </style>
 </head>
 <body class="bg-gray-800 text-white font-sans relative">
 
     <!-- Snowflakes effect -->
     <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div class="snowflake" style="left: 10%; animation-duration: 10s;">❄️</div>
-        <div class="snowflake" style="left: 25%; animation-duration: 12s;">❄️</div>
-        <div class="snowflake" style="left: 40%; animation-duration: 9s;">❄️</div>
-        <div class="snowflake" style="left: 55%; animation-duration: 11s;">❄️</div>
-        <div class="snowflake" style="left: 70%; animation-duration: 10s;">❄️</div>
-        <div class="snowflake" style="left: 85%; animation-duration: 13s;">❄️</div>
+        <div class="snowflake" style="left: 10%; font-size: 18px;">❄️</div>
+        <div class="snowflake" style="left: 25%; font-size: 22px;">❄️</div>
+        <div class="snowflake" style="left: 40%; font-size: 20px;">❄️</div>
+        <div class="snowflake" style="left: 55%; font-size: 24px;">❄️</div>
+        <div class="snowflake" style="left: 70%; font-size: 26px;">❄️</div>
+        <div class="snowflake" style="left: 85%; font-size: 28px;">❄️</div>
     </div>
 
     <header class="bg-red-600 text-center py-6">
@@ -70,7 +64,7 @@
                 <p class="text-lg mb-4">Enjoy a two-week free trial!</p>
                 <p class="text-xl mb-4 text-white">
                     <span class="strike-through">£21.99/month</span> <br>
-                    <strong>Now Only: £12.09 for 1 month then £20.99/first/month</strong>
+                    <strong>Now Only: £12.09 for 1 month then £20.99/month</strong>
                 </p>
                 <ul class="list-disc pl-6 mb-4 text-white">
                     <li>17 GB RAM</li>
@@ -79,7 +73,7 @@
                     <li>100 GB SSD</li>
                     <li>300 GB HDD</li>
                 </ul>
-                <button class="bg-green-500 text-white px-6 py-2 rounded-md">Choose Plan</button>
+                <a href="https://store.swiftpeakhosting.co.uk/store/view/20" class="bg-green-500 text-white px-6 py-2 rounded-md inline-block text-center">Choose Plan</a>
             </div>
 
             <!-- Basic VPS Plan -->
@@ -87,8 +81,8 @@
                 <h2 class="text-2xl font-semibold mb-4 text-white">Basic VPS</h2>
                 <p class="text-lg mb-4">Reliable performance for your needs</p>
                 <p class="text-xl mb-4 text-white">
-                    <span class="strike-through">£13.99/first/month</span> <br>
-                    <strong>Now Only: £7.99/first/month</strong>
+                    <span class="strike-through">£13.99/month</span> <br>
+                    <strong>Now Only: £7.99/month</strong>
                 </p>
                 <ul class="list-disc pl-6 mb-4 text-white">
                     <li>6 GB RAM</li>
@@ -96,7 +90,7 @@
                     <li>SSH Access</li>
                     <li>120 GB Storage</li>
                 </ul>
-                <button class=https://store.swiftpeakhosting.co.uk/store/view/62"bg-green-500 text-white px-6 py-2 rounded-md">Choose Plan</button>
+                <a href="https://store.swiftpeakhosting.co.uk/store/view/62" class="bg-green-500 text-white px-6 py-2 rounded-md inline-block text-center">Choose Plan</a>
             </div>
 
         </div>
@@ -105,11 +99,11 @@
         <div class="bg-red-700 p-6 rounded-lg shadow-lg mt-6">
             <h2 class="text-2xl font-semibold mb-4 text-white">SnailyCAD</h2>
             <p class="text-xl font-semibold text-white mb-4">
-                <span class="line-through text-gray-400">was £7.99</span>
-                <span class="text-green-600 font-bold ml-2">Now only: <span class="text-2xl">Free trial for 14 days, Then - £4.99</span> for the first paid month!</span>
+                <span class="strike-through text-gray-400">£7.99</span>
+                <span class="text-green-600 font-bold ml-2">Now only: Free trial for 14 days, Then £4.99/month!</span>
             </p>
-            <p class=https://store.swiftpeakhosting.co.uk/store/view/61"text-xl mb-4 text-white">Perfect for your CAD needs!</p>
-            <button class="bg-green-500 text-white px-6 py-2 rounded-md mt-4">Get SnailyCAD</button>
+            <p class="text-lg mb-4 text-white">Perfect for your CAD needs!</p>
+            <a href="https://store.swiftpeakhosting.co.uk/store/view/61" class="bg-green-500 text-white px-6 py-2 rounded-md inline-block text-center">Get SnailyCAD</a>
         </div>
 
         <!-- Current Customers Section -->
@@ -119,15 +113,9 @@
                 Refer two friends to us who purchase a VPS plan, and you'll receive 2 months free on your current package!
             </p>
             <p class="text-lg mb-4 text-white">
-                It's that simple! For every two successful referrals, you’ll get 2 months added to your current plan for free.
+                To start, visit our <a href="https://store.swiftpeakhosting.co.uk/affiliates" class="text-green-500 underline">affiliate page</a>.
             </p>
-            <p class="text-lg mb-4 text-white">
-                To start, simply visit our <a href="https://store.swiftpeakhosting.co.uk/affiliates" class="text-green-500">affiliate page</a> or go to your dashboard, click on your profile logo, and you'll find the affiliate section.
-            </p>
-            <p class="text-lg mb-4 text-white">
-                Send the link to your friends, and once we have received their orders and they are activated, you'll see your balance updated in your account.
-            </p>
-            <button class="bg-green-500 text-white px-6 py-2 rounded-md">Refer Now</button>
+            <a href="https://store.swiftpeakhosting.co.uk/affiliates" class="bg-green-500 text-white px-6 py-2 rounded-md inline-block text-center">Refer Now</a>
         </div>
 
     </div>
