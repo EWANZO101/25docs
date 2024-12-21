@@ -10,37 +10,36 @@
 <body class="bg-gray-800 text-white">
   <div class="min-h-screen flex items-center justify-center">
     <div class="w-full max-w-lg p-6 bg-gray-900 rounded-lg shadow">
-      <h1 class="text-2xl font-bold mb-6">Pre-Checkout Checklist</h1>
-
-      <form id="checklist-form" class="space-y-4">
+      <h1 class="text-2xl font-bold text-center mb-6">Pre-Checkout Checklist</h1>
+      <form id="checklist-form" class="space-y-6">
         <!-- Email Validation Question -->
         <div>
-          <label class="flex items-center space-x-2">
-            <input type="checkbox" id="valid-email" class="checkbox" />
+          <label class="flex items-start space-x-2">
+            <input type="checkbox" id="valid-email" class="checkbox w-5 h-5 accent-blue-500" />
             <span>Will you provide us with a valid email address so we can contact you?</span>
           </label>
         </div>
 
         <!-- Cloudflare Account Question -->
         <div>
-          <p>Do you have a Cloudflare account?</p>
+          <p class="mb-2">Do you have a Cloudflare account?</p>
           <div class="space-x-4">
             <label class="flex items-center space-x-2">
-              <input type="radio" name="cloudflare-account" value="yes" id="cloudflare-yes" />
+              <input type="radio" name="cloudflare-account" value="yes" id="cloudflare-yes" class="w-5 h-5 accent-blue-500" />
               <span>Yes</span>
             </label>
             <label class="flex items-center space-x-2">
-              <input type="radio" name="cloudflare-account" value="no" id="cloudflare-no" />
+              <input type="radio" name="cloudflare-account" value="no" id="cloudflare-no" class="w-5 h-5 accent-blue-500" />
               <span>No</span>
             </label>
           </div>
         </div>
 
-        <!-- Cloudflare Steps for No -->
+        <!-- Cloudflare Steps -->
         <div id="cloudflare-steps" class="hidden">
-          <p class="text-yellow-300">Steps to set up a Cloudflare account:</p>
-          <ul class="list-disc list-inside text-sm">
-            <li>Create a free account on <a href="https://www.cloudflare.com/" target="_blank" class="text-blue-400">Cloudflare</a>.</li>
+          <p class="text-yellow-300 mb-2">Steps to set up a Cloudflare account:</p>
+          <ul class="list-disc list-inside text-sm space-y-1">
+            <li>Create a free account on <a href="https://www.cloudflare.com/" target="_blank" class="text-blue-400 underline">Cloudflare</a>.</li>
             <li>Add your domain to Cloudflare.</li>
             <li>Update your domain's nameservers through your registrar (e.g., Namecheap, 123 Reg, Hostinger).</li>
             <li>Wait for propagation to complete.</li>
@@ -49,14 +48,14 @@
 
         <!-- Domain Question -->
         <div>
-          <p>Do you have your own domain?</p>
+          <p class="mb-2">Do you have your own domain?</p>
           <div class="space-x-4">
             <label class="flex items-center space-x-2">
-              <input type="radio" name="own-domain" value="yes" id="domain-yes" />
+              <input type="radio" name="own-domain" value="yes" id="domain-yes" class="w-5 h-5 accent-blue-500" />
               <span>Yes</span>
             </label>
             <label class="flex items-center space-x-2">
-              <input type="radio" name="own-domain" value="no" id="domain-no" />
+              <input type="radio" name="own-domain" value="no" id="domain-no" class="w-5 h-5 accent-blue-500" />
               <span>No</span>
             </label>
           </div>
@@ -64,7 +63,7 @@
 
         <!-- Domain Steps -->
         <div id="domain-steps" class="hidden">
-          <p class="text-yellow-300">Follow this video to set up your domain: <a href="https://youtu.be/TKE_6HLpDsI" target="_blank" class="text-blue-400">Watch Video</a>.</p>
+          <p class="text-yellow-300 mb-2">Follow this video to set up your domain: <a href="https://youtu.be/TKE_6HLpDsI" target="_blank" class="text-blue-400 underline">Watch Video</a>.</p>
         </div>
 
         <!-- Alternate Domain Suggestion -->
@@ -73,18 +72,18 @@
         </div>
 
         <!-- Confirm Everything Checked -->
-        <!-- Confirm Everything Checked -->
-<div>
-  <label class="flex items-center space-x-2">
-    <input type="checkbox" id="double-check" class="checkbox" />
-    <span>
-      I have double-checked everything before proceeding to checkout. 
-      <a href="https://store.swiftpeakhosting.co.uk/store/view/61" target="_blank" class="text-blue-500 underline">View Store Details</a>
-    </span>
-  </label>
-</div>
+        <div>
+          <label class="flex items-start space-x-2">
+            <input type="checkbox" id="double-check" class="checkbox w-5 h-5 accent-blue-500" />
+            <span>
+              I have double-checked everything before proceeding to checkout.
+              <a href="https://store.swiftpeakhosting.co.uk/store/view/61" target="_blank" class="text-blue-400 underline">View Store Details</a>
+            </span>
+          </label>
+        </div>
+
         <!-- Checkout Button -->
-        <button id="checkout-button" type="submit" class="w-full bg-gray-600 text-gray-300 font-bold py-2 px-4 rounded cursor-not-allowed" disabled>
+        <button id="checkout-button" type="button" class="w-full bg-gray-600 text-gray-300 font-bold py-2 px-4 rounded cursor-not-allowed" disabled>
           Checkout
         </button>
       </form>
@@ -93,7 +92,6 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const checklistForm = document.getElementById('checklist-form');
       const cloudflareYes = document.getElementById('cloudflare-yes');
       const cloudflareNo = document.getElementById('cloudflare-no');
       const domainYes = document.getElementById('domain-yes');
@@ -104,15 +102,22 @@
       const checkoutButton = document.getElementById('checkout-button');
       const checkboxes = document.querySelectorAll('.checkbox');
 
-      function updateChecklist() {
-        const allChecked = Array.from(checkboxes).every((checkbox) => checkbox.checked);
+      const updateChecklist = () => {
+        const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
         checkoutButton.disabled = !allChecked;
         checkoutButton.classList.toggle('bg-gray-600', !allChecked);
         checkoutButton.classList.toggle('bg-blue-500', allChecked);
         checkoutButton.classList.toggle('text-gray-300', !allChecked);
         checkoutButton.classList.toggle('text-white', allChecked);
         checkoutButton.classList.toggle('cursor-not-allowed', !allChecked);
-      }
+        checkoutButton.classList.toggle('cursor-pointer', allChecked);
+      };
+
+      checkoutButton.addEventListener('click', () => {
+        if (!checkoutButton.disabled) {
+          window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/61';
+        }
+      });
 
       cloudflareYes.addEventListener('change', () => {
         if (cloudflareYes.checked) {
@@ -140,7 +145,7 @@
         }
       });
 
-      checkboxes.forEach((checkbox) => {
+      checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', updateChecklist);
       });
     });
