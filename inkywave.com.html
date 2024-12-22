@@ -51,7 +51,7 @@
 
     <!-- Contact and Livemap Info -->
     <div class="mt-8 text-sm text-gray-400">
-      <p>If you wish to have a live map with us, please contact us via Discord and open a ticket. Provide the email you used to sign up for our CAD and your server IP. Your live map domain will be <a href="https://livemap-civic.snailycad.co.uk" class="text-blue-500 hover:underline">https://livemap-civic.snailycad.co.uk</a>. Once we have made it live, if you do not wish to join our Discord, you can email us at <a href="mailto:swiftpeakhosting@outlook.com" class="text-blue-500 hover:underline">swiftpeakhosting@outlook.com</a>.</p>
+      <p>If you wish to have a live map with us, please contact us via Discord and open a ticket. Provide the email you used to sign up for our CAD and your server IP. Your live map domain will be <a href="https://livemap-civic.snailycad.co.uk" class="text-blue-500 hover:underline">https://livemap-civic.snailycad.co.uk</a>. Once live, you can also email us at <a href="mailto:swiftpeakhosting@outlook.com" class="text-blue-500 hover:underline">swiftpeakhosting@outlook.com</a>.</p>
     </div>
   </div>
 
@@ -59,11 +59,9 @@
   <audio id="countdown-music" src="SLA/[ytmp3.ec]Background_Music_for_Presentations_Speeches_Lectures_and_Videos_12_min.mp3" loop></audio>
 
   <script>
-    // Define the target time as 10 minutes from now
-    const startTime = new Date(); // Current time
+    const startTime = new Date();
     const endTime = new Date(startTime.getTime() + 10 * 60 * 1000); // Add 10 minutes
 
-    // Elements to update
     const progressBar = document.getElementById("progress-bar");
     const progressPercentage = document.getElementById("progress-percentage");
     const timeRemaining = document.getElementById("time-remaining");
@@ -71,45 +69,35 @@
     const countdownMusic = document.getElementById("countdown-music");
     const statusMessage = document.getElementById("status-message");
 
-    const totalTime = endTime - startTime; // Total countdown time in milliseconds
+    const totalTime = endTime - startTime;
 
     function updateCountdown() {
-      const now = new Date(); // Get the current time
-      const diff = endTime - now; // Calculate the difference in milliseconds
+      const now = new Date();
+      const diff = endTime - now;
 
       if (diff <= 0) {
-        // Timer has expired
         timeRemaining.textContent = "00:00";
         progressBar.style.width = "100%";
         progressPercentage.textContent = "100%";
-
-        // Update the status message
         statusMessage.textContent = "Your CAD order is being processed and is ready to use.";
-
-        // Show additional links
         additionalLinks.classList.remove("hidden");
-
-        // Stop the music
         countdownMusic.pause();
-        countdownMusic.currentTime = 0;
-      } else {
-        // Calculate remaining time and progress
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, "0");
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, "0");
-        timeRemaining.textContent = `${minutes}:${seconds}`;
+        return;
+      }
 
-        const progress = 100 - (diff / totalTime) * 100;
-        progressBar.style.width = `${progress.toFixed(2)}%`;
-        progressPercentage.textContent = `${progress.toFixed(0)}%`;
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, "0");
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, "0");
+      timeRemaining.textContent = `${minutes}:${seconds}`;
 
-        // Start the music if not already playing
-        if (countdownMusic.paused) {
-          countdownMusic.play();
-        }
+      const progress = 100 - (diff / totalTime) * 100;
+      progressBar.style.width = `${progress.toFixed(2)}%`;
+      progressPercentage.textContent = `${progress.toFixed(0)}%`;
+
+      if (countdownMusic.paused) {
+        countdownMusic.play();
       }
     }
 
-    // Initialize the timer and update it every second
     updateCountdown();
     setInterval(updateCountdown, 1000);
   </script>
