@@ -52,9 +52,9 @@
   <audio id="countdown-music" src="SLA/[ytmp3.ec]Background_Music_for_Presentations_Speeches_Lectures_and_Videos_12_min.mp3" loop></audio>
 
   <script>
-    // Define the target time in GMT
-    const endTime = new Date(Date.UTC(2024, 11, 11, 15, 25)); // December 11th, 2024, 15:25 GMT
-    const startTime = new Date(Date.UTC(2024, 11, 11, 14, 51)); // Start the 15-minute timer at 14:51 GMT
+    // Define the start and end times for a 35-minute timer
+    const startTime = new Date(); // Current time as the start
+    const endTime = new Date(startTime.getTime() + 35 * 60 * 1000); // 35 minutes later
 
     // Elements to update
     const progressBar = document.getElementById("progress-bar");
