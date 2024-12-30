@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swift Peak Hosting Ltd</title>
+  <title>Swift Peak Hosting Ltd - Christmas Edition</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.css" rel="stylesheet" />
   <style>
@@ -17,7 +17,7 @@
       background-size: cover;
     }
     .custom-button {
-      background: linear-gradient(90deg, #1d4ed8, #3b82f6);
+      background: linear-gradient(90deg, #e63946, #6a994e);
       color: white;
       font-weight: bold;
       padding: 0.5rem 1rem;
@@ -28,8 +28,28 @@
     }
     .custom-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+      box-shadow: 0 6px 20px rgba(110, 193, 102, 0.5);
     }
+    nav {
+      position: relative;
+      z-index: 10;
+    }
+    section {
+      margin-top: 2rem;
+      position: relative;
+    }
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      font-size: 1.5rem;
+      color: white;
+      animation: fall 8s linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(100vh); }
+    }
+     }
     nav {
       position: relative;
       z-index: 10;
@@ -56,7 +76,15 @@
         <li><a href="#" class="text-white hover:text-gray-200">Complaints</a></li>
         <li><a href="tickets.html" class="text-white hover:text-gray-200">Tickets-Support</a></li>
 
-        <!-- Dropdown Menu -->
+
+  <!-- Falling Snowflakes -->
+  <div class="snowflake" style="left: 10%; animation-delay: 0s;">❄</div>
+  <div class="snowflake" style="left: 30%; animation-delay: 1s;">❄</div>
+  <div class="snowflake" style="left: 50%; animation-delay: 2s;">❄</div>
+  <div class="snowflake" style="left: 70%; animation-delay: 3s;">❄</div>
+  <div class="snowflake" style="left: 90%; animation-delay: 4s;">❄</div>
+
+ <!-- Dropdown Menu -->
         <li class="relative">
           <button id="userMenuButton" class="text-white hover:text-gray-200 flex items-center focus:outline-none" aria-label="Account Menu">
             Account
@@ -115,6 +143,18 @@
           <a href="VPS.html" class="custom-button mt-6 self-start">Explore Plans</a>
         </div>
       </div>
+      <!-- Services Section -->
+<section class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-semibold mb-4">🎄 Christmas Sale Coming Soon! 🎁</h2>
+        <p class="text-lg mb-6">Get ready for exciting deals and discounts, exclusively for the holiday season!</p>
+        <div class="inline-block">
+            <a href="ChristmasSale.html" class="bg-red-500 text-white font-bold py-3 px-8 rounded-full hover:bg-red-600 transition duration-300">
+                Click ME 
+            </a>
+        </div>
+    </div>
+</section>
     </div>
   </section>
 
@@ -135,21 +175,37 @@
   </footer>
 
   <script>
-    // Toggle dropdown menu
-    document.getElementById('userMenuButton').addEventListener('click', () => {
-      const userMenu = document.getElementById('userMenu');
-      userMenu.classList.toggle('hidden');
-    });
+  // Function to check if it's time for maintenance
+  function checkMaintenanceTime() {
+    const startTime = new Date('2024-12-07T00:46:00Z'); // 4 AM GMT on 07/12/2024
+    const endTime = new Date('2024-12-07T01:00:00Z');   // 5 AM GMT on 07/12/2024
+    const currentTime = new Date();
 
-    // Service announcement display
-    const serviceAnnouncement = document.getElementById('serviceAnnouncement');
-    const serviceMessage = document.getElementById('serviceMessage');
-    const lastUpdated = document.getElementById('lastUpdated');
+    // Check if the current time is within the maintenance window (4 AM to 5 AM GMT)
+    if (currentTime >= startTime && currentTime < endTime) {
+      window.location.href = "https://www.swiftpeakhosting.co.uk/maintenance.html";
+    }
+  }
 
-    serviceMessage.innerText = "Important service update: We are performing scheduled maintenance.";
-    lastUpdated.innerText = "Last updated: Dec 1, 2024 12:00 PM";
+  // Call the function immediately when the page loads
+  checkMaintenanceTime();
 
-    serviceAnnouncement.classList.remove('hidden');
-  </script>
+  // Toggle dropdown menu
+  document.getElementById('userMenuButton').addEventListener('click', () => {
+    const userMenu = document.getElementById('userMenu');
+    userMenu.classList.toggle('hidden');
+  });
+
+  // Service announcement display
+  const serviceAnnouncement = document.getElementById('serviceAnnouncement');
+  const serviceMessage = document.getElementById('serviceMessage');
+  const lastUpdated = document.getElementById('lastUpdated');
+
+  serviceMessage.innerText = "Season's Greetings to Our Valued Customers and New Users!We would like to take a moment to wish all our customers and new users a Merry Christmas and a Happy New Year! Thank you for your continued support, and we look forward to serving you in the coming year. Enjoy the holiday season and stay safe! ";
+  lastUpdated.innerText = "Last updated: Dec 10, 2024 12:00 PAM";
+
+  serviceAnnouncement.classList.remove('hidden');
+</script>
+
 </body>
 </html>

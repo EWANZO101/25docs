@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Please Stand By - Your CAD is Coming Soon</title>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center h-screen relative overflow-hidden">
+
+  <!-- Animated Background -->
+  <div class="absolute inset-0">
+    <div class="animate-pulse bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 opacity-30 h-full"></div>
+    <div class="absolute top-1/3 left-1/4 bg-blue-600 blur-3xl h-48 w-48 rounded-full opacity-20"></div>
+    <div class="absolute bottom-1/4 right-1/3 bg-purple-600 blur-3xl h-64 w-64 rounded-full opacity-20"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="z-10 text-center p-8 max-w-md">
+    <h1 class="text-4xl font-bold mb-4">Please Stand By</h1>
+    <p class="text-lg mb-6">Our team is working hard to provide you with your CAD. Your patience is appreciated!</p>
+    
+    <!-- Countdown and Progress -->
+    <div class="mb-6">
+      <div class="flex justify-between text-sm mb-2">
+        <span>Time Remaining: <span id="time-remaining">--:--</span></span>
+        <span>Progress: <span id="progress-percentage">0%</span></span>
+      </div>
+      <div class="w-full bg-gray-700 rounded-full h-4">
+        <div id="progress-bar" class="bg-blue-600 h-4 rounded-full" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Links Section -->
+    <div id="additional-links" class="hidden space-y-4">
+      <a href="https://snaily-ssh-71.snailycad.co.uk" class="bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition hover:bg-green-500 block">
+        Access SSH
+      </a>
+      <p class="text-sm text-gray-300 mt-2">
+        NOTE: The username and password for SSH can be found on your dashboard at 
+        <a href="https://snaily-cad-71.snailycad.co.uk/dashboard" class="text-blue-500 hover:underline" target="_blank">https://snaily-cad-71.snailycad.co.uk/dashboard</a>
+      </p>
+      <a href="https://snaily-api-71.snailycad.co.uk" class="bg-purple-600 text-white font-semibold px-6 py-3 rounded-lg transition hover:bg-purple-500 block">
+        Access API
+      </a>
+      <a href="https://snaily-cad-71.snailycad.co.uk" class="bg-purple-600 text-white font-semibold px-6 py-3 rounded-lg transition hover:bg-purple-500 block">
+        Access CAD
+      </a>
+    </div>
+
+    <!-- Contact and Livemap Info -->
+    <div class="mt-8 text-sm text-gray-400">
+      <p>If you wish to have a live map with us, please contact us via Discord and open a ticket. Provide the email you used to sign up for our CAD and your server IP. Your live map domain will be <a href="https://snaily-cad-71.snailycad.co.uk/livemap" class="text-blue-500 hover:underline">https://snaily-cad-71.snailycad.co.uk/livemap</a>. Once we have made it live, if you do not wish to join our Discord, you can email us at <a href="mailto:swiftpeakhosting@outlook.com" class="text-blue-500 hover:underline">swiftpeakhosting@outlook.com</a>.</p>
+    </div>
+  </div>
+
+  <script>
+    // Define the target time in GMT
+    const endTime = new Date(Date.UTC(2024, 11, 9, 23, 45)); // December 9th, 2024, 23:45 GMT
+    const startTime = new Date(Date.UTC(2024, 11, 9, 23, 30)); // Start the 15-minute timer at 23:30 GMT
+
+    // Elements to update
+    const progressBar = document.getElementById("progress-bar");
+    const progressPercentage = document.getElementById("progress-percentage");
+    const timeRemaining = document.getElementById("time-remaining");
+    const additionalLinks = document.getElementById("additional-links");
+
+    const totalTime = endTime - startTime; // Total countdown time in milliseconds
+
+    function updateCountdown() {
+      const now = new Date(); // Get the current time
+      const diff = endTime - now; // Calculate the difference in milliseconds
+
+      if (diff <= 0) {
+        // Timer has expired
+        timeRemaining.textContent = "00:00";
+        progressBar.style.width = "100%";
+        progressPercentage.textContent = "100%";
+
+        // Show additional links
+        additionalLinks.classList.remove("hidden");
+      } else {
+        // Calculate remaining time and progress
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, "0");
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, "0");
+        timeRemaining.textContent = `${minutes}:${seconds}`;
+
+        const progress = 100 - (diff / totalTime) * 100;
+        progressBar.style.width = `${progress.toFixed(2)}%`;
+        progressPercentage.textContent = `${progress.toFixed(0)}%`;
+      }
+    }
+
+    // Initialize the timer and update it every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
