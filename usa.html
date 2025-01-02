@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Animation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Process Progress</h2>
+        <div class="flex items-center space-x-4">
+            <!-- Planning -->
+            <div class="relative flex flex-col items-center">
+                <div class="flex items-center justify-center w-12 h-12 bg-green-500 text-white rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <span class="mt-2 text-sm font-medium text-green-600">Planning</span>
+            </div>
+
+            <!-- Setup -->
+            <div class="relative flex flex-col items-center">
+                <div class="flex items-center justify-center w-12 h-12 bg-gray-300 text-gray-600 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v8m0 0l-3-3m3 3l3-3" />
+                    </svg>
+                </div>
+                <span class="mt-2 text-sm font-medium text-gray-600">Setting Up</span>
+            </div>
+
+            <!-- Ready -->
+            <div class="relative flex flex-col items-center">
+                <div class="flex items-center justify-center w-12 h-12 bg-gray-300 text-gray-600 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v8m0 0l-3-3m3 3l3-3" />
+                    </svg>
+                </div>
+                <span class="mt-2 text-sm font-medium text-gray-600">Ready</span>
+            </div>
+
+            <!-- Order -->
+            <div class="relative flex flex-col items-center">
+                <div class="flex items-center justify-center w-12 h-12 bg-gray-300 text-gray-600 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v8m0 0l-3-3m3 3l3-3" />
+                    </svg>
+                </div>
+                <span class="mt-2 text-sm font-medium text-gray-600">Order</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
+</body>
+</html>
