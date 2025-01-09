@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +8,25 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.3.2/tailwind.min.css" rel="stylesheet">
     <!-- Flowbite CSS CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles to enhance readability */
+        body {
+            background-color: #1f2937; /* Dark gray background */
+            color: #d1d5db; /* Light gray text */
+        }
+        a {
+            color: #3b82f6; /* Blue links */
+        }
+        a:hover {
+            color: #60a5fa; /* Lighter blue on hover */
+            text-decoration: underline;
+        }
+        hr {
+            border-color: #4b5563; /* Medium gray for separators */
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body>
 
     <!-- Navbar -->
     <nav class="bg-gray-800">
@@ -18,7 +35,7 @@
                 <div class="flex items-center">
                     <a href="#" class="text-xl font-bold text-white">Swift Peak Hosting</a>
                 </div>
-                <div class="flex">
+                <div class="flex space-x-4">
                     <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
                     <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Services</a>
                     <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
@@ -29,15 +46,15 @@
 
     <!-- Main Content -->
     <main class="max-w-5xl mx-auto p-6">
-        <div class="bg-gray-800 rounded-lg shadow-lg p-8">
+        <div class="bg-gray-700 rounded-lg shadow-lg p-8">
             <h1 class="text-3xl font-bold mb-4">Privacy Policy</h1>
-            <p class="mb-6">**Last Updated:** January 08, 2025</p>
+            <p class="mb-6"><strong>Last Updated:</strong> January 14, 2024</p>
 
             <p class="mb-6">
-                Welcome to Swift Peak Hosting. We are dedicated to safeguarding your privacy and ensuring the protection of your personal information. This Privacy Policy delineates the types of information we collect, the purposes for which we use it, and the choices available to you regarding your personal data.
+                Welcome to Swift Peak Hosting. We are dedicated to safeguarding your privacy and ensuring the protection of your personal information. This Privacy Policy outlines the types of information we collect, the purposes for which we use it, and the choices available to you regarding your personal data.
             </p>
 
-            <hr class="my-6 border-gray-700">
+            <hr class="my-6">
 
             <!-- 1. Information We Collect -->
             <section class="mb-6">
@@ -51,7 +68,7 @@
                 </ul>
             </section>
 
-            <hr class="my-6 border-gray-700">
+            <hr class="my-6">
 
             <!-- 2. How We Use Your Information -->
             <section class="mb-6">
@@ -66,7 +83,7 @@
                 </ul>
             </section>
 
-            <hr class="my-6 border-gray-700">
+            <hr class="my-6">
 
             <!-- 3. Legal Basis for Processing -->
             <section class="mb-6">
@@ -79,7 +96,7 @@
                 </ul>
             </section>
 
-            <hr class="my-6 border-gray-700">
+            <hr class="my-6">
 
             <!-- 4. Data Sharing and Disclosure -->
             <section class="mb-6">
@@ -93,7 +110,7 @@
                 <p class="mb-4">We do <strong>not</strong> sell, trade, or otherwise transfer your personal information to outside parties for their marketing purposes without your explicit consent.</p>
             </section>
 
-            <hr class="my-6 border-gray-700">
+            <hr class="my-6">
 
             <!-- 5. Data Retention -->
             <section class="mb-6">
@@ -101,7 +118,7 @@
                 <p class="mb-4">We retain your personal data only for as long as necessary to fulfill the purposes outlined in this Privacy Policy or as required by applicable laws and regulations.</p>
             </section>
 
-            <hr class="my-6 border-gray-700">
+            <hr class="my-6">
 
             <!-- 6. Your Rights -->
             <section class="mb-6">
@@ -117,7 +134,7 @@
                 <p class="mb-4">To exercise these rights, please contact us using the contact information provided below.</p>
             </section>
 
-            <hr class="my-6 border-gray-700">
+            <hr class="my-6">
 
             <!-- 7. Security Measures -->
             <section class="mb-6">
@@ -125,7 +142,7 @@
                 <p class="mb-4">We implement industry-standard security measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction. These measures include encryption, secure servers, and regular security assessments.</p>
             </section>
 
-            <hr class="my-6 border-gray-700">
+            <hr class="my-6">
 
             <!-- 8. Changes to This Privacy Policy -->
             <section class="mb-6">
@@ -133,20 +150,20 @@
                 <p class="mb-4">We may update this Privacy Policy periodically to reflect changes in our practices or for other operational, legal, or regulatory reasons. Any updates will be posted on this page with a revised effective date. We encourage you to review this policy regularly to stay informed about how we are protecting your information.</p>
             </section>
 
-            <hr class="my-6 border-gray-700">
+            <hr class="my-6">
 
             <!-- 9. Contact Us -->
             <section class="mb-6">
                 <h2 class="text-2xl font-semibold mb-2">9. Contact Us</h2>
                 <p class="mb-4">If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact us at:</p>
                 <ul class="list-none mb-4">
-                    <li><strong>Email:</strong> <a href="mailto:info@swiftpeakhosting.com" class="text-blue-400 hover:underline">info@swiftpeakhosting.com</a></li>
-                    <li><strong>Address:</strong> Swift Peak Hosting, [124-128 City Road, London, England, EC1V 2NX ]</li>
-                    <li><strong>Phone:</strong> </li>
+                    <li><strong>Email:</strong> <a href="mailto:info@swiftpeakhosting.com" class="text-blue-400">info@swiftpeakhosting.com</a></li>
+                    <li><strong>Address:</strong> Swift Peak Hosting, 1234 Mountain View, City, Country</li>
+                    <li><strong>Phone:</strong> +1 (234) 567-8900</li>
                 </ul>
             </section>
 
-            <hr class="my-6 border-gray-700">
+            <hr class="my-6">
 
             <p class="text-center">
                 By using our services, you acknowledge that you have read and understood this Privacy Policy and agree to the collection, use, and sharing of your information as described herein.
@@ -157,7 +174,7 @@
     <!-- Footer -->
     <footer class="bg-gray-800">
         <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-            <p class="text-center text-gray-400 text-sm">&copy; 2025 Swift Peak Hosting. All rights reserved.</p>
+            <p class="text-center text-gray-400 text-sm">&copy; 2024 Swift Peak Hosting. All rights reserved.</p>
         </div>
     </footer>
 
