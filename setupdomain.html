@@ -7,9 +7,14 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwindcss.min.css" rel="stylesheet">
     <title>Domain Setup Checklist</title>
     <style>
+        /* Using a more specific dark blue background and improved contrast for text */
         body {
             background-color: #1e3a8a; /* Dark blue background */
-            color: white;
+            color: #f9fafb; /* Off-white text for better readability */
+        }
+        /* Styling for form elements for consistency and better visibility */
+        .form-checkbox {
+            accent-color: #60a5fa; /* Tailwind blue-500 for checkbox */
         }
     </style>
 </head>
@@ -17,28 +22,32 @@
     <div class="container mx-auto p-5">
         <h1 class="text-lg font-bold">Domain Setup Checklist</h1>
         <div class="py-4">
-            <button id="swiftPeakHostingSubdomain" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
+            <!-- Improved button accessibility with an aria-label -->
+            <button id="swiftPeakHostingSubdomain" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded"
+                aria-label="Redirect to Swift Peak Hosting subdomain setup">
                 Are you using a Swift Peak Hosting subdomain?
             </button>
         </div>
         <div class="py-4">
+            <!-- Accessible label with checkbox -->
             <label class="inline-flex items-center">
-                <input type="checkbox" id="ownDomain" class="form-checkbox text-blue-600">
+                <input type="checkbox" id="ownDomain" class="form-checkbox">
                 <span class="ml-2">Own Domain</span>
             </label>
             <div id="domainChecklist" class="hidden space-y-4 pl-4 pt-4">
                 <label class="inline-flex items-center">
-                    <input type="checkbox" id="validDomain" class="form-checkbox text-blue-600">
+                    <input type="checkbox" id="validDomain" class="form-checkbox">
                     <span class="ml-2">Valid domain that you own</span>
                 </label>
                 <label class="inline-flex items-center">
-                    <input type="checkbox" id="cloudflareSetup" class="form-checkbox text-blue-600">
+                    <input type="checkbox" id="cloudflareSetup" class="form-checkbox">
                     <span class="ml-2">Cloudflare account/setup your domain with Cloudflare</span>
                 </label>
                 <label class="inline-flex items-center">
-                    <input type="checkbox" id="watchedVideo" class="form-checkbox text-blue-600">
+                    <input type="checkbox" id="watchedVideo" class="form-checkbox">
                     <span class="ml-2">Watched our setup video</span>
                 </label>
+                <!-- Accessible complete setup button -->
                 <button id="completeSetup" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded hidden">
                     Complete Setup
                 </button>
@@ -48,6 +57,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
     <script>
+        // Script to handle button actions and checkbox state changes
         document.getElementById('swiftPeakHostingSubdomain').onclick = function() {
             window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
         };
