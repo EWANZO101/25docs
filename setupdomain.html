@@ -7,48 +7,54 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwindcss.min.css" rel="stylesheet">
     <title>Domain Setup Checklist</title>
     <style>
-        /* Using a more specific dark blue background and improved contrast for text */
         body {
-            background-color: #1e3a8a; /* Dark blue background */
-            color: #f9fafb; /* Off-white text for better readability */
+            background-color: #1e293b; /* Deep dark blue background */
+            color: #e2e8f0; /* Light grey text for better contrast */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Smooth font styling */
         }
-        /* Styling for form elements for consistency and better visibility */
-        .form-checkbox {
-            accent-color: #60a5fa; /* Tailwind blue-500 for checkbox */
+        .container {
+            max-width: 640px; /* Centering and limiting width for better readability */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+            border-radius: 12px; /* Rounded corners for modern look */
+            padding: 2rem; /* Adequate padding */
+            background-color: #334155; /* Slightly lighter background for the container */
+            margin-top: 3rem; /* Margin top for breathing space from the top */
+        }
+        .button {
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
+        }
+        .form-checkbox:checked {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 16 16"><path d="M13.485 1.929a1.5 1.5 0 0 1 0 2.121l-7.778 7.778a1.5 1.5 0 0 1-2.121 0L1.929 8.657a1.5 1.5 0 1 1 2.121-2.121l1.414 1.414 6.364-6.364a1.5 1.5 0 0 1 2.121 0z"/></svg>'); /* Custom checkbox icon */
         }
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-5">
-        <h1 class="text-lg font-bold">Domain Setup Checklist</h1>
-        <div class="py-4">
-            <!-- Improved button accessibility with an aria-label -->
-            <button id="swiftPeakHostingSubdomain" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded"
-                aria-label="Redirect to Swift Peak Hosting subdomain setup">
-                Are you using a Swift Peak Hosting subdomain?
+    <div class="container mx-auto">
+        <h1 class="text-xl font-semibold mb-6">Domain Setup Checklist</h1>
+        <div class="mb-4">
+            <button id="swiftPeakHostingSubdomain" class="button bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
+                Swift Peak Hosting Subdomain
             </button>
         </div>
-        <div class="py-4">
-            <!-- Accessible label with checkbox -->
-            <label class="inline-flex items-center">
+        <div>
+            <label class="inline-flex items-center mb-4">
                 <input type="checkbox" id="ownDomain" class="form-checkbox">
                 <span class="ml-2">Own Domain</span>
             </label>
-            <div id="domainChecklist" class="hidden space-y-4 pl-4 pt-4">
+            <div id="domainChecklist" class="hidden space-y-4">
                 <label class="inline-flex items-center">
                     <input type="checkbox" id="validDomain" class="form-checkbox">
                     <span class="ml-2">Valid domain that you own</span>
                 </label>
                 <label class="inline-flex items-center">
                     <input type="checkbox" id="cloudflareSetup" class="form-checkbox">
-                    <span class="ml-2">Cloudflare account/setup your domain with Cloudflare</span>
+                    <span class="ml-2">Cloudflare setup</span>
                 </label>
                 <label class="inline-flex items-center">
                     <input type="checkbox" id="watchedVideo" class="form-checkbox">
-                    <span class="ml-2">Watched our setup video</span>
+                    <span class="ml-2">Setup video viewed</span>
                 </label>
-                <!-- Accessible complete setup button -->
-                <button id="completeSetup" class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded hidden">
+                <button id="completeSetup" class="button bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded hidden">
                     Complete Setup
                 </button>
             </div>
@@ -57,7 +63,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
     <script>
-        // Script to handle button actions and checkbox state changes
         document.getElementById('swiftPeakHostingSubdomain').onclick = function() {
             window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
         };
