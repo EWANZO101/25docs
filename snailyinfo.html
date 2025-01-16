@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swift Peak Hosting - Setup Confirmation</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.6/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.4.6/dist/flowbite.min.css" rel="stylesheet"/>
     <style>
         .flashing {
             animation: flash 1s infinite;
@@ -15,53 +15,50 @@
             50% { opacity: 0.5; }
         }
         .highlight {
-            background-color: yellow;
-            color: black;
+            background-color: #4B5563; /* Darker gray for highlights */
+            color: #D1D5DB; /* Light gray text for contrast */
             font-weight: bold;
+            padding: 4px;
+            border-radius: 4px;
         }
     </style>
 </head>
-<body class="bg-gray-900 flex justify-center items-center min-h-screen text-gray-300">
-
+<body class="bg-gray-900 flex justify-center items-center min-h-screen text-gray-200">
     <div class="bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full mx-auto">
         <!-- Service Announcements -->
         <h2 class="text-2xl font-bold text-red-500 text-center flashing mb-4">
             Important Setup Confirmation
         </h2>
-        <p class="text-gray-300 mb-4">
+        <p class="mb-4">
             Before we proceed with your SnailyCAD setup, it’s essential to ensure that all steps in our process have been completed.
         </p>
-        <ul class="list-disc list-inside mb-4 text-gray-400">
+        <ul class="list-disc list-inside mb-4">
             <li class="highlight">Your SnailyCAD order will take 12–24 hours to activate. Initial errors are normal during this time.</li>
             <li>If you are using a <strong>Swift Peak Hosting subdomain</strong> (e.g., <strong>LARP.snailycad.co.uk</strong>), your setup will be expedited.</li>
             <li><strong>Cloudflare</strong> is a mandatory requirement for hosting services with Swift Peak Hosting.</li>
         </ul>
-        <p class="text-gray-300 mb-4">
-            After confirmation, you’ll be redirected to a checklist to finalize your setup and ensure smooth activation of your CAD. 
+        <p class="mb-4">
+            After confirmation, you’ll be redirected to a checklist to finalize your setup and ensure smooth activation of your CAD.
         </p>
-        <p class="text-gray-300 mb-4">
+        <p class="mb-4">
             If you encounter any issues or do not receive your CAD within the specified timeframe, please contact us via our 
             <a href="https://www.swiftpeakhosting.co.uk/contact" class="text-blue-400 underline">Contact Us</a> page for assistance.
         </p>
-
         <!-- Confirm button -->
         <button id="confirmButton" class="w-full bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 hover:bg-blue-600 transition">
-            <span id="buttonText">✔ I confirm and understand the setup requirements</span>
+            ✔ I confirm and understand the setup requirements
         </button>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.4.6/flowbite.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.4.6/dist/flowbite.bundle.min.js"></script>
     <script>
-        // Redirect function
         function redirectUser() {
             const buttonText = document.getElementById("buttonText");
             buttonText.textContent = "Redirecting...";
             setTimeout(() => {
-                window.location.href = "https://www.swiftpeakhosting.co.uk/setupdomain.html"; // Redirect to the checklist
-            }, 1000); // 1 second delay
+                window.location.href = "https://www.swiftpeakhosting.co.uk/setupdomain.html";
+            }, 1000);
         }
-
-        // Add event listener to button
         document.getElementById("confirmButton").addEventListener("click", redirectUser);
     </script>
 </body>
