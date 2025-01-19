@@ -7,9 +7,6 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .fade-in { 
-      animation: fadeIn 2s ease-in-out forwards; 
-    }
     body {
       background: url('https://i.ibb.co/PxmJgTv/4rBkgcQ.png') no-repeat center center fixed;
       background-size: cover;
@@ -17,583 +14,80 @@
   </style>
 </head>
 <body class="bg-gray-900 text-white">
-  <!-- Navbar Section -->
-  <nav class="bg-gray-900 border-gray-200 p-4">
-    <div class="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between">
-      <!-- Logo & Title Container (Centered) -->
-      <div class="flex-1 flex justify-center">
-        <a href="#" class="flex items-center space-x-3">
-          <img src="https://i.ibb.co/PxmJgTv/4rBkgcQ.png" class="h-12 w-auto" alt="Swift Peak Hosting Logo">
-          <span class="text-2xl font-semibold whitespace-nowrap">Swift Peak Hosting LTD</span>
-        </a>
-      </div>
-
-
-    
-
-      <!-- Right-side Controls (Mobile Hamburger) -->
-      <div class="flex items-center md:order-2 space-x-3 rtl:space-x-reverse">
-        <button
-          id="hamburgerBtn"
-          data-collapse-toggle="navbar-user"
-          type="button"
-          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg 
-                 md:hidden text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 
-                 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 
-                 dark:focus:ring-gray-600"
-          aria-controls="navbar-user"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Open main menu</span>
-          <svg
-            class="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M1 1h15M1 7h15M1 13h15"
-            />
-          </svg>
-        </button>
-      </div>
-
-      <!-- Collapsible Nav Menu -->
-      <div
-        class="hidden w-full md:flex md:w-auto md:order-1"
-        id="navbar-user"
-      >
-        <ul
-          class="flex flex-col md:flex-row font-medium p-4 md:p-0 mt-4 
-                 md:mt-0 border border-gray-100 rounded-lg bg-gray-900 
-                 md:border-0 md:bg-gray-900 
-                 md:space-x-8 rtl:space-x-reverse 
-                 dark:border-gray-700"
-        >
-          <!-- Nav Links -->
-          <li>
-            <a
-              href="index.html"
-              class="block py-2 px-3 text-white bg-blue-700 rounded 
-                     md:bg-transparent md:text-blue-700 md:p-0 
-                     md:dark:text-blue-500"
-              aria-current="page"
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.swiftpeakhosting.co.uk/Customer-Reviews"
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 
-                     md:hover:bg-transparent md:hover:text-blue-700 md:p-0
-                     dark:text-white md:dark:hover:text-blue-500 
-                     dark:hover:bg-gray-700 dark:hover:text-white
-                     md:dark:hover:bg-transparent dark:border-gray-700"
-            >
-            Customer Reviews
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.swiftpeakhosting.co.uk/Services.html"
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 
-                     md:hover:bg-transparent md:hover:text-blue-700 md:p-0
-                     dark:text-white md:dark:hover:text-blue-500 
-                     dark:hover:bg-gray-700 dark:hover:text-white
-                     md:dark:hover:bg-transparent dark:border-gray-700"
-            >
-              Services
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.swiftpeakhosting.co.uk/StaffTeam.html"
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 
-                     md:hover:bg-transparent md:hover:text-blue-700 md:p-0
-                     dark:text-white md:dark:hover:text-blue-500 
-                     dark:hover:bg-gray-700 dark:hover:text-white
-                     md:dark:hover:bg-transparent dark:border-gray-700"
-            >
-            Meet the Team
-            </a>
-          </li>
-          <li>
-            <a
-              href=""
-              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 
-                     md:hover:bg-transparent md:hover:text-blue-700 md:p-0
-                     dark:text-white md:dark:hover:text-blue-500 
-                     dark:hover:bg-gray-700 dark:hover:text-white
-                     md:dark:hover:bg-transparent dark:border-gray-700"
-            >
-            <li>
-              <a
-                href="https://www.swiftpeakhosting.co.uk/contact.html"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 
-                       md:hover:bg-transparent md:hover:text-blue-700 md:p-0
-                       dark:text-white md:dark:hover:text-blue-500 
-                       dark:hover:bg-gray-700 dark:hover:text-white
-                       md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                Contact
-              </a>
-            </li>
-
-          <!-- Account Menu -->
-          <li class="relative">
-            <button
-              id="userMenuButton"
-              class="flex items-center space-x-1 rtl:space-x-reverse text-white 
-                     hover:text-gray-200 focus:outline-none mt-2 md:mt-0"
-              aria-label="Account Menu"
-              type="button"
-            >
-              <span>Account</span>
-              <svg
-                class="w-4 h-4"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <!-- Dropdown -->
-            <div
-              id="userMenu"
-              class="hidden absolute right-0 mt-2 bg-gray-800 text-white 
-                     rounded-md shadow-lg w-48"
-            >
-              <a
-                href="https://store.swiftpeakhosting.co.uk/auth/login"
-                class="block px-4 py-2 text-sm hover:bg-gray-700"
-              >
-                Login
-              </a>
-              <a
-                href="https://store.swiftpeakhosting.co.uk/auth/logout"
-                class="block px-4 py-2 text-sm hover:bg-gray-700"
-              >
-                Sign Out
-              </a>
-              <a
-                href="https://store.swiftpeakhosting.co.uk/dashboard"
-                class="block px-4 py-2 text-sm hover:bg-gray-700"
-              >
-                Dashboard
-              </a>
-              <a
-                href="https://store.swiftpeakhosting.co.uk/admin"
-                class="block px-4 py-2 text-sm hover:bg-gray-700"
-              >
-                Admin
-              </a>
-            </div>
-          </li>
-          <!-- End Account Menu -->
-        </ul>
+  <!-- Navbar -->
+  <nav class="bg-gray-900 border-gray-700">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <!-- Logo and Title -->
+      <a href="#" class="flex items-center space-x-3">
+        <img src="https://i.ibb.co/PxmJgTv/4rBkgcQ.png" class="h-10 w-auto" alt="Logo">
+        <span class="text-xl font-semibold">Swift Peak Hosting LTD</span>
+      </a>
+      <!-- Mobile Menu Button -->
+      <button id="hamburgerBtn" class="md:hidden text-gray-400 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <!-- Desktop Menu -->
+      <div id="navbar-user" class="hidden md:flex space-x-8">
+        <a href="index.html" class="text-gray-300 hover:text-white">Home</a>
+        <a href="Customer-Reviews.html" class="text-gray-300 hover:text-white">Customer Reviews</a>
+        <a href="Services.html" class="text-gray-300 hover:text-white">Services</a>
+        <a href="StaffTeam.html" class="text-gray-300 hover:text-white">Meet the Team</a>
+        <a href="contact.html" class="text-gray-300 hover:text-white">Contact</a>
       </div>
     </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-gray-800">
+      <a href="index.html" class="block py-2 px-4 text-gray-300 hover:bg-gray-700">Home</a>
+      <a href="Customer-Reviews.html" class="block py-2 px-4 text-gray-300 hover:bg-gray-700">Customer Reviews</a>
+      <a href="Services.html" class="block py-2 px-4 text-gray-300 hover:bg-gray-700">Services</a>
+      <a href="StaffTeam.html" class="block py-2 px-4 text-gray-300 hover:bg-gray-700">Meet the Team</a>
+      <a href="contact.html" class="block py-2 px-4 text-gray-300 hover:bg-gray-700">Contact</a>
+    </div>
   </nav>
-  <!-- End Navbar Section -->
 
   <!-- Hero Section -->
-  <header class="flex flex-col items-center justify-center text-center min-h-screen px-4">
-   
-    <!-- Main Heading -->
-    <h1 class="text-3xl md:text-5xl font-extrabold mb-2">
-      Welcome to Swift Peak Hosting LTD
-    </h1>
-    <!-- Subtitle or Tagline -->
-    <p class="text-xl md:text-2xl text-gray-300">
-      Reliable Hosting Solutions with 24/7 Support
-    </p>
+  <header class="flex flex-col items-center justify-center text-center min-h-screen px-6">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">Welcome to Swift Peak Hosting LTD</h1>
+    <p class="text-lg sm:text-xl text-gray-300">Reliable Hosting Solutions with 24/7 Support</p>
   </header>
 
-  <!-- Add any additional page content here -->
-  
-  <!-- Toggle Script for the Account Menu -->
-  <script>
-    const userMenuButton = document.getElementById('userMenuButton');
-    const userMenu = document.getElementById('userMenu');
-
-    userMenuButton.addEventListener('click', () => {
-      userMenu.classList.toggle('hidden');
-    });
-  </script>
-
-  <!-- Main Section with Flowbite Components -->
-
-
-  <!-- Pricing Plans Section (Example 1) -->
+  <!-- Pricing Section -->
   <section class="py-12 px-4 bg-gray-900">
-    <div class="max-w-screen-xl mx-auto text-center">
-      <h2 class="text-3xl font-extrabold text-gray-800 mb-12">Our most popular plans</h2>
-      <!-- Use flex with nowrap and horizontal scrolling if needed -->
-      <div class="flex flex-nowrap overflow-x-auto justify-center space-x-8 px-4">
-        <!-- Plan 1: Standard Plan -->
-        <div class="w-full max-w-sm p-4 bg-gray-800 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-          <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">SnailyCAD Hosting</h5>
-          <div class="flex items-baseline text-gray-900 dark:text-white">
-            <span class="text-3xl font-semibold">£</span>
-            <span class="text-5xl font-extrabold tracking-tight">7.99 </span>
-            <span class="ms-1 text-xl font-normal text-gray-500 dark:text-gray-400">/month</span>
-          </div>
-          <ul role="list" class="space-y-5 my-7">
-            <li class="flex items-center">
-              <svg
-                class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20">
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-              </svg>
-              <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                >2 weeks free</span
-              >
-            </li>
-            <li class="flex">
-              <svg
-                class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20">
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-              </svg>
-              <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                >
-                3 Cores</span
-              >
-            </li>
-            <li class="flex">
-              <svg
-                class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20">
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-              </svg>
-              <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                >5 GB RAM</span
-              >
-            </li>
-        </li>
-        <li class="flex">
-          <svg
-            class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20">
-            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-          </svg>
-          <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-            >50 GB HDD</span
-          >
-        </li>
-    </li>
-    <li class="flex">
-      <svg
-        class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 20 20">
-        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-      </svg>
-      <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-        >free Setup</span
-      >
-    </li>
-
-    <li class="flex">
-        <svg
-          class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 20 20">
-          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-        </svg>
-        <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-          ></span
-        >
-      </li>
-    </ul>
-    <a href="https://store.swiftpeakhosting.co.uk/store/view/37" class="block">
-      <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full">
-        Choose Plan
-      </button>
-    </a>
-  </div>
-          
-        <!-- Repeat for other plans: Basic, Advanced, Premium -->
-        <!-- Example (duplicated Standard for demonstration): Plan 2 -->
-        <div class="w-full max-w-sm p-4 bg-gray-800 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-          <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">VPS Hosting</h5>
-          <div class="flex items-baseline text-gray-900 dark:text-white">
-            <span class="text-3xl font-semibold">£</span>
-            <span class="text-5xl font-extrabold tracking-tight">22.99</span>
-            <span class="ms-1 text-xl font-normal text-gray-500 dark:text-gray-400">/month</span>
-          </div>
-          <ul role="list" class="space-y-5 my-7">
-            <li class="flex items-center">
-              <svg
-                class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20">
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-              </svg>
-              <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                >5 CPU Cores</span
-              >
-            </li>
-            <li class="flex">
-              <svg
-                class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20">
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-              </svg>
-              <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                >100 GB SSD & 300 GB HDD</span
-              >
-            </li>
-            <li class="flex">
-              <svg
-                class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20">
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-              </svg>
-              <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                >17 GB RAM</span
-              >
-            </li>
-            <li class="flex">
-              <svg
-                class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20">
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-              </svg>
-              <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                >Select Your Preferred Operating System</span
-              >
-            </li>
-            <li class="flex">
-              <svg
-                class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20">
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-              </svg>
-              <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                >17 GB RAM</span
-              >
-            </li>
-            <li class="flex">
-              <svg
-                class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20">
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-              </svg>
-              <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                >exta</span
-              >
-            </li>
+    <div class="max-w-screen-xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold text-white text-center mb-8">Our Most Popular Plans</h2>
+      <div class="flex flex-nowrap space-x-4 overflow-x-auto px-4">
+        <!-- Plan Card -->
+        <div class="min-w-[280px] bg-gray-800 text-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold mb-4">SnailyCAD Hosting</h3>
+          <p class="text-4xl font-extrabold">£7.99<span class="text-sm">/month</span></p>
+          <ul class="mt-4 space-y-2">
+            <li>✔ 3 Cores</li>
+            <li>✔ 5 GB RAM</li>
+            <li>✔ 50 GB SSD</li>
           </ul>
-          <a href="https://store.swiftpeakhosting.co.uk/store/view/20" class="block">
-            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full">
-              Choose Plan
-            </button>
+          <a href="https://store.swiftpeakhosting.co.uk/store/view/37" class="block mt-6">
+            <button class="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded">Choose Plan</button>
           </a>
         </div>
-        <!-- Add more plan cards similarly... -->
-       
+        <!-- Repeat for more plans -->
       </div>
     </div>
   </section>
 
-  <!-- Repeat the same pattern (flex flex-nowrap space-x-8) for other sections as needed -->
-  <!-- Footer Section -->
-  <footer class="bg-gray-900 py-6">
-    <div class="container mx-auto text-center">
-      <p class="text-gray-400">© 2025 Swift Peak Hosting Ltd. All rights reserved.</p>
-      <div class="flex justify-center space-x-4 mt-4">
-        <a href="SLA.html" class="text-sm hover:text-gray-300">Service Level Agreement</a>
-        <a href="tnc.html" class="text-sm hover:text-gray-300">Terms & Conditions</a>
-        <a href="https://www.swiftpeakhosting.co.uk/PrivacyPolicy" class="text-sm hover:text-gray-300">Privacy Policy</a>
-        <a
-          href="https://find-and-update.company-information.service.gov.uk/company/15612395"
-          class="text-sm hover:text-gray-300"
-        >Company Registration</a>
-      </div>
-      <p class="text-gray-400 mt-2">
-        Registration Number:
-        <a
-          href="https://find-and-update.company-information.service.gov.uk/company/15612395"
-          class="hover:text-blue-500"
-        >15612395</a>
-      </p>
-    </div>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-center text-gray-400 py-6">
+    <p>© 2025 Swift Peak Hosting Ltd. All rights reserved.</p>
   </footer>
-    
-    
-  <!-- JavaScript for Toggling Menus -->
-    <script>
-        // Toggle Mobile Nav
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const navbarUser = document.getElementById('navbar-user');
-        hamburgerBtn.addEventListener('click', () => {
-          navbarUser.classList.toggle('hidden');
-        });
-    
-        // Toggle Account Dropdown
-        const userMenuButton = document.getElementById('userMenuButton');
-        const userMenu = document.getElementById('userMenu');
-        userMenuButton.addEventListener('click', () => {
-          userMenu.classList.toggle('hidden');
-        });
-      </script>
-      
+
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-<!-- <div class="w-full max-w-sm p-4 bg-gray-800 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-            <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Basic plan</h5>
-            <div class="flex items-baseline text-gray-900 dark:text-white">
-              <span class="text-3xl font-semibold">£</span>
-              <span class="text-5xl font-extrabold tracking-tight">29</span>
-              <span class="ms-1 text-xl font-normal text-gray-500 dark:text-gray-400">/month</span>
-            </div>
-            <ul role="list" class="space-y-5 my-7">
-              <li class="flex items-center">
-                <svg
-                  class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20">
-                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                </svg>
-                <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                  >1 team member</span
-                >
-              </li>
-              <li class="flex">
-                <svg
-                  class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20">
-                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                </svg>
-                <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                  >10GB Cloud storage</span
-                >
-              </li>
-              <li class="flex">
-                <svg
-                  class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20">
-                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                </svg>
-                <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                  >Email support</span
-                >
-              </li>
-            </ul>
-            <button
-              type="button"
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"
-            >Choose plan</button>
-          </div>
-          <div class="w-full max-w-sm p-4 bg-gray-800 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-            <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Basic plan</h5>
-            <div class="flex items-baseline text-gray-900 dark:text-white">
-              <span class="text-3xl font-semibold">£</span>
-              <span class="text-5xl font-extrabold tracking-tight">29</span>
-              <span class="ms-1 text-xl font-normal text-gray-500 dark:text-gray-400">/month</span>
-            </div>
-            <ul role="list" class="space-y-5 my-7">
-              <li class="flex items-center">
-                <svg
-                  class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20">
-                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                </svg>
-                <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                  >1 team member</span
-                >
-              </li>
-              <li class="flex">
-                <svg
-                  class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20">
-                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                </svg>
-                <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                  >10GB Cloud storage</span
-                >
-              </li>
-              <li class="flex">
-                <svg
-                  class="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20">
-                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
-                </svg>
-                <span class="text-base font-normal leading-tight text-gray-500 dark:text-gray-400 ms-3"
-                  >Email support</span
-                >
-              </li>
-            </ul>
-            <button
-              type="button"
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"
-            >Choose plan</button>
-          </div>
