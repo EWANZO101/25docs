@@ -29,12 +29,27 @@
         </svg>
       </button>
       <!-- Desktop Menu -->
-      <div id="navbar-user" class="hidden md:flex space-x-8">
+      <div id="navbar-user" class="hidden md:flex space-x-8 items-center">
         <a href="index.html" class="text-gray-300 hover:text-white">Home</a>
         <a href="Customer-Reviews.html" class="text-gray-300 hover:text-white">Customer Reviews</a>
         <a href="Services.html" class="text-gray-300 hover:text-white">Services</a>
         <a href="StaffTeam.html" class="text-gray-300 hover:text-white">Meet the Team</a>
         <a href="contact.html" class="text-gray-300 hover:text-white">Contact</a>
+        <!-- Account Dropdown -->
+        <div class="relative">
+          <button id="userMenuButton" class="flex items-center space-x-1 hover:text-gray-200 focus:outline-none">
+            <span>Account</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div id="userMenu" class="hidden absolute right-0 mt-2 bg-gray-800 text-white rounded-md shadow-lg w-48">
+            <a href="https://store.swiftpeakhosting.co.uk/auth/login" class="block px-4 py-2 hover:bg-gray-700">Login</a>
+            <a href="https://store.swiftpeakhosting.co.uk/auth/logout" class="block px-4 py-2 hover:bg-gray-700">Sign Out</a>
+            <a href="https://store.swiftpeakhosting.co.uk/dashboard" class="block px-4 py-2 hover:bg-gray-700">Dashboard</a>
+            <a href="https://store.swiftpeakhosting.co.uk/admin" class="block px-4 py-2 hover:bg-gray-700">Admin</a>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Mobile Menu -->
@@ -71,7 +86,6 @@
             <button class="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded">Choose Plan</button>
           </a>
         </div>
-        <!-- Repeat for more plans -->
       </div>
     </div>
   </section>
@@ -82,11 +96,18 @@
   </footer>
 
   <script>
+    // Toggle Mobile Menu
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-
     hamburgerBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
+    });
+
+    // Toggle Account Dropdown
+    const userMenuButton = document.getElementById('userMenuButton');
+    const userMenu = document.getElementById('userMenu');
+    userMenuButton.addEventListener('click', () => {
+      userMenu.classList.toggle('hidden');
     });
   </script>
 </body>
