@@ -15,8 +15,8 @@
             50% { opacity: 0.5; }
         }
         .highlight {
-            background-color: #4B5563; /* Darker gray for highlights */
-            color: #D1D5DB; /* Light gray text for contrast */
+            background-color: #374151; /* Darker gray for highlights */
+            color: #E5E7EB; /* Light gray text for contrast */
             font-weight: bold;
             padding: 4px;
             border-radius: 4px;
@@ -53,8 +53,9 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@1.4.6/dist/flowbite.bundle.min.js"></script>
     <script>
         function redirectUser() {
-            const buttonText = document.getElementById("buttonText");
-            buttonText.textContent = "Redirecting...";
+            const confirmButton = document.getElementById("confirmButton");
+            confirmButton.textContent = "Redirecting...";
+            confirmButton.setAttribute("aria-live", "polite");
             setTimeout(() => {
                 window.location.href = "https://www.swiftpeakhosting.co.uk/setupdomain.html";
             }, 1000);
