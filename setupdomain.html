@@ -32,38 +32,37 @@
     </style>
 </head>
 <body>
-    <div class="container mx-auto">
-        <h1 class="text-xl font-semibold mb-6">Domain Setup Checklist</h1>
-        <div class="mb-4">
-            <button id="swiftPeakHostingSubdomain" class="button bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
-                Swift Peak Hosting Subdomain
+ <div class="container mx-auto p-6 bg-gray-800 shadow-lg rounded-lg">
+    <h1 class="text-2xl font-extrabold text-white mb-6 border-b border-gray-600 pb-2">Domain Setup Checklist</h1>
+    <div class="mb-6">
+        <button id="swiftPeakHostingSubdomain" class="button bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-500 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all">
+            Swift Peak Hosting Subdomain
+        </button>
+    </div>
+    <div class="bg-gray-700 p-4 rounded-lg">
+        <label class="flex items-center mb-4 text-white">
+            <input type="checkbox" id="ownDomain" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500">
+            <span class="ml-3 text-lg">Own Domain</span>
+        </label>
+        <div id="domainChecklist" class="hidden space-y-4">
+            <label class="flex items-center text-white">
+                <input type="checkbox" id="validDomain" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500">
+                <span class="ml-3">Valid domain that you own</span>
+            </label>
+            <label class="flex items-center text-white">
+                <input type="checkbox" id="cloudflareSetup" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500">
+                <span class="ml-3">Cloudflare setup</span>
+            </label>
+            <label class="flex items-center text-white">
+                <input type="checkbox" id="watchedVideo" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500">
+                <span class="ml-3">Setup video viewed (<a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" target="_blank" class="text-blue-400 underline hover:text-blue-300 transition">Watch here</a>)</span>
+            </label>
+            <button id="completeSetup" class="button bg-gradient-to-r from-green-500 to-green-700 hover:from-green-400 hover:to-green-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all hidden">
+                Complete Setup
             </button>
         </div>
-        <div>
-            <label class="inline-flex items-center mb-4">
-                <input type="checkbox" id="ownDomain" class="form-checkbox">
-                <span class="ml-2">Own Domain</span>
-            </label>
-            <div id="domainChecklist" class="hidden space-y-4">
-                <label class="inline-flex items-center">
-                    <input type="checkbox" id="validDomain" class="form-checkbox">
-                    <span class="ml-2">Valid domain that you own</span>
-                </label>
-                <label class="inline-flex items-center">
-                    <input type="checkbox" id="cloudflareSetup" class="form-checkbox">
-                    <span class="ml-2">Cloudflare setup</span>
-                </label>
-                <label class="inline-flex items-center">
-                    <input type="checkbox" id="watchedVideo" class="form-checkbox">
-                    <span class="ml-2">Setup video viewed (<a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" target="_blank" class="text-blue-400 underline">Watch here</a>)</span>
-                </label>
-                <button id="completeSetup" class="button bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded hidden">
-                    Complete Setup
-                </button>
-            </div>
-        </div>
     </div>
-
+</div>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
     <script>
         document.getElementById('swiftPeakHostingSubdomain').onclick = function() {
