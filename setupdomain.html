@@ -4,83 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwindcss.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
     <title>Domain Setup Checklist</title>
-    <style>
-        body {
-            background-color: #1e293b;
-            color: #e2e8f0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .container {
-            max-width: 640px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border-radius: 12px;
-            padding: 2rem;
-            background-color: #334155;
-            margin-top: 3rem;
-        }
-        .button {
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        .button:hover {
-            transform: translateY(-2px);
-        }
-        .form-checkbox:checked {
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 16 16"><path d="M13.485 1.929a1.5 1.5 0 0 1 0 2.121l-7.778 7.778a1.5 1.5 0 0 1-2.121 0L1.929 8.657a1.5 1.5 0 1 1 2.121-2.121l1.414 1.414 6.364-6.364a1.5 1.5 0 0 1 2.121 0z"/></svg>');
-        }
-    </style>
 </head>
-<body>
- <div class="container mx-auto p-6 bg-gray-800 shadow-lg rounded-lg">
-    <h1 class="text-2xl font-extrabold text-white mb-6 border-b border-gray-600 pb-2">Domain Setup Checklist</h1>
-    <div class="mb-6">
-        <button id="swiftPeakHostingSubdomain" class="button bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-500 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all">
-            Swift Peak Hosting Subdomain
-        </button>
-    </div>
-    <div class="bg-gray-700 p-4 rounded-lg">
-        <label class="flex items-center mb-4 text-white">
-            <input type="checkbox" id="ownDomain" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500">
-            <span class="ml-3 text-lg">Own Domain</span>
-        </label>
-        <div id="domainChecklist" class="hidden space-y-4">
-            <label class="flex items-center text-white">
-                <input type="checkbox" id="validDomain" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500">
-                <span class="ml-3">Valid domain that you own</span>
-            </label>
-            <label class="flex items-center text-white">
-                <input type="checkbox" id="cloudflareSetup" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500">
-                <span class="ml-3">Cloudflare setup</span>
-            </label>
-            <label class="flex items-center text-white">
-                <input type="checkbox" id="watchedVideo" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500">
-                <span class="ml-3">Setup video viewed (<a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" target="_blank" class="text-blue-400 underline hover:text-blue-300 transition">Watch here</a>)</span>
-            </label>
-            <button id="completeSetup" class="button bg-gradient-to-r from-green-500 to-green-700 hover:from-green-400 hover:to-green-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all hidden">
-                Complete Setup
+<body class="bg-gray-900 flex justify-center items-center min-h-screen text-gray-200">
+    <div class="container bg-gray-800 p-8 rounded-lg shadow-lg max-w-md space-y-6">
+        <!-- Title Section -->
+        <h1 class="text-3xl font-extrabold text-center text-white mb-4">Domain Setup Checklist</h1>
+        <p class="text-gray-400 text-center mb-6">
+            Follow the steps below to complete your domain setup for SnailyCAD. Each step must be completed before proceeding.
+        </p>
+
+        <!-- Option: Swift Peak Hosting Subdomain -->
+        <div class="space-y-2">
+            <button id="swiftPeakHostingSubdomain" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all">
+                Use Swift Peak Hosting Subdomain
             </button>
+            <p class="text-sm text-gray-400 text-center">
+                This option automatically expedites setup using a Swift Peak Hosting subdomain (e.g., <span class="font-bold text-blue-400">LARP.snailycad.co.uk</span>).
+            </p>
+        </div>
+
+        <!-- Option: Own Domain -->
+        <div class="bg-gray-700 p-4 rounded-lg">
+            <label class="flex items-center mb-4">
+                <input type="checkbox" id="ownDomain" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500">
+                <span class="ml-3 text-lg font-semibold text-white">I want to use my own domain</span>
+            </label>
+            <div id="domainChecklist" class="hidden space-y-4">
+                <!-- Checklist Items -->
+                <div class="space-y-2">
+                    <label class="flex items-center">
+                        <input type="checkbox" id="validDomain" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500">
+                        <span class="ml-3">I own a valid domain</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" id="cloudflareSetup" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500">
+                        <span class="ml-3">My domain is configured with Cloudflare</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" id="watchedVideo" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500">
+                        <span class="ml-3">
+                            I have watched the setup tutorial video (
+                            <a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" target="_blank" class="text-blue-400 underline hover:text-blue-300 transition">
+                                Watch here
+                            </a>)
+                        </span>
+                    </label>
+                </div>
+                <!-- Complete Setup Button -->
+                <button id="completeSetup" class="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-400 hover:to-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all hidden">
+                    Complete Setup
+                </button>
+            </div>
         </div>
     </div>
-</div>
+
+    <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
     <script>
+        // Redirect for Swift Peak Hosting Subdomain
         document.getElementById('swiftPeakHostingSubdomain').onclick = function() {
+            alert("Redirecting to purchase a Swift Peak Hosting Subdomain.");
             window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
         };
 
+        // Toggle Own Domain Checklist
         document.getElementById('ownDomain').onclick = function() {
             document.getElementById('domainChecklist').classList.toggle('hidden');
         };
 
+        // Enable Complete Setup Button when all checkboxes are checked
         document.querySelectorAll('#domainChecklist input').forEach(input => {
             input.onclick = function() {
-                let allChecked = Array.from(document.querySelectorAll('#domainChecklist input')).every(checkbox => checkbox.checked);
+                const allChecked = Array.from(document.querySelectorAll('#domainChecklist input')).every(checkbox => checkbox.checked);
                 document.getElementById('completeSetup').classList.toggle('hidden', !allChecked);
             };
         });
 
+        // Redirect for Complete Setup
         document.getElementById('completeSetup').onclick = function() {
+            alert("Redirecting to finalize the setup.");
             window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
         };
     </script>
