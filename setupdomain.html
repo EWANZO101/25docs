@@ -29,14 +29,13 @@
         </div>
 
         <!-- Option: Swift Peak Hosting Subdomain -->
-       <div class="space-y-2">
-    <button id="swiftPeakHostingSubdomain" 
-        class="w-full bg-gradient-to-r from-green-500 to-green-700 
-               hover:from-green-400 hover:to-green-600 text-white 
-               font-bold py-3 px-6 rounded-lg shadow-md transition-all">
-        Use Swift Peak Hosting Subdomain
-    </button>
-</div>
+        <div class="space-y-2">
+            <button id="swiftPeakHostingSubdomain" 
+                class="w-full bg-gradient-to-r from-green-500 to-green-700 
+                       hover:from-green-400 hover:to-green-600 text-white 
+                       font-bold py-3 px-6 rounded-lg shadow-md transition-all">
+                Use Swift Peak Hosting Subdomain
+            </button>
             <p class="text-sm text-gray-400 text-center">
                 This option is fully managed by Swift Peak Hosting. No additional setup is required on your end, and your CAD setup will be expedited.
             </p>
@@ -77,12 +76,12 @@
         </div>
     </div>
 
- <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
-<script>
-    // Redirect for Swift Peak Hosting Subdomain
-    document.getElementById('swiftPeakHostingSubdomain').onclick = function() {
-        window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
-    };
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
+    <script>
+        // Redirect for Swift Peak Hosting Subdomain
+        document.getElementById('swiftPeakHostingSubdomain').onclick = function() {
+            window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
+        };
 
         // Toggle Own Domain Checklist
         document.getElementById('ownDomain').onclick = function() {
@@ -95,7 +94,7 @@
                 const allChecked = Array.from(document.querySelectorAll('#domainChecklist input')).every(checkbox => checkbox.checked);
                 document.getElementById('completeSetup').classList.toggle('hidden', !allChecked);
             };
-        });
+        };
 
         // Redirect for Complete Setup
         document.getElementById('completeSetup').onclick = function() {
