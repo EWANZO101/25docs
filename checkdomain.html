@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Activation Notice</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen">
+  <div class="bg-blue-900 p-6 rounded-lg text-white text-center space-y-6 w-full max-w-lg">
+    <div class="text-red-600 font-extrabold text-xl">
+      Order Activation: Your SnailyCAD order will take 12–24 hours to activate. Initial errors are normal during this time.
+    </div>
+
+    <div class="flex justify-center space-x-4 mt-6">
+      <button id="own-domain-btn" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-lg">
+        I am using my own domain
+      </button>
+      <button id="swift-peak-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg">
+        I am using Swift Peak Hosting
+      </button>
+    </div>
+
+    <div id="own-domain-details" class="hidden mt-6">
+      <div class="text-yellow-400 font-extrabold">
+        IF YOU OWN A DOMAIN AND YOU ARE USING YOUR OWN DOMAIN, YOU MUST OPEN A TICKET IN OUR DISCORD.
+      </div>
+      <div class="text-white mt-4">
+        <strong>Note:</strong> If you did not buy a domain from 123 Reg, Namecheap, Hostinger, or another domain provider and you want to use your own domain, you will need to purchase one. 
+        Then follow this video <a href="https://www.youtube.com/watch?v=TKE_6HLpDsI&t=1s&pp=ygUTc3dpZnQgcGVhayBob3N0aW5nIA%3D%3Dguide" target="_blank" class="text-blue-400 underline">video guide</a> to connect it.
+      </div>
+      <div class="bg-gray-800 text-gray-200 p-4 rounded-lg mt-4">
+        <strong>Example of a domain:</strong> A domain is your website address, such as <span class="text-blue-400">www.example.com</span>. It is what people use to access your website.
+      </div>
+    </div>
+
+    <div id="swift-peak-details" class="hidden mt-6">
+      <div class="text-yellow-400 font-bold">
+        IF YOU ARE USING A SWIFT PEAK HOSTING SUBDOMAIN, YOU WILL GET YOUR CAD WITHIN 12–24 HOURS.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('own-domain-btn').addEventListener('click', () => {
+      document.getElementById('own-domain-details').classList.remove('hidden');
+      document.getElementById('swift-peak-details').classList.add('hidden');
+    });
+
+    document.getElementById('swift-peak-btn').addEventListener('click', () => {
+      document.getElementById('swift-peak-details').classList.remove('hidden');
+      document.getElementById('own-domain-details').classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
