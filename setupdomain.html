@@ -12,16 +12,29 @@
         <!-- Title Section -->
         <h1 class="text-3xl font-extrabold text-center text-white mb-4">Domain Setup Checklist</h1>
         <p class="text-gray-400 text-center mb-6">
-            Follow the steps below to complete your domain setup for SnailyCAD. Each step must be completed before proceeding.
+            Choose the type of domain you want to use for SnailyCAD. Read carefully to understand the implications of each choice.
         </p>
+
+        <!-- Explanation Section -->
+        <div class="bg-gray-700 p-4 rounded-lg space-y-4">
+            <h2 class="text-xl font-semibold text-white">What Each Option Means:</h2>
+            <ul class="space-y-2 text-gray-300">
+                <li>
+                    <span class="font-bold text-green-400">Swift Peak Hosting Subdomain:</span> Choosing this option means we will provide a subdomain (e.g., <span class="text-blue-400 font-bold">LARP.snailycad.co.uk</span>) for your setup. This is the easiest and fastest option for activating your CAD.
+                </li>
+                <li>
+                    <span class="font-bold text-blue-400">Own Domain:</span> You will use a domain you already own (e.g., <span class="text-blue-400 font-bold">yourdomain.com</span>). This option requires additional setup, including Cloudflare configuration and domain validation.
+                </li>
+            </ul>
+        </div>
 
         <!-- Option: Swift Peak Hosting Subdomain -->
         <div class="space-y-2">
-            <button id="swiftPeakHostingSubdomain" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-500 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all">
+            <button id="swiftPeakHostingSubdomain" class="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-400 hover:to-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all">
                 Use Swift Peak Hosting Subdomain
             </button>
             <p class="text-sm text-gray-400 text-center">
-                This option automatically expedites setup using a Swift Peak Hosting subdomain (e.g., <span class="font-bold text-blue-400">LARP.snailycad.co.uk</span>).
+                This option is fully managed by Swift Peak Hosting. No additional setup is required on your end, and your CAD setup will be expedited.
             </p>
         </div>
 
@@ -65,7 +78,7 @@
     <script>
         // Redirect for Swift Peak Hosting Subdomain
         document.getElementById('swiftPeakHostingSubdomain').onclick = function() {
-            alert("Redirecting to purchase a Swift Peak Hosting Subdomain.");
+            alert("You have chosen the Swift Peak Hosting Subdomain option. Redirecting to complete your purchase...");
             window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
         };
 
@@ -84,7 +97,7 @@
 
         // Redirect for Complete Setup
         document.getElementById('completeSetup').onclick = function() {
-            alert("Redirecting to finalize the setup.");
+            alert("You have completed all steps for using your own domain. Redirecting to finalize setup...");
             window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
         };
     </script>
