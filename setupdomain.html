@@ -79,28 +79,33 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
     <script>
         // Redirect for Swift Peak Hosting Subdomain
-        document.getElementById('swiftPeakHostingSubdomain').onclick = function() {
+        document.getElementById('swiftPeakHostingSubdomain').addEventListener('click', function() {
             window.location.href = 'https://www.swiftpeakhosting.co.uk/checkdomain.html';
-        };
+        });
 
         // Toggle Own Domain Checklist
-        document.getElementById('ownDomain').onclick = function() {
-            document.getElementById('domainChecklist').classList.toggle('hidden');
-        };
+        const ownDomainCheckbox = document.getElementById('ownDomain');
+        const domainChecklist = document.getElementById('domainChecklist');
+        const completeSetupButton = document.getElementById('completeSetup');
+        const checklistInputs = domainChecklist.querySelectorAll('input');
+
+        ownDomainCheckbox.addEventListener('change', function() {
+            domainChecklist.classList.toggle('hidden', !this.checked);
+        });
 
         // Enable Complete Setup Button when all checkboxes are checked
-        document.querySelectorAll('#domainChecklist input').forEach(input => {
-            input.onclick = function() {
-                const allChecked = Array.from(document.querySelectorAll('#domainChecklist input')).every(checkbox => checkbox.checked);
-                document.getElementById('completeSetup').classList.toggle('hidden', !allChecked);
-            };
-        };
+        checklistInputs.forEach(input => {
+            input.addEventListener('change', function() {
+                const allChecked = Array.from(checklistInputs).every(checkbox => checkbox.checked);
+                completeSetupButton.classList.toggle('hidden', !allChecked);
+            });
+        });
 
         // Redirect for Complete Setup
-        document.getElementById('completeSetup').onclick = function() {
+        completeSetupButton.addEventListener('click', function() {
             alert("You have completed all steps for using your own domain. Redirecting to finalize setup...");
             window.location.href = 'https://www.swiftpeakhosting.co.uk/checkdomain.html';
-        };
+        });
     </script>
 </body>
 </html>
