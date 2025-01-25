@@ -9,6 +9,10 @@
 <body class="bg-gray-900 flex items-center justify-center min-h-screen">
   <div class="bg-blue-900 p-6 rounded-lg text-white text-center space-y-6 w-full max-w-lg">
     <div class="text-red-600 font-extrabold text-xl">
+      THIS IS THE LAST CHECK. YOU WILL BE REDIRECTED TO OUR STORE NEXT.
+    </div>
+
+    <div class="text-red-600 font-extrabold text-lg">
       Order Activation: Your SnailyCAD order will take 12–24 hours to activate. Initial errors are normal during this time.
     </div>
 
@@ -39,17 +43,31 @@
         IF YOU ARE USING A SWIFT PEAK HOSTING SUBDOMAIN, YOU WILL GET YOUR CAD WITHIN 12–24 HOURS.
       </div>
     </div>
+
+    <button id="confirm-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg mt-6 hidden">
+      I Have Read and Followed All Steps
+    </button>
   </div>
 
   <script>
-    document.getElementById('own-domain-btn').addEventListener('click', () => {
+    const ownDomainBtn = document.getElementById('own-domain-btn');
+    const swiftPeakBtn = document.getElementById('swift-peak-btn');
+    const confirmBtn = document.getElementById('confirm-btn');
+
+    ownDomainBtn.addEventListener('click', () => {
       document.getElementById('own-domain-details').classList.remove('hidden');
       document.getElementById('swift-peak-details').classList.add('hidden');
+      confirmBtn.classList.remove('hidden');
     });
 
-    document.getElementById('swift-peak-btn').addEventListener('click', () => {
+    swiftPeakBtn.addEventListener('click', () => {
       document.getElementById('swift-peak-details').classList.remove('hidden');
       document.getElementById('own-domain-details').classList.add('hidden');
+      confirmBtn.classList.remove('hidden');
+    });
+
+    confirmBtn.addEventListener('click', () => {
+      window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
     });
   </script>
 </body>
