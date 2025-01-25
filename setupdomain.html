@@ -67,6 +67,15 @@
                             </a>)
                         </span>
                     </label>
+                    <!-- Domain Check Section -->
+                    <div>
+                        <label for="domainInput" class="block text-gray-300 mb-2">Enter your domain:</label>
+                        <input type="text" id="domainInput" class="w-full p-2 rounded bg-gray-700 text-white" placeholder="example.com" required>
+                        <button id="checkDomain" class="mt-4 w-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-400 hover:to-blue-600 text-white font-bold py-2 px-4 rounded">
+                            Check Domain
+                        </button>
+                        <p id="domainResult" class="text-sm text-gray-300 mt-2"></p>
+                    </div>
                 </div>
                 <!-- Complete Setup Button -->
                 <button id="completeSetup" class="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-400 hover:to-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all hidden">
@@ -87,7 +96,7 @@
         const ownDomainCheckbox = document.getElementById('ownDomain');
         const domainChecklist = document.getElementById('domainChecklist');
         const completeSetupButton = document.getElementById('completeSetup');
-        const checklistInputs = domainChecklist.querySelectorAll('input');
+        const checklistInputs = domainChecklist.querySelectorAll('input[type="checkbox"]');
 
         ownDomainCheckbox.addEventListener('change', function() {
             domainChecklist.classList.toggle('hidden', !this.checked);
@@ -99,6 +108,42 @@
                 const allChecked = Array.from(checklistInputs).every(checkbox => checkbox.checked);
                 completeSetupButton.classList.toggle('hidden', !allChecked);
             });
+        });
+
+        // Check Domain Functionality
+        document.getElementById('checkDomain').addEventListener('click', function () {
+            const domainInput = document.getElementById('domainInput').value.trim();
+            const domainResult = document.getElementById('domainResult');
+
+            if (!domainInput) {
+                domainResult.textContent = "Please enter a valid domain.";
+                return;
+            }
+
+            domainResult.textContent = "Checking domain...";
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `https://swiftcheck.swiftpeakhosting.com/check-domain?domain=${encodeURIComponent(domainInput)}`, true);
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+
+                    if (data.isCloudflare) {
+                        domainResult.textContent = `✅ ${domainInput} is using Cloudflare.`;
+                    } else {
+                        domainResult.textContent = `❌ ${domainInput} is not using Cloudflare.`;
+                    }
+                } else {
+                    domainResult.textContent = "Error checking the domain. Please try again later.";
+                }
+            };
+
+            xhr.onerror = function () {
+                domainResult.textContent = "Network error occurred. Please try again.";
+            };
+
+            xhr.send();
         });
 
         // Redirect for Complete Setup
