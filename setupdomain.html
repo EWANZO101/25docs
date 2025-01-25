@@ -116,7 +116,7 @@
         async function checkCloudflare() {
             const domain = document.getElementById('domain').value;
 
-            const response = await fetch('https://checkdomain.swiftpeakhosting.co.uk/check-cloudflare', {  // Use your domain
+            const response = await fetch('https://checkdomain.swiftpeakhosting.co.uk', {  // Use your domain
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ domain })
