@@ -3,79 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Services - Swift Peak Hosting Ltd</title>
+  <title>Swift Peak Hosting LTD</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.css" rel="stylesheet" />
   <style>
     body {
-      background-color: #1F2937; /* Dark gray background */
-      color: #FFFFFF; /* White text */
+      background: url('https://i.ibb.co/PxmJgTv/4rBkgcQ.png') no-repeat center center fixed;
+      background-size: cover;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
-
+<body class="bg-gray-900 text-white">
   <!-- Navbar -->
-  <nav class="bg-blue-800 p-4 shadow-lg">
-    <div class="container mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-xl font-bold">Swift Peak Hosting Ltd</a>
-      <ul class="flex space-x-6">
-        <li><a href="index.html" class="hover:text-gray-400">Home</a></li>
-        <li><a href="Services.html" class="hover:text-gray-400">Services</a></li>
-        <li><a href="Documentation.html" class="hover:text-gray-400">Documentation</a></li>
-        <li><a href="Contact.html" class="hover:text-gray-400">Contact</a></li>
-      </ul>
+  <nav class="bg-gray-900 border-gray-700">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <!-- Logo and Title -->
+      <a href="#" class="flex items-center space-x-3">
+        <img src="https://i.ibb.co/PxmJgTv/4rBkgcQ.png" class="h-10 w-auto" alt="Logo">
+        <span class="text-xl font-semibold">Swift Peak Hosting LTD</span>
+      </a>
+      <!-- Mobile Menu Button -->
+      <button id="hamburgerBtn" class="md:hidden text-gray-400 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <!-- Desktop Menu -->
+      <div id="navbar-user" class="hidden md:flex space-x-8 items-center">
+        <a href="index.html" class="text-gray-300 hover:text-white">Home</a>
+        <a href="Customer-Reviews.html" class="text-gray-300 hover:text-white">Customer Reviews</a>
+        <a href="Services.html" class="text-gray-300 hover:text-white">Services</a>
+        <a href="StaffTeam.html" class="text-gray-300 hover:text-white">Meet the Team</a>
+        <a href="contact.html" class="text-gray-300 hover:text-white">Contact</a>
+        <!-- Account Dropdown -->
+        <div class="relative">
+          <button id="userMenuButton" class="flex items-center space-x-1 hover:text-gray-200 focus:outline-none">
+            <span>Account</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div id="userMenu" class="hidden absolute right-0 mt-2 bg-gray-800 text-white rounded-md shadow-lg w-48">
+            <a href="https://store.swiftpeakhosting.co.uk/auth/login" class="block px-4 py-2 hover:bg-gray-700">Login</a>
+            <a href="https://store.swiftpeakhosting.co.uk/auth/logout" class="block px-4 py-2 hover:bg-gray-700">Sign Out</a>
+            <a href="https://store.swiftpeakhosting.co.uk/dashboard" class="block px-4 py-2 hover:bg-gray-700">Dashboard</a>
+            <a href="https://store.swiftpeakhosting.co.uk/admin" class="block px-4 py-2 hover:bg-gray-700">Admin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-gray-800">
+      <a href="index.html" class="block py-2 px-4 text-gray-300 hover:bg-gray-700">Home</a>
+      <a href="Customer-Reviews.html" class="block py-2 px-4 text-gray-300 hover:bg-gray-700">Customer Reviews</a>
+      <a href="Services.html" class="block py-2 px-4 text-gray-300 hover:bg-gray-700">Services</a>
+      <a href="StaffTeam.html" class="block py-2 px-4 text-gray-300 hover:bg-gray-700">Meet the Team</a>
+      <a href="contact.html" class="block py-2 px-4 text-gray-300 hover:bg-gray-700">Contact</a>
+      <!-- Account Dropdown for Mobile -->
+      <div class="border-t border-gray-700">
+        <button id="mobileUserMenuButton" class="w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-700 flex items-center justify-between">
+          <span>Account</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div id="mobileUserMenu" class="hidden bg-gray-800">
+          <a href="https://store.swiftpeakhosting.co.uk/auth/login" class="block px-4 py-2 hover:bg-gray-700">Login</a>
+          <a href="https://store.swiftpeakhosting.co.uk/auth/logout" class="block px-4 py-2 hover:bg-gray-700">Sign Out</a>
+          <a href="https://store.swiftpeakhosting.co.uk/dashboard" class="block px-4 py-2 hover:bg-gray-700">Dashboard</a>
+          <a href="https://store.swiftpeakhosting.co.uk/admin" class="block px-4 py-2 hover:bg-gray-700">Admin</a>
+        </div>
+      </div>
     </div>
   </nav>
 
-  <!-- Services Section -->
-  <section class="py-12 flex-grow">
-    <div class="container mx-auto">
-      <h1 class="text-4xl font-bold mb-8 text-center">Our Services</h1>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <!-- SnailyCAD Hosting Service -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
-          <h3 class="text-xl font-bold mb-4">SnailyCAD Hosting</h3>
-          <p>Expert SnailyCAD hosting solutions designed for law enforcement roleplay communities.</p>
-          <a href="https://store.swiftpeakhosting.co.uk/store/view/37" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Go to Checkout</a>
-        </div>
-        
-        <!-- Cloud Solutions Service -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
-          <h3 class="text-xl font-bold mb-4">Cloud Solutions</h3>
-          <p>Custom cloud solutions tailored to your business needs.</p>
-          <a href="cloud_solutions.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Learn More</a>
-        </div>
-        
-        <!-- VPS/VDS Service -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
-          <h3 class="text-xl font-bold mb-4">VPS/VDS</h3>
-          <p>High-performance Virtual Private Servers (VPS) and dedicated servers tailored to your hosting needs.</p>
-          <a href="VPS.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Checkout Our Pricing Plans</a>
-        </div>
-        
-        <!-- Dedicated Hosting -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
-          <h3 class="text-xl font-bold mb-4">Dedicated Hosting</h3>
-          <p>Fully managed dedicated servers with enterprise-grade hardware and performance.</p>
-          <a href="VPS.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Learn More</a>
+  <!-- Hero Section -->
+  <header class="flex flex-col items-center justify-center text-center min-h-screen px-6">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">Welcome to Swift Peak Hosting LTD</h1>
+    <p class="text-lg sm:text-xl text-gray-300">Reliable Hosting Solutions with 24/7 Support</p>
+  </header>
+
+  <!-- Pricing Cards Section -->
+  <section class="bg-gray-900 py-12">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-extrabold text-white mb-4">Designed for Business Teams Like Yours</h2>
+        <p class="text-lg text-gray-400">Here at Swift Peak Hosting, we focus on delivering reliable and scalable hosting solutions to meet your business needs.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Plan 1: Snaily CAD -->
+        <div class="flex flex-col p-6 bg-gray-800 rounded-lg border border-gray-700 shadow-lg">
+          <h3 class="text-2xl font-semibold text-white mb-4">Snaily CAD</h3>
+          <p class="text-gray-400 mb-6">Perfect for small businesses and individuals looking for reliable hosting.</p>
+          <div class="flex justify-center items-baseline mb-6">
+            <span class="text-5xl font-extrabold text-white">$29</span>
+            <span class="text-gray-400 ml-2">/month</span>
+          </div>
+          <ul class="mb-8 space-y-4 text-left text-gray-400">
+            <li class="flex items-center space-x-3">
+              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              <span>Individual configuration</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              <span>No setup or hidden fees</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              <span>24/7 customer support</span>
+            </li>
+          </ul>
+          <a href="https://www.swiftpeakhosting.co.uk/snailyinfo" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300 text-center">Get Started</a>
         </div>
 
-        <!-- Web Hosting -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
-          <h3 class="text-xl font-bold mb-4">Web Hosting</h3>
-          <p>Affordable and reliable web hosting with 24/7 support and industry-leading uptime.</p>
-          <a href="web_hosting.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Get Started</a>
+        <!-- Plan 2: VPS Hosting -->
+        <div class="flex flex-col p-6 bg-gray-800 rounded-lg border border-gray-700 shadow-lg">
+          <h3 class="text-2xl font-semibold text-white mb-4">VPS Hosting</h3>
+          <p class="text-gray-400 mb-6">Scalable and powerful hosting for growing businesses and applications.</p>
+          <div class="flex justify-center items-baseline mb-6">
+            <span class="text-5xl font-extrabold text-white">$99</span>
+            <span class="text-gray-400 ml-2">/month</span>
+          </div>
+          <ul class="mb-8 space-y-4 text-left text-gray-400">
+            <li class="flex items-center space-x-3">
+              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              <span>High-performance servers</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              <span>Full root access</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              <span>99.9% uptime guarantee</span>
+            </li>
+          </ul>
+          <a href="https://www.swiftpeakhosting.co.uk/VPS" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300 text-center">Get Started</a>
         </div>
-
-        <!-- Game Server Hosting -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105">
-          <h3 class="text-xl font-bold mb-4">Game Server Hosting</h3>
-          <p>Low-latency, high-performance hosting for gaming communities.</p>
-          <a href="game_server_hosting.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block">Learn More</a>
-        </div>
-
       </div>
     </div>
   </section>
@@ -95,6 +159,27 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.js"></script>
+  <script>
+    // Toggle Mobile Menu
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Toggle Desktop Account Dropdown
+    const userMenuButton = document.getElementById('userMenuButton');
+    const userMenu = document.getElementById('userMenu');
+    userMenuButton.addEventListener('click', () => {
+      userMenu.classList.toggle('hidden');
+    });
+
+    // Toggle Mobile Account Dropdown
+    const mobileUserMenuButton = document.getElementById('mobileUserMenuButton');
+    const mobileUserMenu = document.getElementById('mobileUserMenu');
+    mobileUserMenuButton.addEventListener('click', () => {
+      mobileUserMenu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
