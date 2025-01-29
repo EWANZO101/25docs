@@ -65,25 +65,17 @@
                             <a href="https://www.youtube.com/watch?v=TKE_6HLpDsI" target="_blank" class="text-blue-400 underline hover:text-blue-300 transition">
                                 Watch here
                             </a>)
-                            <label class="flex items-center">
-                        <input type="checkbox" id="cloudflareSetup" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500">
-                        <span class="ml-3">Domain Checked</span>
-                    </label>
                         </span>
                     </label>
-                    <!-- Domain Check Section -->
-                   <div>
-    <button
-        onclick="window.location.href='https://checkdoamin.swiftpeakhosting.co.uk/';"
-        class="mt-4 w-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-400 hover:to-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-    >
-        Check Domain
-    </button>
-</div>
-                        </form>
-                        <p id="result" class="text-sm text-gray-300 mt-2"></p>
-                    </div>
                 </div>
+                <!-- Domain Check Section -->
+                <button
+                    onclick="window.location.href='https://checkdomain.swiftpeakhosting.co.uk/';"
+                    class="mt-4 w-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-400 hover:to-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                >
+                    Check Domain
+                </button>
+                <p id="result" class="text-sm text-gray-300 mt-2"></p>
                 <!-- Complete Setup Button -->
                 <button id="completeSetup" class="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-400 hover:to-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all hidden">
                     Complete Setup
@@ -94,48 +86,30 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
     <script>
-      document.getElementById('swiftPeakHostingSubdomain').addEventListener('click', function () {
-    // Skip domain check and go directly to checkout
-    window.location.href = 'https://www.swiftpeakhosting.co.uk/checkout';
-});
+        document.getElementById('swiftPeakHostingSubdomain').addEventListener('click', function () {
+            // Skip domain check and go directly to checkout
+            window.location.href = 'https://www.swiftpeakhosting.co.uk/checkout';
+        });
 
-// Functionality for "Own Domain" option
-const ownDomainCheckbox = document.getElementById('ownDomain');
-const domainChecklist = document.getElementById('domainChecklist');
-const completeSetupButton = document.getElementById('completeSetup');
-const checklistInputs = domainChecklist.querySelectorAll('input[type="checkbox"]');
+        const ownDomainCheckbox = document.getElementById('ownDomain');
+        const domainChecklist = document.getElementById('domainChecklist');
+        const completeSetupButton = document.getElementById('completeSetup');
+        const checklistInputs = domainChecklist.querySelectorAll('input[type="checkbox"]');
 
-ownDomainCheckbox.addEventListener('change', function () {
-    domainChecklist.classList.toggle('hidden', !this.checked);
-});
+        ownDomainCheckbox.addEventListener('change', function () {
+            domainChecklist.classList.toggle('hidden', !this.checked);
+        });
 
-// Enable Complete Setup Button when all checkboxes are checked
-checklistInputs.forEach(input => {
-    input.addEventListener('change', function () {
-        const allChecked = Array.from(checklistInputs).every(checkbox => checkbox.checked);
-        completeSetupButton.classList.toggle('hidden', !allChecked);
-    });
-});
+        checklistInputs.forEach(input => {
+            input.addEventListener('change', function () {
+                const allChecked = Array.from(checklistInputs).every(checkbox => checkbox.checked);
+                completeSetupButton.classList.toggle('hidden', !allChecked);
+            });
+        });
 
-// Redirect to check domain page
-function checkCloudflare() {
-    const domain = document.getElementById('domain').value.trim();
-
-    if (domain) {
-        // Redirect to the domain check page with the entered domain as a query parameter
-        window.location.href = `https://checkdoamin.swiftpeakhosting.co.uk/?domain=${encodeURIComponent(domain)}`;
-    } else {
-        const result = document.getElementById('result');
-        result.textContent = 'Please enter a valid domain.';
-    }
-}
-
-// Redirect for Complete Setup
-completeSetupButton.addEventListener('click', function () {
-    alert("You have completed all steps for using your own domain. Redirecting to finalize setup...");
-    window.location.href = 'https://www.swiftpeakhosting.co.uk/checkout';
-});
-
+        completeSetupButton.addEventListener('click', function () {
+            alert("You have completed all steps for using your own domain. Redirecting to finalize setup...");
+            window.location.href = 'https://www.swiftpeakhosting.co.uk/checkout';
         });
     </script>
 </body>
