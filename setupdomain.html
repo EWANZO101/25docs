@@ -94,46 +94,48 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
     <script>
-        // Redirect for Swift Peak Hosting Subdomain
-        document.getElementById('swiftPeakHostingSubdomain').addEventListener('click', function() {
-            window.location.href = 'https://www.swiftpeakhosting.co.uk/checkdomain.html';
-        });
+      document.getElementById('swiftPeakHostingSubdomain').addEventListener('click', function () {
+    // Skip domain check and go directly to checkout
+    window.location.href = 'https://www.swiftpeakhosting.co.uk/checkout';
+});
 
-        // Toggle Own Domain Checklist
-        const ownDomainCheckbox = document.getElementById('ownDomain');
-        const domainChecklist = document.getElementById('domainChecklist');
-        const completeSetupButton = document.getElementById('completeSetup');
-        const checklistInputs = domainChecklist.querySelectorAll('input[type="checkbox"]');
+// Functionality for "Own Domain" option
+const ownDomainCheckbox = document.getElementById('ownDomain');
+const domainChecklist = document.getElementById('domainChecklist');
+const completeSetupButton = document.getElementById('completeSetup');
+const checklistInputs = domainChecklist.querySelectorAll('input[type="checkbox"]');
 
-        ownDomainCheckbox.addEventListener('change', function() {
-            domainChecklist.classList.toggle('hidden', !this.checked);
-        });
+ownDomainCheckbox.addEventListener('change', function () {
+    domainChecklist.classList.toggle('hidden', !this.checked);
+});
 
-        // Enable Complete Setup Button when all checkboxes are checked
-        checklistInputs.forEach(input => {
-            input.addEventListener('change', function() {
-                const allChecked = Array.from(checklistInputs).every(checkbox => checkbox.checked);
-                completeSetupButton.classList.toggle('hidden', !allChecked);
-            });
-        });
+// Enable Complete Setup Button when all checkboxes are checked
+checklistInputs.forEach(input => {
+    input.addEventListener('change', function () {
+        const allChecked = Array.from(checklistInputs).every(checkbox => checkbox.checked);
+        completeSetupButton.classList.toggle('hidden', !allChecked);
+    });
+});
 
-        // Check Domain Functionality
-        function checkCloudflare() {
-            const domain = document.getElementById('domain').value.trim();
+// Redirect to check domain page
+function checkCloudflare() {
+    const domain = document.getElementById('domain').value.trim();
 
-            if (domain) {
-                // Redirect to the domain check page with the entered domain as a query parameter
-                window.location.href = `https://checkdoamin.swiftpeakhosting.co.uk/?domain=${encodeURIComponent(domain)}`;
-            } else {
-                const result = document.getElementById('result');
-                result.textContent = 'Please enter a valid domain.';
-            }
-        }
+    if (domain) {
+        // Redirect to the domain check page with the entered domain as a query parameter
+        window.location.href = `https://checkdoamin.swiftpeakhosting.co.uk/?domain=${encodeURIComponent(domain)}`;
+    } else {
+        const result = document.getElementById('result');
+        result.textContent = 'Please enter a valid domain.';
+    }
+}
 
-        // Redirect for Complete Setup
-        completeSetupButton.addEventListener('click', function() {
-            alert("You have completed all steps for using your own domain. Redirecting to finalize setup...");
-            window.location.href = 'https://www.swiftpeakhosting.co.uk/checkdomain.html';
+// Redirect for Complete Setup
+completeSetupButton.addEventListener('click', function () {
+    alert("You have completed all steps for using your own domain. Redirecting to finalize setup...");
+    window.location.href = 'https://www.swiftpeakhosting.co.uk/checkout';
+});
+
         });
     </script>
 </body>
