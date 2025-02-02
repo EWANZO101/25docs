@@ -19,10 +19,9 @@
         <div class="bg-gray-700 p-4 rounded-lg space-y-4">
             <h2 class="text-xl font-semibold text-white">What Each Option Means:</h2>
             <ul class="space-y-2 text-gray-300">
-               <li>
+                <li>
                     <span class="font-bold text-green-400">Swift Peak Hosting Subdomain:</span> Choosing this option means we will provide a subdomain (e.g., <span class="text-green-400 font-bold">LARP.snailycad.co.uk</span>) for your setup. This is the easiest and fastest option for activating your CAD.
-                 </li>
- 
+                </li>
                 <li>
                     <span class="font-bold text-blue-400">Own Domain:</span> You will use a domain you already own (e.g., <span class="text-blue-400 font-bold">yourdomain.com</span>). This option requires additional setup, including Cloudflare configuration and domain validation.
                 </li>
@@ -30,18 +29,15 @@
         </div>
 
         <!-- Option: Swift Peak Hosting Subdomain -->
-     <div class="space-y-2">
-    <button id="swiftPeakHostingSubdomain" 
-        class="w-full bg-green-600 
-               hover:bg-green-500 text-white 
-               font-bold py-3 px-6 rounded-lg shadow-md transition-all">
-        Use Swift Peak Hosting Subdomain
-    </button>
-    <p class="text-sm text-gray-400 text-center">
-        This option is fully managed by Swift Peak Hosting. No additional setup is required on your end, and your CAD setup will be expedited.
-    </p>
-</div>
-
+        <div class="space-y-2">
+            <button id="swiftPeakHostingSubdomain" 
+                class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all">
+                Use Swift Peak Hosting Subdomain
+            </button>
+            <p class="text-sm text-gray-400 text-center">
+                This option is fully managed by Swift Peak Hosting. No additional setup is required on your end, and your CAD setup will be expedited.
+            </p>
+        </div>
 
         <!-- Option: Own Domain -->
         <div class="bg-gray-700 p-4 rounded-lg">
@@ -89,8 +85,14 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
     <script>
         document.getElementById('swiftPeakHostingSubdomain').addEventListener('click', function () {
-            // Skip domain check and go directly to checkout
-            window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
+            let confirmChoice = confirm("Are you sure you want to use a Swift Peak Hosting subdomain?");
+            if (confirmChoice) {
+                window.location.href = 'https://store.swiftpeakhosting.co.uk/store/view/56';
+            } else {
+                alert("It looks like you might want to use your own domain instead.");
+                document.getElementById('ownDomain').checked = true;
+                document.getElementById('domainChecklist').classList.remove('hidden');
+            }
         });
 
         const ownDomainCheckbox = document.getElementById('ownDomain');
@@ -99,7 +101,17 @@
         const checklistInputs = domainChecklist.querySelectorAll('input[type="checkbox"]');
 
         ownDomainCheckbox.addEventListener('change', function () {
-            domainChecklist.classList.toggle('hidden', !this.checked);
+            if (this.checked) {
+                let confirmChoice = confirm("Are you sure you want to use your own domain?");
+                if (confirmChoice) {
+                    domainChecklist.classList.remove('hidden');
+                } else {
+                    alert("It looks like you might want to use a Swift Peak Hosting subdomain instead.");
+                    this.checked = false;
+                }
+            } else {
+                domainChecklist.classList.add('hidden');
+            }
         });
 
         checklistInputs.forEach(input => {
