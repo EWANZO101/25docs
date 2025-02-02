@@ -9,49 +9,81 @@
 </head>
 <body class="bg-gray-900 flex justify-center items-center min-h-screen text-gray-200">
     <div class="bg-gray-800 p-8 rounded-lg shadow-lg max-w-lg w-full mx-auto space-y-6">
+        <!-- Warning Message -->
+        <div class="text-center bg-red-600 text-white p-4 rounded-lg font-bold">
+            ⚠ IF YOU DO NOT SELECT THE RIGHT BUTTONS, YOUR ORDER WILL BE CANCELED. WE CANNOT PROCESS ORDERS WITHOUT CLOUDFLARE SETUP. THIS ALSO INCLUDES POSTING YOUR CLOUDFLARE INSTALL CODE ON OUR FORM, WHICH YOU WILL SEE ON THE NEXT PAGE OR SO. ⚠
+        </div>
+        
         <!-- Title -->
         <div class="text-center">
             <h1 class="text-3xl font-bold text-red-500 mb-2">Setup Confirmation</h1>
             <p class="text-gray-400">Please review the setup details below carefully before proceeding.</p>
         </div>
+        
         <!-- Information Section -->
         <div class="bg-gray-700 p-4 rounded-lg shadow-inner space-y-4">
-            <h2 class="text-xl font-semibold text-white">Key Setup Information</h2>
+            <h2 class="text-xl font-semibold text-white">Important Information</h2>
             <ul class="space-y-2 text-gray-300">
-               <li>
-             <span class="font-bold text-red-500">Order Activation:</span> Your SnailyCAD order will take 12–24 hours to activate. Initial errors are normal during this time.
-             </li>
-
                 <li>
-                    <span class="font-bold text-gray-100">Subdomains:</span> Using a <strong>Swift Peak Hosting subdomain</strong> (e.g., <strong>LARP.snailycad.co.uk</strong>) will expedite your setup process.
+                    <span class="font-bold text-red-500">Order Activation:</span> Your SnailyCAD order will take 12–24 hours to activate. Initial errors are normal during this time.
+                </li>
+                <li>
+                    <span class="font-bold text-gray-100">Subdomains:</span> If you want to use a <strong>Swift Peak Hosting subdomain</strong> (e.g., <strong>LARP.snailycad.co.uk</strong>), click the appropriate button.
+                </li>
+                <li>
+                    <span class="font-bold text-gray-100">Using Your Own Domain:</span> If you want to use <strong>your own domain</strong> (e.g., <strong>cad.myroleplaycommunity.com</strong>), ensure you click the <strong>"Using My Own Domain"</strong> button. <span class="text-red-500 font-bold">Do not select Swift Peak Hosting's subdomain unless you intend to use it.</span>
                 </li>
                 <li>
                     <span class="font-bold text-gray-100">Cloudflare Requirement:</span> Ensure <strong>Cloudflare</strong> is configured for hosting services with Swift Peak Hosting.
                 </li>
             </ul>
         </div>
+        
         <!-- Additional Notes -->
         <p class="text-gray-300">
             Once confirmed, you will be redirected to a checklist to finalize your setup. For assistance, visit our 
             <a href="https://www.swiftpeakhosting.co.uk/contact" class="text-blue-400 underline hover:text-blue-300">Contact Us</a> page.
         </p>
+        
         <!-- Confirm Button -->
         <div class="text-center">
-            <button id="confirmButton" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-500 transition">
-                ✔ I confirm and understand the requirements
+            <button id="openModalButton" class="w-full bg-red-600 text-white font-bold py-3 rounded-lg hover:bg-red-500 transition">
+                ⚠ Read Before Continuing
             </button>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.4.6/dist/flowbite.bundle.min.js"></script>
+    <!-- Modal -->
+    <div id="domainModal" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg max-w-lg w-full text-center">
+            <h2 class="text-xl font-bold text-white mb-4">Choose the Correct Domain Option</h2>
+            <p class="text-gray-300 mb-4">
+                If you are using your own domain (e.g., <strong>cad.myroleplaycommunity.com</strong>), please click <strong>"Using My Own Domain"</strong>. If you want to use a subdomain from Swift Peak Hosting (e.g., <strong>KLSERP.snailycad.co.uk</strong>), click <strong>"Using a Subdomain"</strong>.
+            </p>
+            <div class="flex space-x-4">
+                <button id="ownDomainButton" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-500 transition">
+                    Using My Own Domain
+                </button>
+                <button id="subdomainButton" class="bg-gray-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-500 transition">
+                    Using a Subdomain
+                </button>
+            </div>
+        </div>
+    </div>
+    
     <script>
-        document.getElementById("confirmButton").addEventListener("click", function () {
-            this.textContent = "Redirecting...";
-            this.classList.add("opacity-75", "cursor-not-allowed");
-            this.disabled = true;
-            setTimeout(() => {
-                window.location.href = "https://www.swiftpeakhosting.co.uk/setupdomain.html";
-            }, 1000);
+        document.getElementById("openModalButton").addEventListener("click", function () {
+            document.getElementById("domainModal").classList.remove("hidden");
+        });
+
+        document.getElementById("ownDomainButton").addEventListener("click", function () {
+            alert("You have chosen to use your own domain. Make sure your DNS is correctly set up.");
+            window.location.href = "https://www.swiftpeakhosting.co.uk/setupdomain.html";
+        });
+
+        document.getElementById("subdomainButton").addEventListener("click", function () {
+            alert("You have chosen to use a Swift Peak Hosting subdomain.");
+            window.location.href = "https://www.swiftpeakhosting.co.uk/setupsubdomain.html";
         });
     </script>
 </body>
