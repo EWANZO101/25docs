@@ -73,9 +73,19 @@
         </div>
     </div>
     
-    <script>
+       <script>
         document.getElementById("openModalButton").addEventListener("click", function () {
             document.getElementById("domainModal").classList.remove("hidden");
+        });
+
+        document.getElementById("ownDomainButton").addEventListener("click", function () {
+            alert("You have chosen to use your own domain. Make sure your DNS is correctly set up.");
+            window.location.href = "https://cftunnl.swiftpeakhosting.co.uk/";
+        });
+
+        document.getElementById("subdomainButton").addEventListener("click", function () {
+            alert("You have chosen to use a Swift Peak Hosting subdomain.");
+            window.location.href = "https://store.swiftpeakhosting.co.uk/store/view/56";
         });
     </script>
 </body>
