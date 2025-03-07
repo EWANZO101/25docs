@@ -36,22 +36,21 @@
         <a href="StaffTeam.html" class="text-gray-300 hover:text-white">Meet the Team</a>
         <a href="contact.html" class="text-gray-300 hover:text-white">Contact</a>
         <!-- Account Dropdown -->
-        <div class="relative">
-          <button id="userMenuButton" class="flex items-center space-x-1 hover:text-gray-200 focus:outline-none">
-            <span>Account</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div id="userMenu" class="hidden absolute right-0 mt-2 bg-gray-800 text-white rounded-md shadow-lg w-48">
-            <a href="https://store.swiftpeakhosting.co.uk/auth/login" class="block px-4 py-2 hover:bg-gray-700">Login</a>
-            <a href="https://store.swiftpeakhosting.co.uk/auth/logout" class="block px-4 py-2 hover:bg-gray-700">Sign Out</a>
-            <a href="https://store.swiftpeakhosting.co.uk/dashboard" class="block px-4 py-2 hover:bg-gray-700">Dashboard</a>
-            <a href="https://store.swiftpeakhosting.co.uk/admin" class="block px-4 py-2 hover:bg-gray-700">Admin</a>
-          </div>
-        </div>
-      </div>
-    </div>
+       <div class="relative">
+  <button id="userMenuButton" class="flex items-center space-x-1 text-gray-400 opacity-50 cursor-not-allowed focus:outline-none" disabled>
+    <span>Account</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </button>
+  <div id="userMenu" class="hidden absolute right-0 mt-2 bg-gray-800 text-white rounded-md shadow-lg w-48">
+    <a href="https://store.swiftpeakhosting.co.uk/auth/login" class="block px-4 py-2 hover:bg-gray-700 pointer-events-none opacity-50">Login</a>
+    <a href="https://store.swiftpeakhosting.co.uk/auth/logout" class="block px-4 py-2 hover:bg-gray-700 pointer-events-none opacity-50">Sign Out</a>
+    <a href="https://store.swiftpeakhosting.co.uk/dashboard" class="block px-4 py-2 hover:bg-gray-700 pointer-events-none opacity-50">Dashboard</a>
+    <a href="https://store.swiftpeakhosting.co.uk/admin" class="block px-4 py-2 hover:bg-gray-700 pointer-events-none opacity-50">Admin</a>
+  </div>
+</div>
+
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-gray-800">
       <a href="index.html" class="block py-2 px-4 text-gray-300 hover:bg-gray-700">Home</a>
